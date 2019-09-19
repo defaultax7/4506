@@ -17,7 +17,7 @@
 
         #sideBar {
             min-height: 100vh;
-            margin-left: -15rem;
+            margin-left: -4rem;
             -webkit-transition: margin .25s ease-out;
             -moz-transition: margin .25s ease-out;
             -o-transition: margin .25s ease-out;
@@ -30,7 +30,8 @@
         }
 
         #sideBar .list-group {
-            width: 15rem;
+            /*width: 15rem;*/
+            width: 4rem;
         }
 
         #main {
@@ -52,7 +53,7 @@
             }
 
             #wrapper.toggled #sideBar {
-                margin-left: -15rem;
+                margin-left: -4rem;
             }
         }
     </style>
@@ -63,15 +64,15 @@
     <div class="d-flex" id="wrapper">
 
         <!-- Sidebar -->
-        <div class="bg-light border-right" id="sideBar">
-            <div class="sidebar-heading">Start Bootstrap </div>
+        <div class="border-right bg-primary" id="sideBar">
+            <div class="sidebar-heading"><i class="material-icons">shopping_cart</i></div>
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-light"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-light"><i class="material-icons">shopping_cart</i></a>
+                <a href="#" class="list-group-item list-group-item-action bg-danger"><i class="material-icons">shopping_cart</i></a>
+                <a href="#" class="list-group-item list-group-item-action bg-info"><i class="material-icons">shopping_cart</i></a>
+                <a href="#" class="list-group-item list-group-item-action bg-white"><i class="material-icons">shopping_cart</i></a>
+                <a href="#" class="list-group-item list-group-item-action bg-secondary"><i class="material-icons">shopping_cart</i></a>
+                <a href="#" class="list-group-item list-group-item-action bg-success"><i class="material-icons">shopping_cart</i></a>
+                <a href="#" class="list-group-item list-group-item-action bg-warning"><i class="material-icons">shopping_cart</i></a>
             </div>
         </div>
         <!-- /#sideBar -->
