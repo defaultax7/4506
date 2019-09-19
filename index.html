@@ -25,6 +25,12 @@
             color: #fff;
             transition: all 0.3s;
         }
+
+
+        #testBlock {
+            height: 100vh;
+            background-color: lightblue;
+        }
     </style>
 </head>
 
@@ -42,23 +48,36 @@
 
             <ul class="list-unstyled components">
                 <p>Dummy Heading</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
+                <li>
+
+                    <a href="#" class="sideBarItem">
+                        <i class="material-icons">
+                            info
+                        </i>
+                        Restaurant info</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="#" class="sideBarItem">
+                        <i class="material-icons">
+                            menu_book
+                        </i>
+                        Update menu</a>
                 </li>
+                <li>
+                    <a href="#" class="sideBarItem">
+                        <i class="material-icons">
+                            restaurant_menu
+                        </i>
+                        Special menu</a>
+                </li>
+                <li>
+                    <a href="#" class="sideBarItem">
+                        <i class="material-icons">
+                            delete
+                        </i>
+                        Remove menu</a>
+                </li>
+                <!-- reserve -->
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">Pages</a>
@@ -74,12 +93,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+                <!-- reserve -->
             </ul>
 
         </nav>
@@ -95,6 +109,8 @@
                     </button>
                 </div>
             </nav>
+
+            <div id="testBlock"></div>
         </div>
     </div>
 
