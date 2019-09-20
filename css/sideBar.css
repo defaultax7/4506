@@ -6,7 +6,9 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    /*background: #fafafa;*/
+    overflow-x: hidden;
+    background-color: lightblue;
 }
 
 p {
@@ -30,7 +32,7 @@ a:focus {
     background: #fff;
     border: none;
     border-radius: 0;
-    /* margin-bottom: 40px; */
+     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -67,10 +69,32 @@ a:focus {
     color: #fff;
     transition: all 0.3s;
 }
+#sidebar #logo {
+    font-size: 5em; }
+#sidebar.active #logo {
+    font-size: 2rem; }
 
+/*#sidebar.active {*/
+    /*margin-left: -250px;*/
+/*}*/
+/*test*/
 #sidebar.active {
-    margin-left: -250px;
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
 }
+#sidebar.active ul li a span {
+    display: none; }
+
+#sidebar.active .sidebar-header h3,
+#sidebar.active .CTAs {
+    display: none;
+}
+
+#sidebar.active .sidebar-header strong {
+    display: block;
+}
+/*test*/
 
 #sidebar .sidebar-header {
     padding: 20px;
@@ -86,6 +110,33 @@ a:focus {
     color: #fff;
     padding: 10px;
 }
+/*test*/
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+#sidebar.active ul li a i {
+    margin-right: 0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+
+#sidebar.active .dropdown-toggle::after {
+    top: auto;
+    bottom: 10px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+}
+/*test*/
 
 #sidebar ul li a {
     padding: 10px;
@@ -188,52 +239,6 @@ a.article:hover {
     background-color: lightblue;
 }
 
-body {
-    overflow-x: hidden;
-    background-color: lightblue;
-}
-
-#sideBar {
-    min-height: 100vh;
-    margin-left: -4rem;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
-}
-
-#sideBar .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-}
-
-#sideBar .list-group {
-    /*width: 15rem;*/
-    width: 4rem;
-}
-
-#main {
-    min-width: 100vw;
-}
-
-#wrapper.toggled #sideBar {
-    margin-left: 0;
-}
-
-@media (min-width: 768px) {
-    #sideBar {
-        margin-left: 0;
-    }
-
-    #main {
-        min-width: 0;
-        width: 100%;
-    }
-
-    #wrapper.toggled #sideBar {
-        margin-left: -4rem;
-    }
-}
 
 /* ---------------------------------------------------
     MEDIAQUERIES

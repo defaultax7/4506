@@ -18,7 +18,7 @@
         <!-- Sidebar -->
         <nav id="sidebar">
             <div class="sidebar-header text-center">
-                <i class="material-icons" style="font-size: 5em">
+                <i class="material-icons" id="logo">
                         fastfood
                     </i>
                     <h3>Yummy Everywhere</h3>
@@ -28,23 +28,23 @@
                 <p>Dummy Heading</p>
                 <li>
 
-                    <a href="#" class="sideBarItem">
-                      <span><i class="material-icons inline-icon"> info </i>&nbsp;&nbsp; Restaurant info</span>
+                    <a href="#" class="sideBarItem" title="Restaurant info">
+                      <i class="material-icons inline-icon"> info </i><span class="mx-3 align-top">Restaurant info</span>
                         </a>
                 </li>
                 <li>
-                    <a href="#" class="sideBarItem">
-                        <span><i class="material-icons inline-icon"> menu_book </i>&nbsp;&nbsp; Update menu</span>
+                    <a href="#" class="sideBarItem" title="Update menu">
+                        <i class="material-icons inline-icon"> menu_book </i><span class="mx-3 align-top">Update menu</span>
                         </a>
                 </li>
                 <li>
-                    <a href="#" class="sideBarItem">
-                        <span><i class="material-icons inline-icon"> restaurant_menu </i>&nbsp;&nbsp; Special menu</span>
+                    <a href="#" class="sideBarItem" title="Special menu">
+                        <i class="material-icons inline-icon"> restaurant_menu </i><span class="mx-3 align-top">Special menu</span>
                         </a>
                 </li>
                 <li>
-                    <a href="#" class="sideBarItem">
-                        <span><i class="material-icons inline-icon"> delete </i>&nbsp;&nbsp; Remove menu</span>
+                    <a href="#" class="sideBarItem" title="Remove menu">
+                        <i class="material-icons inline-icon"> delete </i><span class="mx-3 align-top">Remove menu</span>
                         </a>
                 </li>
                 <!-- reserve -->
@@ -70,17 +70,16 @@
         <!-- Page Content -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-dark">
                 <div class="container-fluid">
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
+                        <i class="navbar-toggler-icon "></i>
                         <span>Toggle Sidebar</span>
                     </button>
                     <button class="navbar-toggler pull-left" type="button" data-toggle="collapse"
                         data-target="#navbarContent" aria-controls="navbarContent"
                         aria-expanded="false" aria-label="Toggle navigation"
                         onclick="toggleOverlay()">
-                      <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
             </nav>
@@ -98,10 +97,21 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.js"></script>
     <script>
-        // $("#sidebarCollapse").click(function(e) {
-        //     e.preventDefault();
-        //     $("#sidebar-wrapper").toggleClass("toggled");
-        // });
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            $("#sidebarCollapse").click(function(){
+                if($("#sidebar").hasClass('active')) {
+                    $("#sidebar").siblings("#content").css("width", "calc(100% - " +$("#sidebar").css("width")+ ")");
+                }
+                else {
+                    $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
+                }
+            });
+
+        });
     </script>
 
 
