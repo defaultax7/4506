@@ -3,6 +3,7 @@
 */
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
@@ -29,7 +30,7 @@ a:focus {
     background: #fff;
     border: none;
     border-radius: 0;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -78,7 +79,7 @@ a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    /*border-bottom: 1px solid #47748b;*/
 }
 
 #sidebar ul p {
@@ -152,7 +153,7 @@ a.article:hover {
 
 #content {
     width: calc(100% - 250px);
-    padding: 40px;
+    /* padding: 40px; */
     min-height: 100vh;
     transition: all 0.3s;
     position: absolute;
@@ -164,6 +165,76 @@ a.article:hover {
     width: 100%;
 }
 
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+
+#testBlock {
+    height: 100vh;
+    background-color: lightblue;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: lightblue;
+}
+
+#sideBar {
+    min-height: 100vh;
+    margin-left: -4rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sideBar .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sideBar .list-group {
+    /*width: 15rem;*/
+    width: 4rem;
+}
+
+#main {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sideBar {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sideBar {
+        margin-left: 0;
+    }
+
+    #main {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sideBar {
+        margin-left: -4rem;
+    }
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -172,15 +243,19 @@ a.article:hover {
     #sidebar {
         margin-left: -250px;
     }
+
     #sidebar.active {
         margin-left: 0;
     }
+
     #content {
         width: 100%;
     }
+
     #content.active {
         width: calc(100% - 250px);
     }
+
     #sidebarCollapse span {
         display: none;
     }
