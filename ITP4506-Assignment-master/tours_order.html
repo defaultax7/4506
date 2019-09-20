@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="./img/favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Happy Travel | Index</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/search.css" rel="stylesheet">
+  <link href="./css/details.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+</head>
+
+<body>
+  <div class="navbar navbar-light bg-light navbar-expand-lg bar-sg shadow flex-wrap sticky-top p-0">
+    <div class="ht-indicator"></div>
+    <div class="container pb-2 pt-2">
+      <a href="./index.html" class="navbar-brand"><img src="./img/happytravel.png" height="56"></a>
+      <div class="navbar-collapse collapse flex-row-reverse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a id="toursTag" class="nav-link" href="index.html#tours">Tours</a>
+          </li>
+          <li class="nav-item">
+            <a id="hotelsTag" class="nav-link" href="index.html#hotels">Hotel</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="ht_content">
+    <div class="container">
+      <div class="row">
+        <div class="ht_searchContent col-12" id="orderBox" data-step="1">
+          <div class="card steps ht_s_item flex-row mb-4 mt-4">
+            <div class="step active">
+              <i class="material-icons">person</i>
+              <div class="content">
+                <div class="title">Step 1</div>
+                <div class="description">Select Product</div>
+              </div>
+            </div>
+            <div class="step disabled">
+              <i class="material-icons">visibility</i>
+              <div class="content">
+                <div class="title">Step 2</div>
+                <div class="description">Enter information</div>
+              </div>
+            </div>
+            <div class="step disabled">
+              <i class="material-icons">info</i>
+              <div class="content">
+                <div class="title">Step 3</div>
+                <div class="description">Confirm Information</div>
+              </div>
+            </div>
+            <div class="step disabled">
+              <i class="material-icons">credit_card</i>
+              <div class="content">
+                <div class="title">Step 4</div>
+                <div class="description">Payment</div>
+              </div>
+            </div>
+            <div class="step disabled">
+              <i class="material-icons">check</i>
+              <div class="content">
+                <div class="title">Step 5</div>
+                <div class="description">Successfully submitted</div>
+              </div>
+            </div>
+          </div>
+          <div id="step1" class="card ht_s_item flex-row mb-4 mt-4">
+            <div class="card-content">
+              <div class="row">
+                <div class="col-12">
+                  <h4 class="card-title">Select Your Tour</h4>
+                  <div class="divider"></div>
+                </div>
+                <div class="col-12 mb-3">
+                  <div class="input-field">
+                    <label for="depart">Check-in:</label>
+                    <input id="h_in" type="date" style="width: auto" class="ht_input" placeholder="yyyy-mm-dd" />
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="col-12">
+                    <h4>Tour Info</h4>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <td>Tour ID</td>
+                          <td>Price</td>
+                          <td>Status</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>AJHTF-5P</td>
+                          <td>HK$4999</td>
+                          <td>Available</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <td colspan="2">Flight Info</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><span class="badge badge-info">Depart</span> China Eastern Airlines</td>
+                          <td><span class="badge badge-info">Arrival</span> China Eastern Airlines</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-12">
+                    <h4>Enrollment</h4>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <td>Room</td>
+                          <td>Price</td>
+                          <td>Quantity</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Adult Half</td>
+                          <td>HK$4999</td>
+                          <td>
+                            <select id="a_room" class="custom-select ht_input" name="">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Child Half</td>
+                          <td>HK$4999</td>
+                          <td>
+                            <select id="c_room" class="custom-select ht_input" name="">
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Child No bed</td>
+                          <td>HK$3999</td>
+                          <td>
+                            <select id="c_room_no" class="custom-select ht_input" name="">
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-4 text-right">
+                  <p><span class="price">Total: HK$4999</span></p>
+                  <div class="divider"></div>
+                  <div class="pre_step_link">
+                    <a href="tours_detail.html?id=7" class="text-left">&lt; Cancel</a>
+                  </div>
+                  <div class="next_step_button">
+                    <button class="btn btn-search btn-lg btn-block orderNext">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="step2" class="card ht_s_item flex-row mb-4 mt-4">
+            <div class="card-content">
+              <div class="row">
+                <div class="col-12">
+                  <h4 class="card-title">Traveler information</h4>
+                  <div class="divider"></div>
+                </div>
+                <div class="col-8" id="travelerInput"></div>
+                <div class="col-4 text-right">
+                  <p><span class="price">Total: HK$4999</span></p>
+                  <div class="divider"></div>
+                  <div class="pre_step_link">
+                    <a href="#!" class="orderBack">&lt; Previous</a>
+                  </div>
+                  <div class="next_step_button">
+                    <button class="btn btn-search btn-lg btn-block orderNext">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="step3" class="card ht_s_item flex-row mb-4 mt-4">
+            <div class="card-content">
+              <div class="row">
+                <div class="col-12">
+                  <h4 class="card-title">Confirm Information</h4>
+                  <div class="divider"></div>
+                </div>
+                <div class="col-8" id="travelerInfo"></div>
+                <div class="col-4 text-right">
+                  <p><span class="price">Total: HK$4999</span></p>
+                  <div class="divider"></div>
+                  <div class="pre_step_link">
+                    <a href="#!" class="orderBack">&lt; Previous</a>
+                  </div>
+                  <div class="next_step_button">
+                    <a href="payment.html"><button class="btn btn-search btn-lg btn-block saveCart"  style="margin-bottom:5px">Pay now</button></a>
+                    <button class="btn btn-search btn-lg btn-block saveCart">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Sign in for exclusive member deals</h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col text-center">
+              <div class="alert alert-danger" role="alert" id="loginError" style="display: none;"></div>
+            </div>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="material-icons">person</i></span>
+            <input type="text" class="form-control" placeholder="Username" id="loginUsername">
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-addon"><i class="material-icons">vpn_key</i></span>
+            <input type="text" class="form-control" placeholder="Password" id="loginPassword">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger modal-dismiss">Cancel</button>
+          <button type="button" class="btn btn-ht" id="btnLogin">Sign in</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-7">
+          <h5 class="white-text">About Us</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        </div>
+        <div class="col-12 col-lg-5">
+          <h5 class="white-text">Contact Us</h5>
+          <input id="h_destination" type="email" class="ht_input" placeholder="Email" />
+          <textarea class="ht_input mb-4" rows="4" placeholder="Your message"></textarea>
+          <a href="#!" class="btn btn-outline-ht float-right mb-4">Send</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2017, Happy Travel Ltd.
+        <a class="float-right" href="#!">Terms &amp; Condition</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/orders.js"></script>
+  <script>
+    let type = 'tours'
+  </script>
+</body>
+</html>
