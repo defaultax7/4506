@@ -7,9 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sideBar.css">
     <style>
-        #sideBar {
-            background-color: grey;
+        .wrapper {
+            display: flex;
+            width: 100%;
+        }
+
+        #sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 999;
+            background: #7386D5;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+
+        #testBlock {
+            height: 100vh;
+            background-color: lightblue;
         }
         body {
             overflow-x: hidden;
@@ -60,33 +80,84 @@
 </head>
 
 <body>
-    <!-- Sidebar -->
-    <div class="d-flex" id="wrapper">
-
+    <div class="wrapper">
         <!-- Sidebar -->
-        <div class="border-right bg-primary" id="sideBar">
-            <div class="sidebar-heading"><i class="material-icons">shopping_cart</i></div>
-            <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-danger"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-info"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-white"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-secondary"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-success"><i class="material-icons">shopping_cart</i></a>
-                <a href="#" class="list-group-item list-group-item-action bg-warning"><i class="material-icons">shopping_cart</i></a>
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <center><i class="material-icons" style="font-size: 5em">
+                        fastfood
+                    </i>
+                    <h3>Yummy Everywhere</h3>
+                </center>
             </div>
-        </div>
-        <!-- /#sideBar -->
 
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li>
+
+                    <a href="#" class="sideBarItem">
+                        <i class="material-icons">
+                            info
+                        </i>
+                        Restaurant info</a>
+                </li>
+                <li>
+                    <a href="#" class="sideBarItem">
+                        <i class="material-icons">
+                            menu_book
+                        </i>
+                        Update menu</a>
+                </li>
+                <li>
+                    <a href="#" class="sideBarItem">
+                        <i class="material-icons">
+                            restaurant_menu
+                        </i>
+                        Special menu</a>
+                </li>
+                <li>
+                    <a href="#" class="sideBarItem">
+                        <i class="material-icons">
+                            delete
+                        </i>
+                        Remove menu</a>
+                </li>
+                <!-- reserve -->
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- reserve -->
+            </ul>
+
+        </nav>
         <!-- Page Content -->
-        <div id="main">
+        <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom fixed-left">
-                <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                </div>
+            </nav>
 
+            <div id="testBlock"></div>
+        </div>
+    </div>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -111,31 +182,6 @@
                 </div>
             </nav>
 
-            <div class="container-fluid">
-                <h1 class="mt-4">Simple Sidebar</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                <p>Make sure to keep all page content within the <code>#main</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
-            </div>
-            <div class="container-fluid">
-                <h1 class="mt-4">Simple Sidebar</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                <p>Make sure to keep all page content within the <code>#main</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
-            </div>
-            <div class="container-fluid">
-                <h1 class="mt-4">Simple Sidebar</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                <p>Make sure to keep all page content within the <code>#main</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
-            </div>
-            <div class="container-fluid">
-                <h1 class="mt-4">Simple Sidebar</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                <p>Make sure to keep all page content within the <code>#main</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
-            </div>
-            <div class="container-fluid">
-                <h1 class="mt-4">Simple Sidebar</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                <p>Make sure to keep all page content within the <code>#main</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
-            </div>
         </div>
         <!-- /#main -->
 
@@ -146,15 +192,6 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
-
 
 </body>
 
