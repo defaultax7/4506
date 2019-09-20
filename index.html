@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/sideBar.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
     </style>
 </head>
@@ -28,31 +29,23 @@
                 <li>
 
                     <a href="#" class="sideBarItem">
-                        <i class="material-icons">
-                            info
-                        </i>
-                        Restaurant info</a>
+                      <span><i class="material-icons inline-icon"> info </i>&nbsp;&nbsp; Restaurant info</span>
+                        </a>
                 </li>
                 <li>
                     <a href="#" class="sideBarItem">
-                        <i class="material-icons">
-                            menu_book
-                        </i>
-                        Update menu</a>
+                        <span><i class="material-icons inline-icon"> menu_book </i>&nbsp;&nbsp; Update menu</span>
+                        </a>
                 </li>
                 <li>
                     <a href="#" class="sideBarItem">
-                        <i class="material-icons">
-                            restaurant_menu
-                        </i>
-                        Special menu</a>
+                        <span><i class="material-icons inline-icon"> restaurant_menu </i>&nbsp;&nbsp; Special menu</span>
+                        </a>
                 </li>
                 <li>
                     <a href="#" class="sideBarItem">
-                        <i class="material-icons">
-                            delete
-                        </i>
-                        Remove menu</a>
+                        <span><i class="material-icons inline-icon"> delete </i>&nbsp;&nbsp; Remove menu</span>
+                        </a>
                 </li>
                 <!-- reserve -->
                 <li>
@@ -83,10 +76,17 @@
                         <i class="fas fa-align-left"></i>
                         <span>Toggle Sidebar</span>
                     </button>
+                    <button class="navbar-toggler pull-left" type="button" data-toggle="collapse"
+                        data-target="#navbarContent" aria-controls="navbarContent"
+                        aria-expanded="false" aria-label="Toggle navigation"
+                        onclick="toggleOverlay()">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
             </nav>
 
-            <div id="testBlock"></div>
+            <div id="testBlock" class="col-md-12 p-5">
+            </div>
         </div>
     </div>
 
@@ -98,10 +98,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.js"></script>
     <script>
-        $("#sidebarCollapse").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("toggled");
-        });
+        // $("#sidebarCollapse").click(function(e) {
+        //     e.preventDefault();
+        //     $("#sidebar-wrapper").toggleClass("toggled");
+        // });
     </script>
 
 
