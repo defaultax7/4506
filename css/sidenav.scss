@@ -58,6 +58,9 @@ a {
     background: #6d7fcc !important;
     color: #fff !important;
   }
+  &[data-toggle="collapse"] {
+    position: relative;
+  }
 }
 
 .navbar {
@@ -67,12 +70,11 @@ a {
   border-radius: 0;
   margin-bottom: 40px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-btn {
-  box-shadow: none;
-  outline: none !important;
-  border: none;
+  &-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+  }
 }
 
 .line {
@@ -168,4 +170,10 @@ a {
     }
   }
 
+}
+
+@media (max-width: 768px) {
+  #sidebarCollapse span {
+    display: none;
+  }
 }

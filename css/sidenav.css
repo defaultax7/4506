@@ -38,6 +38,8 @@ a.download {
 a.article, a.article:hover {
   background: #6d7fcc !important;
   color: #fff !important; }
+a[data-toggle="collapse"] {
+  position: relative; }
 
 .navbar {
   padding: 15px 10px;
@@ -46,11 +48,10 @@ a.article, a.article:hover {
   border-radius: 0;
   margin-bottom: 40px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); }
-
-.navbar-btn {
-  box-shadow: none;
-  outline: none !important;
-  border: none; }
+  .navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none; }
 
 .line {
   width: 100%;
@@ -122,5 +123,9 @@ a.article, a.article:hover {
       -webkit-transform: translateX(50%);
       -ms-transform: translateX(50%);
       transform: translateX(50%); }
+
+@media (max-width: 768px) {
+  #sidebarCollapse span {
+    display: none; } }
 
 /*# sourceMappingURL=sidenav.css.map */
