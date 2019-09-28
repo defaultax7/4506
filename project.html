@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sideBar.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" id="sidebar-wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header text-center">
+                <i class="material-icons" id="logo">
+                        fastfood
+                    </i>
+                    <h3>Yummy Everywhere</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <!-- <p>Dummy Heading</p> -->
+                <li>
+
+                    <a href="restaurant_info.html" class="sideBarItem" title="Restaurant info">
+                      <i class="material-icons inline-icon"> info </i><span class="mx-3 align-top">Restaurant info</span>
+                        </a>
+                </li>
+                <li>
+                    <a href="#" class="sideBarItem" title="Update menu">
+                        <i class="material-icons inline-icon"> menu_book </i><span class="mx-3 align-top">Update menu</span>
+                        </a>
+                </li>
+                <li>
+                    <a href="#" class="sideBarItem" title="Special menu">
+                        <i class="material-icons inline-icon"> restaurant_menu </i><span class="mx-3 align-top">Special menu</span>
+                        </a>
+                </li>
+                <li>
+                    <a href="#" class="sideBarItem" title="Remove menu">
+                        <i class="material-icons inline-icon"> delete </i><span class="mx-3 align-top">Remove menu</span>
+                        </a>
+                </li>
+                <!-- reserve -->
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- reserve -->
+            </ul>
+
+        </nav>
+        <!-- Page Content -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="navbar-toggler-icon "></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="navbar-toggler pull-left" type="button" data-toggle="collapse"
+                        data-target="#navbarContent" aria-controls="navbarContent"
+                        aria-expanded="false" aria-label="Toggle navigation"
+                        onclick="toggleOverlay()">
+                    </button>
+                </div>
+            </nav>
+
+            <div id="testBlock" class="col-md-12 p-5">
+              <pre>
+This Project contributes 60% of Total CA Marks.
+
+You should use HTML5, CSS, javascript and jQuery to complete this project.
+Submit the completed project folders and documentation files on or before 23
+Nov 2019 11:55pm.
+
+Aims and Objectives
+-	To gain experience in designing website using HCI knowledge learned.
+-	To apply the basics of HTML5, CSS, javascript and jQuery programming.
+-	To gain experience in developing User-centered webpages using HTML5, CSS, javascript and jQuery. 
+
+Introduction
+This is a group project and should be done in teams of 2 students. On the
+project cover sheet you must state the contribution of each member using the
+format below: 
+	
+Student ID	Name		Contribution	Signature
+181234567	Chan Tai Man	50%	
+187654321	Wong Sui Ming	50%	
+* Remark: The difference of contribution should not be more than 10%; otherwise, approval is required.
+
+Scenario
+
+InnoTech HK Inc. tried to provide a new service called “Yummy Everywhere” that
+provides an online portal for customers to browse takeaway menus of various
+restaurants in Hong Kong.  Therefore, it provides services to two parties,
+restaurants and customers.  You are the designer of this online portal.  In
+order to develop a user-centered web application, you are going to create a
+prototype for the UI first.
+
+Functions of the System:
+There are three types of users: normal_user (customer), operator (restaurant) and administrator (InnoTech HK).
+
+1. Restaurant Information Management:
+•	Operator 
+•	Input information of restaurant (including branches)
+•	Update take-away menu 
+•	Allow showing/hiding special / temporary / seasonal menu according to the pre-set date or period
+•	Hide/remove uploaded menu
+
+2. Search & Browsing:
+•	Normal_user
+•	Search take-away menu or restaurant by tags or keywords
+•	View restaurant information and related take-away menu
+•	Add/Remove take-away menu or restaurant to/from favorite
+•	Leave like or comment on a particular restaurant
+(Public without registered, can only view/search restaurant information, but cannot view the menu.)
+
+3. Account Management:
+Normal_user could create an account by self-registration.  While Operator
+accounts is created by Administrator manually.
+•	Administrator
+•	Show existing users
+•	Create and delete users
+•	Manage the user role
+•	Normal_user:
+•	Registration
+•	Normal_user, Operator and Administrator
+•	Edit personal detail including change password
+
+4. Additional Function:
+    You are required to design and add the fourth function to the system which
+    should be of the similar scope size of the above mentioned functions.
+
+
+Requirement of the Assignment
+You are required to submit System Documentation and Prototype in HTML format as
+deliverables of this project. The design of your system should be
+self-explanatory and user-friendly.  In your project, try to add animation to
+each function so to make them look more interesting and attractive to the
+users. Data validation is required wherever necessary.  You are encouraged to
+add special features to score bonus mark, for examples: Visualize statistic in
+graphical formats, search restaurant information on a map (i.e., google map,
+baidu map and etc.).
+
+1. System Documentation
+A.	User Analysis
+You should carry out the User Analysis process before you start coding your
+system. In your document, you should include the following areas of research:
+•	User Characteristics
+•	Techniques for observing and listening to users
+•	Environment Analysis
+•	Recruiting Users
+•	Task Analysis (HTA)
+
+B.	Web Design Concepts
+In the second part of the documentation, you should describe how you employ the
+web design concepts learned in the module and then implement them in your
+project.  In the document, you need to capture relevant screen layouts for
+illustration. You should describe the Design Principles similar to the
+following table:
+
+Design Principles	Description
+Mental Model	
+Affordance	
+Content Organization	
+Visual Organization	
+Navigation	
+
+2. Prototype
+The Prototype should be created in HTML format.  All the pre-created user name
+and password should be listed in a text file named “USERS.TXT”.  Database
+design/implementation will not be counted in the marking scheme. You may use
+JSON files or “hardcode” some data for demonstration purpose.
+
+Submission
+
+Each group should submit the followings:
+
+Phase 1 : Prototypes of the 1st and 2nd Functions (30%)
+-	Prototype of the system which include function 1 and function 2.
+-	 Upload your files to Moodle.
+Deadline:      19 October 2019 11:55pm
+
+
+Phase 2 : Final Product (70%)
+-	Both system documentation and completed system.
+-	Upload your files (both the prototypes and system documentation) to Moodle.
+-	Demonstration of the system is required and will be arranged by the module lecturer.
+
+Deadline:      23 November 2019 11:55pm
+
+
+
+Marking Scheme
+
+They are described in the Project marksheet in the next page.
+
+Marks for enhancement of the prototypes of the 1st and 2nd functions submitted
+in Phase 2 will be given only if the group has significant enhancement in those
+functions when comparing with that submitted in Phase 1. Besides, the maximum
+mark for that is limited to 15% (5% for the 1st Function and 10% for the 2nd
+Function) only.  Besides, the overall marks of the Phase 1 must not be more
+than 30%.
+
+Functionality includes the accuracy and adequacy of the functions. Data validation is also included.
+
+System design includes the flow of the system, self-explanatory and user-friendliness.
+
+Name :                                                /
+Group: _________________
+
+Project Marksheet 
+
+
+Phase 1:
+
+1. Restaurant Information Management (10%)			Grade		Mark	
+	Functionality and Animation	6%					
+	System Design	4%					
+2. Search & Browsing (20%)						
+	Functionality and Animation	12%					
+	System Design	8%					
+Phase 2:						
+A. Enhancement of Restaurant Information	(max 5%)					
+B. Enhancement of Search & Browsing	(max 10%)					
+						
+Sub Total of Phase 1 (30%)						
+3. Account Management (20%)						
+	Functionality and Animation	12%					
+	System Design	8%					
+4. Extra Function (15%)						
+	Functionality and Animation	9%					
+	System Design	6%					
+Demonstration (10%)						
+	Preparation (adequate data)	6%					
+	Flow of Demonstration	4%					
+System Documentation (25%)						
+	User Analysis (2% for each area)	10%					
+	Web Design (3% for each principle)	15%					
+						
+Sub Total of Phase 2 (70%)						
+	Total					
+						
+              </pre>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            $("#sidebarCollapse").click(function(){
+                if ($(window).width() < 796 && !$("#sidebar").hasClass("active")) {
+                    $('#sidebar').addClass('active');
+                }
+                if($("#sidebar").hasClass('active')) {
+                    $("#sidebar").siblings("#content").css("width", "calc(100% - " +$("#sidebar").css("width")+ ")");
+                }
+                else {
+                    $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
+                }
+            });
+            $(window).on('resize', function() {
+                if ($(this).width() < 796 && !$("#sidebar").hasClass("active")) {
+                    $('#sidebar').addClass('active');
+                }
+                else if ($(this).width() < 796 && $("#sidebar").hasClass('active')) {
+                    $("#sidebar").siblings("#content").css("width", "calc(100% - " +$("#sidebar").css("width")+ ")");
+                }
+                else {
+                    $('#sidebar').removeClass('active');
+                    $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

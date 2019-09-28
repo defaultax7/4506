@@ -28,7 +28,7 @@
                 <!-- <p>Dummy Heading</p> -->
                 <li>
 
-                    <a href="restaurant_info.html" class="sideBarItem" title="Restaurant info">
+                    <a href="#" class="sideBarItem" title="Restaurant info">
                       <i class="material-icons inline-icon"> info </i><span class="mx-3 align-top">Restaurant info</span>
                         </a>
                 </li>
@@ -84,9 +84,13 @@
                 </div>
             </nav>
 
-            <div id="testBlock" class="col-md-12 p-5">
+            <div id="testBlock" class="col-md-12">
                 <div class="container">
-
+                    <span class="float-right">Search <input type="text" id="searchBar"></span>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row" id="restaurant_list"></div>
                 </div>
             </div>
         </div>
@@ -98,7 +102,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/popper.js"></script>
+    <!-- <script src="js/popper.js"></script> -->
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -126,6 +131,38 @@
                 else {
                     $('#sidebar').removeClass('active');
                     $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
+                }
+            });
+            $.getJSON("data/restaurant_list.json", function(result) {
+                content = "";
+                for (let i = 0; i < result.length; i++) {
+                    const element = result[i];
+                    content += "<div class=' col-sm-6 col-md-4 col-6 col-xl-3 food-block'><div class='m-1 bg-warning p-2'>" + element.name;
+                    content += "<br>" + "Type : " + element.type + "<br>Food : ";
+                    for (let j = 0; j < element.food.length; j++) {
+                        if (j !== element.food.length - 1) {
+                            content += element.food[j] + ", ";
+                        }
+                        else {
+                            content += element.food[j];
+                        }
+                    }
+                    content += "</div></div><br>";
+                }
+                $("#restaurant_list").html(content);
+            });
+            $("#searchBar").on("input", function() {
+                let searchText = $(this).text();
+                $(".food-block").each(function() {
+                    if ($(this).text().indexOf(searchText) != -1) {
+                        $(this).css("display", "block");
+                    }
+                    else {
+                        $(this).css("display", "none");
+                    }
+                })
+                $(this).text()
+                if (true) {
                 }
             });
         });
