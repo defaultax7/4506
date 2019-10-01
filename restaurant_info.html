@@ -86,7 +86,7 @@
 
             <div id="testBlock" class="col-md-12">
                 <div class="container">
-                    <span class="float-right">Search <input type="text" id="searchBar"></span>
+                    <span class="float-right">Search : <input type="text" id="searchBar"></span>
                     <div style="clear: both;"></div>
                 </div>
                 <div class="container-fluid">
@@ -152,9 +152,9 @@
                 $("#restaurant_list").html(content);
             });
             $("#searchBar").on("input", function() {
-                let searchText = $(this).text();
+                let searchText = $(this).val().toLowerCase();
                 $(".food-block").each(function() {
-                    if ($(this).text().indexOf(searchText) != -1) {
+                    if ($(this).text().toLowerCase().indexOf(searchText) != -1) {
                         $(this).css("display", "block");
                     }
                     else {
@@ -162,8 +162,6 @@
                     }
                 })
                 $(this).text()
-                if (true) {
-                }
             });
         });
     </script>
