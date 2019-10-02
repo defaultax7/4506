@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="css/sideBar.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        form {
+            border: 10px solid #f8f9fa;
+            padding: 5%;
+            background-color: white;
+        }
     </style>
 </head>
 
@@ -19,9 +24,9 @@
         <nav id="sidebar">
             <div class="sidebar-header text-center">
                 <i class="material-icons" id="logo">
-                        fastfood
-                    </i>
-                    <h3>Yummy Everywhere</h3>
+                    fastfood
+                </i>
+                <h3>Yummy Everywhere</h3>
             </div>
 
             <ul class="list-unstyled components">
@@ -29,23 +34,27 @@
                 <li>
 
                     <a href="restaurant_info.html" class="sideBarItem" title="Restaurant info">
-                      <i class="material-icons inline-icon"> info </i><span class="mx-3 align-top">Restaurant info</span>
-                        </a>
+                        <i class="material-icons inline-icon"> info </i><span class="mx-3 align-top">Restaurant
+                            info</span>
+                    </a>
                 </li>
                 <li>
                     <a href="#" class="sideBarItem" title="Update menu">
-                        <i class="material-icons inline-icon"> menu_book </i><span class="mx-3 align-top">Update menu</span>
-                        </a>
+                        <i class="material-icons inline-icon"> menu_book </i><span class="mx-3 align-top">Update
+                            menu</span>
+                    </a>
                 </li>
                 <li>
                     <a href="#" class="sideBarItem" title="Special menu">
-                        <i class="material-icons inline-icon"> restaurant_menu </i><span class="mx-3 align-top">Special menu</span>
-                        </a>
+                        <i class="material-icons inline-icon"> restaurant_menu </i><span class="mx-3 align-top">Special
+                            menu</span>
+                    </a>
                 </li>
                 <li>
                     <a href="#" class="sideBarItem" title="Remove menu">
-                        <i class="material-icons inline-icon"> delete </i><span class="mx-3 align-top">Remove menu</span>
-                        </a>
+                        <i class="material-icons inline-icon"> delete </i><span class="mx-3 align-top">Remove
+                            menu</span>
+                    </a>
                 </li>
                 <!-- reserve -->
                 <li>
@@ -77,16 +86,48 @@
                         <span>Toggle Sidebar</span>
                     </button>
                     <button class="navbar-toggler pull-left" type="button" data-toggle="collapse"
-                        data-target="#navbarContent" aria-controls="navbarContent"
-                        aria-expanded="false" aria-label="Toggle navigation"
-                        onclick="toggleOverlay()">
+                        data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                        aria-label="Toggle navigation" onclick="toggleOverlay()">
                     </button>
                 </div>
             </nav>
 
             <div id="testBlock" class="col-md-12 p-5">
-                <div class="container">
-
+                <div class="container-fluid">
+                    <form>
+                        <div class="form-row">
+                            <div class='col-5'>
+                                <div class="form-group">
+                                    <label for="restaurantName"><span class="align-top">Restaurant Name </span><i
+                                            class="material-icons inline-icon">
+                                            restaurant
+                                        </i></label>
+                                    <input type="text" class="form-control" id="restaurantName"
+                                        placeholder="Please enter eestaurant name">
+                                    <small class="form-text text-muted">AAA</small>
+                                </div>
+                            </div>
+                            <div class='col-6 offset-1'>
+                                <div class="form-group">
+                                    <label for="restaurantName"><span class="align-top">Restaurant Name </span><i
+                                            class="material-icons inline-icon">
+                                            restaurant
+                                        </i></label>
+                                    <input type="text" class="form-control" id="restaurantName"
+                                        placeholder="Please enter eestaurant name">
+                                    <small class="form-text text-muted">AAA</small>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- link with google map? -->
+                        <div class="form-group"> 
+                            <label for="address"><span class="align-top">Address </span><i
+                                    class="material-icons inline-icon"> room
+                                </i></label>
+                            <input type="text" class="form-control" id="address" placeholder="Please enter address">
+                            <small class="form-text text-muted">AAA</small>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -105,23 +146,23 @@
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
-            $("#sidebarCollapse").click(function(){
+            $("#sidebarCollapse").click(function () {
                 if ($(window).width() < 796 && !$("#sidebar").hasClass("active")) {
                     $('#sidebar').addClass('active');
                 }
-                if($("#sidebar").hasClass('active')) {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - " +$("#sidebar").css("width")+ ")");
+                if ($("#sidebar").hasClass('active')) {
+                    $("#sidebar").siblings("#content").css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
                 }
                 else {
                     $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
                 }
             });
-            $(window).on('resize', function() {
+            $(window).on('resize', function () {
                 if ($(this).width() < 796 && !$("#sidebar").hasClass("active")) {
                     $('#sidebar').addClass('active');
                 }
                 else if ($(this).width() < 796 && $("#sidebar").hasClass('active')) {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - " +$("#sidebar").css("width")+ ")");
+                    $("#sidebar").siblings("#content").css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
                 }
                 else {
                     $('#sidebar').removeClass('active');
