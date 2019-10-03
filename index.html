@@ -112,11 +112,11 @@
                             </div>
                             <div class='col-6 offset-1'>
                                 <div class="form-group">
-                                    <label for="restaurantName"><span class="align-top">Restaurant Name </span><i
+                                    <label for="restaurantType"><span class="align-top">Restaurant Type </span><i
                                             class="material-icons inline-icon">
                                             restaurant
                                         </i></label>
-                                    <input type="text" class="form-control" id="restaurantName"
+                                    <input type="text" class="form-control" id="restaurantType"
                                         placeholder="Please enter eestaurant name">
                                     <small class="form-text text-muted">AAA</small>
                                 </div>
@@ -143,39 +143,7 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.js"></script>
-    <script>
-        $(document).ready(function () {
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-            $("#sidebarCollapse").click(function () {
-                if ($(window).width() < 796 && !$("#sidebar").hasClass("active")) {
-                    $('#sidebar').addClass('active');
-                }
-                if ($("#sidebar").hasClass('active')) {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
-                }
-                else {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
-                }
-            });
-            $(window).on('resize', function () {
-                if ($(this).width() < 796 && !$("#sidebar").hasClass("active")) {
-                    $('#sidebar').addClass('active');
-                }
-                else if ($(this).width() < 796 && $("#sidebar").hasClass('active')) {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
-                }
-                else {
-                    $('#sidebar').removeClass('active');
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
-                }
-            });
-        });
-    </script>
-
-
+    <script src="js/admin.js"></script>
 </body>
 
 </html>

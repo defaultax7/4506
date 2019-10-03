@@ -83,10 +83,12 @@
                     </button>
                 </div>
             </nav>
+            <div><img src="img/a.jpg" style="position: absolute ; width : 100vw ; height: 100vh;"></div>
+            <div style="position: absolute ; background-color : rgba(155, 155, 155, 0.4) ; width: 100vw ; height: 100vh"></div>
 
-            <div id="testBlock" class="col-md-12">
-                <div class="container">
-                    <span class="float-right">Search : <input type="text" id="searchBar"></span>
+            <div id="testBlock" class="col-md-12 p-5">
+                <div class="container-fluid">
+                    <span class="float-right">Search : &nbsp;<input type="text" id="searchBar"></span>
                     <div style="clear: both;"></div>
                 </div>
                 <div class="container-fluid">
@@ -102,37 +104,10 @@
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <!-- <script src="js/popper.js"></script> -->
-    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/admin.js"></script>
     <script>
         $(document).ready(function () {
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-            $("#sidebarCollapse").click(function(){
-                if ($(window).width() < 796 && !$("#sidebar").hasClass("active")) {
-                    $('#sidebar').addClass('active');
-                }
-                if($("#sidebar").hasClass('active')) {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - " +$("#sidebar").css("width")+ ")");
-                }
-                else {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
-                }
-            });
-            $(window).on('resize', function() {
-                if ($(this).width() < 796 && !$("#sidebar").hasClass("active")) {
-                    $('#sidebar').addClass('active');
-                }
-                else if ($(this).width() < 796 && $("#sidebar").hasClass('active')) {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - " +$("#sidebar").css("width")+ ")");
-                }
-                else {
-                    $('#sidebar').removeClass('active');
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
-                }
-            });
             $.getJSON("data/restaurant_list.json", function(result) {
                 content = "";
                 for (let i = 0; i < result.length; i++) {

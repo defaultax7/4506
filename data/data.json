@@ -1,0 +1,16 @@
+{"restaurant": [
+  {
+    "id": 1,
+    "name": "Mcdonald",
+    "type": "fastfood",
+    "food": ["McNugget", "BidMac", "Icecream"]
+  },
+  {
+    "id": 2,
+    "name": "KFC",
+    "type": "fastfood",
+    "food": ["BigChicken", "SmallChicken"]
+  }
+],
+  ""
+}
