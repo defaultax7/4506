@@ -8,7 +8,8 @@ body {
     font-family: 'Poppins', sans-serif;
     /*background: #fafafa;*/
     overflow-x: hidden;
-    background-color: lightblue;
+    /*background-color: lightblue;*/
+    background-color: #7386D5;
 }
 
 p {
