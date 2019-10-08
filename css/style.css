@@ -16,6 +16,7 @@
     padding: 5%;
     background-color: white;
     opacity: 0.88;
+    display: none;
 }
 
 .smoke {
