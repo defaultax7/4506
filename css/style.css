@@ -14,9 +14,15 @@
 .form {
     border: 10px solid #f8f9fa;
     padding: 5%;
+    padding-top: 2%;
     background-color: white;
     opacity: 0.88;
     display: none;
+}
+
+.headingText{
+    margin: 30px;
+    color: green;
 }
 
 .smoke {
@@ -30,4 +36,12 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
+}
+
+#btnFoundDate:hover{
+    cursor: pointer;
+}
+
+#foundDate{
+    background-color: white;
 }

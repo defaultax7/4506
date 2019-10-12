@@ -1,166 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/sideBar.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/sideBar.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/lightpick.css" />
+    <link rel="stylesheet" href="css/checkbox.css" />
+  </head>
 
-<body>
+  <body>
     <div class="wrapper" id="sidebar-wrapper">
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header text-center">
-                <i class="material-icons" id="logo">
-                    fastfood
-                </i>
-                <h3>Yummy Everywhere</h3>
-            </div>
-
-            <ul class="list-unstyled components">
-                <!-- <p>Dummy Heading</p> -->
-                <li>
-
-                    <a href="restaurant_info.html" class="sideBarItem" title="Restaurant info">
-                        <i class="material-icons inline-icon"> info </i><span class="mx-3 align-top">Restaurant
-                            info</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="sideBarItem" title="Update menu">
-                        <i class="material-icons inline-icon"> menu_book </i><span class="mx-3 align-top">Update
-                            menu</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="sideBarItem" title="Special menu">
-                        <i class="material-icons inline-icon"> restaurant_menu </i><span class="mx-3 align-top">Special
-                            menu</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="sideBarItem" title="Remove menu">
-                        <i class="material-icons inline-icon"> delete </i><span class="mx-3 align-top">Remove
-                            menu</span>
-                    </a>
-                </li>
-                <!-- reserve -->
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- reserve -->
-            </ul>
-
-        </nav>
-        <!-- Page Content -->
-        <div id="content">
-
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container-fluid">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="navbar-toggler-icon "></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-                    <button class="navbar-toggler pull-left" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleOverlay()">
-                    </button>
-                </div>
-            </nav>
-            <div><img src="img/background.jpg" class="bgImg"></div>
-            <div class="smoke"></div>
-
-            <div id="testBlock" class="col-md-12 p-5">
-                <div class="container-fluid">
-                    <form class="form">
-                        <div class="form-row">
-                            <div class='col-5'>
-                                <div class="form-group">
-                                    <label for="restaurantName"><span class="align-top">Restaurant Name </span><i
-                                            class="material-icons inline-icon">
-                                            restaurant
-                                        </i></label>
-                                    <input type="text" class="form-control" id="restaurantName" placeholder="Please enter eestaurant name">
-                                    <small class="form-text text-muted">AAA</small>
-                                </div>
-                            </div>
-                            <div class='col-6 offset-1'>
-                                <div class="form-group">
-                                    <label for="restaurantName"><span class="align-top">Restaurant Name </span><i
-                                            class="material-icons inline-icon">
-                                            restaurant
-                                        </i></label>
-                                    <input type="text" class="form-control" id="restaurantName" placeholder="Please enter eestaurant name">
-                                    <small class="form-text text-muted">AAA</small>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- link with google map? -->
-                        <div class="form-group">
-                            <label for="address"><span class="align-top">Address </span><i
-                                    class="material-icons inline-icon"> room
-                                </i></label>
-                            <input type="text" class="form-control" id="address" placeholder="Please enter address">
-                            <small class="form-text text-muted">AAA</small>
-                        </div>
-                    </form>
-                </div>
-            </div>
+      <!-- Sidebar -->
+      <nav id="sidebar">
+        <div class="sidebar-header text-center">
+          <i class="material-icons" id="logo">
+            fastfood
+          </i>
+          <h3>Yummy Everywhere</h3>
         </div>
+
+        <ul class="list-unstyled components">
+          <!-- <p>Dummy Heading</p> -->
+          <li>
+            <a
+              href="restaurant_info.html"
+              class="sideBarItem"
+              title="Restaurant info"
+            >
+              <i class="material-icons inline-icon"> info </i
+              ><span class="mx-3 align-top">Restaurant info</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="sideBarItem" title="Update menu">
+              <i class="material-icons inline-icon"> menu_book </i
+              ><span class="mx-3 align-top">Update menu</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="sideBarItem" title="Special menu">
+              <i class="material-icons inline-icon"> restaurant_menu </i
+              ><span class="mx-3 align-top">Special menu</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="sideBarItem" title="Remove menu">
+              <i class="material-icons inline-icon"> delete </i
+              ><span class="mx-3 align-top">Remove menu</span>
+            </a>
+          </li>
+          <!-- reserve -->
+          <li>
+            <a
+              href="#pageSubmenu"
+              data-toggle="collapse"
+              aria-expanded="false"
+              class="dropdown-toggle"
+              >Pages</a
+            >
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li>
+                <a href="#">Page 1</a>
+              </li>
+              <li>
+                <a href="#">Page 2</a>
+              </li>
+              <li>
+                <a href="#">Page 3</a>
+              </li>
+            </ul>
+          </li>
+          <!-- reserve -->
+        </ul>
+      </nav>
+      <!-- Page Content -->
+      <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+              <i class="navbar-toggler-icon "></i>
+              <span>Toggle Sidebar</span>
+            </button>
+            <button
+              class="navbar-toggler pull-left"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarContent"
+              aria-controls="navbarContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              onclick="toggleOverlay()"
+            ></button>
+          </div>
+        </nav>
+        <div><img src="img/background.jpg" class="bgImg" /></div>
+        <div class="smoke"></div>
+
+        <div id="testBlock" class="col-md-12 p-5">
+          <div class="container-fluid">
+            <form class="form">
+              <div class="row h1 justify-content-center headingText">
+                Add new restaurant
+              </div>
+              <div class="form-row">
+                <div class="col-5">
+                  <div class="form-group">
+                    <label for="restaurantName"
+                      ><span class="align-top font-weight-bold"
+                        >Restaurant Name </span
+                      ><i class="material-icons inline-icon">
+                        restaurant
+                      </i></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="restaurantName"
+                      placeholder="Please enter eestaurant name"
+                    />
+                    <small class="form-text text-muted">AAA</small>
+                  </div>
+                </div>
+                <div class="col-2 offset-1">
+                  <div class="form-group">
+                    <label for="restaurantName"
+                      ><span class="align-top font-weight-bold">Found in </span
+                      ><i class="material-icons inline-icon">
+                        date_range
+                      </i></label
+                    >
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        id="foundDate"
+                        class="form-control"
+                        readonly
+                      />
+                      <div class="input-group-append">
+                        <div class="input-group-text" id="btnFoundDate">
+                          <i class="material-icons inline-icon">
+                            date_range
+                          </i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <small class="form-text text-muted"></small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- link with google map? -->
+              <div class="form-group">
+                <label for="address"
+                  ><span class="align-top font-weight-bold">Address </span
+                  ><i class="material-icons inline-icon"> room </i></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  placeholder="Please enter address"
+                />
+                <small class="form-text text-muted"></small>
+              </div>
+
+              <label class="cbContainer"
+                ><span class="align-top"> Take away </span
+                ><input type="checkbox" checked="checked" />
+                <span class="checkmark"></span>
+                <i class="material-icons cbIconSize">
+                  motorcycle
+                </i>
+              </label>
+
+              <label class="cbContainer"
+                ><span class="align-top"> 10% Service charge </span
+                ><input type="checkbox" checked="checked" />
+                <span class="checkmark"></span>
+                <i class="material-icons cbIconSize">
+                  attach_money
+                </i>
+              </label>
+
+              <label class="cbContainer"
+                ><span class="align-top"> corkage </span
+                ><input type="checkbox" checked="checked" />
+                <span class="checkmark"></span>
+                <img src="img/glass-and-bottle-of-wine.svg" class="svgSize" alt="">
+              </label>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
-
-
+    <script src="js/moment.min.js"></script>
+    <script src="js/lightpick.js"></script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.js"></script>
+    <script src="js/util.js"></script>
+
     <script>
-        $(document).ready(function() {
-
-            $('#sidebarCollapse').on('click', function() {
-                $('#sidebar').toggleClass('active');
-            });
-            $("#sidebarCollapse").click(function() {
-                if ($(window).width() < 796 && !$("#sidebar").hasClass("active")) {
-                    $('#sidebar').addClass('active');
-                }
-                if ($("#sidebar").hasClass('active')) {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
-                } else {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
-                }
-            });
-            $(window).on('resize', function() {
-                if ($(this).width() < 796 && !$("#sidebar").hasClass("active")) {
-                    $('#sidebar').addClass('active');
-                } else if ($(this).width() < 796 && $("#sidebar").hasClass('active')) {
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
-                } else {
-                    $('#sidebar').removeClass('active');
-                    $("#sidebar").siblings("#content").css("width", "calc(100% - 250px)");
-                }
-            });
-            $(".form").fadeIn(500);;
+      $(document).ready(function() {
+        $("#sidebarCollapse").on("click", function() {
+          $("#sidebar").toggleClass("active");
         });
+        $("#sidebarCollapse").click(function() {
+          if ($(window).width() < 796 && !$("#sidebar").hasClass("active")) {
+            $("#sidebar").addClass("active");
+          }
+          if ($("#sidebar").hasClass("active")) {
+            $("#sidebar")
+              .siblings("#content")
+              .css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
+          } else {
+            $("#sidebar")
+              .siblings("#content")
+              .css("width", "calc(100% - 250px)");
+          }
+        });
+        $(window).on("resize", function() {
+          if ($(this).width() < 796 && !$("#sidebar").hasClass("active")) {
+            $("#sidebar").addClass("active");
+          } else if (
+            $(this).width() < 796 &&
+            $("#sidebar").hasClass("active")
+          ) {
+            $("#sidebar")
+              .siblings("#content")
+              .css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
+          } else {
+            $("#sidebar").removeClass("active");
+            $("#sidebar")
+              .siblings("#content")
+              .css("width", "calc(100% - 250px)");
+          }
+        });
+        $(".form").fadeIn(500);
+
+        var dayLeft = getNumberFromString(
+          moment()
+            .endOf("month")
+            .fromNow()
+        );
+
+        var picker = new Lightpick({
+          field: document.getElementById("btnFoundDate"),
+          maxDate: moment()
+            .endOf("month")
+            .subtract(dayLeft, "day"),
+          onSelect: function(date) {
+            $("#foundDate").val(date.format("L"));
+          }
+        });
+      });
     </script>
-
-
-</body>
-
+  </body>
 </html>
