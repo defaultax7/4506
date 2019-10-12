@@ -162,3 +162,8 @@
   .steps .disabled.step, .steps .disabled.step .description, .steps .disabled.step .title {
     color: rgba(40, 40, 40, .3);
   }
+
+  .btnNext{
+      width: 130px;
+      height: 50px;
+  }

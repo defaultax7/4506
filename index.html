@@ -141,9 +141,9 @@
                       type="text"
                       class="form-control"
                       id="restaurantName"
-                      placeholder="Please enter eestaurant name"
+                      placeholder=""
                     />
-                    <small class="form-text text-muted">AAA</small>
+                    <small class="form-text text-muted">*required</small>
                   </div>
                 </div>
                 <div class="col-2 offset-1">
@@ -184,39 +184,85 @@
                   type="text"
                   class="form-control"
                   id="address"
-                  placeholder="Please enter address"
+                  placeholder=""
                 />
                 <small class="form-text text-muted"></small>
               </div>
 
               <label class="cbContainer"
                 ><span class="align-top"> Take away </span
-                ><input type="checkbox" checked="checked" />
+                ><input type="checkbox" />
                 <span class="checkmark"></span>
                 <i class="material-icons cbIconSize">
                   motorcycle
                 </i>
               </label>
 
-              <label class="cbContainer"
-                ><span class="align-top"> 10% Service charge </span
-                ><input type="checkbox" checked="checked" />
-                <span class="checkmark"></span>
-                <i class="material-icons cbIconSize">
-                  attach_money
-                </i>
-              </label>
+              <div>
+                <label class="cbContainer"
+                  ><span class="align-top"> 10% Service charge </span
+                  ><input type="checkbox" />
+                  <span class="checkmark"></span>
+                  <i class="material-icons cbIconSize">
+                    attach_money
+                  </i>
+                </label>
+              </div>
 
-              <label class="cbContainer"
-                ><span class="align-top"> corkage </span
-                ><input type="checkbox" checked="checked" />
-                <span class="checkmark"></span>
-                <img
-                  src="img/glass-and-bottle-of-wine.svg"
-                  class="svgSize"
-                  alt=""
-                />
-              </label>
+              <div>
+                <label class="cbContainer"
+                  ><span class="align-top"> corkage </span
+                  ><input type="checkbox" />
+                  <span class="checkmark"></span>
+                  <img
+                    src="img/glass-and-bottle-of-wine.svg"
+                    class="svgSize"
+                    alt=""
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label class="cbContainer"
+                  ><span class="align-top"> Octopus </span
+                  ><input type="checkbox" />
+                  <span class="checkmark"></span>
+                  <img src="img/octopus.png" class="svgSize" alt="" />
+                </label>
+
+                <label class="cbContainer"
+                  ><span class="align-top"> VISA </span
+                  ><input type="checkbox" />
+                  <span class="checkmark"></span>
+                  <img src="img/visa.svg" class="svgSize" alt="" />
+                </label>
+
+                <label class="cbContainer"
+                  ><span class="align-top"> MasterCard </span
+                  ><input type="checkbox" />
+                  <span class="checkmark"></span>
+                  <img src="img/master.svg" class="svgSize" alt="" />
+                </label>
+
+                <label class="cbContainer"
+                  ><span class="align-top"> 支 </span><input type="checkbox" />
+                  <span class="checkmark"></span>
+                  <img src="img/chin.svg" class="svgSize" alt="" />
+                </label>
+              </div>
+
+              <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                  <button
+                    id="registerNext"
+                    type="button"
+                    class="btn btn-primary mb-2 btnNext"
+                    disabled
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
         </div>
