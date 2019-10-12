@@ -9,14 +9,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/sideBar.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        form {
-            border: 10px solid #f8f9fa;
-            padding: 5%;
-            background-color: white;
-            opacity: 0.88;
-        }
-    </style>
 </head>
 
 <body>
@@ -59,8 +51,7 @@
                 </li>
                 <!-- reserve -->
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Pages</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a href="#">Page 1</a>
@@ -86,18 +77,16 @@
                         <i class="navbar-toggler-icon "></i>
                         <span>Toggle Sidebar</span>
                     </button>
-                    <button class="navbar-toggler pull-left" type="button" data-toggle="collapse"
-                        data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
-                        aria-label="Toggle navigation" onclick="toggleOverlay()">
+                    <button class="navbar-toggler pull-left" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleOverlay()">
                     </button>
                 </div>
             </nav>
-            <div><img src="img/background.jpg" style="position: absolute ; width : 100vw ; height: 100vh;"></div>
-            <div style="position: absolute ; background-color : rgba(155, 155, 155, 0.4) ; width: 100vw ; height: 100vh"></div>
+            <div><img src="img/background.jpg" class="bgImg"></div>
+            <div class="smoke"></div>
 
             <div id="testBlock" class="col-md-12 p-5">
                 <div class="container-fluid">
-                    <form>
+                    <form class="form">
                         <div class="form-row">
                             <div class='col-5'>
                                 <div class="form-group">
@@ -105,8 +94,7 @@
                                             class="material-icons inline-icon">
                                             restaurant
                                         </i></label>
-                                    <input type="text" class="form-control" id="restaurantName"
-                                        placeholder="Please enter eestaurant name">
+                                    <input type="text" class="form-control" id="restaurantName" placeholder="Please enter eestaurant name">
                                     <small class="form-text text-muted">AAA</small>
                                 </div>
                             </div>
@@ -116,8 +104,7 @@
                                             class="material-icons inline-icon">
                                             restaurant
                                         </i></label>
-                                    <input type="text" class="form-control" id="restaurantType"
-                                        placeholder="Please enter eestaurant name">
+                                    <input type="text" class="form-control" id="restaurantName" placeholder="Please enter eestaurant name">
                                     <small class="form-text text-muted">AAA</small>
                                 </div>
                             </div>
