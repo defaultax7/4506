@@ -139,6 +139,12 @@
                 $(this).text()
             });
         });
+        var data = {};
+        var a = document.getElementsByClassName('fn');
+        for (let i = 0; i < a.length; i++) {
+          let rest = {"name": a[i].innerText}
+          data.push(rest)
+        }
     </script>
 
 
