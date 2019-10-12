@@ -103,9 +103,30 @@
         <div id="testBlock" class="col-md-12 p-5">
           <div class="container-fluid">
             <form class="form">
-              <div class="row h1 justify-content-center headingText">
+              <!-- <div class="row h1 justify-content-center headingText">
                 Add new restaurant
+              </div> -->
+
+              <div class="row steps">
+                <div class="step active">
+                  <i class="material-icons">create</i>
+                  <div class="content">
+                    <div class="title">Step 1</div>
+                    <div class="description">Input restaurant information</div>
+                  </div>
+                </div>
+
+                <div class="step disabled">
+                  <i class="material-icons">store_mall_directory</i>
+                  <div class="content">
+                    <div class="title">Step 2</div>
+                    <div class="description">Input branch information</div>
+                  </div>
+                </div>
               </div>
+
+              <div class="row hspace-50"></div>
+
               <div class="form-row">
                 <div class="col-5">
                   <div class="form-group">
@@ -154,7 +175,6 @@
                 </div>
               </div>
 
-              <!-- link with google map? -->
               <div class="form-group">
                 <label for="address"
                   ><span class="align-top font-weight-bold">Address </span
@@ -191,7 +211,11 @@
                 ><span class="align-top"> corkage </span
                 ><input type="checkbox" checked="checked" />
                 <span class="checkmark"></span>
-                <img src="img/glass-and-bottle-of-wine.svg" class="svgSize" alt="">
+                <img
+                  src="img/glass-and-bottle-of-wine.svg"
+                  class="svgSize"
+                  alt=""
+                />
               </label>
             </form>
           </div>
