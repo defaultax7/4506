@@ -51,6 +51,9 @@ function validateForm1() {
   if ($("#foundDate").val() == "") {
     valid = false;
   }
+  if ($("#imageName").val() == "") {
+    valid = false;
+  }
   if (valid) {
     $("#error").hide();
     $("#registerNext").attr("disabled", false);

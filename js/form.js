@@ -12,6 +12,7 @@ $(document).ready( function() {
         
         if( input.length ) {
             input.val(log);
+            validateForm1();
         } else {
             if( log ) alert(log);
         }
@@ -31,5 +32,5 @@ $(document).ready( function() {
 
     $("#imgInp").change(function(){
         readURL(this);
-    }); 	
+    });
 });

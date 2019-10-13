@@ -279,17 +279,18 @@
               </div>
 
               <div class="row">
-                <div class="col-6">
+                <div class="col-4">
                   <div class="form-group">
-                    <label>Upload Image</label>
+                    <label class="font-weight-bold">Restaurant image</label>
                     <div class="input-group">
                       <span class="input-group-btn">
                         <span class="btn btn-default btn-file">
-                          Browse… <input type="file" id="imgInp" />
+                          Browse… <input type="file" id="imgInp" accept="image/*" />
                         </span>
                       </span>
-                      <input type="text" class="form-control" readonly />
+                      <input id="imageName" type="text" class="form-control" readonly />
                     </div>
+                    <small class="form-text text-muted">*required</small>
                     <img id="img-upload" />
                   </div>
                 </div>
@@ -297,7 +298,7 @@
 
               <label class="cbContainer"
                 ><span class="align-top"> Take away </span
-                ><input type="checkbox" />
+                ><input type="checkbox" checked/>
                 <span class="checkmark"></span>
                 <i class="material-icons cbIconSize">
                   motorcycle
@@ -331,7 +332,7 @@
               <div>
                 <label class="cbContainer"
                   ><span class="align-top"> Octopus </span
-                  ><input type="checkbox" />
+                  ><input type="checkbox" checked/>
                   <span class="checkmark"></span>
                   <img src="img/octopus.png" class="svgSize" alt="" />
                 </label>
