@@ -9,7 +9,7 @@
   <title>Food Lambda</title>
   <style>
     #main {
-      background-image: url("https://images.deliveryhero.io/image/foodpanda/hero-home-hk.jpg");
+      background-image: url("img/background.jpg");
       background-size: cover;
     }
   </style>
@@ -37,22 +37,48 @@
       </div>
     </div>
   </div>
-  <div id="main" class="fluid-container p-5">
-    <div class="pt-5 px-3">
-      <h2 class="h1-responsive font-weight-bold my-5">If the food is Yummy, delivered.</h1>
+  <div id="main" class="fluid-container p-4">
+    <div class="row">
+      <div class="col-9 p-3">
+        <div class="bg-white row">
+          <div class="col-4 p-2">
+            <a class="card" href="order.html?restName=kfc">
+              <div class="card-label">label</div>
+              <img class="card-img-top"  src="img/a.jpg" alt="food image">
+              <div class="card-body">
+                <span>KFC</span>
+                <ul class="food">
+                    <li>$$$</li>
+                    <li>western</li>
+                    <li>american</li>
+                    <li>fastfood</li>
+                </ul>
+                <ul class="food-price">
+                  <li><strong>$40</strong></li>
+                  <li>miniimum | </li>
+                  <li><strong>$30</strong></li>
+                  <li>delivery fee</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+          <div class="col-4 p-2">
+            <div class="card " >
+              <div class="card-label">label</div>
+              <img class="card-img-top"  src="img/a.jpg" alt="food image">
+              <div class="card-body">
+                <p class="card-text">Fast food shop</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 p-3 ">
+        <div class="container">
+          <div class="bg-primary">hello</div>
+        </div>
+      </div>
     </div>
-    <form class="p-3 shadow row bg-white" action="restaurant.html" method="get">
-      <div class="px-2 col-7" id="placeBuf">
-      <input class="form-control" id="placeName" type="text" placeholder="Enter your address" name="placeName">
-      </div>
-      <div class="px-2 col-2">
-        <input class="form-control btn btn-primary" type="submit" name="service" value="delivery">
-      </div>
-      <p class="my-2">or</p>
-      <div class="px-2 col-2">
-        <input class="form-control btn btn-secondary" type="submit" name="service" value="pick">
-      </div>
-    </form>
   </div>
 
   <!-- footer -->
