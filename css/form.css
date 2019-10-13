@@ -152,7 +152,7 @@
   color: rgba(40, 40, 40, 0.3);
 }
 
-.btnNext {
+.btnNext , .btnBack{
   width: 130px;
   height: 50px;
 }

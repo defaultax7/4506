@@ -102,29 +102,29 @@
         <!-- <div><img src="img/background.jpg" class="bgImg" /></div>
         <div class="smoke"></div> -->
 
-        <div id="testBlock" class="col-md-12 p-5" data-step="1">
-          <div class="container-fluid">
-            <form class="form">
-              <div class="row steps">
-                <div class="step active">
-                  <i class="material-icons">create</i>
-                  <div class="content">
-                    <div class="title">Step 1</div>
-                    <div class="description">Input restaurant information</div>
-                  </div>
-                </div>
-
-                <div class="step disabled">
-                  <i class="material-icons">store_mall_directory</i>
-                  <div class="content">
-                    <div class="title">Step 2</div>
-                    <div class="description">Input branch information</div>
-                  </div>
+        <div class="container-fluid">
+          <form class="form" id="addNewRestaurantFrom" data-step="1">
+            <div class="row steps">
+              <div class="step active">
+                <i class="material-icons">create</i>
+                <div class="content">
+                  <div class="title">Step 1</div>
+                  <div class="description">Input restaurant information</div>
                 </div>
               </div>
 
-              <div class="row hspace-50"></div>
+              <div class="step disabled">
+                <i class="material-icons">store_mall_directory</i>
+                <div class="content">
+                  <div class="title">Step 2</div>
+                  <div class="description">Input branch information</div>
+                </div>
+              </div>
+            </div>
 
+            <div class="row hspace-50"></div>
+
+            <div id="formS1">
               <div class="form-row">
                 <div class="col-6">
                   <div class="form-group">
@@ -366,6 +366,15 @@
               <div class="row justify-content-center">
                 <div class="col-12 text-center">
                   <button
+                    id="registerBack"
+                    type="button"
+                    class="btn btn-outline-danger mb-2 btnBack"
+                    disabled
+                  >
+                    Back
+                  </button>
+
+                  <button
                     id="registerNext"
                     type="button"
                     class="btn btn-primary mb-2 btnNext"
@@ -375,8 +384,13 @@
                   </button>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+
+            <div id="formS2">
+              <div class="form-row"><input type="text" class="form-control"></div>
+            </div>
+          </form>
+
         </div>
       </div>
     </div>
@@ -491,6 +505,8 @@
             validateForm1();
           }
         });
+
+        $(".btnBack").hide();
       });
     </script>
   </body>
