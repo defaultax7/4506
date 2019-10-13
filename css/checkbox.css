@@ -9,6 +9,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    margin-right: 20px;
   }
   
   /* Hide the browser's default checkbox */
