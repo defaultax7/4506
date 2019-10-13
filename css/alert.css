@@ -6,7 +6,7 @@
   }
   
   #errorModal .modal-header {
-    flex-direction: column;
+    /* flex-direction: column; */
     border: none;
   }
   

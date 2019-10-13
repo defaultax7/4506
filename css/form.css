@@ -152,12 +152,32 @@
   color: rgba(40, 40, 40, 0.3);
 }
 
-.btnNext , .btnBack{
+.btnNext,
+.btnBack,
+.btnComplete {
   width: 130px;
   height: 50px;
+  margin: 20px;
 }
 
-.btnNext:disabled {
+.btnNext:disabled , .btnComplete:disabled {
   background-color: #9bc8e6;
 }
 
+.btnBack {
+  background-color: #f44362;
+  color: white;
+}
+
+.btnAddBranch {
+  color: #007bff;
+  font-size: 40px;
+}
+
+.btnAddBranch:hover {
+  cursor: pointer;
+}
+
+.text-muted{
+  color: black !important;
+}

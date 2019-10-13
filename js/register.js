@@ -1,45 +1,24 @@
-$("#registerNext").click(() => {
-  $("#registerNext").attr("disabled", true);
-  step = $("#addNewRestaurantFrom").data("step");
-  if (step === 2) {
-    return showAlert(
-      "Restaurant is added successfully"
-    );
-  } else {
-    $("#registerBack").show();
-    step++;
-    if (step > 2) {
-      $("#registerNext").text("Complete");
-      $("#acInfo").html(`Username: ${$("#username").val()}<br />
-          Email: ${$("#email").val()}
-        `);
-      $("#personalInfo").html(`Name: ${$("#firstname").val()}${$(
-        "#lastname"
-      ).val()}<br />
-          Mobile Phone: ${$("#phone").val()}<br />
-          Birth Date: ${$("#date").val()}<br />
-          Gender: ${$("#gender:checked").val()}
-        `);
-      if ($("#agreeTos:checked").length > 0) {
-        $("#registerNext").attr("disabled", false);
-      }
-    }
-    $(".step.active")
-      .removeClass("active")
-      .addClass("disabled");
-    $(".steps")
-      .children()
-      .eq(step - 1)
-      .removeClass("disabled")
-      .addClass("active");
-    $("#formS1, #formS2").hide();
-    $("#formS" + step).show();
-    $("#registerBox").data("step", step);
-  }
+$("#btnNext").click(() => {
+  step = $('#addNewRestaurantFrom').data('step');
+  step++;
+  $(".step.active")
+    .removeClass("active")
+    .addClass("disabled");
+  $(".steps")
+    .children()
+    .eq(step)
+    .removeClass("disabled")
+    .addClass("active");
+  $(".carousel").carousel("next");
+  $('#addNewRestaurantFrom').data('step', step)
 });
 
+$("#btnComplete").click(function(){
+  showAlert("Added successfully");
+})
+
 function validateForm1() {
-  $("#registerNext").attr("disabled", true);
+  $("#btnNext").attr("disabled", true);
   (restaurantName = $("#restaurantName").val()),
     (foundDate = $("#foundDate").val()),
     (valid = true);
@@ -55,7 +34,7 @@ function validateForm1() {
   }
   if (valid) {
     $("#error").hide();
-    $("#registerNext").attr("disabled", false);
+    $("#btnNext").attr("disabled", false);
   }
 }
 
@@ -63,12 +42,12 @@ $("#restaurantName").keyup(() => {
   validateForm1();
 });
 
-$('#registerBack').click(() => {
-  let step = $('#registerBox').data('step')
+$("#registerBack").click(() => {
+  let step = $("#registerBox").data("step");
 
-  // $('#registerNext').text('Next')
+  // $('#btnNext').text('Next')
   // $('#registerBack').attr('disabled', false)
-  // $('#registerNext').attr('disabled', true)
+  // $('#btnNext').attr('disabled', true)
   // step--
   // if (step <= 1) {
   //   $('#registerBack').attr('disabled', true)
@@ -80,6 +59,25 @@ $('#registerBack').click(() => {
   // $('#step' + step).show()
   // $('#registerBox').data('step', step)
   // verifyForm(step)
-})
+});
 
 $("#formS2").hide();
+
+$(".carousel").carousel();
+$(".carousel").carousel("pause");
+
+$("#btnBack").click(function(){
+  step = $('#addNewRestaurantFrom').data('step');
+  step--;
+  $(".step.active")
+    .removeClass("active")
+    .addClass("disabled");
+  $(".steps")
+    .children()
+    .eq(step)
+    .removeClass("disabled")
+    .addClass("active");
+  $(".carousel").carousel("prev");
+  $('#addNewRestaurantFrom').data('step', step)
+})
+
