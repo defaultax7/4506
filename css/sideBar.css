@@ -8,7 +8,9 @@ body {
     font-family: 'Poppins', sans-serif;
     /*background: #fafafa;*/
     overflow-x: hidden;
-    background-color: lightblue;
+    background-color: rgb(204, 204, 204);
+    background-image: url("../img/background.jpg");
+    background-size: cover;
 }
 
 p {
@@ -236,8 +238,6 @@ a.article:hover {
 
 
 #testBlock {
-    background-image: url("img/visa.png");
-    background-size: cover;
     height: 100vh;
 }
 
