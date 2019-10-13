@@ -167,3 +167,7 @@
       width: 130px;
       height: 50px;
   }
+
+  .btnNext:disabled{
+      background-color: #9bc8e6;
+  }

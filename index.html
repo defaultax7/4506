@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/lightpick.css" />
     <link rel="stylesheet" href="css/checkbox.css" />
+    <link rel="stylesheet" href="css/form.css" />
   </head>
 
   <body>
@@ -100,7 +101,7 @@
         <div><img src="img/background.jpg" class="bgImg" /></div>
         <div class="smoke"></div>
 
-        <div id="testBlock" class="col-md-12 p-5">
+        <div id="testBlock" class="col-md-12 p-5" data-step="1">
           <div class="container-fluid">
             <form class="form">
               <!-- <div class="row h1 justify-content-center headingText">
@@ -128,7 +129,7 @@
               <div class="row hspace-50"></div>
 
               <div class="form-row">
-                <div class="col-5">
+                <div class="col-6">
                   <div class="form-group">
                     <label for="restaurantName"
                       ><span class="align-top font-weight-bold"
@@ -277,6 +278,23 @@
                 </div>
               </div>
 
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Upload Image</label>
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <span class="btn btn-default btn-file">
+                          Browse… <input type="file" id="imgInp" />
+                        </span>
+                      </span>
+                      <input type="text" class="form-control" readonly />
+                    </div>
+                    <img id="img-upload" />
+                  </div>
+                </div>
+              </div>
+
               <label class="cbContainer"
                 ><span class="align-top"> Take away </span
                 ><input type="checkbox" />
@@ -357,7 +375,6 @@
       </div>
     </div>
 
-
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -367,6 +384,7 @@
     <script src="js/moment.min.js"></script>
     <script src="js/lightpick.js"></script>
     <script src="js/register.js"></script>
+    <script src="js/form.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -419,6 +437,7 @@
             .subtract(dayLeft, "day"),
           onSelect: function(date) {
             $("#foundDate").val(date.format("L"));
+            validateForm1();
           }
         });
       });
