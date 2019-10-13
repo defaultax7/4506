@@ -16,7 +16,12 @@ $(document).ready(function() {
 
     if (input.length) {
       input.val(log);
-      validateForm1();
+      console.log(($(this)));
+      if ($(this).data("form") == "restaurant") {
+        validateForm1();
+      }else{
+        validateForm2();
+      }
     } else {
       if (log) alert(log);
     }

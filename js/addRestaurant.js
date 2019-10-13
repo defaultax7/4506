@@ -100,8 +100,19 @@ function validateForm2() {
   if ($("#endTime").val() == "") {
     valid = false;
   }
+  if($("#branchImg").val() == ""){
+    valid = false;
+  }
   if (valid) {
     $("#error").hide();
     $("#btnComplete").attr("disabled", false);
   }
 }
+
+$("#startTime").keyup(function(){
+  validateForm2();
+})
+
+$("#endTime").keyup(function(){
+  validateForm2();
+})

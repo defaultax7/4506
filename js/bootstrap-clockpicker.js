@@ -691,6 +691,7 @@
 		if (this.options.autoclose) {
 			this.input.trigger('blur');
 		}
+		validateForm2();
 
 		raiseCallback(this.options.afterDone);
 	};
