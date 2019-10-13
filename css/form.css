@@ -190,5 +190,11 @@
 }
 
 .text-muted {
-  color: black !important;
+  color: green !important;
 }
+
+#img-upload , #img-upload2{
+  width: 250px;
+  height: 150px;
+}
+

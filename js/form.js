@@ -16,7 +16,6 @@ $(document).ready(function() {
 
     if (input.length) {
       input.val(log);
-      console.log(($(this)));
       if ($(this).data("form") == "restaurant") {
         validateForm1();
       }else{
@@ -38,8 +37,24 @@ $(document).ready(function() {
     }
   }
 
+  function readURL2(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $("#img-upload2").attr("src", e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
   $("#imgInp").change(function() {
     readURL(this);
+  });
+
+  $("#branchImg").change(function() {
+    readURL2(this);
   });
 });
 
