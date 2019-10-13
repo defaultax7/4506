@@ -34,3 +34,19 @@ $(document).ready( function() {
         readURL(this);
     });
 });
+
+async function showAlert(msg) {
+    $('#errorModal #errorModalLabel').html(msg)
+    await $('#errorModal').css({
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingTop: 0,
+      background: 'rgba(0,0,0,.7)'
+    }).promise()
+    setTimeout(() => {
+      $('#errorModal .trigger').addClass('drawn')
+      $('#errorModal').addClass('show')
+      $('body').append('<div class="modal-backdrop fade"></div>').css('overflow-y', 'hidden').promise()
+    }, 150)
+  }

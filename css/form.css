@@ -1,24 +1,163 @@
 .btn-file {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid;
 }
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
+.btn-file input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
 }
 
-#img-upload{
-    width: 100%;
+#img-upload {
+  width: 100%;
 }
+
+#btnFoundDate:hover {
+  cursor: pointer;
+}
+
+#foundDate {
+  background-color: white;
+}
+
+.hspace-50 {
+  height: 50px;
+}
+
+.steps {
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  box-shadow: none;
+  line-height: 1.14285714em;
+  border: 2px solid #c7c7c7;
+  background-color: #fff;
+}
+
+.steps .step {
+  position: relative;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1 0 auto;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  vertical-align: middle;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin: 0 0;
+  padding: 1.1em 2em;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  border-right: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.steps .step > .material-icons {
+  width: auto;
+  line-height: 1;
+  font-size: 2.5em;
+  margin: 0 1rem 0 0;
+}
+
+.steps .step > .material-icons,
+.steps .step > .material-icons ~ .content {
+  display: block;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -ms-flex-item-align: middle;
+  -ms-grid-row-align: middle;
+  align-self: middle;
+}
+
+.steps .step .title ~ .description {
+  margin-top: 0.25em;
+}
+
+.steps .step .description {
+  font-weight: 300;
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.steps .step .title {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.steps .step:after {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  content: "";
+  top: 50%;
+  right: 0;
+  border: medium none;
+  background-color: #fff;
+  width: 1.1em;
+  height: 1.1em;
+  border-style: solid;
+  border-color: rgba(34, 36, 38, 0.15);
+  border-width: 0 1px 1px 0;
+  -webkit-transition: background-color 0.1s ease, opacity 0.1s ease,
+    color 0.1s ease, box-shadow 0.1s ease;
+  transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease,
+    box-shadow 0.1s ease;
+  -webkit-transform: translateY(-50%) translateX(50%) rotate(-45deg);
+  transform: translateY(-50%) translateX(50%) rotate(-45deg);
+}
+
+.steps .step:last-child:after {
+  display: none;
+}
+
+.steps .step.active {
+  cursor: auto;
+  background: #f3f4f5;
+}
+
+.steps .step.active:after {
+  background: #f3f4f5;
+}
+
+.steps .step.active .title {
+  color: #afc94a;
+}
+
+.steps .disabled.step,
+.steps .disabled.step .description,
+.steps .disabled.step .title {
+  color: rgba(40, 40, 40, 0.3);
+}
+
+.btnNext {
+  width: 130px;
+  height: 50px;
+}
+
+.btnNext:disabled {
+  background-color: #9bc8e6;
+}
+

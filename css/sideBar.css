@@ -236,6 +236,8 @@ a.article:hover {
 
 
 #testBlock {
+    background-image: url("img/visa.png");
+    background-size: cover;
     height: 100vh;
 }
 

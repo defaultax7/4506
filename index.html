@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/lightpick.css" />
     <link rel="stylesheet" href="css/checkbox.css" />
     <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/alert.css">
   </head>
 
   <body>
@@ -98,16 +99,12 @@
             ></button>
           </div>
         </nav>
-        <div><img src="img/background.jpg" class="bgImg" /></div>
-        <div class="smoke"></div>
+        <!-- <div><img src="img/background.jpg" class="bgImg" /></div>
+        <div class="smoke"></div> -->
 
         <div id="testBlock" class="col-md-12 p-5" data-step="1">
           <div class="container-fluid">
             <form class="form">
-              <!-- <div class="row h1 justify-content-center headingText">
-                Add new restaurant
-              </div> -->
-
               <div class="row steps">
                 <div class="step active">
                   <i class="material-icons">create</i>
@@ -285,10 +282,16 @@
                     <div class="input-group">
                       <span class="input-group-btn">
                         <span class="btn btn-default btn-file">
-                          Browse… <input type="file" id="imgInp" accept="image/*" />
+                          Browse…
+                          <input type="file" id="imgInp" accept="image/*" />
                         </span>
                       </span>
-                      <input id="imageName" type="text" class="form-control" readonly />
+                      <input
+                        id="imageName"
+                        type="text"
+                        class="form-control"
+                        readonly
+                      />
                     </div>
                     <small class="form-text text-muted">*required</small>
                     <img id="img-upload" />
@@ -298,7 +301,7 @@
 
               <label class="cbContainer"
                 ><span class="align-top"> Take away </span
-                ><input type="checkbox" checked/>
+                ><input type="checkbox" checked />
                 <span class="checkmark"></span>
                 <i class="material-icons cbIconSize">
                   motorcycle
@@ -332,7 +335,7 @@
               <div>
                 <label class="cbContainer"
                   ><span class="align-top"> Octopus </span
-                  ><input type="checkbox" checked/>
+                  ><input type="checkbox" checked />
                   <span class="checkmark"></span>
                   <img src="img/octopus.png" class="svgSize" alt="" />
                 </label>
@@ -371,6 +374,47 @@
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="trigger"></div>
+            <svg
+              version="1.1"
+              id="cross"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 37 37"
+              width="5em"
+              height="5em"
+              xml:space="preserve"
+            >
+              <path
+                class="circ path"
+                style="fill:none;stroke:#28a745;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:10;"
+                d="
+                        M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"
+              ></path>
+              <polyline
+                class="tick path"
+                style="fill:none;stroke:#28a745;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;"
+                points="
+                        11.6,20 15.9,24.2 26.4,13.8 "
+              />
+            </svg>
+          </div>
+          <p id="errorModalLabel" class="light"></p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-success modal-dismiss" id="btnAlertOk">
+              <i class="material-icons">done</i>OK
+            </button>
           </div>
         </div>
       </div>
