@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/checkbox.css" />
     <link rel="stylesheet" href="css/form.css" />
     <link rel="stylesheet" href="css/alert.css" />
+    <link rel="stylesheet" href="css/bootstrap-clockpicker.css" />
   </head>
 
   <body>
@@ -195,6 +196,7 @@
                               type="text"
                               id="phoneNo"
                               class="form-control"
+                              onkeypress="onlyNum(event)"
                               maxlength="8"
                             />
                           </div>
@@ -416,17 +418,169 @@
                   </div>
                 </div>
 
-                <div class="carousel-item">
-                  <div class="form-row">
-                    <div class="col-12">
-                      <input type="text" class="form-control" />
-                    </div>
+                <div class="carousel-item" id="branchForm" data-branchnum="1">
+                  <div id="branchContainer">
+                    <fieldset class="border p-3">
+                      <legend class="w-auto">Branch 1</legend>
+                      <div class="form-row">
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label for="branchAddress"
+                              ><span class="align-top font-weight-bold"
+                                >Address </span
+                              ><i class="material-icons inline-icon">
+                                room
+                              </i></label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="branchAddress"
+                              placeholder=""
+                            />
+                            <small class="form-text text-muted"
+                              >*required</small
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="col-2">
+                          <div class="form-group">
+                            <label for="restaurantName"
+                              ><span class="align-top font-weight-bold"
+                                >Opening hour </span
+                              ><i class="material-icons inline-icon">
+                                access_time
+                              </i></label
+                            >
+                            <div class="input-group">
+                              <input
+                                type="text"
+                                class="form-control clockpicker"
+                                id="startTime"
+                              />
+                              <i class="material-icons cbIconSize">
+                                arrow_forward
+                              </i>
+                              <input
+                                type="text"
+                                id="endTime"
+                                class="form-control clockpickerEnd"
+                              />
+                            </div>
+                            <small class="form-text text-muted"
+                              >*required</small
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-12"><b>Environment :</b></div>
+                        <div class="col-12">
+                          <label class="cbContainer"
+                            ><span class="align-top"> Indoor </span
+                            ><input type="checkbox" id="cbIndoor" checked />
+                            <span class="checkmark"></span>
+                            <i class="material-icons cbIconSize">
+                              home_work
+                            </i>
+                          </label>
+
+                          <label class="cbContainer"
+                            ><span class="align-top"> Outdoor </span
+                            ><input type="checkbox" id="cbOutdoor" />
+                            <span class="checkmark"></span>
+                            <i class="material-icons cbIconSize">
+                              cloud
+                            </i>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-12">
+                          <b>Feature : </b>
+                        </div>
+                      </div>
+                      <label class="cbContainer"
+                        ><span class="align-top"> Wifi </span
+                        ><input type="checkbox" checked />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          wifi
+                        </i>
+                      </label>
+
+                      <label class="cbContainer"
+                        ><span class="align-top"> Allow booking </span
+                        ><input type="checkbox" checked />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          airline_seat_recline_extra
+                        </i>
+                      </label>
+
+                      <label class="cbContainer"
+                        ><span class="align-top"> Complementary parking </span
+                        ><input type="checkbox" />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          directions_car
+                        </i>
+                      </label>
+
+                      <label class="cbContainer"
+                        ><span class="align-top"> TV </span
+                        ><input type="checkbox" />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          tv
+                        </i>
+                      </label>
+
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="form-group">
+                            <label class="font-weight-bold">Branch image</label>
+                            <div class="input-group">
+                              <span class="input-group-btn">
+                                <span class="btn btn-default btn-file">
+                                  Browse…
+                                  <input
+                                    type="file"
+                                    id="imgInp"
+                                    accept="image/*"
+                                  />
+                                </span>
+                              </span>
+                              <input
+                                id="imageName"
+                                type="text"
+                                class="form-control"
+                                readonly
+                              />
+                            </div>
+                            <small class="form-text text-muted"
+                              >*required</small
+                            >
+                            <img id="img-upload" />
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
                   </div>
 
+                  <div class="hspace-20"></div>
+
                   <div class="form-row">
-                    <i class="material-icons btnAddBranch">
-                      add_box
-                    </i>
+                    <div class="btnAddBranch">
+                      <i class="material-icons" style="vertical-align: middle;">
+                        add </i
+                      >Add branch
+                    </div>
                   </div>
                   <div class="form-row">
                     <div class="hspace-50"></div>
@@ -511,8 +665,9 @@
 
     <script src="js/moment.min.js"></script>
     <script src="js/lightpick.js"></script>
-    <script src="js/register.js"></script>
+    <script src="js/addRestaurant.js"></script>
     <script src="js/form.js"></script>
+    <script src="js/bootstrap-clockpicker.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -568,6 +723,9 @@
             validateForm1();
           }
         });
+
+        $(".clockpicker").clockpicker({ autoclose: true });
+        $(".clockpickerEnd").clockpicker({ autoclose: true });
       });
     </script>
   </body>
