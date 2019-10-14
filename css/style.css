@@ -13,10 +13,12 @@
 
 .form {
     border: 10px solid #f8f9fa;
-    padding: 5%;
+    padding: 2%;
+    padding-top: 2%;
     background-color: white;
-    opacity: 0.88;
+    opacity: 0.95;
     display: none;
+    margin: 3%;
 }
 
 .smoke {
@@ -30,6 +32,14 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
+}
+
+
+.bottomArea{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: grey;
+    color: white;
 }
 
 ul.top-right-info {
