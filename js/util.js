@@ -42,3 +42,18 @@ $("#btnAlertOk").click(function(){
     dismissModal();
     window.location.href = "index.html";
 })
+
+
+function searchText(cls, tbox) { 
+  let searchText = $("#"+tbox).val().toLowerCase();
+  $("."+cls).each(function() {
+      if ($(this).text().toLowerCase().indexOf(searchText) != -1) {
+          $(this).fadeIn();
+      }
+      else {
+          $(this).fadeOut();
+      }
+  })
+  return false;
+
+}

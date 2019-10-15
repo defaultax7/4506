@@ -6,11 +6,37 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/loader.css">
   <title>Food Lambda</title>
   <style>
     #main {
       background-image: url("img/background.jpg");
       background-size: cover;
+      animation-name: bgAni;
+      animation-iteration-count: infinite;
+      animation-duration: 10s;
+    }
+    #main2 {
+      background-image: url("img/background.jpg");
+      background-size: cover;
+      /* display: none; */
+    }
+    #restList {
+      min-height: 60px;
+    }
+    @keyframes bgAni {
+      0% {
+        background-image: url("img/background.jpg");
+      }
+      40% {
+        background-image: url("img/background.jpg");
+      }
+      50% {
+        background-image: url("img/a.jpg");
+      }
+      90% {
+        background-image: url("img/a.jpg");
+      }
     }
   </style>
 </head>
@@ -19,9 +45,7 @@
     <div class="jy-indicator"></div>
     <div class="container pb-2 pt-2 mx-auto">
       <a href="./customer_index.html" class="navbar-brand">
-        <i class="material-icons" id="logo">
-                fastfood
-        </i>
+        <i class="material-icons" id="logo"> fastfood </i>
         Yummy Everywhere
       </a>
       <button class="navbar-toggler pull-left mx-2" type="button" data-toggle="collapse" data-target="#navbarContent"
@@ -38,65 +62,62 @@
     </div>
   </div>
   <div id="main" class="fluid-container p-4">
+    <!-- top -->
     <div class="bg-dark row mt-3 p-2">
-      <form class="form-inline">
-        <div class="toggle">
+      <form class="form-inline" onsubmit="$('#main2').fadeOut();return searchText('card', 'keyWord')">
+        <!-- <div class="toggle"> -->
           <!--<input type="radio" name="searchType" value="keyWord" id="keyWord" checked onchange="changeForm(0)"/>-->
           <!--<label for="keyWord" onclick="">Search-->
           <!--</label>-->
           <!--<input type="radio" name="searchType" value="chkBox" id="chkBox" onchange="changeForm(1)"/>-->
           <!--<label for="chkBox" onclick="">tool-->
           <!--</label>-->
-        </div>
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="feature">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <!-- </div> -->
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="keyWord">
+          <button class="btn btn-outline-success " type="submit">
+            <i class="material-icons align-top">search</i>
+          </button>
       </form>
-
     </div>
     <div class="row">
-      <div class="col-9 p-3 order-2 order-sm-1">
-        <div class="bg-white row">
-          <div class="col-xs-3 col-md-4 p-3">
-            <a class="card" href="order.html?restName=kfc">
-              <div class="card-label">20% off</div>
-              <div class="card-img">
-                <img class="card-img-top"  src="img/a.jpg" alt="food image">
-              </div>
-              <div class="card-body">
-                <span>KFC</span>
-                <ul class="food">
-                    <li>$$$</li>
-                    <li>western</li>
-                    <li id="">american</li>
-                    <li id="type">fastfood</li>
-                </ul>
-                <ul class="food-price">
-                  <li><strong>$40</strong></li>
-                  <li>minimum</li><br />
-                  <li><strong>$30</strong></li>
-                  <li>delivery fee</li>
-                </ul>
-              </div>
-            </a>
+      <div class="col-md-9 col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
+        <div><i class="material-icons">store</i><span class="mx-3 align-top">Restaurants</span></div>
+        <div class="row" id="restList" >
+          <div class="lds-default col-offset-6">
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
           </div>
+          
         </div>
       </div>
-      <div class="col-sm-3 p-3 order-1 order-sm-2">
-        <div class="bg-warning h-100 p-3">
-          <form action="">
-            <span>Budget</span>
-            <div class="form-check">
-                <input name="budget" type="checkbox" class="form-check-input" id="pL1" value="1">
-                <label class="form-check-label" for="pL1">$</label><br />
-                <input name="budget" type="checkbox" class="form-check-input" id="pL2" value="2">
-                <label class="form-check-label" for="pL2">$$</label><br />
-                <input name="budget" type="checkbox" class="form-check-input" id="pL3" value="3">
-                <label class="form-check-label" for="pL3">$$$</label><br />
-            </div>
-          </form>
+      <div class="col-md-3 p-3 order-1 order-md-2 col-12">
+        <div class="h-100 p-3 shadow-lg">
         </div>
       </div>
     </div>
+  </div>
+  <div id="main2" class="fluid-container p-4">
+    <div class="jy-tabs">
+  <input type="radio" name="jy-tabs" id="tabone" checked="checked">
+  <label for="tabone">Tab One</label>
+  <div class="jy-tab">
+    <h1>Tab One Content</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  
+  <input type="radio" name="tabs" id="tabtwo">
+  <label for="tabtwo">Tab Two</label>
+  <div class="jy-tab">
+    <h1>Tab Two Content</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  
+  <input type="radio" name="tabs" id="tabthree">
+  <label for="tabthree">Tab Three</label>
+  <div class="jy-tab">
+    <h1>Tab Three Content</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+  </div>
+</div>
   </div>
 
   <!-- footer -->
@@ -170,7 +191,82 @@ If the food is Yummy, delivered.
   <div class="copy-right text-center py-3">
     <p>© 2019 Yummy Everywhere. All rights reserved.</p>
   </div>
+  <div class="modal fade" id="filterModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Food Filter</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="">
+            <span>Budget</span>
+            <div class="form-check">
+                <input name="budget" type="checkbox" class="form-check-input" id="pL1" value="1">
+                <label class="form-check-label" for="pL1">$</label><br />
+                <input name="budget" type="checkbox" class="form-check-input" id="pL2" value="2">
+                <label class="form-check-label" for="pL2">$$</label><br />
+                <input name="budget" type="checkbox" class="form-check-input" id="pL3" value="3">
+                <label class="form-check-label" for="pL3">$$$</label><br />
+            </div>
+          </form>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
   <script src="js/bootstrap.min.js" charset="utf-8"></script>
+  <script src="js/util.js"></script>
+  <script>
+    var restaurants = [];
+    $(document).ready(function() {
+      // $("#filterModal").modal();
+      $.getJSON("data/data.json", function(data) {
+        restaurants = data.restaurant;
+        let context = "";
+        for (let i = 0; i < restaurants.length; i++) {
+           context += putRestaurant(restaurants[i])
+        }
+        $.when($(".lds-default").fadeOut(1000)).done(function() {
+            $("#restList").append(context).hide().fadeIn(3000);
+        });
+        // $("#restList").append(putRestaurant(restaurants[i])).hide().fadeIn();
+        // setTimeout(() => {
+        //   $("#restList").text("");
+        //   $("#restList").fadeIn();
+        // }, 100)
+      });
+    })
+    function putRestaurant(obj) {
+      let label = "";
+      if (obj.label !== undefined) {
+        label = '<div class="card-label">' + obj.label + '</div>';
+      }
+      let foodDiv = '<div class="col-12 col-sm-6 col-md-4 p-3 foodItem"> <a class="card" href="#!" data-id="'+ obj.id+
+      '" onclick="showFood( '+ obj.id +
+      ' );"> ' +label+
+      '<div class="card-img"> <img class="card-img-top"  src="'+obj.imagePath+
+      '" alt="food image"> </div> <div class="card-body"> <span>'+obj.name+
+      '</span> <ul class="food"> <li>'+ "$".repeat(obj.priceLv)+
+      '</li> <li>'+obj.feature.join("</li><li>")+
+      '<li id="type">'+obj.type+'</li> </ul> <ul class="food-price"> <li><strong>$'+obj.minPrice+
+      '</strong></li> <li>minimum</li><br /> <li><strong>$'+obj.fee+
+      '</strong></li> <li>delivery fee</li> </ul> </div> </a> </div> ';
+      return foodDiv;
+    }
+    function showFood(fid) {
+
+      let menu = restaurants.find(x => x.id === fid);
+      
+    }
+  </script>
 </body>
 </html>

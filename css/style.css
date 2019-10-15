@@ -204,3 +204,71 @@ a.card:hover img.card-img-top {
 }
 
 /*toggle end*/
+
+.fit-image{
+  width: 100%;
+  object-fit: cover;
+}
+
+/* tab bar */
+.jy-tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.jy-tabs label {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  flex-grow: 1;
+  display: block;
+  padding: 1rem 2rem;
+  margin-right: 0.2rem;
+  cursor: pointer;
+  background: #90CAF9;
+  font-weight: bold;
+  -webkit-transition: ease 0.2s;
+  transition: ease 0.2s;
+}
+
+.jy-tabs .jy-tab {
+  -webkit-box-ordinal-group: 100;
+      -ms-flex-order: 99;
+          order: 99;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  display: none;
+  padding: 1rem;
+  background: #fff;
+}
+
+.jy-tabs input[type=radio] {
+  /* display: ; */
+}
+
+.jy-tabs input[type="radio"]:checked + label {
+  background: #fff;
+}
+
+.jy-tabs input[type="radio"]:checked + label + .jy-tab {
+  display: block;
+}
+
+@media (max-width: 45em) {
+  .jy-tabs .jy-tab,
+  .jy-tabs label {
+    -webkit-box-ordinal-group: initial;
+        -ms-flex-order: initial;
+            order: initial;
+  }
+  .jy-tabs label {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 0.2rem;
+  }
+}

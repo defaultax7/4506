@@ -1,5 +1,0 @@
-[
-  {"name": "McDonald", "type": "fast food", "food": ["McNugget", "BidMac", "Icecream"]},
-  {"name": "KFC", "type":"fast food", "food": ["BigChicken", "SmallChicken"]},
-  {"name": "KFC", "type":"fast food", "food": ["BigChicken", "SmallChicken"]}
-]

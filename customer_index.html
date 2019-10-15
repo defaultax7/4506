@@ -10,8 +10,11 @@
   <title>Food Lambda</title>
   <style>
     #main {
-      background-image: url("https://images.deliveryhero.io/image/foodpanda/hero-home-hk.jpg");
+      background-image: url("img/customer_bg.jpg");
       background-size: cover;
+    }
+    #main form button, #main form input, #main form div {
+      height: 50px;
     }
   </style>
 </head>
@@ -21,9 +24,7 @@
     <div class="jy-indicator"></div>
     <div class="container pb-2 pt-2 mx-auto">
       <a href="./customer_index.html" class="navbar-brand">
-        <i class="material-icons" id="logo">
-                fastfood
-        </i>
+        <i class="material-icons" id="logo"> fastfood </i>
         Yummy Everywhere
       </a>
       <button class="navbar-toggler pull-left mx-2" type="button" data-toggle="collapse" data-target="#navbarContent"
@@ -39,22 +40,57 @@
       </div>
     </div>
   </div>
+
+  <!-- <div id="foodSlider" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#foodSlider" data-slide-to="0" class="active"></li>
+      <li data-target="#foodSlider" data-slide-to="1"></li>
+      <li data-target="#foodSlider" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/a.jpg" alt="food image" class="fit-image" height="500">
+      </div>
+      <div class="carousel-item">
+        <img src="img/a.jpg" alt="food image" class="fit-image" height="500">
+      </div>
+      <div class="carousel-item">
+        <img src="img/a.jpg" alt="food image" class="fit-image" height="500">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#foodSlider" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#foodSlider" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+
+  </div> -->
+
+
+
   <div id="main" class="fluid-container p-5">
     <div class="pt-5 px-3">
       <h2 class="h1-responsive font-weight-bold my-5">If the food is Yummy, delivered.</h1>
     </div>
-    <form class="p-3 shadow row bg-white" action="restaurant.html" method="get">
-      <div class="px-2 col-7" id="placeBuf">
+    <form class="p-3 shadow row bg-white" onsubmit="return searchMap();">
+      <div class="px-2 col-6" id="placeBuf">
       <input class="form-control" id="placeName" type="text" placeholder="Enter your address" name="placeName" required>
       </div>
-      <div class="px-2 col-2">
-        <input class="form-control btn btn-primary" type="submit" name="service" value="delivery">
+      <div class="px-2 col-1">
+        <button class="btn btn-outline-dark border-0"><i class="material-icons p-1">gps_fixed</i></input>
+      </div>
+      <div class="px-2 col-4 col-sm-2">
+        <input class="form-control btn btn-primary" type="submit" value="delivery" onclick="delivery()">
       </div>
       <p class="my-2">or</p>
-      <div class="px-2 col-2">
-        <input class="form-control btn btn-secondary" type="submit" name="service" value="pick">
+      <div class="px-2 col-4 col-sm-2">
+        <input class="form-control btn btn-secondary" type="submit" value="pick" onclick="pick()">
       </div>
     </form>
+  </div>
+  <div class="fluid-container" style="display: none;" id="mapBuf">
+
   </div>
 
   <!-- footer -->
@@ -70,8 +106,8 @@
                   </h2>
                   <!-- //logo -->
                   <p class="mt-lg-4 mt-3 mb-lg-5 mb-4">
-If the food is Yummy, delivered.
-</p>
+                    If the food is Yummy, delivered.
+                  </p>
                   <!-- social icons -->
                   <ul class="top-right-info">
                       <li>
@@ -130,5 +166,24 @@ If the food is Yummy, delivered.
   </div>
   <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
   <script src="js/bootstrap.min.js" charset="utf-8"></script>
+  <script>
+    var service = "delivery";
+    function searchMap() {
+      var place = $("#placeName").val();
+      if (service == "delivery") {
+        showGoogleMap();
+      }
+      else {
+        
+      }
+      console.log(service);
+      return false;
+    }
+    function delivery() { service = "delivery"; }
+    function pick() { service = "pick"; }
+    function showGoogleMap() {
+      // call google map api
+    }
+  </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 // 未copy好
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+// @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 @mixin transX($xVal:50%) {
   -webkit-transform: translateX($xVal);
@@ -176,5 +176,50 @@ a {
 @media (max-width: 768px) {
   #sidebarCollapse span {
     display: none;
+  }
+}
+.jy-tabs {
+  display: flex;
+  flex-wrap: wrap; // make sure it wraps
+  & label {
+    order: 1; // Put the labels first
+    display: block;
+    padding: 1rem 2rem;
+    margin-right: 0.2rem;
+    cursor: pointer;
+    background: #90CAF9;
+    font-weight: bold;
+    transition: background ease 0.2s;  
+  }
+  & & {
+    order: 99;
+    flex-grow: 1;
+    width: 100%;
+    display: none;
+    padding: 1rem;
+    background: #fff;  
+  }
+  & input[type=radio] {
+    display: none;
+  }
+  & input[type="radio"]:checked + label {
+    background: #fff;
+  }
+  
+}
+
+.jy-tabs input[type="radio"]:checked + label + .jy-tab {
+	display: block;
+}
+
+@media (max-width: 45em) {
+  .jy-tabs .jy-tab,
+  .jy-tabs label {
+    order: initial;
+  }
+  .jy-tabs label {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 0.2rem;
   }
 }

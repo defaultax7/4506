@@ -86,9 +86,14 @@
             <div><img src="img/a.jpg" style="position: absolute ; width : 100vw ; height: 100vh;"></div>
             <div style="position: absolute ; background-color : rgba(155, 155, 155, 0.4) ; width: 100vw ; height: 100vh"></div>
 
-            <div id="testBlock" class="col-md-12 p-5">
-                <div class="container-fluid">
-                    <span class="float-right">Search : &nbsp;<input type="text" id="searchBar"></span>
+            <div id="testBlock" class="col-md-12">
+                <div class="container-fluid p-3 text-white">
+                    <span class="float-right">
+                        <form onsubmit="return searchText('food-block', 'searchBar')">
+                            <input type="text" id="searchBar">
+                            <button class="btn btn-primary mx-2">Search</button>
+                        </form>
+                    </span>
                     <div style="clear: both;"></div>
                 </div>
                 <div class="container-fluid">
@@ -106,37 +111,24 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/admin.js"></script>
+    <script src="js/util.js"></script>
     <script>
         $(document).ready(function () {
-            $.getJSON("data/restaurant_list.json", function(result) {
+            $.getJSON("data/data.json", function(data) {
+                console.log(data)
                 content = "";
+                var result = data.restaurant;
                 for (let i = 0; i < result.length; i++) {
                     const element = result[i];
                     content += "<div class=' col-sm-6 col-md-4 col-6 col-xl-3 food-block'><div class='m-1 bg-warning p-2'>" + element.name;
-                    content += "<br>" + "Type : " + element.type + "<br>Food : ";
-                    for (let j = 0; j < element.food.length; j++) {
-                        if (j !== element.food.length - 1) {
-                            content += element.food[j] + ", ";
-                        }
-                        else {
-                            content += element.food[j];
-                        }
+                    content += "<br>" + "Type : " + element.type + "<br>Food : <br>";
+                    for (var food in element.foods) {
+                      console.log(food);
+                      content += food + ": $" + element.foods[food] + "<br>";
                     }
                     content += "</div></div><br>";
                 }
                 $("#restaurant_list").html(content);
-            });
-            $("#searchBar").on("input", function() {
-                let searchText = $(this).val().toLowerCase();
-                $(".food-block").each(function() {
-                    if ($(this).text().toLowerCase().indexOf(searchText) != -1) {
-                        $(this).css("display", "block");
-                    }
-                    else {
-                        $(this).css("display", "none");
-                    }
-                })
-                $(this).text()
             });
         });
         var data = {};
