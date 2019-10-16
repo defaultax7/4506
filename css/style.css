@@ -130,6 +130,22 @@ img.card-img-top {
 
 div.card-img {
   overflow: hidden;
+  height: 330px;
+}
+@media (min-width: 576px) {
+  div.card-img {
+    height: 230px;
+  }
+}
+@media (min-width: 768px) {
+  div.card-img {
+    height: 130px;
+  }
+}
+@media (min-width: 960px) {
+  div.card-img {
+    height: 200px;
+  }
 }
 
 a.card:hover img.card-img-top {
@@ -230,8 +246,8 @@ a.card:hover img.card-img-top {
   cursor: pointer;
   background: #90CAF9;
   font-weight: bold;
-  -webkit-transition: ease 0.2s;
-  transition: ease 0.2s;
+  -webkit-transition: ease 0.5s;
+  transition: ease 0.5s;
 }
 
 .jy-tabs .jy-tab {
@@ -248,7 +264,7 @@ a.card:hover img.card-img-top {
 }
 
 .jy-tabs input[type=radio] {
-  /* display: ; */
+  display: none;
 }
 
 .jy-tabs input[type="radio"]:checked + label {
@@ -257,6 +273,17 @@ a.card:hover img.card-img-top {
 
 .jy-tabs input[type="radio"]:checked + label + .jy-tab {
   display: block;
+  animation-name: changeTab;
+  animation-duration: 1s;
+}
+
+@keyframes changeTab {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 45em) {
@@ -272,3 +299,72 @@ a.card:hover img.card-img-top {
     margin-top: 0.2rem;
   }
 }
+
+
+
+/*
+  Rating, comment
+*/
+.rate {
+  height: 46px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rate > label {
+  padding: 0px;
+}
+.rate:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+  background-color: inherit;
+}
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+.rate > input:checked ~ label {
+  color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+span.stared {
+  color: #ffc700;    
+  font-size: 30px;
+}
+span.nostar {
+  color:#ccc;
+  font-size: 30px;
+}
+span.nostar:before, span.stared:before {
+  content: '★ ';
+}
+#restName {
+  font-family: Courier;
+  color: rgb(49, 158, 113);
+}
+.cmt {
+  margin: 3px;
+  padding: 5px;
+  z-index: 3;
+}
+
+/*
+  End Rating
+*/

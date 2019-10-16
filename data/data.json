@@ -3,15 +3,20 @@
     {
       "id": 1,
       "name": "Mcdonald",
-      "imagePath": "img/kfc.jpeg",
+      "imagePath": "img/mcdonald.jpg",
       "desc": "McDonald's Corporation is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald, in San Bernardino, California, United States. They rechristened their business as a hamburger stand, and later turned the company into a franchise, with the Golden Arches logo being introduced in 1953 at a location in Phoenix, Arizona. In 1955, Ray Kroc, a businessman, joined the company as a franchise agent and proceeded to purchase the chain from the McDonald brothers. McDonald's had its original headquarters in Oak Brook, Illinois, but moved its global headquarters to Chicago in early 2018.",
       "type": "fastfood",
-      "foods": {"McNugget": 10, "BidMac": 20, "Icecream": 5},
+      "foods": {
+        "McNugget": [10, "McNugget"],
+        "BidMac": [20, "BidMac"],
+        "Icecream": [5, "Icecream", "img/ice-cream.jpg"]
+      },
       "priceLv": 2,
       "feature": ["western", "american"],
       "minPrice": 40,
       "fee": 30,
-      "label": "20% off"
+      "label": "20% off",
+      "rating": 1
     },
     {
       "id": 2,
@@ -19,11 +24,17 @@
       "imagePath": "img/kfc.jpeg",
       "desc": "KFC, also known as Kentucky Fried Chicken, is an American fast food restaurant chain headquartered in Louisville, Kentucky, that specializes in fried chicken. It is the world's second-largest restaurant chain (as measured by sales) after McDonald's, with 22,621 locations globally in 136 countries as of December 2018. The chain is a subsidiary of Yum! Brands, a restaurant company that also owns the Pizza Hut, Taco Bell and WingStreet chains.",
       "type": "fastfood",
-      "foods": {"BigChicken": 40, "SmallChicken": 30},
+      "foods": {
+        "BigChicken": [40, "BigChicken"],
+        "SmallChicken": [30, "SmallChicken"],
+        "Bei Fung Tong Chicken Bucket Meal": [236.00, "4pcs of Bei Fung Tong Chicken + 4pcs of Original Recipe/ Hot & Spicy/ Flava Crava Chicken + 2boxes of Chicken a la king Rice/ Mushroom Rice + 4pcs of Hot Wings + 4portions of Mashed Potato & Gravy + 1box of CrissCut Fries (large) + Free 4pcs of Egg Tart"],
+        "Bei Fung Tong Chicken Buddy Meal": [149.00, "4pcs of Bei Fung Tong Chicken + 1box of Chicken a la king Rice/ Mushroom Rice + 5pcs of Hot Wings + 1box of CrissCut Fries (large) + Free 2pcs of Egg Tart"]
+      },
       "priceLv": 3,
       "feature": ["western", "american"],
       "minPrice": 40,
-      "fee": 30
+      "fee": 30,
+      "rating": 1
     }
   ]
 }

@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="css/sideBar.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        body {
+    font-family: 'Poppins', sans-serif;
+          overflow-x: hidden;
+          background-color: rgb(204, 204, 204);
+          background-image: url(../img/a.jpg);
+          background-size: cover;
+          background-attachment: fixed;
+        }
     </style>
 </head>
 
@@ -124,7 +132,7 @@
                     content += "<br>" + "Type : " + element.type + "<br>Food : <br>";
                     for (var food in element.foods) {
                       console.log(food);
-                      content += food + ": $" + element.foods[food] + "<br>";
+                      content += food + ": $ " + element.foods[food][0] + "<br>";
                     }
                     content += "</div></div><br>";
                 }
