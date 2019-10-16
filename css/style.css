@@ -144,7 +144,7 @@ div.card-img {
 }
 @media (min-width: 960px) {
   div.card-img {
-    height: 200px;
+    height: 130px;
   }
 }
 
