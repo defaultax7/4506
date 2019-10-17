@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/form.css">
   <title>Food Lambda</title>
   <style>
     #main {
@@ -94,20 +95,23 @@
       </form>
     </div>
     <div class="row">
+      <div class="p-3 col-12 bg-warning">
+        <div class="h-100 p-3 shadow-lg">
+          <button class="filter btn btn-outline-secondary" data-type="all" value="all">All</button>
+          <button class="filter btn btn-outline-secondary" data-type="type" value="fastfood">Fastfood</button>
+          <button class="filter btn btn-outline-secondary" data-type="type" value="noodle">Noodle</button>
+        </div>
+      </div>
       <div class="col-md-9 col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
-        <div><i class="material-icons">store</i><span class="mx-3 align-top">Restaurants</span></div>
+        <div>
+          <i class="material-icons">store</i><span class="mx-3 align-top">Restaurants</span> <span class="p-1">&gt;</span>
+          <i class="material-icons">restaurant_menu</i><span class="mx-3 align-top">Menu</span></div>
         <div class="row" id="restList" >
           <div class="lds-default col-offset-6">
             <div></div><div></div><div></div><div></div><div></div><div>
             </div><div></div><div></div><div></div><div></div><div></div><div></div>
           </div>
           
-        </div>
-      </div>
-      <div class="col-md-3 p-3 order-1 order-md-2 col-12 bg-warning">
-        <div class="h-100 p-3 shadow-lg">
-          <button class="filter btn btn-outline-secondary" data-type="type" value="fastfood">Fastfood</button>
-          <button class="filter btn btn-outline-secondary" data-type="type" value="noodle">Noodle</button>
         </div>
       </div>
     </div>
@@ -118,6 +122,11 @@
     <input type="radio" name="jy-tabs" id="tabone" checked="checked">
     <label for="tabone">Menu</label>
     <div class="jy-tab" id="menu">
+      <div class="container">
+        Food: McNugget<br>
+        Price: $30
+        <button class="btn btn-primary" onClick="$('#myToast').toast('show');">Add to Cart</button>
+      </div>
     </div>
     
     <input type="radio" name="jy-tabs" id="tabtwo">
@@ -315,8 +324,8 @@
       // filter tag
       $(".filter").click(function() {
         $(this).toggleClass("active");
+        let searchText = $(this).val();
         if ($(this).hasClass("active")) {
-          let searchText = $(this).val();
           $(".card").each(function() {
             if ($(this).text().toLowerCase().indexOf(searchText) != -1) {
               $(this).fadeIn();
@@ -324,9 +333,19 @@
             else {
               $(this).fadeOut();
             }
-          })
+          });
         }
-      })
+        else {
+          $(".card").each(function() {
+            if ($(this).text().toLowerCase().indexOf(searchText) == -1) {
+              $(this).fadeIn();
+            }
+            else {
+              $(this).fadeOut();
+            }
+          });
+        }
+      });
 
       // give rating
       $('input:radio[name="rate"]').change(function(){
@@ -365,9 +384,9 @@
       
     }
     function giveComment() {
-      $("#your-cmt").val("");
       $("#cmt-block").append(' <div class="cmt shadow p-2"> <div class="cmt-header"><span class="text-warning">#1</span><span> p**** '+
-      '</span><span>2019-10-17</span></div> <div class="cmt-body">服務很好 整體5顆星</div> </div> ');
+      '</span><span>2019-10-17</span></div> <div class="cmt-body">'+$("#your-cmt").val()+'</div> </div> ');
+      $("#your-cmt").val("");
       return false;
     }
     function modelFilter() {
