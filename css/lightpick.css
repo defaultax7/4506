@@ -74,14 +74,14 @@
     border-radius: 4px;
 }
 
-.lightpick__month-title > .lightpick__select {
+/* .lightpick__month-title > .lightpick__select {
     border: none;
     background-color: transparent;
     outline: none;
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-}
+} */
 .lightpick__month-title > .lightpick__select:disabled {
     color: #333;
 }

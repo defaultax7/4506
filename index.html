@@ -712,7 +712,7 @@
           moment()
             .endOf("month")
             .fromNow()
-        );
+        )*1 - 1;
 
         var picker = new Lightpick({
           field: document.getElementById("btnFoundDate"),
