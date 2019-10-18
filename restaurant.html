@@ -78,7 +78,7 @@
   <div id="main" class="fluid-container p-4">
     <!-- top -->
     <div class="bg-dark row mt-3 p-2">
-      <form class="form-inline" onsubmit="$('#main2').fadeOut();return searchText('card', 'keyWord')">
+      <form class="form-inline" onsubmit="$('#restMenu').fadeOut();return searchText('card', 'keyWord')">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="keyWord">
           <button class="btn btn-outline-success" type="submit">
             <i class="material-icons align-top">search</i>
@@ -98,8 +98,10 @@
       </div>
       <div class="col-md-9 col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
         <div>
-          <i class="material-icons">store</i><span class="mx-3 align-top">Restaurants</span> <span class="p-1">&gt;</span>
-          <i class="material-icons">restaurant_menu</i><span class="mx-3 align-top">Menu</span></div>
+          <i class="material-icons">store</i><span class="mx-3 align-top">Restaurants</span>
+          <span class="p-1">&gt;</span>
+          <i class="material-icons">restaurant_menu</i><span class="mx-3 align-top">Menu</span>
+        </div>
         <div class="row" id="restList" >
           <div class="lds-default col-offset-6">
             <div></div><div></div><div></div><div></div><div></div><div>
@@ -107,7 +109,7 @@
           </div>
           
         </div>
-        <div id="main2" class="fluid-container p-4" style="display:none;">
+        <div id="restMenu" class="fluid-container p-4" style="display:none;">
           <h1 id="restName"></h1>
           <div class="jy-tabs">
             <input type="radio" name="jy-tabs" id="tabone" checked="checked">
@@ -369,15 +371,18 @@
       return foodDiv;
     }
     function showFood(fid) {
-      if ($("#main2").css("display") == "block") {
-        $("#main2").hide();
+      if ($("#restMenu").css("display") == "block") {
+        $("#restMenu").hide();
+      }
+      if ($("#restList").css("display") == "flex") {
+        $("#restList").hide();
       }
 
       let menu = restaurants.find(x => x.id === fid);
       $("#restName").text(menu.name);
       $("#desc").html("<img class='float-left p-2' style='width: 15rem; height: 15rem;' src='"+menu.imagePath+
       "'></img><p>"+menu.desc+"</p><div style='clear: both;'></div>")
-      $("#main2").fadeIn();
+      $("#restMenu").fadeIn();
       $('#rating').html('<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating));
       
     }
