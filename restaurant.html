@@ -11,16 +11,11 @@
   <title>Food Lambda</title>
   <style>
     #main {
-      background-image: url("img/background.jpg");
+      /* background-image: url("img/background.jpg"); */
       background-size: cover;
       animation-name: bgAni;
       animation-iteration-count: infinite;
       animation-duration: 10s;
-    }
-    #main2 {
-      background-image: url("img/background.jpg");
-      background-size: cover;
-      /* display: none; */
     }
     #restList {
       min-height: 60px;
@@ -41,11 +36,10 @@
     }
     .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
     .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
-    .show>.btn-outline-secondary.dropdown-toggle:focus {
-      box-shadow: none;
-    }
+    .show>.btn-outline-secondary.dropdown-toggle:focus,
     .btn-outline-secondary.focus,
-    .btn-outline-secondary:focus {
+    .btn-outline-secondary:focus,
+    #allTag:focus {
       box-shadow: none;
     }
     .toast {
@@ -97,7 +91,7 @@
     <div class="row">
       <div class="p-3 col-12 bg-warning">
         <div class="h-100 p-3 shadow-lg">
-          <button class="filter btn btn-outline-secondary" data-type="all" value="all">All</button>
+          <button class="btn btn-primary" id="allTag">All</button>
           <button class="filter btn btn-outline-secondary" data-type="type" value="fastfood">Fastfood</button>
           <button class="filter btn btn-outline-secondary" data-type="type" value="noodle">Noodle</button>
         </div>
@@ -113,76 +107,71 @@
           </div>
           
         </div>
+        <div id="main2" class="fluid-container p-4" style="display:none;">
+          <h1 id="restName"></h1>
+          <div class="jy-tabs">
+            <input type="radio" name="jy-tabs" id="tabone" checked="checked">
+            <label for="tabone">Menu</label>
+            <div class="jy-tab" id="menu">
+              <div class="container">
+                Food: McNugget<br>
+                Price: $30
+                <button class="btn btn-primary" onClick="showToast('Item has add to cart.')">Add to Cart</button>
+              </div>
+            </div>
+            
+            <input type="radio" name="jy-tabs" id="tabtwo">
+            <label for="tabtwo">Description</label>
+            <div class="jy-tab" id="desc">
+            </div>
+            
+            <input type="radio" name="jy-tabs" id="tabthree">
+            <label for="tabthree">Comments</label>
+            <div class="jy-tab" id="comment">
+              <div>
+                <span class="text-warning" style="font-size: 2rem;">Comments</span>
+                <span class="float-right" id="rating">
+                </span>
+                <div style="clear: both;"></div>
+              </div>
+              <div id="cmt-block">
+                <div class="cmt shadow p-2">
+                  <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
+                  <div class="cmt-body">服務很好 整體5顆星</div>
+                </div>
+                <div class="cmt shadow p-2">
+                  <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
+                  <div class="cmt-body">服務很好 整體5顆星</div>
+                </div>
+                <div class="cmt shadow p-2">
+                  <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
+                  <div class="cmt-body">服務很好 整體5顆星</div>
+                </div>
+              </div>
+              <div class="py-2">
+                <span class="text-warning" >Your Comments</span>
+              </div>
+              <form class="row" onsubmit="return giveComment();">
+                <div class="col-6 py-2"><input class="form-control mx-1" type="text" name="your-cmt" id="your-cmt" required></div>
+                <div class="col-1 py-2"><input type="submit" class="btn btn-primary mx-1" value="Submit"></div>
+                <div class="rate col-5">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text"></label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text"></label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text"></label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text"></label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text"></label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div id="main2" class="fluid-container p-4" style="display:none;">
-  <h1 id="restName"></h1>
-  <div class="jy-tabs">
-    <input type="radio" name="jy-tabs" id="tabone" checked="checked">
-    <label for="tabone">Menu</label>
-    <div class="jy-tab" id="menu">
-      <div class="container">
-        Food: McNugget<br>
-        Price: $30
-        <button class="btn btn-primary" onClick="$('#myToast').toast('show');">Add to Cart</button>
-      </div>
-    </div>
-    
-    <input type="radio" name="jy-tabs" id="tabtwo">
-    <label for="tabtwo">Description</label>
-    <div class="jy-tab" id="desc">
-    </div>
-    
-    <input type="radio" name="jy-tabs" id="tabthree">
-    <label for="tabthree">Comments</label>
-    <div class="jy-tab" id="comment">
-      <div>
-        <span class="text-warning" style="font-size: 2rem;">Comments</span>
-        <span class="float-right">
-          <span class="stared"></span>
-          <span class="nostar"></span>
-          <span class="nostar"></span>
-          <span class="nostar"></span>
-          <span class="nostar"></span>
-        </span>
-        <div style="clear: both;"></div>
-      </div>
-      <div id="cmt-block">
-        <div class="cmt shadow p-2">
-          <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
-          <div class="cmt-body">服務很好 整體5顆星</div>
-        </div>
-        <div class="cmt shadow p-2">
-          <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
-          <div class="cmt-body">服務很好 整體5顆星</div>
-        </div>
-        <div class="cmt shadow p-2">
-          <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
-          <div class="cmt-body">服務很好 整體5顆星</div>
-        </div>
-      </div>
-      <div class="py-2">
-        <span class="text-warning" >Your Comments</span>
-      </div>
-      <form class="row" onsubmit="return giveComment();">
-        <div class="col-6 py-2"><input class="form-control mx-1" type="text" name="your-cmt" id="your-cmt" required></div>
-        <div class="col-1 py-2"><input type="submit" class="btn btn-primary mx-1" value="Submit"></div>
-        <div class="rate col-5">
-            <input type="radio" id="star5" name="rate" value="5" />
-            <label for="star5" title="text"></label>
-            <input type="radio" id="star4" name="rate" value="4" />
-            <label for="star4" title="text"></label>
-            <input type="radio" id="star3" name="rate" value="3" />
-            <label for="star3" title="text"></label>
-            <input type="radio" id="star2" name="rate" value="2" />
-            <label for="star2" title="text"></label>
-            <input type="radio" id="star1" name="rate" value="1" />
-            <label for="star1" title="text"></label>
-        </div>
-      </form>
-    </div>
-  </div>
   </div>
 
   <!-- footer -->
@@ -271,7 +260,7 @@
               <label class="form-check-label" for="pL1">$</label>
             </div>
             <div class="form-check form-check-inline">
-              <input name="budget" type="checkbox" class="form-check-input" id="pL2" value="2">
+              <input name="budge" type="checkbox" class="form-check-input" id="pL2" value="2">
               <label class="form-check-label" for="pL2">$$</label>
             </div>
             <div class="form-check form-check-inline">
@@ -282,7 +271,7 @@
         </div>
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="searchByFilter()">Submit</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
 
@@ -291,7 +280,7 @@
   </div>
 <div class="toast fade" id="myToast" data-delay="1500">
     <div class="toast-header">
-        <strong class="mr-auto"><i class="fa fa-grav"></i>Thang You</strong>
+        <strong class="mr-auto">Message</strong>
         <small>current</small>
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
     </div>
@@ -321,12 +310,23 @@
         });
 
       });
-      // filter tag
+      // filterTag
+      $("#allTag").click(function() {
+        $(".filter").each(function() {
+          if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+          }
+        });
+        $(".foodItem").each(function() {
+          $(this).fadeIn();
+        });
+      });
       $(".filter").click(function() {
         $(this).toggleClass("active");
         let searchText = $(this).val();
+        console.log($(this).data("type"));
         if ($(this).hasClass("active")) {
-          $(".card").each(function() {
+          $(".foodItem").each(function() {
             if ($(this).text().toLowerCase().indexOf(searchText) != -1) {
               $(this).fadeIn();
             }
@@ -336,12 +336,9 @@
           });
         }
         else {
-          $(".card").each(function() {
+          $(".foodItem").each(function() {
             if ($(this).text().toLowerCase().indexOf(searchText) == -1) {
               $(this).fadeIn();
-            }
-            else {
-              $(this).fadeOut();
             }
           });
         }
@@ -349,7 +346,7 @@
 
       // give rating
       $('input:radio[name="rate"]').change(function(){
-        $("#myToast").toast("show");
+        showToast("We have received your comment");
       });
 
 
@@ -381,6 +378,7 @@
       $("#desc").html("<img class='float-left p-2' style='width: 15rem; height: 15rem;' src='"+menu.imagePath+
       "'></img><p>"+menu.desc+"</p><div style='clear: both;'></div>")
       $("#main2").fadeIn();
+      $('#rating').html('<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating));
       
     }
     function giveComment() {
@@ -391,6 +389,14 @@
     }
     function modelFilter() {
       restaurants.find(x => x.priceLv === fid);
+    }
+    function searchByFilter() {
+
+      console.log($("input[name= 'budget']").val());
+    }
+    function showToast(msg) {
+      $("#myToast > .toast-body").text(msg);
+      $("#myToast").toast("show");
     }
   </script>
 </body>

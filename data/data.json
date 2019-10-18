@@ -34,7 +34,23 @@
       "feature": ["western", "american"],
       "minPrice": 40,
       "fee": 30,
-      "rating": 1
+      "rating": 3
+    },
+    {
+      "id": 3,
+      "name": "AJISE noodle",
+      "imagePath": "img/kfc.jpeg",
+      "desc": "RAME shop",
+      "type": "noodle",
+      "foods": {
+        "BigChicken": [40, "BigNoodle"],
+        "SmallChicken": [30, "SmallNoodle"]
+      },
+      "priceLv": 3,
+      "feature": ["western", "american"],
+      "minPrice": 40,
+      "fee": 30,
+      "rating": 5
     }
   ]
 }
