@@ -171,8 +171,8 @@
                             </div>
                             <form class="row" onsubmit="return giveComment();">
                                 <div class="col-6 py-2"><input class="form-control mx-1" type="text" name="your-cmt" id="your-cmt" required></div>
-                                <div class="col-1 py-2"><input type="submit" class="btn btn-primary mx-1" value="Submit"></div>
-                                <div class="rate col-5">
+                                <div class="col-3 py-2"><input type="submit" class="btn btn-primary mx-1" value="Submit"></div>
+                                <div class="rate col-3">
                                     <input type="radio" id="star5" name="rate" value="5" />
                                     <label for="star5" title="text"></label>
                                     <input type="radio" id="star4" name="rate" value="4" />
@@ -469,6 +469,10 @@
         $("#restList").fadeIn();
         $("#restMenu").fadeIn();
         $("#restMenu").hide();
+    }
+    function showToast(msg) {
+      $("#myToast > .toast-body").text(msg);
+      $("#myToast").toast("show");
     }
 </script>
 </body>
