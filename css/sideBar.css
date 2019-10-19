@@ -3,12 +3,11 @@
 */
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
 body {
     font-family: 'Poppins', sans-serif;
     /*background: #fafafa;*/
     overflow-x: hidden;
-    background-color: rgb(204, 204, 204);
+    /* background-color: rgb(204, 204, 204); */
     /* background-image: url("../img/background.jpg"); */
     background-size: cover;
     background-attachment: fixed;
@@ -36,7 +35,7 @@ a:focus {
     border: none;
     border-radius: 0;
     background-color: #315C80;
-     /* margin-bottom: 40px; */
+    /* margin-bottom: 40px; */
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -53,6 +52,7 @@ a:focus {
     margin: 40px 0;
 }
 
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -61,6 +61,7 @@ a:focus {
     display: flex;
     width: 100%;
 }
+
 
 /* #sidebar {
     width: 250px;
@@ -73,22 +74,36 @@ a:focus {
     color: #fff;
     transition: all 0.3s;
 } */
+
 #sidebar #logo {
-    font-size: 5em; }
+    font-size: 5em;
+}
+
 #sidebar.active #logo {
-    font-size: 2rem; }
+    font-size: 2rem;
+}
+
 
 /*#sidebar.active {*/
-    /*margin-left: -250px;*/
+
+
+/*margin-left: -250px;*/
+
+
 /*}*/
+
+
 /*test*/
+
 #sidebar.active {
     min-width: 80px;
     max-width: 80px;
     text-align: center;
 }
+
 #sidebar.active ul li a span {
-    display: none; }
+    display: none;
+}
 
 #sidebar.active .sidebar-header h3,
 #sidebar.active .CTAs {
@@ -98,6 +113,8 @@ a:focus {
 #sidebar.active .sidebar-header strong {
     display: block;
 }
+
+
 /*test*/
 
 #sidebar .sidebar-header {
@@ -114,7 +131,10 @@ a:focus {
     color: #fff;
     padding: 10px;
 }
+
+
 /*test*/
+
 #sidebar.active ul li a {
     padding: 20px 10px;
     text-align: center;
@@ -140,6 +160,8 @@ a:focus {
     -ms-transform: translateX(50%);
     transform: translateX(50%);
 }
+
+
 /*test*/
 
 #sidebar ul li a {
@@ -201,7 +223,6 @@ a.article:hover {
 }
 
 
-
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -237,7 +258,6 @@ a.article:hover {
     transition: all 0.3s;
 }
 
-
 #testBlock {
     height: 100vh;
 }
@@ -249,21 +269,17 @@ a.article:hover {
 
 @media (max-width: 768px) {
     /*#sidebar {*/
-        /*margin-left: -250px;*/
+    /*margin-left: -250px;*/
     /*}*/
-
     /*#sidebar.active {*/
-        /*margin-left: 0;*/
+    /*margin-left: 0;*/
     /*}*/
-
     /*#content {*/
-        /*width: 100%;*/
+    /*width: 100%;*/
     /*}*/
-
     /*#content.active {*/
-        /*width: calc(100% - 250px);*/
+    /*width: calc(100% - 250px);*/
     /*}*/
-
     #sidebarCollapse span {
         display: none;
     }
