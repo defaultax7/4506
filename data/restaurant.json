@@ -1,0 +1,12 @@
+{
+	"restaurantList" : 
+	[
+		"restaurant" : {
+			"img" : "img/logo2.jpg" 
+		}
+		,
+		"restaurant" : {
+			"img" : "img/logo2.jpg" 
+		}
+	]
+}

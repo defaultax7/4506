@@ -16,9 +16,54 @@
     <link rel="stylesheet" href="css/bootstrap-clockpicker.css" />
     <link rel="stylesheet" href="css/operator.css" />
     <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/radio.css">
 </head>
 
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="settingForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Setting</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+
+                <div class="modal-body">
+                    View Style <br>
+                    <div class="form-check-inline">
+                        <label class="customradio m-2"><span class="radiotextsty">Card</span>
+                  <input type="radio" checked="checked" name="radio">
+                  <span class="checkmark"></span>
+                </label>
+                        <label class="customradio m-2"><span class="radiotextsty">Grid</span>
+                  <input type="radio" name="radio">
+                  <span class="checkmark"></span>
+                </label>
+
+                    </div>
+                    <br> Theme <br>
+                    <div class="form-check-inline">
+                        <label class="customradio m-2"><span class="radiotextsty">Dark</span>
+                      <input type="radio" checked="checked" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+                        <label class="customradio m-2"><span class="radiotextsty">Light</span>
+                      <input type="radio" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveSetting">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- form -->
     <div class="modal fade" id="addForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog" id="formContainer">
@@ -74,7 +119,7 @@
                           <small class="form-text text-muted">*required</small>
                         </div>
                       </div>
-                      <div class="col-2 offset-1">
+                      <div class="col-3 ">
                         <div class="form-group">
                           <label for="restaurantName"
                             ><span class="align-top font-weight-bold"
@@ -103,7 +148,7 @@
                         </div>
                       </div>
 
-                      <div class="col-2 offset-1">
+                      <div class="col-3">
                         <div class="form-group">
                           <label for="phoneNo"
                             ><span class="align-top font-weight-bold"
@@ -574,6 +619,11 @@
           <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
+                  <a class="nav-link" href="#" type="button"
+                  data-toggle="modal"
+                  data-target="#settingForm"> Setting </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#"> Logout </a>
               </li>
             </ul>
@@ -636,85 +686,92 @@
 
         <div class="hspace-20"></div>
 
-        <div class="mediaContainer shadow-lg">
-          <div class="media p-3" style="background-color: white;">
-            <img
-              src="img/logo2.jpg"
-              class="align-self-start mr-3"
-              data-toggle="modal"
-              data-target="#exampleModalScrollable"
-              type="button"
-              alt="..."
-            />
-            <div class="media-body">
-              <h5 class="mt-0"><span class="reportNo">14415</span> reports</h5>
-              <ul>
-                <li>14415 : location is wrong</li>
-              </ul>
-            </div>
-          </div>
-          <div class="mediaBtn p-3">
-            <button type="button" class="btn btn-primary">
-              Update information
-            </button>
-            <button type="button" class="btn btn-danger">Ignore</button>
-          </div>
-        </div>
-
-        <div class="hspace-20"></div>
-
-        <div class="mediaContainer shadow-lg">
-          <div class="media p-3" style="background-color: white;">
-            <img
-              src="img/logo3.jpg"
-              class="align-self-start mr-3"
-              data-toggle="modal"
-              data-target="#exampleModalScrollable"
-              type="button"
-              alt="..."
-            />
-            <div class="media-body">
-              <h5 class="mt-0"><span class="reportNo">7231</span> reports</h5>
-              <ul>
-                <li>7231 : menu is wrong</li>
-              </ul>
-            </div>
-          </div>
-          <div class="mediaBtn p-3">
-            <button type="button" class="btn btn-primary">
-              Update information
-            </button>
-            <button type="button" class="btn btn-danger">Ignore</button>
-          </div>
-        </div>
-
-        <div class="hspace-20"></div>
-
-        <div class="mediaContainer shadow-lg">
-          <div class="media p-3" style="background-color: white;">
-            <img
-              src="img/logo4.png"
-              class="align-self-start mr-3"
-              data-toggle="modal"
-              data-target="#exampleModalScrollable"
-              type="button"
-              alt="..."
-            />
-            <div class="media-body">
-              <h5 class="mt-0"><span class="reportNo">5021</span> reports</h5>
-              <ul>
-                <li>5021 : Contact number is wrong</li>
-              </ul>
-            </div>
-          </div>
-          <div class="mediaBtn p-3">
-            <button type="button" class="btn btn-primary">
-              Update information
-            </button>
-            <button type="button" class="btn btn-danger">Ignore</button>
-          </div>
-        </div>
         
+      <div class="mediaContainer shadow-lg" id="mediaContainer1">
+        <div class="media p-2" style="background-color: white;">
+          <img
+            src="img/logo2.jpg"
+            class="align-self-start mr-3"
+            data-toggle="modal"
+            data-target="#exampleModalScrollable"
+            type="button"
+            alt="..."
+          />
+          <div class="media-body">
+            <h5 class="mt-0"><span class="reportNo">14415</span> reports</h5>
+            <ul>
+              <li>14415 : location is wrong</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mediaBtn p-3">
+          <button type="button" class="btn btn-primary">
+            Update information
+          </button>
+          <button type="button" class="btn btn-danger">Ignore</button>
+        </div>
+      </div>
+
+      <div class="hspace-20"></div>
+
+      <div class="mediaContainer shadow-lg" id="mediaContainer2">
+        <div class="media p-2" style="background-color: white;">
+          <img
+            src="img/logo3.jpg"
+            class="align-self-start mr-3"
+            data-toggle="modal"
+            data-target="#exampleModalScrollable"
+            type="button"
+            alt="..."
+          />
+          <div class="media-body">
+            <h5 class="mt-0"><span class="reportNo">7231</span> reports</h5>
+            <ul>
+              <li>7231 : menu is wrong</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mediaBtn p-3">
+          <button type="button" class="btn btn-primary">
+            Update information
+          </button>
+          <button type="button" class="btn btn-danger">Ignore</button>
+        </div>
+      </div>
+
+      <div class="hspace-20"></div>
+
+      <div class="mediaContainer shadow-lg" id="mediaContainer3">
+        <div class="media p-2" style="background-color: white;">
+          <img
+            src="img/logo4.png"
+            class="align-self-start mr-3"
+            data-toggle="modal"
+            data-target="#exampleModalScrollable"
+            type="button"
+            alt="..."
+          />
+          <div class="media-body">
+            <h5 class="mt-0"><span class="reportNo">5021</span> reports</h5>
+            <ul>
+              <li>5021 : Contact number is wrong</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mediaBtn p-3">
+          <button type="button" class="btn btn-primary">
+            Update information
+          </button>
+          <button type="button" class="btn btn-danger">Ignore</button>
+        </div>
+      </div>
+      
+      <div class="hspace-20"></div>
+      
+        
+      </div>
+      <div class="row justify-content-center">  
+        <ul id="pagination-demo" class="pagination-sm"></ul>
       </div>
       </div>
 
@@ -778,6 +835,8 @@
     <script src="js/form.js"></script>
     <script src="js/bootstrap-clockpicker.js"></script>
     <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery.twbsPagination.js"></script>
+    
 
     <script>
       $(document).ready(function() {
@@ -838,7 +897,7 @@
         });
 
         $(".clockpicker").clockpicker({ autoclose: true });
-        $(".clockpickerEnd").clockpicker({ autoclose: true });
+        $(".clockpickerEn1d").clockpicker({ autoclose: true });
 
         $("img").click(function() {
           src = $(this).prop("src");
@@ -866,6 +925,17 @@
         $(".mediaContainer div:nth-child(2) button:nth-child(2)").click(function(){
           $(this).parent().parent().hide("drop" , 700);
         })
+
+        $('#pagination-demo').twbsPagination({
+        totalPages: 3,
+        visiblePages: 5,
+        onPageClick: function (event, page) {
+            $('#page-content').text('Page ' + page);
+            $.getJSON('data/restaurant.json', function(value) {
+              
+        });
+        }
+    });
       });
     </script>
   </body>
