@@ -1,408 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/loader.css">
-  <link rel="stylesheet" href="css/form.css">
-  <title>Food Lambda</title>
-  <style>
-    #main {
-      /* background-image: url("img/background.jpg"); */
-      background-size: cover;
-      animation-name: bgAni;
-      animation-iteration-count: infinite;
-      animation-duration: 10s;
-    }
-    #restList {
-      min-height: 60px;
-    }
-    @keyframes bgAni {
-      0% {
-        background-image: url("img/background.jpg");
-      }
-      40% {
-        background-image: url("img/background.jpg");
-      }
-      50% {
-        background-image: url("img/a.jpg");
-      }
-      90% {
-        background-image: url("img/a.jpg");
-      }
-    }
-    .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
-    .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
-    .show>.btn-outline-secondary.dropdown-toggle:focus,
-    .btn-outline-secondary.focus,
-    .btn-outline-secondary:focus,
-    #allTag:focus {
-      box-shadow: none;
-    }
-    .toast {
-      position: fixed;
-      top: 5%;
-      right: 5%;
-      z-index: 999999;
-    }
-    .h-100.p-3.shadow-lg {
-      border-radius: 20px;
-    }
 
-  </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/form.css">
+    <title>Food Lambda</title>
+    <style>
+        #main {
+            /* background-image: url("img/background.jpg"); */
+            background-size: cover;
+            animation-name: bgAni;
+            animation-iteration-count: infinite;
+            animation-duration: 10s;
+            background-color: grey;
+        }
+        
+        #restList {
+            min-height: 60px;
+        }
+        
+        @keyframes bgAni {
+            0% {
+                background-image: url("img/background.jpg");
+            }
+            40% {
+                background-image: url("img/background.jpg");
+            }
+            50% {
+                background-image: url("img/a.jpg");
+            }
+            100% {
+                background-image: url("img/a.jpg");
+            }
+        }
+        
+        .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
+        .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
+        .show>.btn-outline-secondary.dropdown-toggle:focus,
+        .btn-outline-secondary.focus,
+        .btn-outline-secondary:focus,
+        #allTag:focus {
+            box-shadow: none;
+        }
+        
+        .toast {
+            position: fixed;
+            top: 5%;
+            right: 5%;
+            z-index: 999999;
+        }
+        
+        .h-100.p-3.shadow-lg {
+            border-radius: 20px;
+        }
+        
+        #resBreadcrumb:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="navbar navbar-light bg-light navbar-expand-lg bar-sg shadow flex-wrap sticky-top p-0">
-    <div class="jy-indicator"></div>
-    <div class="container pb-2 pt-2 mx-auto">
-      <a href="./customer_index.html" class="navbar-brand">
-        <i class="material-icons" id="logo"> fastfood </i>
-        Yummy Everywhere
-      </a>
-      <button class="navbar-toggler pull-left mx-2" type="button" data-toggle="collapse" data-target="#navbarContent"
-              aria-label="Toggle navigation" ><span class="navbar-toggler-icon"></span>
+    <div class="navbar navbar-light bg-light navbar-expand-lg bar-sg shadow flex-wrap sticky-top p-0">
+        <div class="jy-indicator"></div>
+        <div class="container pb-2 pt-2 mx-auto">
+            <a href="./customer_index.html" class="navbar-brand">
+                <i class="material-icons" id="logo"> fastfood </i> Yummy Everywhere
+            </a>
+            <button class="navbar-toggler pull-left mx-2" type="button" data-toggle="collapse" data-target="#navbarContent" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse collapse flex-row-reverse"  id="navbarContent">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a id="restTag" class="nav-link" href="./restaurant.html">Restaurant</a></li>
-          <li class="nav-item"><a id="orderTag" class="nav-link" href="./order.html">Order</a></li>
-          <li class="nav-item"> <a class="nav-link" href="./register.html">Sign-Up</a> </li>
-          <li class="nav-item"> <a class="nav-link modal-trigger" href="./login.html" data-toggle="modal" data-target="#loginModal">Login</a></li>
-        </ul>
-      </div>
+            <div class="navbar-collapse collapse flex-row-reverse" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a id="restTag" class="nav-link" href="./restaurant.html">Restaurant</a></li>
+                    <li class="nav-item"><a id="orderTag" class="nav-link" href="./order.html">Order</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="./register.html">Sign-Up</a> </li>
+                    <li class="nav-item"> <a class="nav-link modal-trigger" href="./login.html" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
-  <div id="main" class="fluid-container p-4">
-    <!-- top -->
-    <div class="bg-dark row mt-3 p-2">
-      <form class="form-inline" onsubmit="$('#restMenu').fadeOut();return searchText('card', 'keyWord')">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="keyWord">
-          <button class="btn btn-outline-success" type="submit">
+    <div id="main" class="fluid-container p-4">
+        <!-- top -->
+        <div class="bg-dark row mt-3 p-2">
+            <form class="form-inline" onsubmit="$('#restMenu').fadeOut();return searchText('card', 'keyWord')">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="keyWord">
+                <button class="btn btn-outline-success" type="submit">
             <i class="material-icons align-top">search</i>
           </button>
-          <button class="btn btn-primary mx-2" type="submit" value="filter-food" onclick="$('#filterModal').modal()">
+                <button class="btn btn-primary mx-2" type="submit" value="filter-food" onclick="$('#filterModal').modal()">
             Filter
           </button>
-      </form>
-    </div>
-    <div class="row">
-      <div class="p-3 col-12 bg-warning">
-        <div class="h-100 p-3 shadow-lg">
-          <button class="btn btn-primary" id="allTag">All</button>
-          <button class="filter btn btn-outline-secondary" data-type="type" value="fastfood">Fastfood</button>
-          <button class="filter btn btn-outline-secondary" data-type="type" value="noodle">Noodle</button>
+            </form>
         </div>
-      </div>
-      <div class="col-md-9 col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
-        <div>
-          <i class="material-icons">store</i><span class="mx-3 align-top">Restaurants</span>
-          <span class="p-1">&gt;</span>
-          <i class="material-icons">restaurant_menu</i><span class="mx-3 align-top">Menu</span>
-        </div>
-        <div class="row" id="restList" >
-          <div class="lds-default col-offset-6">
-            <div></div><div></div><div></div><div></div><div></div><div>
-            </div><div></div><div></div><div></div><div></div><div></div><div></div>
-          </div>
-          
-        </div>
-        <div id="restMenu" class="fluid-container p-4" style="display:none;">
-          <h1 id="restName"></h1>
-          <div class="jy-tabs">
-            <input type="radio" name="jy-tabs" id="tabone" checked="checked">
-            <label for="tabone">Menu</label>
-            <div class="jy-tab" id="menu">
-              <div class="container">
-                Food: McNugget<br>
-                Price: $30
-                <button class="btn btn-primary" onClick="showToast('Item has add to cart.')">Add to Cart</button>
-              </div>
+        <div class="row">
+            <div class="p-3 col-12 bg-warning">
+                <div class="h-100 p-3 shadow-lg">
+                    <button class="btn btn-primary" id="allTag">All</button>
+                    <button class="filter btn btn-outline-secondary" data-type="type" value="fastfood">Fastfood</button>
+                    <button class="filter btn btn-outline-secondary" data-type="type" value="noodle">Noodle</button>
+                </div>
             </div>
-            
-            <input type="radio" name="jy-tabs" id="tabtwo">
-            <label for="tabtwo">Description</label>
-            <div class="jy-tab" id="desc">
-            </div>
-            
-            <input type="radio" name="jy-tabs" id="tabthree">
-            <label for="tabthree">Comments</label>
-            <div class="jy-tab" id="comment">
-              <div>
-                <span class="text-warning" style="font-size: 2rem;">Comments</span>
-                <span class="float-right" id="rating">
-                </span>
-                <div style="clear: both;"></div>
-              </div>
-              <div id="cmt-block">
-                <div class="cmt shadow p-2">
-                  <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
-                  <div class="cmt-body">服務很好 整體5顆星</div>
+            <div class="col-md-9 col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
+                <div>
+                    <i class="material-icons">store</i><span class="mx-3 align-top" onclick="backToRestaurentView()" id="resBreadcrumb">Restaurants</span>
+                    <span class="p-1">&gt;</span>
+                    <i class="material-icons">restaurant_menu</i><span class="mx-3 align-top">Menu</span>
                 </div>
-                <div class="cmt shadow p-2">
-                  <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
-                  <div class="cmt-body">服務很好 整體5顆星</div>
-                </div>
-                <div class="cmt shadow p-2">
-                  <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
-                  <div class="cmt-body">服務很好 整體5顆星</div>
-                </div>
-              </div>
-              <div class="py-2">
-                <span class="text-warning" >Your Comments</span>
-              </div>
-              <form class="row" onsubmit="return giveComment();">
-                <div class="col-6 py-2"><input class="form-control mx-1" type="text" name="your-cmt" id="your-cmt" required></div>
-                <div class="col-1 py-2"><input type="submit" class="btn btn-primary mx-1" value="Submit"></div>
-                <div class="rate col-5">
-                    <input type="radio" id="star5" name="rate" value="5" />
-                    <label for="star5" title="text"></label>
-                    <input type="radio" id="star4" name="rate" value="4" />
-                    <label for="star4" title="text"></label>
-                    <input type="radio" id="star3" name="rate" value="3" />
-                    <label for="star3" title="text"></label>
-                    <input type="radio" id="star2" name="rate" value="2" />
-                    <label for="star2" title="text"></label>
-                    <input type="radio" id="star1" name="rate" value="1" />
-                    <label for="star1" title="text"></label>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                <div class="row" id="restList">
+                    <div class="lds-default col-offset-6">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div>
+                        </div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
 
-  <!-- footer -->
-  <footer class="py-5 text-white">
-      <div class="container py-xl-4">
-          <div class="row footer-top">
-              <div class="col-lg-4 footer-grid_section_1its footer-text">
-                  <!-- logo -->
-                  <h2>
-                      <a class="logo text-white" href="index.html">
+                </div>
+                <div id="restMenu" class="fluid-container p-4" style="display:none;">
+                    <h1 id="restName"></h1>
+                    <div class="jy-tabs">
+                        <input type="radio" name="jy-tabs" id="tabone" checked="checked">
+                        <label for="tabone">Menu</label>
+                        <div class="jy-tab" id="menu">
+                            <div class="container">
+                                Food: McNugget<br> Price: $30
+                                <button class="btn btn-primary" onClick="showToast('Item has add to cart.')">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <input type="radio" name="jy-tabs" id="tabtwo">
+                        <label for="tabtwo">Description</label>
+                        <div class="jy-tab" id="desc">
+                        </div>
+
+                        <input type="radio" name="jy-tabs" id="tabthree">
+                        <label for="tabthree">Comments</label>
+                        <div class="jy-tab" id="comment">
+                            <div>
+                                <span class="text-warning" style="font-size: 2rem;">Comments</span>
+                                <span class="float-right" id="rating">
+                </span>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div id="cmt-block">
+                                <div class="cmt shadow p-2">
+                                    <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
+                                    <div class="cmt-body">服務很好 整體5顆星</div>
+                                </div>
+                                <div class="cmt shadow p-2">
+                                    <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
+                                    <div class="cmt-body">服務很好 整體5顆星</div>
+                                </div>
+                                <div class="cmt shadow p-2">
+                                    <div class="cmt-header"><span class="text-warning">#1</span><span> p**** </span><span>2019-10-17</span></div>
+                                    <div class="cmt-body">服務很好 整體5顆星</div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <span class="text-warning">Your Comments</span>
+                            </div>
+                            <form class="row" onsubmit="return giveComment();">
+                                <div class="col-6 py-2"><input class="form-control mx-1" type="text" name="your-cmt" id="your-cmt" required></div>
+                                <div class="col-1 py-2"><input type="submit" class="btn btn-primary mx-1" value="Submit"></div>
+                                <div class="rate col-5">
+                                    <input type="radio" id="star5" name="rate" value="5" />
+                                    <label for="star5" title="text"></label>
+                                    <input type="radio" id="star4" name="rate" value="4" />
+                                    <label for="star4" title="text"></label>
+                                    <input type="radio" id="star3" name="rate" value="3" />
+                                    <label for="star3" title="text"></label>
+                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <label for="star2" title="text"></label>
+                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <label for="star1" title="text"></label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="py-5 text-white">
+        <div class="container py-xl-4">
+            <div class="row footer-top">
+                <div class="col-lg-4 footer-grid_section_1its footer-text">
+                    <!-- logo -->
+                    <h2>
+                        <a class="logo text-white" href="index.html">
                         Yummy Everywhere
                       </a>
-                  </h2>
-                  <!-- //logo -->
-                  <p class="mt-lg-4 mt-3 mb-lg-5 mb-4"> If the food is Yummy, delivered. </p>
-                  <!-- social icons -->
-                  <ul class="top-right-info">
-                      <li>
-                          <p>Follow As:</p>
-                      </li>
-                      <li><a class="white-text mx-1" href="https://www.facebook.com/"><img src="img/icon/facebok.png"
-                                                                                               alt="" style="width: 25px; height: 25px;"></a></li>
-                      <li><a class="white-text mx-1" href="https://twitter.com/?lang=zh-tw"><img src="img/icon/twitter.png"
-                              alt="" style="width: 25px; height: 25px; border-radius: 50%;"></a></li>
-                      <li><a class="white-text mx-1" href="https://www.instagram.com/accounts/login/"><img
-                                      src="img/icon/ig.png" alt="" style="width: 25px; height: 25px;"></a></li>
-                  </ul>
-                  <!-- //social icons -->
-              </div>
-              <div class="col-lg-4 footer-grid_section_1its my-lg-0 my-sm-4 my-4">
-                  <div class="footer-title">
-                      <h3>Contact Us</h3>
-                  </div>
-                  <div class="footer-text mt-4">
-                      <p>Address : 1234 yummy, Everywhere, North City, North Koera</p>
-                      <p class="my-2">Phone : +852 12345678</p>
-                      <p>Email : <a href="mailto:yummy@everywhere.com">yummy@everywhere.com</a></p>
-                  </div>
-              </div>
-              <div class="col-lg-4 footer-grid_section_1its">
-                  <div class="footer-title">
-                      <h3>Request Info</h3>
-                  </div>
-                  <div class="info-form-right mt-4 p-0">
-                      <form action="#!" method="post">
-                          <div class="row">
-                              <div class="col-lg-6 form-group mb-2 pr-lg-1">
-                                  <input type="text" class="form-control" name="Name" placeholder="Name" required="">
-                              </div>
-                              <div class="col-lg-6 form-group mb-2 pl-lg-1">
-                                  <input type="text" class="form-control" name="Phone" placeholder="Phone"
-                                      required="">
-                              </div>
-                          </div>
-                          <div class="form-group mb-2">
-                              <input type="email" class="form-control" name="Email" placeholder="Email" required="">
-                          </div>
-                          <div class="form-group mb-2">
-                              <textarea name="Comment" class="form-control" placeholder="Comment"
-                                  required=""></textarea>
-                          </div>
-                          <button type="submit" class="btn float-right my-2 btn-danger">Submit</button>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </footer>
-  <div class="copy-right text-center py-3">
-    <p>© 2019 Yummy Everywhere. All rights reserved.</p>
-  </div>
-  <div class="modal fade" id="filterModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Food Filter</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <form action="">
-            <span>Budget</span>
-            <div class="form-check form-check-inline">
-              <input name="budget" type="checkbox" class="form-check-input" id="pL1" value="1">
-              <label class="form-check-label" for="pL1">$</label>
+                    </h2>
+                    <!-- //logo -->
+                    <p class="mt-lg-4 mt-3 mb-lg-5 mb-4"> If the food is Yummy, delivered. </p>
+                    <!-- social icons -->
+                    <ul class="top-right-info">
+                        <li>
+                            <p>Follow As:</p>
+                        </li>
+                        <li>
+                            <a class="white-text mx-1" href="https://www.facebook.com/"><img src="img/icon/facebok.png" alt="" style="width: 25px; height: 25px;"></a>
+                        </li>
+                        <li>
+                            <a class="white-text mx-1" href="https://twitter.com/?lang=zh-tw"><img src="img/icon/twitter.png" alt="" style="width: 25px; height: 25px; border-radius: 50%;"></a>
+                        </li>
+                        <li>
+                            <a class="white-text mx-1" href="https://www.instagram.com/accounts/login/"><img src="img/icon/ig.png" alt="" style="width: 25px; height: 25px;"></a>
+                        </li>
+                    </ul>
+                    <!-- //social icons -->
+                </div>
+                <div class="col-lg-4 footer-grid_section_1its my-lg-0 my-sm-4 my-4">
+                    <div class="footer-title">
+                        <h3>Contact Us</h3>
+                    </div>
+                    <div class="footer-text mt-4">
+                        <p>Address : 1234 yummy, Everywhere, North City, North Koera</p>
+                        <p class="my-2">Phone : +852 12345678</p>
+                        <p>Email : <a href="mailto:yummy@everywhere.com">yummy@everywhere.com</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 footer-grid_section_1its">
+                    <div class="footer-title">
+                        <h3>Request Info</h3>
+                    </div>
+                    <div class="info-form-right mt-4 p-0">
+                        <form action="#!" method="post">
+                            <div class="row">
+                                <div class="col-lg-6 form-group mb-2 pr-lg-1">
+                                    <input type="text" class="form-control" name="Name" placeholder="Name" required="">
+                                </div>
+                                <div class="col-lg-6 form-group mb-2 pl-lg-1">
+                                    <input type="text" class="form-control" name="Phone" placeholder="Phone" required="">
+                                </div>
+                            </div>
+                            <div class="form-group mb-2">
+                                <input type="email" class="form-control" name="Email" placeholder="Email" required="">
+                            </div>
+                            <div class="form-group mb-2">
+                                <textarea name="Comment" class="form-control" placeholder="Comment" required=""></textarea>
+                            </div>
+                            <button type="submit" class="btn float-right my-2 btn-danger">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-check form-check-inline">
-              <input name="budge" type="checkbox" class="form-check-input" id="pL2" value="2">
-              <label class="form-check-label" for="pL2">$$</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input name="budget" type="checkbox" class="form-check-input" id="pL3" value="3">
-              <label class="form-check-label" for="pL3">$$$</label>
-            </div>
-          </form>
         </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="searchByFilter()">Submit</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </footer>
+    <div class="copy-right text-center py-3">
+        <p>© 2019 Yummy Everywhere. All rights reserved.</p>
+    </div>
+    <div class="modal fade" id="filterModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Food Filter</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form action="">
+                        <span>Budget</span>
+                        <div class="form-check form-check-inline">
+                            <input name="budget" type="checkbox" class="form-check-input" id="pL1" value="1">
+                            <label class="form-check-label" for="pL1">$</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input name="budge" type="checkbox" class="form-check-input" id="pL2" value="2">
+                            <label class="form-check-label" for="pL2">$$</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input name="budget" type="checkbox" class="form-check-input" id="pL3" value="3">
+                            <label class="form-check-label" for="pL3">$$$</label>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="searchByFilter()">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
         </div>
-
-      </div>
     </div>
-  </div>
-<div class="toast fade" id="myToast" data-delay="1500">
-    <div class="toast-header">
-        <strong class="mr-auto">Message</strong>
-        <small>current</small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    <div class="toast fade" id="myToast" data-delay="1500">
+        <div class="toast-header">
+            <strong class="mr-auto">Message</strong>
+            <small>current</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+        </div>
+        <div class="toast-body">
+            We have received your comment
+        </div>
     </div>
-    <div class="toast-body">
-      We have received your comment
-    </div>
-</div>
 
 
 
 
-  <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
-  <script src="js/bootstrap.min.js" charset="utf-8"></script>
-  <script src="js/util.js"></script>
-  <script>
-    var restaurants = [];
-    $(document).ready(function() {
-      // $("#filterModal").modal();
-      $.getJSON("data/data.json", function(data) {
-        restaurants = data.restaurant;
-        let context = "";
-        for (let i = 0; i < restaurants.length; i++) {
-           context += putRestaurant(restaurants[i])
-        }
-        $.when($(".lds-default").fadeOut(1000)).done(function() {
-            $("#restList").append(context).hide().fadeIn(1000);
-        });
+    <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/util.js"></script>
+    <script>
+        var restaurants = [];
+        $(document).ready(function() {
+            // $("#filterModal").modal();
+            $.getJSON("data/data.json", function(data) {
+                restaurants = data.restaurant;
+                let context = "";
+                for (let i = 0; i < restaurants.length; i++) {
+                    context += putRestaurant(restaurants[i])
+                }
+                $.when($(".lds-default").fadeOut(1000)).done(function() {
+                    $("#restList").append(context).hide().fadeIn(1000);
+                });
 
-      });
-      // filterTag
-      $("#allTag").click(function() {
-        $(".filter").each(function() {
-          if ($(this).hasClass("active")) {
-            $(this).removeClass("active");
-          }
-        });
-        $(".foodItem").each(function() {
-          $(this).fadeIn();
-        });
-      });
-      $(".filter").click(function() {
-        $(this).toggleClass("active");
-        let searchText = $(this).val();
-        console.log($(this).data("type"));
-        if ($(this).hasClass("active")) {
-          $(".foodItem").each(function() {
-            if ($(this).text().toLowerCase().indexOf(searchText) != -1) {
-              $(this).fadeIn();
+            });
+            // filterTag
+            $("#allTag").click(function() {
+                $(".filter").each(function() {
+                    if ($(this).hasClass("active")) {
+                        $(this).removeClass("active");
+                    }
+                });
+                $(".foodItem").each(function() {
+                    $(this).fadeIn();
+                });
+            });
+            $(".filter").click(function() {
+                $(this).toggleClass("active");
+                let searchText = $(this).val();
+                console.log($(this).data("type"));
+                if ($(this).hasClass("active")) {
+                    $(".foodItem").each(function() {
+                        if ($(this).text().toLowerCase().indexOf(searchText) != -1) {
+                            $(this).fadeIn();
+                        } else {
+                            $(this).fadeOut();
+                        }
+                    });
+                } else {
+                    $(".foodItem").each(function() {
+                        if ($(this).text().toLowerCase().indexOf(searchText) == -1) {
+                            $(this).fadeIn();
+                        }
+                    });
+                }
+            });
+
+            // give rating
+            $('input:radio[name="rate"]').change(function() {
+                showToast("We have received your comment");
+            });
+
+
+        })
+
+        function putRestaurant(obj) {
+            let label = "";
+            if (obj.label !== undefined) {
+                label = '<div class="card-label">' + obj.label + '</div>';
             }
-            else {
-              $(this).fadeOut();
-            }
-          });
+            let foodDiv = '<div class="col-12 col-sm-6 col-md-4 col-xl-3 p-3 foodItem"> <a class="card" href="#!" data-id="' + obj.id +
+                '" onclick="showFood( ' + obj.id +
+                ' );"> ' + label +
+                '<div class="card-img"> <img class="card-img-top"  src="' + obj.imagePath +
+                '" alt="food image"> </div> <div class="card-body"> <span>' + obj.name +
+                '</span> <ul class="food"> <li>' + "$".repeat(obj.priceLv) +
+                '</li> <li>' + obj.feature.join("</li><li>") +
+                '<li id="type">' + obj.type + '</li> </ul> <ul class="food-price"> <li><strong>$' + obj.minPrice +
+                '</strong></li> <li>minimum</li><br /> <li><strong>$' + obj.fee +
+                '</strong></li> <li>delivery fee</li> </ul> </div> </a> </div> ';
+            return foodDiv;
         }
-        else {
-          $(".foodItem").each(function() {
-            if ($(this).text().toLowerCase().indexOf(searchText) == -1) {
-              $(this).fadeIn();
+
+        function showFood(fid) {
+            if ($("#restMenu").css("display") == "block") {
+                $("#restMenu").hide();
             }
-          });
+            if ($("#restList").css("display") == "flex") {
+                $("#restList").hide();
+            }
+
+            let menu = restaurants.find(x => x.id === fid);
+            $("#restName").text(menu.name);
+            $("#desc").html("<img class='float-left p-2' style='width: 15rem; height: 15rem;' src='" + menu.imagePath +
+                "'></img><p>" + menu.desc + "</p><div style='clear: both;'></div>")
+            $("#restMenu").fadeIn();
+            $('#rating').html('<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating));
+
         }
-      });
 
-      // give rating
-      $('input:radio[name="rate"]').change(function(){
-        showToast("We have received your comment");
-      });
+        function giveComment() {
+            $("#cmt-block").append(' <div class="cmt shadow p-2"> <div class="cmt-header"><span class="text-warning">#1</span><span> p**** ' +
+                '</span><span>2019-10-17</span></div> <div class="cmt-body">' + $("#your-cmt").val() + '</div> </div> ');
+            $("#your-cmt").val("");
+            return false;
+        }
 
+        function modelFilter() {
+            restaurants.find(x => x.priceLv === fid);
+        }
 
-    })
-    function putRestaurant(obj) {
-      let label = "";
-      if (obj.label !== undefined) {
-        label = '<div class="card-label">' + obj.label + '</div>';
-      }
-      let foodDiv = '<div class="col-12 col-sm-6 col-md-4 col-xl-3 p-3 foodItem"> <a class="card" href="#!" data-id="'+ obj.id+
-      '" onclick="showFood( '+ obj.id +
-      ' );"> ' +label+
-      '<div class="card-img"> <img class="card-img-top"  src="'+obj.imagePath+
-      '" alt="food image"> </div> <div class="card-body"> <span>'+obj.name+
-      '</span> <ul class="food"> <li>'+ "$".repeat(obj.priceLv)+
-      '</li> <li>'+obj.feature.join("</li><li>")+
-      '<li id="type">'+obj.type+'</li> </ul> <ul class="food-price"> <li><strong>$'+obj.minPrice+
-      '</strong></li> <li>minimum</li><br /> <li><strong>$'+obj.fee+
-      '</strong></li> <li>delivery fee</li> </ul> </div> </a> </div> ';
-      return foodDiv;
-    }
-    function showFood(fid) {
-      if ($("#restMenu").css("display") == "block") {
-        $("#restMenu").hide();
-      }
-      if ($("#restList").css("display") == "flex") {
-        $("#restList").hide();
-      }
+        function searchByFilter() {
 
-      let menu = restaurants.find(x => x.id === fid);
-      $("#restName").text(menu.name);
-      $("#desc").html("<img class='float-left p-2' style='width: 15rem; height: 15rem;' src='"+menu.imagePath+
-      "'></img><p>"+menu.desc+"</p><div style='clear: both;'></div>")
-      $("#restMenu").fadeIn();
-      $('#rating').html('<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating));
-      
-    }
-    function giveComment() {
-      $("#cmt-block").append(' <div class="cmt shadow p-2"> <div class="cmt-header"><span class="text-warning">#1</span><span> p**** '+
-      '</span><span>2019-10-17</span></div> <div class="cmt-body">'+$("#your-cmt").val()+'</div> </div> ');
-      $("#your-cmt").val("");
-      return false;
-    }
-    function modelFilter() {
-      restaurants.find(x => x.priceLv === fid);
-    }
-    function searchByFilter() {
+            console.log($("input[name= 'budget']").val());
+        }
 
-      console.log($("input[name= 'budget']").val());
-    }
-    function showToast(msg) {
-      $("#myToast > .toast-body").text(msg);
-      $("#myToast").toast("show");
-    }
-  </script>
+        function showToast(msg) {
+            $("#myToast > .toast-body").text(msg);
+            $("#myToast").toast("show");
+        }
+
+        function backToRestaurentView() {
+            $("#restList").fadeIn();
+            $("#restMenu").fadeIn();
+            $("#restMenu").hide();
+        }
+    </script>
 </body>
+
 </html>
