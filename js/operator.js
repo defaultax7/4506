@@ -171,9 +171,12 @@ $(document).ready(function() {
     }
 
     $("#noResult").hide();
+    $("#restaurantInfo").hide();
 
     $("#btnBroRes").click(function() {
         $("#reportedResContainer").hide();
+        $("#restaurantInfo").show();
+        $("#heading").text("Restaurant");
     });
 
     $("#searchBar").keyup(function() {
@@ -199,10 +202,6 @@ $(document).ready(function() {
                     }
                 }
             }
-            console.log(count);
-            console.log(index1);
-            console.log(index2);
-            console.log(index3);
             if (count >= 3) {
                 $("#reportedResContainer").show();
                 $("#pagination-demo").show();
