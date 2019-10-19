@@ -74,7 +74,22 @@ $(document).ready(function() {
         $(this)
             .parent()
             .parent()
-            .hide("drop", 700);
+            .hide("drop", 700, function() {
+                container = document.createElement('div');
+                cc =
+                    "<div class='hspace-20'></div> <div class='mediaContainer shadow-lg' id='mediaContainer1'>        <div class='media p-2' style='background-color: white;'>          <img            src='img/logo5.png'            class='align-self-start mr-3'            data-toggle='modal'            data-target='#exampleModalScrollable'            type='button'            alt='...'          />          <div class='media-body'>            <h5 class='mt-0'></h5>            <span class='reportNo' style='color : green'></span> reports            <ul>              <li></li>            </ul>          </div>        </div>        <div class='mediaBtn p-3'>          <button type='button' class='btn btn-primary'>            Update information          </button>          <button type='button' class='btn btn-danger'>Ignore</button>        </div>      </div> <div class='hspace-20'></div>";
+
+                container.innerHTML = cc;
+                container.classList.add("fullwidth");
+                $(this)
+                    .parent()
+                    .append(container);
+
+                container.childNodes[2].childNodes[1].childNodes[1].src = "img/mc.png";
+                container.childNodes[2].childNodes[1].childNodes[3].childNodes[3].innerHTML = "3000";
+                container.childNodes[2].childNodes[1].childNodes[3].childNodes[5].childNodes[1].innerHTML = "something is wrong";
+
+            });
     });
 
     $("#pagination-demo").twbsPagination({
@@ -135,18 +150,22 @@ $(document).ready(function() {
                     );
                 }
 
-                $(".reportNo").each(function() {
-                    no = parseInt($(this).text());
-
-                    if (no > 10000) {
-                        $(this).css("color", "red");
-                    } else if (no > 5000) {
-                        $(this).css("color", "orange");
-                    } else {
-                        $(this).css("color", "green");
-                    }
+                $(".reportNo").each(function(element) {
+                    qtyAlert($(this));
                 });
             });
         }
     });
+
+    function qtyAlert(element) {
+        no = parseInt(element[0].textContent);
+
+        if (no > 10000) {
+            element[0].style.color = 'red';
+        } else if (no > 5000) {
+            element[0].style.color = 'orange';
+        } else {
+            element[0].style.color = 'green';
+        }
+    }
 });
