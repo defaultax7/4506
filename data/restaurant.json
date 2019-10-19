@@ -29,6 +29,11 @@
       "img": "img/logo6.jpg",
       "report": "1500",
 	  "reason" : "BOOM!"
+    },
+	{
+      "img": "img/logo7.jpg",
+      "report": "1000",
+	  "reason" : "BOOM!"
     }
   ]
 }

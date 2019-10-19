@@ -698,9 +698,9 @@
             alt="..."
           />
           <div class="media-body">
-            <h5 class="mt-0"><span class="reportNo">14415</span> reports</h5>
+            <h5 class="mt-0"><span class="reportNo"></span> reports</h5>
             <ul>
-              <li>14415 : location is wrong</li>
+              <li></li>
             </ul>
           </div>
         </div>
@@ -725,9 +725,9 @@
             alt="..."
           />
           <div class="media-body">
-            <h5 class="mt-0"><span class="reportNo">7231</span> reports</h5>
+            <h5 class="mt-0"><span class="reportNo"></span> reports</h5>
             <ul>
-              <li>7231 : menu is wrong</li>
+              <li></li>
             </ul>
           </div>
         </div>
@@ -752,9 +752,9 @@
             alt="..."
           />
           <div class="media-body">
-            <h5 class="mt-0"><span class="reportNo">5021</span> reports</h5>
+            <h5 class="mt-0"><span class="reportNo"></span> reports</h5>
             <ul>
-              <li>5021 : Contact number is wrong</li>
+              <li></li>
             </ul>
           </div>
         </div>
@@ -913,14 +913,7 @@
         })
       
 
-        $(".reportNo").each(function() {
-          no = parseInt($(this).text());
-          if (no > 10000) {
-            $(this).css("color", "red");
-          } else if (no > 5000) {
-            $(this).css("color", "orange");
-          }
-        });
+        
 
         $(".mediaContainer div:nth-child(2) button:nth-child(2)").click(function(){
           $(this).parent().parent().hide("drop" , 700);
@@ -928,7 +921,7 @@
 
 
         $('#pagination-demo').twbsPagination({
-        totalPages: 2,
+        totalPages: 3,
         visiblePages: 5,
         onPageClick: function (event, page) {
             $('#page-content').text('Page ' + page);
@@ -937,15 +930,43 @@
               $("#mediaContainer1 span").text(data.restaurantList[0 + (page-1)*3].report);
               $("#mediaContainer1 li").text(data.restaurantList[0 + (page-1)*3].reason);
 
+if(data.restaurantList[1 + (page-1)*3] == null){
+$("#mediaContainer2").css("visibility" , "hidden");
+}else{
+  $("#mediaContainer2").css("visibility" , "visible");
               $("#mediaContainer2 img").prop("src" , data.restaurantList[1 + (page-1)*3].img);
               $("#mediaContainer2 span").text(data.restaurantList[1 + (page-1)*3].report);
               $("#mediaContainer2 li").text(data.restaurantList[1 + (page-1)*3].reason);
+}
 
+if(data.restaurantList[2 + (page-1)*3] == null){
+  $("#mediaContainer3").css("visibility" , "hidden");
+}else{
+  $("#mediaContainer3").css("visibility" , "visible");
               $("#mediaContainer3 img").prop("src" , data.restaurantList[2 + (page-1)*3].img);
               $("#mediaContainer3 span").text(data.restaurantList[2 + (page-1)*3].report);
               $("#mediaContainer3 li").text(data.restaurantList[2 + (page-1)*3].reason);
+}
+
+
+              $(".reportNo").each(function() {
+          no = parseInt($(this).text());
+        
+          if (no > 10000) {
+            $(this).css("color", "red");
+          } else if (no > 5000) {
+            $(this).css("color", "orange");
+          }else{
+            $(this).css("color" , "green")
+          }
+        });
             });
+
+     
+
+        
         }  
+      
         })
 
       });
