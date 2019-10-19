@@ -11,3 +11,16 @@
 #addForm {
     overflow: scroll;
 }
+
+.media img {
+    width: 200px;
+    height: 200px;
+}
+
+.mediaBtn {
+    background-color: #fff;
+}
+
+.mediaContainer {
+    width: 100%;
+}

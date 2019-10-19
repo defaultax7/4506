@@ -630,7 +630,7 @@
           />
         </div>
       </div>
-      <div class="hspace-50"></div>
+      <div class="hspace-20"></div>
       <div class="row">
         <u style="font-size: 40px;" class="col-12"> Reported restaurants</u>
 
@@ -862,6 +862,10 @@
             $(this).css("color", "orange");
           }
         });
+
+        $(".mediaContainer div:nth-child(2) button:nth-child(2)").click(function(){
+          $(this).parent().parent().hide("drop" , 700);
+        })
       });
     </script>
   </body>
