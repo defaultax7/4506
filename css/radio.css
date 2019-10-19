@@ -29,7 +29,7 @@
 
 /* Create a custom radio button */
 
-.checkmark {
+.checkmark2 {
     position: absolute;
     top: 0;
     left: 0;
@@ -43,14 +43,14 @@
 
 /* On mouse-over, add a grey background color */
 
-.customradio:hover input~.checkmark {
+.customradio:hover input~.checkmark2 {
     background-color: transparent;
 }
 
 
 /* When the radio button is checked, add a blue background */
 
-.customradio input:checked~.checkmark {
+.customradio input:checked~.checkmark2 {
     background-color: white;
     border: 1px solid #BEBEBE;
 }
@@ -58,7 +58,7 @@
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 
-.checkmark:after {
+.checkmark2:after {
     content: "";
     position: absolute;
     display: none;
@@ -67,14 +67,14 @@
 
 /* Show the indicator (dot/circle) when checked */
 
-.customradio input:checked~.checkmark:after {
+.customradio input:checked~.checkmark2:after {
     display: block;
 }
 
 
 /* Style the indicator (dot/circle) */
 
-.customradio .checkmark:after {
+.customradio .checkmark2:after {
     top: 2px;
     left: 2px;
     width: 16px;
