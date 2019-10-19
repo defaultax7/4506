@@ -1,0 +1,39 @@
+{
+	"restaurantList": [
+    {
+      "img": "img/logo2.jpg",
+      "report": "14415",
+	  "reason" : "location is wrong"
+    },
+    {
+      "img": "img/logo3.jpg",
+      "report": "7231",
+	  "reason" : "menu is wrong"
+    },
+    {
+      "img": "img/logo4.png",
+      "report": "5021",
+	  "reason" : "Contact number is wrong"
+    },
+	{
+      "img": "img/mc.png",
+      "report": "3000",
+	  "reason" : "Something is wrong"
+    },
+	{
+      "img": "img/logo5.png",
+      "report": "2100",
+	  "reason" : "everything is wrong"
+    },
+	{
+      "img": "img/logo6.jpg",
+      "report": "1500",
+	  "reason" : "BOOM!"
+    },
+	{
+      "img": "img/logo7.jpg",
+      "report": "1000",
+	  "reason" : "BOOM!"
+    }
+  ]
+}

@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/sideBar.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/lightpick.css" />
+    <link rel="stylesheet" href="css/checkbox.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/alert.css" />
+    <link rel="stylesheet" href="css/bootstrap-clockpicker.css" />
+    <link rel="stylesheet" href="css/operator.css" />
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/radio.css">
+</head>
+
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="settingForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Setting</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+
+                <div class="modal-body">
+                    View Style <br>
+                    <div class="form-check-inline">
+                        <label class="customradio m-2"><span class="radiotextsty">Card</span>
+                  <input type="radio" checked name="style">
+                  <span class="checkmark"></span>
+                </label>
+                        <label class="customradio m-2"><span class="radiotextsty">Grid</span>
+                  <input type="radio" name="style">
+                  <span class="checkmark"></span>
+                </label>
+
+                    </div>
+                    <br> Theme <br>
+                    <div class="form-check-inline">
+                        <label class="customradio m-2"><span class="radiotextsty">Light</span>
+                      <input type="radio" checked name="theme">
+                      <span class="checkmark"></span>
+                    </label>
+                        <label class="customradio m-2"><span class="radiotextsty">Dark</span>
+                      <input type="radio" name="theme">
+                      <span class="checkmark"></span>
+                    </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveSetting">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- form -->
+    <div class="modal fade" id="addForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog" id="formContainer">
+            <div class="modal-content" style="width : 1000px">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                        Add new restaurant
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                </div>
+                <form class="form" id="addNewRestaurantFrom" data-step="0">
+                    <div class="row steps">
+                        <div class="step active">
+                            <i class="material-icons">create</i>
+                            <div class="content">
+                                <div class="title">Step 1</div>
+                                <div class="description">Input restaurant information</div>
+                            </div>
+                        </div>
+
+                        <div class="step disabled">
+                            <i class="material-icons">store_mall_directory</i>
+                            <div class="content">
+                                <div class="title">Step 2</div>
+                                <div class="description">Input branch information</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row hspace-50"></div>
+
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div id="formS1">
+                                    <div class="form-row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="restaurantName"><span class="align-top font-weight-bold"
+                              >Restaurant Name </span
+                            ><i class="material-icons inline-icon">
+                              restaurant
+                            </i></label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="restaurantName"
+                            placeholder=""
+                          />
+                          <small class="form-text text-muted">*required</small>
+                        </div>
+                      </div>
+                      <div class="col-3 ">
+                        <div class="form-group">
+                          <label for="restaurantName"
+                            ><span class="align-top font-weight-bold"
+                              >Found in </span
+                            ><i class="material-icons inline-icon">
+                              date_range
+                            </i></label
+                          >
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              id="foundDate"
+                              class="form-control"
+                              readonly
+                            />
+                            <div class="input-group-append">
+                              <div class="input-group-text" id="btnFoundDate">
+                                <i class="material-icons inline-icon">
+                                  date_range
+                                </i>
+                              </div>
+                            </div>
+                          </div>
+
+                          <small class="form-text text-muted">*required</small>
+                        </div>
+                      </div>
+
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label for="phoneNo"
+                            ><span class="align-top font-weight-bold"
+                              >Contact no.</span
+                            ><i class="material-icons inline-icon">
+                              phone
+                            </i></label
+                          >
+                          <div class="input-group">
+                            <input
+                              type="text"
+                              id="phoneNo"
+                              class="form-control"
+                              onkeypress="onlyNum(event)"
+                              maxlength="8"
+                            />
+                          </div>
+
+                          <small class="form-text text-muted"></small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for=""
+                            ><span class="align-top font-weight-bold"
+                              >Email address </span
+                            ><i class="material-icons inline-icon">
+                              mail_outline
+                            </i></label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="address"
+                            placeholder=""
+                          />
+                          <small class="form-text text-muted"></small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for=""
+                            ><span class="align-top font-weight-bold"
+                              >Offical website </span
+                            ><i class="material-icons inline-icon">
+                              web_asset
+                            </i></label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="address"
+                            placeholder=""
+                          />
+                          <small class="form-text text-muted"></small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for=""
+                            ><span class="align-top font-weight-bold"
+                              >Facebook page </span
+                            ><img src="img/facebook.svg" alt=""
+                          /></label>
+
+                                                <input type="text" class="form-control" id="address" placeholder="" />
+                                                <small class="form-text text-muted"></small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for=""><span class="align-top font-weight-bold"
+                              >Integram page </span
+                            ><img src="img/ig.svg" alt=""
+                          /></label>
+
+                                                <input type="text" class="form-control" id="address" placeholder="" />
+                                                <small class="form-text text-muted"></small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for=""><span class="align-top font-weight-bold"
+                              >Remark </span
+                            ><i class="material-icons">
+                              note
+                            </i></label
+                          >
+
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="address"
+                            placeholder=""
+                          />
+                          <small class="form-text text-muted"></small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label class="font-weight-bold"
+                            >Restaurant image</label
+                          >
+                          <div class="input-group">
+                            <span class="input-group-btn">
+                              <span class="btn btn-default btn-file">
+                                Browse…
+                                <input
+                                  type="file"
+                                  id="imgInp"
+                                  accept="image/*"
+                                  data-form="restaurant"
+                                />
+                              </span>
+                            </span>
+                            <input
+                              id="imageName"
+                              type="text"
+                              class="form-control"
+                              readonly
+                            />
+                          </div>
+                          <small class="form-text text-muted">*required</small>
+                          <img
+                            id="img-upload"
+                            data-toggle="modal"
+                            data-target="#exampleModalScrollable"
+                            type="button"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <label class="cbContainer"
+                      ><span class="align-top"> Take away </span
+                      ><input type="checkbox" checked />
+                      <span class="checkmark"></span>
+                      <i class="material-icons cbIconSize">
+                        motorcycle
+                      </i>
+                    </label>
+
+                                                <div>
+                                                    <label class="cbContainer"><span class="align-top"> 10% Service charge </span
+                        ><input type="checkbox" />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          attach_money
+                        </i>
+                      </label>
+                                                </div>
+
+                                                <div>
+                                                    <label class="cbContainer"><span class="align-top"> Liquor lincense </span
+                        ><input type="checkbox" />
+                        <span class="checkmark"></span>
+                        <img
+                          src="img/glass-and-bottle-of-wine.svg"
+                          class="svgSize"
+                          alt=""
+                        />
+                      </label>
+                                                </div>
+
+                                                <div>
+                                                    <label class="cbContainer"><span class="align-top"> Octopus </span
+                        ><input type="checkbox" checked />
+                        <span class="checkmark"></span>
+                        <img src="img/octopus.png" class="svgSize" alt="" />
+                      </label>
+
+                                                    <label class="cbContainer"><span class="align-top"> VISA </span
+                        ><input type="checkbox" />
+                        <span class="checkmark"></span>
+                        <img src="img/visa.svg" class="svgSize" alt="" />
+                      </label>
+
+                                                    <label class="cbContainer"><span class="align-top"> MasterCard </span
+                        ><input type="checkbox" />
+                        <span class="checkmark"></span>
+                        <img src="img/master.svg" class="svgSize" alt="" />
+                      </label>
+
+                                                    <label class="cbContainer"><span class="align-top"> 支 </span
+                        ><input type="checkbox" />
+                        <span class="checkmark"></span>
+                        <img src="img/chin.svg" class="svgSize" alt="" />
+                      </label>
+                                                </div>
+
+                                                <div class="hspace-50"></div>
+
+                                                <div class="row justify-content-center">
+                                                    <div class="col-12 text-center">
+                                                        <button id="btnNext" type="button" class="btn btn-primary mb-2 btnNext" disabled>
+                          Next
+                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="carousel-item" id="branchForm" data-branchnum="1">
+                                            <div id="branchContainer">
+                                                <fieldset class="border p-3">
+                                                    <legend class="w-auto">Branch 1</legend>
+                                                    <div class="form-row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="branchAddress"><span class="align-top font-weight-bold"
+                                >Address </span
+                              ><i class="material-icons inline-icon">
+                                room
+                              </i></label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="branchAddress"
+                              placeholder=""
+                            />
+                            <small class="form-text text-muted"
+                              >*required</small
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="col-3">
+                          <div class="form-group">
+                            <label for="restaurantName"
+                              ><span class="align-top font-weight-bold"
+                                >Opening hour </span
+                              ><i class="material-icons inline-icon">
+                                access_time
+                              </i></label
+                            >
+                            <div class="input-group">
+                              <input
+                                type="text"
+                                class="form-control clockpicker"
+                                id="startTime"
+                              />
+                              <i class="material-icons cbIconSize">
+                                arrow_forward
+                              </i>
+                              <input
+                                type="text"
+                                id="endTime"
+                                class="form-control clockpickerEnd"
+                              />
+                            </div>
+                            <small class="form-text text-muted"
+                              >*required</small
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-12"><b>Environment :</b></div>
+                        <div class="col-12">
+                          <label class="cbContainer"
+                            ><span class="align-top"> Indoor </span
+                            ><input type="checkbox" id="cbIndoor" checked />
+                            <span class="checkmark"></span>
+                            <i class="material-icons cbIconSize">
+                              home_work
+                            </i>
+                          </label>
+
+                                                                <label class="cbContainer"><span class="align-top"> Outdoor </span
+                            ><input type="checkbox" id="cbOutdoor" />
+                            <span class="checkmark"></span>
+                            <i class="material-icons cbIconSize">
+                              cloud
+                            </i>
+                          </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <b>Feature : </b>
+                                                            </div>
+                                                        </div>
+                                                        <label class="cbContainer"><span class="align-top"> Wifi </span
+                        ><input type="checkbox" checked />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          wifi
+                        </i>
+                      </label>
+
+                                                        <label class="cbContainer"><span class="align-top"> Allow booking </span
+                        ><input type="checkbox" checked />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          airline_seat_recline_extra
+                        </i>
+                      </label>
+
+                                                        <label class="cbContainer"><span class="align-top"> Complementary parking </span
+                        ><input type="checkbox" />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          directions_car
+                        </i>
+                      </label>
+
+                                                        <label class="cbContainer"><span class="align-top"> TV </span
+                        ><input type="checkbox" />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          tv
+                        </i>
+                      </label>
+
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold">Branch image</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-btn">
+                                <span class="btn btn-default btn-file">
+                                  Browse…
+                                  <input
+                                    type="file"
+                                    id="branchImg"
+                                    accept="image/*"
+                                  />
+                                </span>
+                                                                        </span>
+                                                                        <input id="imageName" type="text" class="form-control" readonly />
+                                                                    </div>
+                                                                    <small class="form-text text-muted">*required</small
+                            >
+                            <img
+                              id="img-upload2"
+                              data-toggle="modal"
+                              data-target="#exampleModalScrollable"
+                              type="button"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  <div class="hspace-20"></div>
+
+                  <div class="form-row">
+                    <div class="btnAddBranch">
+                      <i class="material-icons" style="vertical-align: middle;">
+                        add </i
+                      >Add branch
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="hspace-50"></div>
+
+                    <div class="row justify-content-center col-12">
+                      <button
+                        id="btnBack"
+                        type="button"
+                        class="btn btn-outline-danger mb-2 btnBack"
+                      >
+                        Back
+                      </button>
+
+                      <button
+                        id="btnComplete"
+                        type="button"
+                        class="btn btn-primary mb-2 btnComplete"
+                        disabled
+                      >
+                        Complete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="exampleModalScrollable"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalScrollableTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">
+              Original image
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img id="biggerImg" />
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              id="closeBigImg"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Content -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><i class="material-icons" id="logo">
+            fastfood </i
+          >Yummy everywhere</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="#" type="button"
+                  data-toggle="modal"
+                  data-target="#settingForm"> Setting </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> Logout </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="p-2">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#addForm"
+          >
+            <i class="material-icons align-middle">
+              add
+            </i>
+            <span class="align-middle"> Add restaurant </span>
+          </button>
+        </div>
+        <div class="p-2">
+          <button type="button" class="btn btn-secondary">
+            <i class="material-icons align-middle">
+              menu_book
+            </i>
+            <span class="align-middle">Browse restaurants</span>
+          </button>
+        </div>
+      </div>
+      <div class="hspace-20"></div>
+      <div class="row justify-content-center">
+        <div class="input-group col-6">
+          <div class="input-group-prepend">
+            <span
+              class="input-group-text"
+              id="searchBarIcon"
+              class="searchBarIcon"
+              ><i class="material-icons">
+                search
+              </i></span
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            class="searchBar"
+            id="searchBar"
+          />
+        </div>
+      </div>
+      <div class="hspace-20"></div>
+      <div class="row">
+        <u style="font-size: 40px;" class="col-12"> Reported restaurants</u>
+
+        <div class="hspace-20"></div>
+
+        
+      <div class="mediaContainer shadow-lg" id="mediaContainer1">
+        <div class="media p-2" style="background-color: white;">
+          <img
+            src="img/logo2.jpg"
+            class="align-self-start mr-3"
+            data-toggle="modal"
+            data-target="#exampleModalScrollable"
+            type="button"
+            alt="..."
+          />
+          <div class="media-body">
+            <h5 class="mt-0"><span class="reportNo"></span> reports</h5>
+            <ul>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mediaBtn p-3">
+          <button type="button" class="btn btn-primary">
+            Update information
+          </button>
+          <button type="button" class="btn btn-danger">Ignore</button>
+        </div>
+      </div>
+
+      <div class="hspace-20"></div>
+
+      <div class="mediaContainer shadow-lg" id="mediaContainer2">
+        <div class="media p-2" style="background-color: white;">
+          <img
+            src="img/logo3.jpg"
+            class="align-self-start mr-3"
+            data-toggle="modal"
+            data-target="#exampleModalScrollable"
+            type="button"
+            alt="..."
+          />
+          <div class="media-body">
+            <h5 class="mt-0"><span class="reportNo"></span> reports</h5>
+            <ul>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mediaBtn p-3">
+          <button type="button" class="btn btn-primary">
+            Update information
+          </button>
+          <button type="button" class="btn btn-danger">Ignore</button>
+        </div>
+      </div>
+
+      <div class="hspace-20"></div>
+
+      <div class="mediaContainer shadow-lg" id="mediaContainer3">
+        <div class="media p-2" style="background-color: white;">
+          <img
+            src="img/logo4.png"
+            class="align-self-start mr-3"
+            data-toggle="modal"
+            data-target="#exampleModalScrollable"
+            type="button"
+            alt="..."
+          />
+          <div class="media-body">
+            <h5 class="mt-0"><span class="reportNo"></span> reports</h5>
+            <ul>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mediaBtn p-3">
+          <button type="button" class="btn btn-primary">
+            Update information
+          </button>
+          <button type="button" class="btn btn-danger">Ignore</button>
+        </div>
+      </div>
+      
+      <div class="hspace-20"></div>
+      
+        
+      </div>
+      <div class="row justify-content-center">  
+        <ul id="pagination-demo" class="pagination-sm"></ul>
+      </div>
+      </div>
+
+      
+
+
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="justify-content: center;">
+            <div class="trigger"></div>
+            <svg
+              version="1.1"
+              id="cross"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 37 37"
+              width="5em"
+              height="5em"
+              xml:space="preserve"
+            >
+              <path
+                class="circ path"
+                style="fill:none;stroke:#28a745;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:10;"
+                d="
+                        M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"
+              ></path>
+              <polyline
+                class="tick path"
+                style="fill:none;stroke:#28a745;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;"
+                points="
+                        11.6,20 15.9,24.2 26.4,13.8 "
+              />
+            </svg>
+          </div>
+          <p id="errorModalLabel" class="light text-center"></p>
+          <div class="modal-footer" style="justify-content: center;">
+            <button
+              type="button"
+              class="btn btn-outline-success modal-dismiss"
+              id="btnAlertOk"
+            >
+              <i class="material-icons">done</i>OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/util.js"></script>
+
+    <script src="js/moment.min.js"></script>
+    <script src="js/lightpick.js"></script>
+    <script src="js/addRestaurant.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/bootstrap-clockpicker.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery.twbsPagination.js"></script>
+    
+
+    <script>
+      $(document).ready(function() {
+        $("#sidebarCollapse").on("click", function() {
+          $("#sidebar").toggleClass("active");
+        });
+        $("#sidebarCollapse").click(function() {
+          if ($(window).width() < 796 && !$("#sidebar").hasClass("active")) {
+            $("#sidebar").addClass("active");
+          }
+          if ($("#sidebar").hasClass("active")) {
+            $("#sidebar")
+              .siblings("#content")
+              .css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
+          } else {
+            $("#sidebar")
+              .siblings("#content")
+              .css("width", "calc(100% - 250px)");
+          }
+        });
+        $(window).on("resize", function() {
+          if ($(this).width() < 796 && !$("#sidebar").hasClass("active")) {
+            $("#sidebar").addClass("active");
+          } else if (
+            $(this).width() < 796 &&
+            $("#sidebar").hasClass("active")
+          ) {
+            $("#sidebar")
+              .siblings("#content")
+              .css("width", "calc(100% - " + $("#sidebar").css("width") + ")");
+          } else {
+            $("#sidebar").removeClass("active");
+            $("#sidebar")
+              .siblings("#content")
+              .css("width", "calc(100% - 250px)");
+          }
+        });
+        $(".form").fadeIn(500);
+
+        var dayLeft =
+          getNumberFromString(
+            moment()
+              .endOf("month")
+              .fromNow()
+          ) *
+            1 -
+          1;
+
+        var picker = new Lightpick({
+          field: document.getElementById("btnFoundDate"),
+          maxDate: moment()
+            .endOf("month")
+            .subtract(dayLeft, "day"),
+          onSelect: function(date) {
+            $("#foundDate").val(date.format("L"));
+            validateForm1();
+          }
+        });
+
+        $(".clockpicker").clockpicker({ autoclose: true });
+        $(".clockpickerEn1d").clockpicker({ autoclose: true });
+
+        $("img").click(function() {
+          src = $(this).prop("src");
+          $("#biggerImg").prop("src", src);
+        });
+
+        $(".mediaContainer").hide();
+
+        delay = 0;
+        $(".mediaContainer").each(function(){
+        $(this).delay(delay).show("drop", { direction: "right" }, 700);
+        delay += 200;
+        })
+      
+
+        
+
+        $(".mediaContainer div:nth-child(2) button:nth-child(2)").click(function(){
+          $(this).parent().parent().hide("drop" , 700);
+        })
+
+
+        $('#pagination-demo').twbsPagination({
+        totalPages: 3,
+        visiblePages: 5,
+        onPageClick: function (event, page) {
+            $('#page-content').text('Page ' + page);
+            $.getJSON("data/restaurant.json", function(data) {
+              $("#mediaContainer1 img").prop("src" , data.restaurantList[0 + (page-1)*3].img);
+              $("#mediaContainer1 span").text(data.restaurantList[0 + (page-1)*3].report);
+              $("#mediaContainer1 li").text(data.restaurantList[0 + (page-1)*3].reason);
+
+if(data.restaurantList[1 + (page-1)*3] == null){
+$("#mediaContainer2").css("visibility" , "hidden");
+}else{
+  $("#mediaContainer2").css("visibility" , "visible");
+              $("#mediaContainer2 img").prop("src" , data.restaurantList[1 + (page-1)*3].img);
+              $("#mediaContainer2 span").text(data.restaurantList[1 + (page-1)*3].report);
+              $("#mediaContainer2 li").text(data.restaurantList[1 + (page-1)*3].reason);
+}
+
+if(data.restaurantList[2 + (page-1)*3] == null){
+  $("#mediaContainer3").css("visibility" , "hidden");
+}else{
+  $("#mediaContainer3").css("visibility" , "visible");
+              $("#mediaContainer3 img").prop("src" , data.restaurantList[2 + (page-1)*3].img);
+              $("#mediaContainer3 span").text(data.restaurantList[2 + (page-1)*3].report);
+              $("#mediaContainer3 li").text(data.restaurantList[2 + (page-1)*3].reason);
+}
+
+
+              $(".reportNo").each(function() {
+          no = parseInt($(this).text());
+        
+          if (no > 10000) {
+            $(this).css("color", "red");
+          } else if (no > 5000) {
+            $(this).css("color", "orange");
+          }else{
+            $(this).css("color" , "green")
+          }
+        });
+            });
+
+     
+
+        
+        }  
+      
+        })
+
+      });
+    </script>
+  </body>
+</html>

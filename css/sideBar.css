@@ -10,7 +10,7 @@ body {
     /*background: #fafafa;*/
     overflow-x: hidden;
     background-color: rgb(204, 204, 204);
-    background-image: url("../img/background.jpg");
+    /* background-image: url("../img/background.jpg"); */
     background-size: cover;
     background-attachment: fixed;
 }

@@ -1,0 +1,26 @@
+#searchBarIcon {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#searchBar {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#addForm {
+    overflow: scroll;
+}
+
+.media img {
+    width: 150px;
+    height: 150px;
+}
+
+.mediaBtn {
+    background-color: #fff;
+}
+
+.mediaContainer {
+    width: 100%;
+}
