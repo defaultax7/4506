@@ -14,21 +14,22 @@
     <link rel="stylesheet" href="css/form.css" />
     <link rel="stylesheet" href="css/alert.css" />
     <link rel="stylesheet" href="css/bootstrap-clockpicker.css" />
-    <link rel="stylesheet" href="css/operator.css">
-
+    <link rel="stylesheet" href="css/operator.css" />
+    <link rel="stylesheet" href="css/jquery-ui.css" />
 </head>
 
 <body>
-
     <!-- form -->
     <div class="modal fade" id="addForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog" id="formContainer">
             <div class="modal-content" style="width : 1000px">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add new restaurant</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                        Add new restaurant
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+              <span aria-hidden="true">&times;</span>
+            </button>
                 </div>
                 <form class="form" id="addNewRestaurantFrom" data-step="0">
                     <div class="row steps">
@@ -97,11 +98,11 @@
                               </div>
                             </div>
                           </div>
-  
+
                           <small class="form-text text-muted">*required</small>
                         </div>
                       </div>
-  
+
                       <div class="col-2 offset-1">
                         <div class="form-group">
                           <label for="phoneNo"
@@ -120,12 +121,12 @@
                               maxlength="8"
                             />
                           </div>
-  
+
                           <small class="form-text text-muted"></small>
                         </div>
                       </div>
                     </div>
-  
+
                     <div class="form-row">
                       <div class="col-12">
                         <div class="form-group">
@@ -146,7 +147,7 @@
                         </div>
                       </div>
                     </div>
-  
+
                     <div class="form-row">
                       <div class="col-12">
                         <div class="form-group">
@@ -167,7 +168,7 @@
                         </div>
                       </div>
                     </div>
-  
+
                     <div class="form-row">
                       <div class="col-6">
                         <div class="form-group">
@@ -204,7 +205,7 @@
                               note
                             </i></label
                           >
-  
+
                           <input
                             type="text"
                             class="form-control"
@@ -215,7 +216,7 @@
                         </div>
                       </div>
                     </div>
-  
+
                     <div class="row">
                       <div class="col-4">
                         <div class="form-group">
@@ -242,11 +243,16 @@
                             />
                           </div>
                           <small class="form-text text-muted">*required</small>
-                          <img id="img-upload" data-toggle="modal" data-target="#exampleModalScrollable" type="button"/>
+                          <img
+                            id="img-upload"
+                            data-toggle="modal"
+                            data-target="#exampleModalScrollable"
+                            type="button"
+                          />
                         </div>
                       </div>
                     </div>
-  
+
                     <label class="cbContainer"
                       ><span class="align-top"> Take away </span
                       ><input type="checkbox" checked />
@@ -341,7 +347,7 @@
                           </div>
                         </div>
                       </div>
-  
+
                       <div class="form-row">
                         <div class="col-3">
                           <div class="form-group">
@@ -373,7 +379,7 @@
                           </div>
                         </div>
                       </div>
-  
+
                       <div class="row">
                         <div class="col-12"><b>Environment :</b></div>
                         <div class="col-12">
@@ -452,15 +458,20 @@
                                                                     </div>
                                                                     <small class="form-text text-muted">*required</small
                             >
-                            <img id="img-upload2"  data-toggle="modal" data-target="#exampleModalScrollable" type="button"/>
+                            <img
+                              id="img-upload2"
+                              data-toggle="modal"
+                              data-target="#exampleModalScrollable"
+                              type="button"
+                            />
                           </div>
                         </div>
                       </div>
                     </fieldset>
                   </div>
-  
+
                   <div class="hspace-20"></div>
-  
+
                   <div class="form-row">
                     <div class="btnAddBranch">
                       <i class="material-icons" style="vertical-align: middle;">
@@ -470,7 +481,7 @@
                   </div>
                   <div class="form-row">
                     <div class="hspace-50"></div>
-  
+
                     <div class="row justify-content-center col-12">
                       <button
                         id="btnBack"
@@ -479,7 +490,7 @@
                       >
                         Back
                       </button>
-  
+
                       <button
                         id="btnComplete"
                         type="button"
@@ -495,85 +506,220 @@
             </div>
           </form>
         </div>
-        </div>
       </div>
+    </div>
 
-    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">Original image</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div
+      class="modal fade"
+      id="exampleModalScrollable"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalScrollableTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">
+              Original image
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
-                </div>
-                <div class="modal-body">
-                    <img id="biggerImg">
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeBigImg">Close</button>
-                </div>
-            </div>
+          </div>
+          <div class="modal-body">
+            <img id="biggerImg" />
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              id="closeBigImg"
+            >
+              Close
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Page Content -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="material-icons" id="logo">
-          fastfood
-        </i>Yummy everywhere</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><i class="material-icons" id="logo">
+            fastfood </i
+          >Yummy everywhere</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">   Logout  </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#"> Logout </a>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </nav>
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="p-2">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addForm"><i class="material-icons align-middle">
-                    add
-                    </i> <span class="align-middle"> Add restaurant </span></button>
-            </div>
-            <div class="p-2">
-                <button type="button" class="btn btn-secondary">
-                    <i class="material-icons align-middle">
-                        menu_book
-                        </i> <span class="align-middle">Browse restaurants</span></button>
-            </div>
+      <div class="row justify-content-center">
+        <div class="p-2">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#addForm"
+          >
+            <i class="material-icons align-middle">
+              add
+            </i>
+            <span class="align-middle"> Add restaurant </span>
+          </button>
         </div>
-        <div class="row justify-content-center">
-            <div class="input-group col-6">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="searchBarIcon" class="searchBarIcon"><i class="material-icons">
-                        search
-                        </i></span>
-                </div>
-                <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1" class="searchBar" id="searchBar">
+        <div class="p-2">
+          <button type="button" class="btn btn-secondary">
+            <i class="material-icons align-middle">
+              menu_book
+            </i>
+            <span class="align-middle">Browse restaurants</span>
+          </button>
+        </div>
+      </div>
+      <div class="hspace-20"></div>
+      <div class="row justify-content-center">
+        <div class="input-group col-6">
+          <div class="input-group-prepend">
+            <span
+              class="input-group-text"
+              id="searchBarIcon"
+              class="searchBarIcon"
+              ><i class="material-icons">
+                search
+              </i></span
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            class="searchBar"
+            id="searchBar"
+          />
+        </div>
+      </div>
+      <div class="hspace-50"></div>
+      <div class="row">
+        <u style="font-size: 40px;" class="col-12"> Reported restaurants</u>
+
+        <div class="hspace-20"></div>
+
+        <div class="mediaContainer shadow-lg">
+          <div class="media p-3" style="background-color: white;">
+            <img
+              src="img/logo2.jpg"
+              class="align-self-start mr-3"
+              data-toggle="modal"
+              data-target="#exampleModalScrollable"
+              type="button"
+              alt="..."
+            />
+            <div class="media-body">
+              <h5 class="mt-0"><span class="reportNo">14415</span> reports</h5>
+              <ul>
+                <li>14415 : location is wrong</li>
+              </ul>
             </div>
+          </div>
+          <div class="mediaBtn p-3">
+            <button type="button" class="btn btn-primary">
+              Update information
+            </button>
+            <button type="button" class="btn btn-danger">Ignore</button>
+          </div>
         </div>
 
-        <div class="row">
-Reported problem
+        <div class="hspace-20"></div>
+
+        <div class="mediaContainer shadow-lg">
+          <div class="media p-3" style="background-color: white;">
+            <img
+              src="img/logo3.jpg"
+              class="align-self-start mr-3"
+              data-toggle="modal"
+              data-target="#exampleModalScrollable"
+              type="button"
+              alt="..."
+            />
+            <div class="media-body">
+              <h5 class="mt-0"><span class="reportNo">7231</span> reports</h5>
+              <ul>
+                <li>7231 : menu is wrong</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mediaBtn p-3">
+            <button type="button" class="btn btn-primary">
+              Update information
+            </button>
+            <button type="button" class="btn btn-danger">Ignore</button>
+          </div>
         </div>
 
+        <div class="hspace-20"></div>
 
-    
-    </div>
+        <div class="mediaContainer shadow-lg">
+          <div class="media p-3" style="background-color: white;">
+            <img
+              src="img/logo4.png"
+              class="align-self-start mr-3"
+              data-toggle="modal"
+              data-target="#exampleModalScrollable"
+              type="button"
+              alt="..."
+            />
+            <div class="media-body">
+              <h5 class="mt-0"><span class="reportNo">5021</span> reports</h5>
+              <ul>
+                <li>5021 : Contact number is wrong</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mediaBtn p-3">
+            <button type="button" class="btn btn-primary">
+              Update information
+            </button>
+            <button type="button" class="btn btn-danger">Ignore</button>
+          </div>
+        </div>
+        
+      </div>
+      </div>
+
+      
+
 
     <div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -631,6 +777,7 @@ Reported problem
     <script src="js/addRestaurant.js"></script>
     <script src="js/form.js"></script>
     <script src="js/bootstrap-clockpicker.js"></script>
+    <script src="js/jquery-ui.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -670,11 +817,14 @@ Reported problem
         });
         $(".form").fadeIn(500);
 
-        var dayLeft = getNumberFromString(
-          moment()
-            .endOf("month")
-            .fromNow()
-        )*1 - 1;
+        var dayLeft =
+          getNumberFromString(
+            moment()
+              .endOf("month")
+              .fromNow()
+          ) *
+            1 -
+          1;
 
         var picker = new Lightpick({
           field: document.getElementById("btnFoundDate"),
@@ -690,19 +840,28 @@ Reported problem
         $(".clockpicker").clockpicker({ autoclose: true });
         $(".clockpickerEnd").clockpicker({ autoclose: true });
 
-        // $("#formContainer").hide();
+        $("img").click(function() {
+          src = $(this).prop("src");
+          $("#biggerImg").prop("src", src);
+        });
 
-        $("#img-upload").click(
-        function loadBiggerImg(){
-          src = $("#img-upload").prop('src');
-          $("#biggerImg").prop('src' , src);
-        }
-        )
-        $("#img-upload2").click(function(){
-          src = $("#img-upload2").prop('src');
-          $("#biggerImg").prop('src' , src);
+        $(".mediaContainer").hide();
+
+        delay = 0;
+        $(".mediaContainer").each(function(){
+        $(this).delay(delay).show("drop", { direction: "right" }, 700);
+        delay += 200;
         })
-        
+      
+
+        $(".reportNo").each(function() {
+          no = parseInt($(this).text());
+          if (no > 10000) {
+            $(this).css("color", "red");
+          } else if (no > 5000) {
+            $(this).css("color", "orange");
+          }
+        });
       });
     </script>
   </body>
