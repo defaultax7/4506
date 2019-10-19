@@ -38,19 +38,19 @@
     },
     {
       "id": 3,
-      "name": "AJISE noodle",
-      "imagePath": "img/kfc.jpeg",
-      "desc": "RAME shop",
-      "type": "noodle",
+      "name": "Pizza Hut",
+      "imagePath": "img/pizza-hut.jpg",
+      "desc": "Taste the evilness of cheese! Pizza Hut’s newly launched ‘The World’s Evilest Cheese Pizza’ is a medley of fiendishly delicious cheeses from around the world: Mozzarella from New Zealand, Feta from Denmark, Parmesan from Australia, and Gouda and Cheddar from the Netherlands. It’s a killer combo! Try the seafood pizza with ‘Devilish Scallops’ or the meat pizza with ‘Wicked Chicken.’ Plus, every pizza is baked with a crust of crunchy cheese bits that’s so enticingly evil you won’t be able to resist! (The photos only show the large size of pizza)",
+      "type": "pizza",
       "foods": {
-        "BigChicken": [40, "BigNoodle"],
-        "SmallChicken": [30, "SmallNoodle"]
+        "L1. The World’s Evilest Cheese Pizza Combo for 2": [250.00, "1x Regular Pizza (Devilish Scallop / Wickedly Chicken) + 1x Crispy Chicken Strips with Potato Waffle + 2x Pepsi (can) / Soup / Salad"],
+        "L2. The World’s Evilest Cheese Pizza Gourmet Combo for 2": [311.00, "1x Regular Pizza (Seafood Dipping Xtreme / Meat Dipping Maxx) + 1x Spaghetti Americana / Italian Chicken Rice + 1x Baked Vegetables in Portuguese Sauce + 1x  Mashed Potato with Clams / Napoli Meatball + 2x Pepsi (can) / Soup / Salad"]
       },
       "priceLv": 3,
       "feature": ["western", "american"],
       "minPrice": 40,
       "fee": 30,
-      "rating": 5
+      "rating": 3
     }
   ]
 }
