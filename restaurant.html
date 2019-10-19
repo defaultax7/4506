@@ -78,12 +78,12 @@
   <div id="main" class="fluid-container p-4">
     <!-- top -->
     <div class="bg-dark row mt-3 p-2">
-      <form class="form-inline" onsubmit="$('#restMenu').fadeOut();return searchText('card', 'keyWord')">
+      <form class="form-inline" onsubmit="closeMenu();return searchText('foodItem', 'keyWord')">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="keyWord">
           <button class="btn btn-outline-success" type="submit">
             <i class="material-icons align-top">search</i>
           </button>
-          <button class="btn btn-primary mx-2" type="submit" value="filter-food" onclick="$('#filterModal').modal()">
+          <button class="btn btn-primary mx-2" type="submit" value="filter-food" onclick="$('#filterModal').modal();resetRest();">
             Filter
           </button>
       </form>
@@ -93,15 +93,23 @@
         <div class="h-100 p-3 shadow-lg">
           <button class="btn btn-primary" id="allTag">All</button>
           <button class="filter btn btn-outline-secondary" data-type="type" value="fastfood">Fastfood</button>
-          <button class="filter btn btn-outline-secondary" data-type="type" value="noodle">Noodle</button>
+          <button class="filter btn btn-outline-secondary" data-type="feature" value="noodle">Noodle</button>
+          <button class="filter btn btn-outline-secondary" data-type="feature" value="american">American</button>
+          <button class="filter btn btn-outline-secondary" data-type="feature" value="western">Western</button>
         </div>
       </div>
-      <div class="col-md-9 col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
-        <div>
+      <div class="col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
+        <!-- <div>
           <i class="material-icons">store</i><span class="mx-3 align-top">Restaurants</span>
           <span class="p-1">&gt;</span>
           <i class="material-icons">restaurant_menu</i><span class="mx-3 align-top">Menu</span>
-        </div>
+        </div> -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><i class="material-icons">store</i><span >Restaurants</span></li>
+            <!-- <li class="breadcrumb-item"><i class="material-icons">restaurant_menu</i><span >Menu</span></li> -->
+          </ol>
+        </nav>
         <div class="row" id="restList" >
           <div class="lds-default col-offset-6">
             <div></div><div></div><div></div><div></div><div></div><div>
@@ -257,18 +265,35 @@
         <div class="modal-body">
           <form action="">
             <span>Budget</span>
+            <br>
             <div class="form-check form-check-inline">
               <input name="budget" type="checkbox" class="form-check-input" id="pL1" value="1">
               <label class="form-check-label" for="pL1">$</label>
             </div>
             <div class="form-check form-check-inline">
-              <input name="budge" type="checkbox" class="form-check-input" id="pL2" value="2">
+              <input name="budget" type="checkbox" class="form-check-input" id="pL2" value="2">
               <label class="form-check-label" for="pL2">$$</label>
             </div>
             <div class="form-check form-check-inline">
               <input name="budget" type="checkbox" class="form-check-input" id="pL3" value="3">
               <label class="form-check-label" for="pL3">$$$</label>
             </div>
+            <br>
+            <span>Attributes</span>
+            <br>
+            <div class="form-check form-check-inline">
+              <input name="feature" type="checkbox" class="form-check-input" value="western">
+              <label class="form-check-label">western</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input name="feature" type="checkbox" class="form-check-input" value="american">
+              <label class="form-check-label">american</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input name="feature" type="checkbox" class="form-check-input" value="pasta rice">
+              <label class="form-check-label">pasta rice</label>
+            </div>
+            <!-- <input type="text" name="restType" id="restType" class="form-control"> -->
           </form>
         </div>
         <!-- Modal footer -->
@@ -299,6 +324,7 @@
   <script src="js/util.js"></script>
   <script>
     var restaurants = [];
+    var featureList = {priceLv: [], feature: [], type: []};
     $(document).ready(function() {
       // $("#filterModal").modal();
       $.getJSON("data/data.json", function(data) {
@@ -314,36 +340,21 @@
       });
       // filterTag
       $("#allTag").click(function() {
-        $(".filter").each(function() {
-          if ($(this).hasClass("active")) {
-            $(this).removeClass("active");
-          }
-        });
-        $(".foodItem").each(function() {
-          $(this).fadeIn();
-        });
+        resetRest();
+        closeMenu();
       });
       $(".filter").click(function() {
         $(this).toggleClass("active");
         let searchText = $(this).val();
-        console.log($(this).data("type"));
+        // restaurants.find(x => x.feature.contain(searchText));
+        let thisType = $(this).data("type");
         if ($(this).hasClass("active")) {
-          $(".foodItem").each(function() {
-            if ($(this).text().toLowerCase().indexOf(searchText) != -1) {
-              $(this).fadeIn();
-            }
-            else {
-              $(this).fadeOut();
-            }
-          });
+          featureList[thisType].push(searchText);
         }
         else {
-          $(".foodItem").each(function() {
-            if ($(this).text().toLowerCase().indexOf(searchText) == -1) {
-              $(this).fadeIn();
-            }
-          });
+          featureList[thisType] = featureList[thisType].filter(e => e !== searchText);
         }
+        filterRest();
       });
 
       // give rating
@@ -377,10 +388,12 @@
       if ($("#restList").css("display") == "flex") {
         $("#restList").hide();
       }
+      $(".breadcrumb").html('<li class="breadcrumb-item"><a href="#!" onclick="closeMenu();"><i class="material-icons">store</i><span >Restaurants</span></a></li><li class="breadcrumb-item"><i class="material-icons">restaurant_menu</i><span >Menu</span></li>');
+                           
 
       let menu = restaurants.find(x => x.id === fid);
       $("#restName").text(menu.name);
-      $("#desc").html("<img class='float-left p-2' style='width: 15rem; height: 15rem;' src='"+menu.imagePath+
+      $("#desc").html("<img class='float-left p-2' style='width: 15rem; height: 15rem; object-fit: cover;' src='"+menu.imagePath+
       "'></img><p>"+menu.desc+"</p><div style='clear: both;'></div>")
       $("#restMenu").fadeIn();
       $('#rating').html('<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating));
@@ -396,13 +409,58 @@
       restaurants.find(x => x.priceLv === fid);
     }
     function searchByFilter() {
-
-      console.log($("input[name= 'budget']").val());
+      featureList = {priceLv: [], feature: [], type: []};
+      $("input[name= 'budget']:checked").each(function() {
+        featureList.priceLv.push(parseInt($(this).val()));
+      });
+      $("input[name= 'feature']:checked").each(function() {
+        featureList.feature.push(($(this).val()));
+      });
+      $("input[name= 'type']:checked").each(function() {
+        featureList.type.push(($(this).val()));
+      });
+      // console.log($("input[name= 'restType']").val());
+      filterRest();
     }
     function showToast(msg) {
       $("#myToast > .toast-body").text(msg);
       $("#myToast").toast("show");
     }
+
+    function closeMenu() {
+      // return
+      // $(".breadcrumb").empty();
+      $(".breadcrumb").html('<li class="breadcrumb-item"><i class="material-icons">store</i><span >Restaurants</span></li>');
+            
+      $("#restMenu").hide();
+      $("#restList").fadeIn();
+    }
+    function resetRest() {
+      $(".filter").each(function() {
+        if ($(this).hasClass("active")) {
+          $(this).removeClass("active");
+        }
+      });
+      $(".foodItem").each(function() {
+        $(this).fadeIn();
+      });
+    }
+
+    function filterRest() {
+      for (let i = 0; i < restaurants.length; i++) {
+        let isMatch = containsAll(featureList.feature, restaurants[i].feature) &&
+                      (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv)) &&
+                      (!featureList.type.length || featureList.type.includes(restaurants[i].type));
+        if (isMatch) {
+          $(".foodItem").eq(i).fadeIn();
+        }
+        else {
+          $(".foodItem").eq(i).fadeOut();
+        }
+      }
+      console.log(featureList);
+    }
+
   </script>
 </body>
 </html>

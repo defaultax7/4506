@@ -57,3 +57,9 @@ function searchText(cls, tbox) {
   return false;
 
 }
+function containsAll(needles, haystack){ 
+    for(var i = 0 , len = needles.length; i < len; i++){
+        if($.inArray(needles[i], haystack) == -1) return false;
+    }
+  return true;
+}

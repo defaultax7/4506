@@ -126,6 +126,8 @@ a.card {
 
 img.card-img-top {
   transition: all .5s ease-in-out;
+  object-fit: cover;
+  height: inherit;
 }
 
 div.card-img {
