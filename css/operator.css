@@ -34,5 +34,14 @@
 }
 
 .card-body{
-    height: 200px;
+    height: 180px;
+}
+
+.card-body a{
+    width : 100px;
+}
+.card:hover{
+    cursor: pointer;
+    transition: 0.5s;
+    transform: scale(1.1);
 }

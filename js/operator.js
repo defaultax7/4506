@@ -175,15 +175,15 @@ $(document).ready(function() {
 
   $("#btnBroRes").click(function() {
     $("#reportedResContainer").hide();
-    $("#restaurantInfo").show();
+    $("#restaurantInfo").fadeIn();
     $("#heading").text("Restaurant");
     $("body").data("mode", 2);
   });
 
   $("#btnReportedRes").click(function() {
-    $("#reportedResContainer").show();
+    $("#reportedResContainer").fadeIn();
     $("#restaurantInfo").hide();
-    $("#heading").text("Reported Restaurant");
+    $("#heading").text("Reported restaurants");
     $("body").data("mode", 1);
   });
 
