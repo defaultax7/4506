@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $("#restaurantInfo").hide();
     $("#sidebarCollapse").on("click", function() {
         $("#sidebar").toggleClass("active");
     });
@@ -171,12 +172,12 @@ $(document).ready(function() {
     }
 
     $("#noResult").hide();
-    $("#restaurantInfo").hide();
 
     $("#btnBroRes").click(function() {
         $("#reportedResContainer").hide();
         $("#restaurantInfo").show();
         $("#heading").text("Restaurant");
+        $("body").data("mode" , 2);
     });
 
     $("#searchBar").keyup(function() {
