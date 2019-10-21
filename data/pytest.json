@@ -1,65 +1,6 @@
 {
   "restaurant": [
     {
-      "id": 1,
-      "name": "Mcdonald",
-      "imagePath": "img/mcdonald.jpg",
-      "desc": "McDonald's Corporation is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald, in San Bernardino, California, United States. They rechristened their business as a hamburger stand, and later turned the company into a franchise, with the Golden Arches logo being introduced in 1953 at a location in Phoenix, Arizona. In 1955, Ray Kroc, a businessman, joined the company as a franchise agent and proceeded to purchase the chain from the McDonald brothers. McDonald's had its original headquarters in Oak Brook, Illinois, but moved its global headquarters to Chicago in early 2018.",
-      "type": "Fast Food",
-      "foods": [
-          {"name": "McNugget", "price": 10, "desc": "McNugget",
-          "imagePath": null},
-          {"name": "BidMac", "price": 20, "desc": "BidMac",
-          "imagePath": null},
-          {"name": "Icecream", "price": 5, "desc": "Icecream", "imagePath": "img/ice-cream.jpg"}
-      ],
-      "priceLv": 2,
-      "feature": ["Western", "American"],
-      "minPrice": 40,
-      "fee": 30,
-      "label": "20% off",
-      "rating": 1
-    },
-    {
-      "id": 2,
-      "name": "KFC",
-      "imagePath": "img/kfc.jpeg",
-      "desc": "KFC, also known as Kentucky Fried Chicken, is an American fast food restaurant chain headquartered in Louisville, Kentucky, that specializes in fried chicken. It is the world's second-largest restaurant chain (as measured by sales) after McDonald's, with 22,621 locations globally in 136 countries as of December 2018. The chain is a subsidiary of Yum! Brands, a restaurant company that also owns the Pizza Hut, Taco Bell and WingStreet chains.",
-      "type": "Fast Food",
-      "foods": [
-          {"name": "BigChicken", "price": 40, "desc": "BigChicken", "imagePath": null},
-          {"name": "SmallChicken", "price": 30, "desc": "SmallChicken",
-          "imagePath": null},
-          {"name": "Bei Fung Tong Chicken Bucket Meal", "price": 236.00, "desc": "4pcs of Bei Fung Tong Chicken + 4pcs of Original Recipe/ Hot & Spicy/ Flava Crava Chicken + 2boxes of Chicken a la king Rice/ Mushroom Rice + 4pcs of Hot Wings + 4portions of Mashed Potato & Gravy + 1box of CrissCut Fries (large) + Free 4pcs of Egg Tart",
-          "imagePath": null},
-          {"name": "Bei Fung Tong Chicken Buddy Meal", "price": 149.00, "desc": "4pcs of Bei Fung Tong Chicken + 1box of Chicken a la king Rice/ Mushroom Rice + 5pcs of Hot Wings + 1box of CrissCut Fries (large) + Free 2pcs of Egg Tart",
-          "imagePath": null}
-      ],
-      "priceLv": 3,
-      "feature": ["Western", "American"],
-      "minPrice": 40,
-      "fee": 30,
-      "rating": 3
-    },
-    {
-      "id": 3,
-      "name": "Pizza Hut",
-      "imagePath": "img/pizza-hut.jpg",
-      "desc": "Taste the evilness of cheese! Pizza Hut’s newly launched ‘The World’s Evilest Cheese Pizza’ is a medley of fiendishly delicious cheeses from around the world: Mozzarella from New Zealand, Feta from Denmark, Parmesan from Australia, and Gouda and Cheddar from the Netherlands. It’s a killer combo! Try the seafood pizza with ‘Devilish Scallops’ or the meat pizza with ‘Wicked Chicken.’ Plus, every pizza is baked with a crust of crunchy cheese bits that’s so enticingly evil you won’t be able to resist! (The photos only show the large size of pizza)",
-      "type": "pizza",
-      "foods": [
-        {"name": "L1. The World’s Evilest Cheese Pizza Combo for 2", "price": 250.00, "desc": "1x Regular Pizza (Devilish Scallop / Wickedly Chicken) + 1x Crispy Chicken Strips with Potato Waffle + 2x Pepsi (can) / Soup / Salad",
-        "imagePath": null},
-        {"name": "L2. The World’s Evilest Cheese Pizza Gourmet Combo for 2", "price": 311.00, "desc": "1x Regular Pizza (Seafood Dipping Xtreme / Meat Dipping Maxx) + 1x Spaghetti Americana / Italian Chicken Rice + 1x Baked Vegetables in Portuguese Sauce + 1x  Mashed Potato with Clams / Napoli Meatball + 2x Pepsi (can) / Soup / Salad",
-        "imagePath": null}
-      ],
-      "priceLv": 3,
-      "feature": ["Western", "American"],
-      "minPrice": 40,
-      "fee": 30,
-      "rating": 3
-    },
-    {
       "id": 4,
       "name": "Green River Restaurant (Cheung Hong)",
       "imagePath": "https://images.deliveryhero.io/image/fd-hk/LH/v3gx-listing.jpg?width=400&height=292",

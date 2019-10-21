@@ -101,10 +101,10 @@
       <div class="p-3 col-12 bg-warning">
         <div class="h-100 p-3 shadow-lg">
           <button class="btn btn-primary" id="allTag">All</button>
-          <button class="filter btn btn-outline-secondary" data-type="type" value="fastfood">Fastfood</button>
-          <button class="filter btn btn-outline-secondary" data-type="feature" value="noodle">Noodle</button>
-          <button class="filter btn btn-outline-secondary" data-type="feature" value="american">American</button>
-          <button class="filter btn btn-outline-secondary" data-type="feature" value="western">Western</button>
+          <button class="filter btn btn-outline-secondary" data-type="type" value="Fast Food">Fastfood</button>
+          <button class="filter btn btn-outline-secondary" data-type="feature" value="Noodles">Noodle</button>
+          <button class="filter btn btn-outline-secondary" data-type="feature" value="American">American</button>
+          <button class="filter btn btn-outline-secondary" data-type="feature" value="Western">Western</button>
         </div>
       </div>
       <div class="col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
@@ -291,16 +291,20 @@
             <span>Attributes</span>
             <br>
             <div class="form-check form-check-inline">
-              <input name="feature" type="checkbox" class="form-check-input" value="western">
-              <label class="form-check-label">western</label>
+              <input name="feature" type="checkbox" class="form-check-input" value="Western">
+              <label class="form-check-label">Western</label>
             </div>
             <div class="form-check form-check-inline">
-              <input name="feature" type="checkbox" class="form-check-input" value="american">
-              <label class="form-check-label">american</label>
+              <input name="feature" type="checkbox" class="form-check-input" value="American">
+              <label class="form-check-label">American</label>
             </div>
             <div class="form-check form-check-inline">
-              <input name="feature" type="checkbox" class="form-check-input" value="pasta rice">
-              <label class="form-check-label">pasta rice</label>
+              <input name="feature" type="checkbox" class="form-check-input" value="Rice">
+              <label class="form-check-label">Rice</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input name="feature" type="checkbox" class="form-check-input" value="Chinese">
+              <label class="form-check-label">Chinese</label>
             </div>
             <!-- <input type="text" name="restType" id="restType" class="form-control"> -->
           </form>
@@ -463,7 +467,7 @@
           $(".foodItem").eq(i).fadeOut();
         }
       }
-      console.log(featureList);
+      // console.log(featureList);
     }
     function backToRestaurentView() {
         $("#restList").fadeIn();
