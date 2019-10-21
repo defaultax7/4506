@@ -37,30 +37,41 @@
                 background-image: url("img/a.jpg");
             }
         }
-        
-        .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
-        .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
-        .show>.btn-outline-secondary.dropdown-toggle:focus,
-        .btn-outline-secondary.focus,
-        .btn-outline-secondary:focus,
-        #allTag:focus {
-            box-shadow: none;
+        .media img {
+            width: 150px;
+            height: 150px;
         }
-        
-        .toast {
-            position: fixed;
-            top: 5%;
-            right: 5%;
-            z-index: 999999;
-        }
-        
-        .h-100.p-3.shadow-lg {
-            border-radius: 20px;
-        }
-        
-        #resBreadcrumb:hover {
-            cursor: pointer;
-        }
+
+      .mediaBtn {
+        background-color: #fff;
+      }
+
+      .mediaContainer {
+          width: 100%;
+      }
+      .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
+      .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
+      .show>.btn-outline-secondary.dropdown-toggle:focus,
+      .btn-outline-secondary.focus,
+      .btn-outline-secondary:focus,
+      #allTag:focus {
+          box-shadow: none;
+      }
+      
+      .toast {
+          position: fixed;
+          top: 5%;
+          right: 5%;
+          z-index: 999999;
+      }
+      
+      .h-100.p-3.shadow-lg {
+          border-radius: 20px;
+      }
+      
+      #resBreadcrumb:hover {
+          cursor: pointer;
+      }
     </style>
 </head>
 
@@ -131,11 +142,31 @@
                     <div class="jy-tabs">
                         <input type="radio" name="jy-tabs" id="tabone" checked="checked">
                         <label for="tabone">Menu</label>
-                        <div class="jy-tab" id="menu">
-                            <div class="container">
-                                Food: McNugget<br> Price: $30
-                                <button class="btn btn-primary" onClick="showToast('Item has add to cart.')">Add to Cart</button>
+                        <div class="jy-tab" id="foodList">
+                          <div class="container">
+                              Food: McNugget<br> Price: $30
+                              <button class="btn btn-primary" onClick="showToast('Item has add to cart.')">Add to Cart</button>
+                          </div>
+                          <div class="mediaContainer shadow-lg" style="visibility: visible;">
+                            <div class="media p-2" style="background-color: white;">
+                              <img src="img/ice-cream.jpg" class="align-self-start mr-3" data-toggle="modal" data-target="#exampleModalScrollable" type="button" alt="..." />
+                              <div class="media-body">
+                                <h5 class="mt-0">Ice Cream</h5>
+                                <span class="reportNo" style="color: orange;">No Description</span>
+                                <ul>
+                                  <li>menu is wrong</li>
+                                </ul>
+                              </div>
                             </div>
+                            <div class="mediaBtn p-3">
+                              <button type="button" class="btn btn-danger float-right">Ignore</button>
+                              <button type="button" class="btn btn-primary float-right mx-2" onClick="showToast('Item has add to cart.')">
+                                Update information
+                              </button>
+                              <span class="float-right p-2"><span>Price : </span><span class="foodPrice">10</span></span>
+                              <div style="clear: both;"></div>
+                            </div>
+                          </div>
                         </div>
 
                         <input type="radio" name="jy-tabs" id="tabtwo">
@@ -408,7 +439,11 @@
       "'></img><p>"+menu.desc+"</p><div style='clear: both;'></div>")
       $("#restMenu").fadeIn();
       $('#rating').html('<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating));
-      
+      // foodList = "";
+      // for (let food in menu.foods) {
+      //   foodList += ""
+      // }
+      // $("#foodList").html("")
     }
     function giveComment() {
       $("#cmt-block").append(' <div class="cmt shadow p-2"> <div class="cmt-header"><span class="text-warning">#1</span><span> p**** '+
