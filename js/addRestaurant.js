@@ -13,9 +13,7 @@ $("#btnNext").click(() => {
   $("#addNewRestaurantFrom").data("step", step);
 });
 
-$("#btnComplete").click(function() {
-  showAlert("Added successfully");
-});
+
 
 function validateForm1() {
   $("#btnNext").attr("disabled", true);

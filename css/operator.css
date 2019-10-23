@@ -18,7 +18,7 @@
 }
 
 .mediaBtn {
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 
 .mediaContainer {
@@ -27,4 +27,28 @@
 
 .fullwidth {
     width: 100%;
+}
+.card img{
+    width : 250px;
+    height: 200px;
+}
+
+.card-body{
+    height: 180px;
+}
+
+.card-body a{
+    width : 100px;
+}
+.card:hover{
+    cursor: pointer;
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+
+.breadcrumb-item{
+    cursor : pointer;
+}
+.active{
+    cursor : context-menu;
 }
