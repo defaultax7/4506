@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $("#restaurantInfo").hide();
   $("#sidebarCollapse").on("click", function() {
     $("#sidebar").toggleClass("active");
@@ -92,72 +93,90 @@ $(document).ready(function() {
         container.childNodes[0].childNodes[1].childNodes[3].childNodes[5].childNodes[1].innerHTML =
           "something is wrong";
       });
+
+      $('#pagination-demo').twbsPagination('destroy');
+      $('#pagination-demo').twbsPagination({totalPages:2});
   });
 
   $("#pagination-demo").twbsPagination({
     totalPages: 3,
     visiblePages: 5,
     onPageClick: function(event, page) {
-      $("#page-content").text("Page " + page);
-      $.getJSON("data/restaurant.json", function(data) {
-        $("#mediaContainer1 img").prop(
-          "src",
-          data.restaurantList[0 + (page - 1) * 3].img
-        );
-        $("#mediaContainer1 span").text(
-          data.restaurantList[0 + (page - 1) * 3].report
-        );
-        $("#mediaContainer1 li").text(
-          data.restaurantList[0 + (page - 1) * 3].reason
-        );
-        $("#mediaContainer1 h5").text(
-          data.restaurantList[0 + (page - 1) * 3].name
-        );
-
-        if (data.restaurantList[1 + (page - 1) * 3] == null) {
-          $("#mediaContainer2").css("visibility", "hidden");
-        } else {
-          $("#mediaContainer2").css("visibility", "visible");
-          $("#mediaContainer2 img").prop(
+      if ($("body").data("mode") == 1) {
+        $("#page-content").text("Page " + page);
+        $.getJSON("data/restaurant.json", function(data) {
+          $("#mediaContainer1 img").prop(
             "src",
-            data.restaurantList[1 + (page - 1) * 3].img
+            data.restaurantList[0 + (page - 1) * 3].img
           );
-          $("#mediaContainer2 span").text(
-            data.restaurantList[1 + (page - 1) * 3].report
+          $("#mediaContainer1 span").text(
+            data.restaurantList[0 + (page - 1) * 3].report
           );
-          $("#mediaContainer2 li").text(
-            data.restaurantList[1 + (page - 1) * 3].reason
+          $("#mediaContainer1 li").text(
+            data.restaurantList[0 + (page - 1) * 3].reason
           );
-          $("#mediaContainer2 h5").text(
-            data.restaurantList[1 + (page - 1) * 3].name
+          $("#mediaContainer1 h5").text(
+            data.restaurantList[0 + (page - 1) * 3].name
           );
-        }
 
-        if (data.restaurantList[2 + (page - 1) * 3] == null) {
-          $("#mediaContainer3").css("visibility", "hidden");
-        } else {
-          $("#mediaContainer3").css("visibility", "visible");
-          $("#mediaContainer3 img").prop(
-            "src",
-            data.restaurantList[2 + (page - 1) * 3].img
-          );
-          $("#mediaContainer3 span").text(
-            data.restaurantList[2 + (page - 1) * 3].report
-          );
-          $("#mediaContainer3 li").text(
-            data.restaurantList[2 + (page - 1) * 3].reason
-          );
-          $("#mediaContainer3 h5").text(
-            data.restaurantList[2 + (page - 1) * 3].name
-          );
-        }
+          if (data.restaurantList[1 + (page - 1) * 3] == null) {
+            $("#mediaContainer2").css("visibility", "hidden");
+          } else {
+            $("#mediaContainer2").css("visibility", "visible");
+            $("#mediaContainer2 img").prop(
+              "src",
+              data.restaurantList[1 + (page - 1) * 3].img
+            );
+            $("#mediaContainer2 span").text(
+              data.restaurantList[1 + (page - 1) * 3].report
+            );
+            $("#mediaContainer2 li").text(
+              data.restaurantList[1 + (page - 1) * 3].reason
+            );
+            $("#mediaContainer2 h5").text(
+              data.restaurantList[1 + (page - 1) * 3].name
+            );
+          }
 
-        $(".reportNo").each(function(element) {
-          qtyAlert($(this));
+          if (data.restaurantList[2 + (page - 1) * 3] == null) {
+            $("#mediaContainer3").css("visibility", "hidden");
+          } else {
+            $("#mediaContainer3").css("visibility", "visible");
+            $("#mediaContainer3 img").prop(
+              "src",
+              data.restaurantList[2 + (page - 1) * 3].img
+            );
+            $("#mediaContainer3 span").text(
+              data.restaurantList[2 + (page - 1) * 3].report
+            );
+            $("#mediaContainer3 li").text(
+              data.restaurantList[2 + (page - 1) * 3].reason
+            );
+            $("#mediaContainer3 h5").text(
+              data.restaurantList[2 + (page - 1) * 3].name
+            );
+          }
+
+          $(".reportNo").each(function(element) {
+            qtyAlert($(this));
+          });
         });
-      });
+      } else if ($("body").data("mode") == 2) {
+        if (page == 1) {
+          $("#resPage2").hide();
+          $("#resPage1").show();
+        }
+        if (page == 2) {
+          $("#resPage1").hide();
+          $("#resPage2").show();
+        }
+      }
     }
   });
+
+  $("#btnComfirmEditReported").click(function(){
+    alert("aaa");
+  })
 
   function qtyAlert(element) {
     no = parseInt(element[0].textContent);
@@ -176,15 +195,19 @@ $(document).ready(function() {
   $("#btnBroRes").click(function() {
     $("#reportedResContainer").hide();
     $("#restaurantInfo").fadeIn();
-    $("#heading").text("Restaurant");
+    $("#noResult").hide();
+    $("#pagination-demo").show();
     $("body").data("mode", 2);
+    $('#pagination-demo li:first-child').click();
   });
 
   $("#btnReportedRes").click(function() {
     $("#reportedResContainer").fadeIn();
     $("#restaurantInfo").hide();
-    $("#heading").text("Reported restaurants");
+    $("#noResult").hide();
+    $("#pagination-demo").show();
     $("body").data("mode", 1);
+    $('#pagination-demo li:first-child').click();
   });
 
   $("#btnSaveSetting").click(function() {
@@ -198,9 +221,32 @@ $(document).ready(function() {
 
   $("#editRes").click(function() {});
 
-  $("#viewMenu").click(function() {});
+  $("#viewMenu").click(function() {
+    $("#breadcurmb li").removeClass("active");
+    $("#breadcurmb").append("<li class='breadcrumb-item active' aria-current='page'> Menu </li>");
+    $("#menuPage").show();  
+    $("#resPage1").hide();
+    $("#resPage2").hide();
+    $("#btnAddRes").hide();
+    $("#btnAddMenu").show();
+  });
+
+
+  $("#rootBread").click(function(){
+    $("#breadcurmb li").addClass("active");
+    $("#breadcurmb li")[1].remove();
+    $("#menuPage").hide();  
+    $("#resPage1").show();
+    $("#resPage2").hide();
+    $("#btnAddRes").show();
+    $("#btnAddMenu").hide();
+  });
+
+  $("#btnAddMenu").hide();
 
   $("#viewBranch").click(function() {});
+
+  $("#menuPage").hide();
 
   function changeCSS(cssFile, cssLinkIndex) {
     var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);

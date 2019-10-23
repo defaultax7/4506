@@ -22,6 +22,51 @@
     <!-- Modal -->
     <div
       class="modal fade"
+      id="updateReported1"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Update Information
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <span style="color: red;">Original location:</span> <br />
+            Shop 3-5, Marina Magic Shopping Mall, Hong Kong Gold Coast, Tuen Mun
+            <br />
+            <br />
+            <span style="color: green;"> New location: </span><br />
+            <textarea type="text" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="showAlert('Edit success');"
+            >
+              Confirm edit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
       id="settingForm"
       tabindex="-1"
       role="dialog"
@@ -70,29 +115,22 @@
                 <span class="checkmark2"></span>
               </label>
             </div>
-            <br>
-              Language <br />
-              <div class="form-check-inline">
-                <label class="customradio m-2"
-                  ><span class="radiotextsty">English</span>
-                  <input type="radio" checked name="language" />
-                  <span class="checkmark2"></span>
-                </label>
-                <label class="customradio m-2"
-                  ><span class="radiotextsty">中文</span>
-                  <input type="radio" name="language" />
-                  <span class="checkmark2"></span>
-                </label>
-              </div>
+            <br />
+            Language <br />
+            <div class="form-check-inline">
+              <label class="customradio m-2"
+                ><span class="radiotextsty">English</span>
+                <input type="radio" checked name="language" />
+                <span class="checkmark2"></span>
+              </label>
+              <label class="customradio m-2"
+                ><span class="radiotextsty">中文</span>
+                <input type="radio" name="language" />
+                <span class="checkmark2"></span>
+              </label>
+            </div>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
             <button type="button" class="btn btn-primary" id="btnSaveSetting">
               Save changes
             </button>
@@ -741,11 +779,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="p-2">
-          <button
-            type="button"
-            class="btn btn-danger"
-            id="btnReportedRes"
-          >
+          <button type="button" class="btn btn-danger" id="btnReportedRes">
             <i class="material-icons align-middle">
               report
             </i>
@@ -753,7 +787,6 @@
           </button>
         </div>
 
-       
         <div class="p-2">
           <button type="button" class="btn btn-secondary">
             <i class="material-icons align-middle">
@@ -788,10 +821,10 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <button type="button" class="btn btn-link">Fliter</button>
+        <button type="button" class="btn btn-link">Advanced search</button>
       </div>
       <div class="hspace-20"></div>
-      <u style="font-size: 40px;" id="heading"> Reported restaurants</u>
+
       <div
         class="row justify-content-center"
         id="noResult"
@@ -799,76 +832,188 @@
       >
         No Result
       </div>
-      <div id="restaurantInfo" class="row">
-          <div class="col-12">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#addForm"
-              >
-                <i class="material-icons align-middle">
-                  add
-                </i>
-                <span class="align-middle"> Add restaurant </span>
-              </button>
-            </div>
 
-        <div class="row-3 p-3" id="editRes">
-          <div class="card shadow">
-            <img src="img/mc.png" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Mcdonald</h5>
-              Number of reports : 5123 <br>
-              Tel : 2338 2338 <br><br>
-              <a href="#" class="btn btn-primary" id="viewMenu">Menu</a>
-              <a href="#" class="btn btn-primary" id="ViewBranch">Branch</a>
+      <div id="restaurantInfo" class="row">
+        <nav aria-label="breadcrumb">
+          <ol
+            class="breadcrumb"
+            id="breadcurmb"
+            style="background-color: white; font-size: 40px; color: #007bff;"
+          >
+            <li
+              class="breadcrumb-item active"
+              id="rootBread"
+              aria-current="page"
+            >
+              Restaurants
+            </li>
+          </ol>
+        </nav>
+
+        <div class="col-12">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#addForm"
+            id="btnAddRes"
+          >
+            <i class="material-icons align-middle">
+              add
+            </i>
+            <span class="align-middle"> Add restaurant </span>
+          </button>
+        </div>
+
+        <div class="col-12">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#addForm"
+              id="btnAddMenu"
+            >
+              <i class="material-icons align-middle">
+                add
+              </i>
+              <span class="align-middle"> Add menu </span>
+            </button>
+          </div>
+
+        <div id="menuPage" class="row">
+          <div class="row-3 p-3" id="editRes">
+            <div class="card shadow">
+              <img src="img/meal1.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Happe meal</h5>
+                Price : $25 <br />
+                <br />
+                <a href="#" class="btn btn-primary">Edit</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row-3 p-3">
-          <div class="card shadow">
-            <img src="img/logo5.png" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Pizza Hut</h5>
-              Number of reports : 1234 <br>
-              Tel : 3456 7890 <br><br>
-              <a href="#" class="btn btn-primary">Menu</a>
-              <a href="#" class="btn btn-primary">Branch</a>
+        <div id="resPage1" class="row">
+          <div class="row-3 p-3" id="editRes">
+            <div class="card shadow">
+              <img src="img/mc.png" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Mcdonald</h5>
+                Number of reports : 5123 <br />
+                Tel : 2338 2338 <br /><br />
+                <a href="#" class="btn btn-primary" id="viewMenu">Menu</a>
+                <a href="#" class="btn btn-primary" id="ViewBranch">Branch</a>
+              </div>
+            </div>
+          </div>
+          <div class="row-3 p-3">
+            <div class="card shadow">
+              <img src="img/logo5.png" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Pizza Hut</h5>
+                Number of reports : 1234 <br />
+                Tel : 3456 7890 <br /><br />
+                <a href="#" class="btn btn-primary">Menu</a>
+                <a href="#" class="btn btn-primary">Branch</a>
+              </div>
+            </div>
+          </div>
+          <div class="row-3 p-3">
+            <div class="card shadow">
+              <img src="img/logo8.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">KFC</h5>
+                Number of reports : 5577 <br />
+                Tel : 2180 0000 <br /><br />
+                <a href="#" class="btn btn-primary">Menu</a>
+                <a href="#" class="btn btn-primary">Branch</a>
+              </div>
+            </div>
+          </div>
+          <div class="row-3 p-3">
+            <div class="card shadow">
+              <img src="img/logo9.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Subway</h5>
+                Number of reports : 4471 <br />
+                Tel : 3188 5286 <br /><br />
+                <a href="#" class="btn btn-primary">Menu</a>
+                <a href="#" class="btn btn-primary">Branch</a>
+              </div>
+            </div>
+          </div>
+          <div class="row-3 p-3">
+            <div class="card shadow">
+              <img src="img/logo10.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Starbucks</h5>
+                Number of reports : 1234 <br />
+                Tel : 2758 2922 <br /><br />
+                <a href="#" class="btn btn-primary">Menu</a>
+                <a href="#" class="btn btn-primary">Branch</a>
+              </div>
+            </div>
+          </div>
+          <div class="row-3 p-3">
+            <div class="card shadow">
+              <img src="img/logo11.png" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Burger King</h5>
+                Number of reports : 7645 <br />
+                Tel : 2849 2275 <br /><br />
+                <a href="#" class="btn btn-primary">Menu</a>
+                <a href="#" class="btn btn-primary">Branch</a>
+              </div>
+            </div>
+          </div>
+          <div class="row-3 p-3">
+            <div class="card shadow">
+              <img src="img/logo12.jpg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Hardee's</h5>
+                Number of reports : 4481 <br />
+                Tel : 3443 1189 <br /><br />
+                <a href="#" class="btn btn-primary">Menu</a>
+                <a href="#" class="btn btn-primary">Branch</a>
+              </div>
+            </div>
+          </div>
+          <div class="row-3 p-3">
+            <div class="card shadow">
+              <img src="img/logo13.png" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Jollibee</h5>
+                Number of reports : 438 <br />
+                Tel : 2577 1328 <br /><br />
+                <a href="#" class="btn btn-primary">Menu</a>
+                <a href="#" class="btn btn-primary">Branch</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row-3 p-3">
-          <div class="card shadow">
-            <img src="img/logo8.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">KFC</h5>
-              Number of reports : 5577 <br>
-              Tel : 2180 0000 <br><br>
-              <a href="#" class="btn btn-primary">Menu</a>
-              <a href="#" class="btn btn-primary">Branch</a>
-            </div>
-          </div>
-        </div>
-        <div class="row-3 p-3">
-          <div class="card shadow">
-            <img src="img/logo9.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Subway</h5>
-              Number of reports : 4471 <br>
-              Tel : 3188 5286 <br><br>
-              <a href="#" class="btn btn-primary">Menu</a>
-              <a href="#" class="btn btn-primary">Branch</a>
+        <div id="resPage2" class="row" style="height: 828px; display: none;">
+          <div class="row-3 p-3">
+            <div class="card shadow">
+              <img src="img/logo14.png" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Popeyes</h5>
+                Number of reports : 864 <br />
+                Tel : 2388 7887 <br /><br />
+                <a href="#" class="btn btn-primary">Menu</a>
+                <a href="#" class="btn btn-primary">Branch</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="hspace-20"></div>
+
       <div class="row" id="reportedResContainer">
+        <u style="font-size: 40px;" id="heading"> Reported restaurants</u>
+
         <div class="hspace-20"></div>
 
         <div class="mediaContainer shadow-lg" id="mediaContainer1">
-          <div class="media p-2" >
+          <div class="media p-2">
             <img
               src="img/logo2.jpg"
               class="align-self-start mr-3"
@@ -914,7 +1059,12 @@
             </div>
           </div>
           <div class="mediaBtn p-3">
-            <button type="button" class="btn btn-primary">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#updateReported1"
+            >
               Update information
             </button>
             <button type="button" class="btn btn-danger">Ignore</button>

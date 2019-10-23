@@ -45,3 +45,10 @@
     transition: 0.5s;
     transform: scale(1.1);
 }
+
+.breadcrumb-item{
+    cursor : pointer;
+}
+.active{
+    cursor : context-menu;
+}
