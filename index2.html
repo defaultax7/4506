@@ -66,10 +66,24 @@
               </label>
               <label class="customradio m-2"
                 ><span class="radiotextsty">Dark</span>
-                <input type="radio" name="theme" />
+                <input type="radio" name="theme" id="darkRadio" />
                 <span class="checkmark2"></span>
               </label>
             </div>
+            <br>
+              Language <br />
+              <div class="form-check-inline">
+                <label class="customradio m-2"
+                  ><span class="radiotextsty">English</span>
+                  <input type="radio" checked name="language" />
+                  <span class="checkmark2"></span>
+                </label>
+                <label class="customradio m-2"
+                  ><span class="radiotextsty">中文</span>
+                  <input type="radio" name="language" />
+                  <span class="checkmark2"></span>
+                </label>
+              </div>
           </div>
           <div class="modal-footer">
             <button
@@ -739,19 +753,7 @@
           </button>
         </div>
 
-        <div class="p-2">
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#addForm"
-          >
-            <i class="material-icons align-middle">
-              add
-            </i>
-            <span class="align-middle"> Add restaurant </span>
-          </button>
-        </div>
+       
         <div class="p-2">
           <button type="button" class="btn btn-secondary">
             <i class="material-icons align-middle">
@@ -785,6 +787,9 @@
           />
         </div>
       </div>
+      <div class="row justify-content-center">
+        <button type="button" class="btn btn-link">Fliter</button>
+      </div>
       <div class="hspace-20"></div>
       <u style="font-size: 40px;" id="heading"> Reported restaurants</u>
       <div
@@ -795,15 +800,29 @@
         No Result
       </div>
       <div id="restaurantInfo" class="row">
-        <div class="row-3 p-3">
+          <div class="col-12">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#addForm"
+              >
+                <i class="material-icons align-middle">
+                  add
+                </i>
+                <span class="align-middle"> Add restaurant </span>
+              </button>
+            </div>
+
+        <div class="row-3 p-3" id="editRes">
           <div class="card shadow">
             <img src="img/mc.png" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">Mcdonald</h5>
               Number of reports : 5123 <br>
               Tel : 2338 2338 <br><br>
-              <a href="#" class="btn btn-primary">Menu</a>
-              <a href="#" class="btn btn-primary">Branch</a>
+              <a href="#" class="btn btn-primary" id="viewMenu">Menu</a>
+              <a href="#" class="btn btn-primary" id="ViewBranch">Branch</a>
             </div>
           </div>
         </div>
@@ -849,7 +868,7 @@
         <div class="hspace-20"></div>
 
         <div class="mediaContainer shadow-lg" id="mediaContainer1">
-          <div class="media p-2" style="background-color: white;">
+          <div class="media p-2" >
             <img
               src="img/logo2.jpg"
               class="align-self-start mr-3"
@@ -877,7 +896,7 @@
         <div class="hspace-20"></div>
 
         <div class="mediaContainer shadow-lg" id="mediaContainer2">
-          <div class="media p-2" style="background-color: white;">
+          <div class="media p-2">
             <img
               src="img/logo3.jpg"
               class="align-self-start mr-3"
@@ -905,7 +924,7 @@
         <div class="hspace-20"></div>
 
         <div class="mediaContainer shadow-lg" id="mediaContainer3">
-          <div class="media p-2" style="background-color: white;">
+          <div class="media p-2">
             <img
               src="img/logo4.png"
               class="align-self-start mr-3"

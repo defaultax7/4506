@@ -187,92 +187,145 @@ $(document).ready(function() {
     $("body").data("mode", 1);
   });
 
+  $("#btnSaveSetting").click(function() {
+    if ($("#darkRadio").is(":checked")) {
+      changeCSS("css/bootstrap-dark.css", 0);
+    } else {
+      changeCSS("css/bootstrap.min.css", 0);
+    }
+    $("#settingForm").modal("hide");
+  });
+
+  $("#editRes").click(function() {});
+
+  $("#viewMenu").click(function() {});
+
+  $("#viewBranch").click(function() {});
+
+  function changeCSS(cssFile, cssLinkIndex) {
+    var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+
+    var newlink = document.createElement("link");
+    newlink.setAttribute("rel", "stylesheet");
+    newlink.setAttribute("type", "text/css");
+    newlink.setAttribute("href", cssFile);
+
+    document
+      .getElementsByTagName("head")
+      .item(0)
+      .replaceChild(newlink, oldlink);
+  }
+
   $("#searchBar").keyup(function() {
     text = $(this).val();
-    $.getJSON("data/restaurant.json", function(data) {
-      count = 0;
-      index1 = -1;
-      index2 = -1;
-      index3 = -1;
-      for (i = 0; i < data.restaurantList.length; i++) {
-        if (
-          data.restaurantList[i].name.toUpperCase().includes(text.toUpperCase())
-        ) {
-          if (index1 == -1) {
-            index1 = i;
-            count++;
-          } else if (index2 == -1) {
-            index2 = i;
-            count++;
-          } else if (index3 == -1) {
-            index3 = i;
-            count++;
-          } else {
-            count++;
+    if ($("body").data("mode") == 1) {
+      $.getJSON("data/restaurant.json", function(data) {
+        count = 0;
+        index1 = -1;
+        index2 = -1;
+        index3 = -1;
+        for (i = 0; i < data.restaurantList.length; i++) {
+          if (
+            data.restaurantList[i].name
+              .toUpperCase()
+              .includes(text.toUpperCase())
+          ) {
+            if (index1 == -1) {
+              index1 = i;
+              count++;
+            } else if (index2 == -1) {
+              index2 = i;
+              count++;
+            } else if (index3 == -1) {
+              index3 = i;
+              count++;
+            } else {
+              count++;
+            }
           }
         }
-      }
-      if (count >= 3) {
-        $("#reportedResContainer").show();
-        $("#pagination-demo").show();
-        $("#noResult").hide();
+        if (count >= 3) {
+          $("#reportedResContainer").show();
+          $("#pagination-demo").show();
+          $("#noResult").hide();
 
-        $("#mediaContainer1").show();
-        $("#mediaContainer1 img").prop("src", data.restaurantList[index1].img);
-        $("#mediaContainer1 span").text(data.restaurantList[index1].report);
-        $("#mediaContainer1 li").text(data.restaurantList[index1].reason);
-        $("#mediaContainer1 h5").text(data.restaurantList[index1].name);
+          $("#mediaContainer1").show();
+          $("#mediaContainer1 img").prop(
+            "src",
+            data.restaurantList[index1].img
+          );
+          $("#mediaContainer1 span").text(data.restaurantList[index1].report);
+          $("#mediaContainer1 li").text(data.restaurantList[index1].reason);
+          $("#mediaContainer1 h5").text(data.restaurantList[index1].name);
 
-        $("#mediaContainer2").show();
+          $("#mediaContainer2").show();
 
-        $("#mediaContainer2 img").prop("src", data.restaurantList[index2].img);
-        $("#mediaContainer2 span").text(data.restaurantList[index2].report);
-        $("#mediaContainer2 li").text(data.restaurantList[index2].reason);
-        $("#mediaContainer2 h5").text(data.restaurantList[index2].name);
+          $("#mediaContainer2 img").prop(
+            "src",
+            data.restaurantList[index2].img
+          );
+          $("#mediaContainer2 span").text(data.restaurantList[index2].report);
+          $("#mediaContainer2 li").text(data.restaurantList[index2].reason);
+          $("#mediaContainer2 h5").text(data.restaurantList[index2].name);
 
-        $("#mediaContainer3").show();
+          $("#mediaContainer3").show();
 
-        $("#mediaContainer3 img").prop("src", data.restaurantList[index3].img);
-        $("#mediaContainer3 span").text(data.restaurantList[index3].report);
-        $("#mediaContainer3 li").text(data.restaurantList[index3].reason);
-        $("#mediaContainer3 h5").text(data.restaurantList[index3].name);
-      } else if (count == 2) {
-        $("#reportedResContainer").show();
-        $("#pagination-demo").show();
-        $("#noResult").hide();
+          $("#mediaContainer3 img").prop(
+            "src",
+            data.restaurantList[index3].img
+          );
+          $("#mediaContainer3 span").text(data.restaurantList[index3].report);
+          $("#mediaContainer3 li").text(data.restaurantList[index3].reason);
+          $("#mediaContainer3 h5").text(data.restaurantList[index3].name);
+        } else if (count == 2) {
+          $("#reportedResContainer").show();
+          $("#pagination-demo").show();
+          $("#noResult").hide();
 
-        $("#mediaContainer1").show();
-        $("#mediaContainer1 img").prop("src", data.restaurantList[index1].img);
-        $("#mediaContainer1 span").text(data.restaurantList[index1].report);
-        $("#mediaContainer1 li").text(data.restaurantList[index1].reason);
-        $("#mediaContainer1 h5").text(data.restaurantList[index1].name);
+          $("#mediaContainer1").show();
+          $("#mediaContainer1 img").prop(
+            "src",
+            data.restaurantList[index1].img
+          );
+          $("#mediaContainer1 span").text(data.restaurantList[index1].report);
+          $("#mediaContainer1 li").text(data.restaurantList[index1].reason);
+          $("#mediaContainer1 h5").text(data.restaurantList[index1].name);
 
-        $("#mediaContainer2").show();
+          $("#mediaContainer2").show();
 
-        $("#mediaContainer2 img").prop("src", data.restaurantList[index2].img);
-        $("#mediaContainer2 span").text(data.restaurantList[index2].report);
-        $("#mediaContainer2 li").text(data.restaurantList[index2].reason);
-        $("#mediaContainer2 h5").text(data.restaurantList[index2].name);
+          $("#mediaContainer2 img").prop(
+            "src",
+            data.restaurantList[index2].img
+          );
+          $("#mediaContainer2 span").text(data.restaurantList[index2].report);
+          $("#mediaContainer2 li").text(data.restaurantList[index2].reason);
+          $("#mediaContainer2 h5").text(data.restaurantList[index2].name);
 
-        $("#mediaContainer3").hide();
-      } else if (count == 1) {
-        $("#reportedResContainer").show();
-        $("#pagination-demo").show();
-        $("#noResult").hide();
+          $("#mediaContainer3").hide();
+        } else if (count == 1) {
+          $("#reportedResContainer").show();
+          $("#pagination-demo").show();
+          $("#noResult").hide();
 
-        $("#mediaContainer1").show();
-        $("#mediaContainer1 img").prop("src", data.restaurantList[index1].img);
-        $("#mediaContainer1 span").text(data.restaurantList[index1].report);
-        $("#mediaContainer1 li").text(data.restaurantList[index1].reason);
-        $("#mediaContainer1 h5").text(data.restaurantList[index1].name);
+          $("#mediaContainer1").show();
+          $("#mediaContainer1 img").prop(
+            "src",
+            data.restaurantList[index1].img
+          );
+          $("#mediaContainer1 span").text(data.restaurantList[index1].report);
+          $("#mediaContainer1 li").text(data.restaurantList[index1].reason);
+          $("#mediaContainer1 h5").text(data.restaurantList[index1].name);
 
-        $("#mediaContainer2").hide();
-        $("#mediaContainer3").hide();
-      } else {
-        $("#reportedResContainer").hide();
-        $("#pagination-demo").hide();
-        $("#noResult").show();
-      }
-    });
+          $("#mediaContainer2").hide();
+          $("#mediaContainer3").hide();
+        } else {
+          $("#reportedResContainer").hide();
+          $("#pagination-demo").hide();
+          $("#noResult").show();
+        }
+      });
+    } else if ($("body").data("mode") == 2) {
+      // view restaurant
+    }
   });
 });
