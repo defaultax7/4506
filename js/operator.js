@@ -178,6 +178,10 @@ $(document).ready(function() {
     alert("aaa");
   })
 
+  $("#branchPage").hide();
+
+
+
   function qtyAlert(element) {
     no = parseInt(element[0].textContent);
 
@@ -240,11 +244,24 @@ $(document).ready(function() {
     $("#resPage2").hide();
     $("#btnAddRes").show();
     $("#btnAddMenu").hide();
+    $("#btnAddBranch").hide();
+    $("#branchPage").hide(); 
   });
 
   $("#btnAddMenu").hide();
 
-  $("#viewBranch").click(function() {});
+  $("#viewBranch").click(function() {
+    $("#breadcurmb li").removeClass("active");
+    $("#breadcurmb").append("<li class='breadcrumb-item active' aria-current='page'> Branch </li>");
+    $("#branchPage").show();  
+    $("#resPage1").hide();
+    $("#resPage2").hide();
+    $("#btnAddRes").hide();
+    $("#btnAddMenu").hide();
+    $("#btnAddBranch").show();
+  });
+
+  $("#btnAddBranch").hide();
 
   $("#menuPage").hide();
 
