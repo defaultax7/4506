@@ -369,7 +369,7 @@
         restaurants = data.restaurant;
         let context = "";
                 for (let i = 0; i < restaurants.length; i++) {
-                    context += putRestaurant(restaurants[i])
+                  context += putRestaurant(restaurants[i])
                 }
                 $.when($(".lds-default").fadeOut(1000)).done(function() {
                     $("#restList").append(context).hide().fadeIn(1000);
