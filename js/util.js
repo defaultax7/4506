@@ -44,7 +44,7 @@ $("#btnAlertOk").click(function() {
 })
 
 
-function searchText(cls, tbox) { 
+function searchText(cls, tbox) {
   let searchText = $("#"+tbox).val().toLowerCase();
   $("."+cls).each(function() {
       if ($(this).text().toLowerCase().indexOf(searchText) != -1) {
@@ -57,10 +57,17 @@ function searchText(cls, tbox) {
   return false;
 
 }
-function containsAll(needles, haystack){ 
-    for(var i = 0 , len = needles.length; i < len; i++){
+function containsAll(needs, feaArr){
+    for(var i = 0 , len = needs.length; i < len; i++){
       // not find
-        if($.inArray(needles[i], haystack) == -1) return false;
+        if($.inArray(needs[i], feaArr) == -1) return false;
     }
   return true;
+}
+function containsSome(includes, feaArr) {
+  for (var i = 0, len = includes.length; i < len; i++) {
+    if (feaArr.contains(includes[i]))
+      return true;
+  }
+  return false;
 }
