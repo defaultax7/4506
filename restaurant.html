@@ -38,8 +38,9 @@
             }
         }
         .media img {
-            width: 150px;
-            height: 150px;
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
         }
 
       .mediaBtn {
@@ -102,7 +103,7 @@
           <button class="btn btn-outline-success" type="submit">
             <i class="material-icons align-top">search</i>
           </button>
-          <button class="btn btn-primary mx-2" type="submit" value="filter-food" onclick="$('#filterModal').modal();resetRest();">
+          <button class="btn btn-primary mx-2" type="submit" value="filter-food" onclick="$('#filterModal').modal()">
             Filter
           </button>
       </form>
@@ -111,10 +112,11 @@
       <div class="p-3 col-12 bg-warning">
         <div class="h-100 p-3 shadow-lg">
           <button class="btn btn-primary" id="allTag">All</button>
-          <button class="filter btn btn-outline-secondary" data-type="type" value="Fast Food">Fastfood</button>
+          <button class="filter btn btn-outline-secondary" data-type="feature" value="Fast Food">Fastfood</button>
           <button class="filter btn btn-outline-secondary" data-type="feature" value="Noodles">Noodle</button>
           <button class="filter btn btn-outline-secondary" data-type="feature" value="American">American</button>
           <button class="filter btn btn-outline-secondary" data-type="feature" value="Western">Western</button>
+          <button class="filter btn btn-outline-secondary" data-type="feature" value="Dim Sum">Dim Sum</button>
         </div>
       </div>
       <div class="col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
@@ -142,25 +144,18 @@
                         <input type="radio" name="jy-tabs" id="tabone" checked="checked">
                         <label for="tabone">Menu</label>
                         <div class="jy-tab" id="foodList">
-                          <div class="container">
-                              Food: McNugget<br> Price: $30
-                              <button class="btn btn-primary" onClick="showToast('Item has add to cart.')">Add to Cart</button>
-                          </div>
                           <div class="mediaContainer shadow-lg" style="visibility: visible;">
                             <div class="media p-2" style="background-color: white;">
                               <img src="img/ice-cream.jpg" class="align-self-start mr-3" data-toggle="modal" data-target="#exampleModalScrollable" type="button" alt="..." />
                               <div class="media-body">
-                                <h5 class="mt-0">Ice Cream</h5>
-                                <span class="reportNo" style="color: orange;">No Description</span>
-                                <ul>
-                                  <li>menu is wrong</li>
-                                </ul>
+                                <h5 class="mt-0 p-3" style="font-family: Arial;">Ice Cream</h5>
+                                <span class="reportNo" style="color: rgb(38, 4, 82);font-size: 1.5em;">No Description</span>
                               </div>
                             </div>
                             <div class="mediaBtn p-3">
-                              <button type="button" class="btn btn-danger float-right">Ignore</button>
-                              <button type="button" class="btn btn-primary float-right mx-2" onClick="showToast('Item has add to cart.')">
-                                Update information
+                              <button type="button" class="btn btn-primary float-right mx-2"
+                                onClick="showToast('Item has add to cart.')">
+                                <i class="material-icons align-top">add</i>
                               </button>
                               <span class="float-right p-2"><span>Price : </span><span class="foodPrice">10</span></span>
                               <div style="clear: both;"></div>
@@ -380,6 +375,7 @@
                     $("#restList").append(context).hide().fadeIn(1000);
                 });
 
+
       });
       // filterTag
       $("#allTag").click(function() {
@@ -405,21 +401,48 @@
       });
     });
 
-    function putRestaurant(obj) {
+    function putRestaurant(rest) {
       let label = "";
-      if (obj.label !== undefined) {
-        label = '<div class="card-label">' + obj.label + '</div>';
+      if (rest.label !== undefined) {
+        label = '<div class="card-label">' + rest.label + '</div>';
       }
-      let foodDiv = '<div class="col-12 col-sm-6 col-md-4 col-xl-3 p-3 foodItem"> <a class="card" href="#!" data-id="'+ obj.id+
-      '" onclick="showFood( '+ obj.id +
+      let restDiv = '<div class="col-12 col-sm-6 col-md-4 col-xl-3 p-3 foodItem"> <a class="card" href="#!" data-id="'+ rest.id+
+      '" onclick="showFood( '+ rest.id +
       ' );"> ' +label+
-      '<div class="card-img"> <img class="card-img-top"  src="'+obj.imagePath+
-      '" alt="food image"> </div> <div class="card-body"> <span>'+obj.name+
-      '</span> <ul class="food"> <li>'+ "$".repeat(obj.priceLv)+
-      '</li> <li>'+obj.feature.join("</li><li>")+
-      '<li id="type">'+obj.type+'</li> </ul> <ul class="food-price"> <li><strong>$'+obj.minPrice+
-      '</strong></li> <li>minimum</li><br /> <li><strong>$'+obj.fee+
+      '<div class="card-img"> <img class="card-img-top"  src="'+rest.imagePath+
+      '" alt="food image"> </div> <div class="card-body"> <span>'+rest.name+
+      '</span> <ul class="food"> <li>'+ "$".repeat(rest.priceLv)+
+      '</li> <li>'+rest.feature.join("</li><li>")+
+      '</li> </ul> <ul class="food-price"> <li><strong>$'+rest.minPrice+
+      '</strong></li> <li>minimum</li><br /> <li><strong>$'+rest.fee+
       '</strong></li> <li>delivery fee</li> </ul> </div> </a> </div> ';
+      return restDiv;
+    }
+    function putFood(food) {
+      let description;
+      if (food.desc !== null) {
+        description = food.desc
+      }
+      else {
+        description = "No Description"
+      }
+      let image;
+      if (food.imagePath !== null) {
+        image = '<img src="'+food.imagePath+'" class="align-self-start mr-3"type="button" alt="food picture" />';
+      }
+      else {
+        image = '<div class="material-icons p-2" style="font-size: 8rem;">restaurant_menu</div>'
+      }
+      console.log(image);
+      let foodDiv = '<div class="mediaContainer shadow-lg" style="visibility: visible;">'+
+      '<div class="media p-2" style="background-color: white;"> '+ image +
+      ' <div class="media-body"> <h5 class="mt-0 py-3" style="font-family: Arial;">'+ food.name+
+      '</h5> <span class="reportNo" style="color: rgb(38, 4, 82);font-size: 1em;">'+ description +
+      '</span> </div> </div> <div class="mediaBtn p-3">'+
+      ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="showToast(\'Item has add to cart.\');"> '+
+      '<i class="material-icons align-top">add</i> </button> <span class="float-right p-2">'+
+      '<span>Price : </span><span class="foodPrice">'+food.price+'</span></span>'+
+      ' <div style="clear: both;"></div> </div> </div> ';
       return foodDiv;
     }
 
@@ -438,6 +461,11 @@
       "'></img><p>"+menu.desc+"</p><div style='clear: both;'></div>")
       $("#restMenu").fadeIn();
       $('#rating').html('<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating));
+      foodContext = "";
+      for (let i = 0; i < menu.foods.length; i++) {
+        foodContext += putFood(menu.foods[i]);
+      }
+      $("#foodList").html(foodContext);
       // foodList = "";
       // for (let food in menu.foods) {
       //   foodList += ""
@@ -456,6 +484,7 @@
     }
 
     function searchByFilter() {
+      resetRest();
       featureList = {priceLv: [], feature: [], type: []};
       $("input[name= 'budget']:checked").each(function() {
         featureList.priceLv.push(parseInt($(this).val()));
@@ -492,8 +521,7 @@
     function filterRest() {
       for (let i = 0; i < restaurants.length; i++) {
         let isMatch = containsAll(featureList.feature, restaurants[i].feature) &&
-                      (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv)) &&
-                      (!featureList.type.length || featureList.type.includes(restaurants[i].type));
+                      (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv));
         if (isMatch) {
           $(".foodItem").eq(i).fadeIn();
         }
@@ -501,8 +529,21 @@
           $(".foodItem").eq(i).fadeOut();
         }
       }
-       console.log(featureList);
+      //  console.log(featureList);
     }
+    // function filterRest() {
+    //   for (let i = 0; i < restaurants.length; i++) {
+    //     let isMatch = containsSome(featureList.feature, restaurants[i].feature) &&
+    //                   (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv));
+    //     if (isMatch) {
+    //       $(".foodItem").eq(i).fadeIn();
+    //     }
+    //     else {
+    //       $(".foodItem").eq(i).fadeOut();
+    //     }
+    //   }
+    //   //  console.log(featureList);
+    // }
     function backToRestaurentView() {
         $("#restList").fadeIn();
         $("#restMenu").fadeIn();
