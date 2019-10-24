@@ -253,12 +253,16 @@ $(document).ready(function() {
   $("#viewBranch").click(function() {
     $("#breadcurmb li").removeClass("active");
     $("#breadcurmb").append("<li class='breadcrumb-item active' aria-current='page'> Branch </li>");
-    $("#branchPage").show();  
     $("#resPage1").hide();
     $("#resPage2").hide();
     $("#btnAddRes").hide();
     $("#btnAddMenu").hide();
+    $("#branchPage").show();  
     $("#btnAddBranch").show();
+    setTimeout(function() {
+      window.scrollTo(0,document.body.scrollHeight).delay(100);
+    }, 5);
+    
   });
 
   $("#btnAddBranch").hide();
