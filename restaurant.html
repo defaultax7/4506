@@ -361,7 +361,9 @@
   <script src="js/bootstrap.min.js" charset="utf-8"></script>
   <script src="js/util.js"></script>
   <script>
-      var restaurants = [];
+    const S_TAG = 0;
+    const S_FILTER = 1;
+    var restaurants = [];
     var featureList = {priceLv: [], feature: [], type: []};
     $(document).ready(function() {
       // $("#filterModal").modal();
@@ -393,7 +395,7 @@
         else {
           featureList[thisType] = featureList[thisType].filter(e => e !== searchText);
         }
-        filterRest();
+        filterRest(S_TAG);
       });
             // give rating
       $('input:radio[name="rate"]').change(function() {
@@ -496,7 +498,7 @@
         featureList.type.push(($(this).val()));
       });
       // console.log($("input[name= 'restType']").val());
-      filterRest();
+      filterRest(S_FILTER);
     }
 
     function closeMenu() {
@@ -518,10 +520,17 @@
       });
     }
 
-    function filterRest() {
+    function filterRest(mode) {
       for (let i = 0; i < restaurants.length; i++) {
-        let isMatch = containsAll(featureList.feature, restaurants[i].feature) &&
+        let isMatch;
+        if (mode == S_TAG) {
+          isMatch = featureList.feature.every((val) => restaurant[i].featrue.includes(val)) &&
                       (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv));
+        }
+        else {
+          isMatch = featureList.feature.any((val) => restaurant[i].featrue.includes(val)) &&
+                      (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv));
+        }
         if (isMatch) {
           $(".foodItem").eq(i).fadeIn();
         }
@@ -531,19 +540,6 @@
       }
       //  console.log(featureList);
     }
-    // function filterRest() {
-    //   for (let i = 0; i < restaurants.length; i++) {
-    //     let isMatch = containsSome(featureList.feature, restaurants[i].feature) &&
-    //                   (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv));
-    //     if (isMatch) {
-    //       $(".foodItem").eq(i).fadeIn();
-    //     }
-    //     else {
-    //       $(".foodItem").eq(i).fadeOut();
-    //     }
-    //   }
-    //   //  console.log(featureList);
-    // }
     function backToRestaurentView() {
         $("#restList").fadeIn();
         $("#restMenu").fadeIn();
