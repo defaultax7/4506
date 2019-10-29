@@ -57,17 +57,10 @@ function searchText(cls, tbox) {
   return false;
 
 }
-function containsAll(needs, feaArr){
-    for(var i = 0 , len = needs.length; i < len; i++){
-      // not find
-        if($.inArray(needs[i], feaArr) == -1) return false;
-    }
-  return true;
-}
-function containsSome(includes, feaArr) {
-  for (var i = 0, len = includes.length; i < len; i++) {
-    if (feaArr.contains(includes[i]))
-      return true;
-  }
-  return false;
-}
+//function containsAll(needs, haystack){
+    //for(var i = 0 , len = needs.length; i < len; i++){
+      //// not find
+        //if($.inArray(needs[i], haystack) == -1) return false;
+    //}
+  //return true;
+//}
