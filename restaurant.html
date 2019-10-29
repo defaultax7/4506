@@ -112,11 +112,11 @@
       <div class="p-3 col-12 bg-warning">
         <div class="h-100 p-3 shadow-lg">
           <button class="btn btn-primary" id="allTag">All</button>
-          <button class="filter btn btn-outline-secondary" data-type="feature" value="Fast Food">Fastfood</button>
-          <button class="filter btn btn-outline-secondary" data-type="feature" value="Noodles">Noodle</button>
-          <button class="filter btn btn-outline-secondary" data-type="feature" value="American">American</button>
-          <button class="filter btn btn-outline-secondary" data-type="feature" value="Western">Western</button>
-          <button class="filter btn btn-outline-secondary" data-type="feature" value="Dim Sum">Dim Sum</button>
+          <button class="tag btn btn-outline-secondary" data-type="feature" value="Fast Food">Fastfood</button>
+          <button class="tag btn btn-outline-secondary" data-type="feature" value="Noodles">Noodle</button>
+          <button class="tag btn btn-outline-secondary" data-type="feature" value="American">American</button>
+          <button class="tag btn btn-outline-secondary" data-type="feature" value="Western">Western</button>
+          <button class="tag btn btn-outline-secondary" data-type="feature" value="Dim Sum">Dim Sum</button>
         </div>
       </div>
       <div class="col-12 p-3 order-2 order-md-1" style="background: #ffeae4;">
@@ -364,9 +364,9 @@
     const S_TAG = 0;
     const S_FILTER = 1;
     var restaurants = [];
+    var filtering = false;
     var featureList = {priceLv: [], feature: [], type: []};
     $(document).ready(function() {
-      // $("#filterModal").modal();
       $.getJSON("data/data.json", function(data) {
         restaurants = data.restaurant;
         let context = "";
@@ -384,7 +384,11 @@
         resetRest();
         closeMenu();
       });
-      $(".filter").click(function() {
+      $(".tag").click(function() {
+        if (filtering) {
+          featureList = {priceLv: [], feature: [], type: []};
+          filtering = false;
+        }
         $(this).toggleClass("active");
         let searchText = $(this).val();
         // restaurants.find(x => x.feature.contain(searchText));
@@ -487,6 +491,7 @@
 
     function searchByFilter() {
       resetRest();
+      filtering = true;
       featureList = {priceLv: [], feature: [], type: []};
       $("input[name= 'budget']:checked").each(function() {
         featureList.priceLv.push(parseInt($(this).val()));
@@ -510,7 +515,7 @@
       $("#restList").fadeIn();
     }
     function resetRest() {
-      $(".filter").each(function() {
+      $(".tag").each(function() {
         if ($(this).hasClass("active")) {
           $(this).removeClass("active");
         }
@@ -524,12 +529,14 @@
       for (let i = 0; i < restaurants.length; i++) {
         let isMatch;
         if (mode == S_TAG) {
-          isMatch = featureList.feature.every((val) => restaurant[i].featrue.includes(val)) &&
+          isMatch = featureList.feature.every((val) => restaurants[i].feature.includes(val)) &&
                       (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv));
         }
         else {
-          isMatch = featureList.feature.any((val) => restaurant[i].featrue.includes(val)) &&
-                      (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv));
+          // if no featureList.feature.length = 0
+          isMatch = (featureList.feature.some((val) => restaurants[i].feature.includes(val)) ||
+                      featureList.feature.length == 0) &&
+                    (!featureList.priceLv.length || featureList.priceLv.includes(restaurants[i].priceLv));
         }
         if (isMatch) {
           $(".foodItem").eq(i).fadeIn();
