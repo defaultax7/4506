@@ -685,6 +685,207 @@
 
     <div
       class="modal fade"
+      id="editForm"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      data-backdrop="static"
+    >
+      <div class="modal-dialog" id="formContainer">
+        <div class="modal-content" style="width : 1000px">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              Edit branch
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form class="form" id="addNewRestaurantFrom" data-step="0">
+           
+            <div class="row hspace-50"></div>
+
+            
+            <div  id="branchForm" data-branchnum="1">
+              <div id="branchContainer">
+                <fieldset class="border p-3">
+                  <legend class="w-auto">Branch 1</legend>
+                  <div class="form-row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="branchAddress"
+                          ><span class="align-top font-weight-bold"
+                            >Address </span
+                          ><i class="material-icons inline-icon">
+                            room
+                          </i></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="branchAddress"
+                          placeholder=""
+                          value="Branch 1 location"
+                        />
+                        <small class="form-text text-muted"
+                          >*required</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="col-3">
+                      <div class="form-group">
+                        <label for="restaurantName"
+                          ><span class="align-top font-weight-bold"
+                            >Opening hour </span
+                          ><i class="material-icons inline-icon">
+                            access_time
+                          </i></label
+                        >
+                        <div class="input-group">
+                          <input
+                            type="text"
+                            class="form-control clockpicker"
+                            id="startTime"
+                          />
+                          <i class="material-icons cbIconSize">
+                            arrow_forward
+                          </i>
+                          <input
+                            type="text"
+                            id="endTime"
+                            class="form-control clockpickerEnd"
+                          />
+                        </div>
+                        <small class="form-text text-muted"
+                          >*required</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12"><b>Environment :</b></div>
+                    <div class="col-12">
+                      <label class="cbContainer"
+                        ><span class="align-top"> Indoor </span
+                        ><input type="checkbox" id="cbIndoor" checked />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          home_work
+                        </i>
+                      </label>
+
+                      <label class="cbContainer"
+                        ><span class="align-top"> Outdoor </span
+                        ><input type="checkbox" id="cbOutdoor" />
+                        <span class="checkmark"></span>
+                        <i class="material-icons cbIconSize">
+                          cloud
+                        </i>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12">
+                      <b>Feature : </b>
+                    </div>
+                  </div>
+                  <label class="cbContainer"
+                    ><span class="align-top"> Wifi </span
+                    ><input type="checkbox" checked />
+                    <span class="checkmark"></span>
+                    <i class="material-icons cbIconSize">
+                      wifi
+                    </i>
+                  </label>
+
+                  <label class="cbContainer"
+                    ><span class="align-top"> Allow booking </span
+                    ><input type="checkbox" checked />
+                    <span class="checkmark"></span>
+                    <i class="material-icons cbIconSize">
+                      airline_seat_recline_extra
+                    </i>
+                  </label>
+
+                  <label class="cbContainer"
+                    ><span class="align-top"> Complementary parking </span
+                    ><input type="checkbox" />
+                    <span class="checkmark"></span>
+                    <i class="material-icons cbIconSize">
+                      directions_car
+                    </i>
+                  </label>
+
+                  <label class="cbContainer"
+                    ><span class="align-top"> TV </span
+                    ><input type="checkbox" />
+                    <span class="checkmark"></span>
+                    <i class="material-icons cbIconSize">
+                      tv
+                    </i>
+                  </label>
+
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label class="font-weight-bold">Branch image</label>
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                              Browse…
+                              <input
+                                type="file"
+                                id="branchImg"
+                                accept="image/*"
+                              />
+                            </span>
+                          </span>
+                          <input
+                            id="imageName"
+                            type="text"
+                            class="form-control"
+                            readonly
+                          />
+                        </div>
+                        <small class="form-text text-muted"
+                          >*required</small
+                        >
+                        <img
+                          id="img-upload2"
+                          data-toggle="modal"
+                          data-target="#exampleModalScrollable"
+                          type="button"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="hspace-20"></div>
+
+              <div class="row justify-content-center"><button type="button" class="btn btn-primary mb-2 btnEdit">Edit</button></div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
       id="exampleModalScrollable"
       tabindex="-1"
       role="dialog"
@@ -899,50 +1100,57 @@
           <div class="row-3 p-3" id="editRes">
             <div class="card shadow">
               <img src="img/branch1.jpg" class="card-img-top" alt="..." />
-              <div class="card-body" >
+              <div class="card-body">
                 <h5 class="card-title">Branch 1</h5>
                 <br />
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a
+                  href="#!"
+                  class="btn btn-primary"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#editForm"
+                  >Edit</a
+                >
               </div>
             </div>
           </div>
           <div class="row-3 p-3" id="editRes">
             <div class="card shadow">
               <img src="img/branch2.jpg" class="card-img-top" alt="..." />
-              <div class="card-body" >
+              <div class="card-body">
                 <h5 class="card-title">Branch 2</h5>
                 <br />
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#!" class="btn btn-primary">Edit</a>
               </div>
             </div>
           </div>
           <div class="row-3 p-3" id="editRes">
             <div class="card shadow">
               <img src="img/branch3.jpg" class="card-img-top" alt="..." />
-              <div class="card-body" >
+              <div class="card-body">
                 <h5 class="card-title">Branch 3</h5>
                 <br />
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#!" class="btn btn-primary">Edit</a>
               </div>
             </div>
           </div>
           <div class="row-3 p-3" id="editRes">
             <div class="card shadow">
               <img src="img/branch4.jpg" class="card-img-top" alt="..." />
-              <div class="card-body" >
+              <div class="card-body">
                 <h5 class="card-title">Branch 4</h5>
                 <br />
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#!" class="btn btn-primary">Edit</a>
               </div>
             </div>
           </div>
           <div class="row-3 p-3" id="editRes">
             <div class="card shadow">
               <img src="img/branch5.jpg" class="card-img-top" alt="..." />
-              <div class="card-body" >
+              <div class="card-body">
                 <h5 class="card-title">Branch 5</h5>
                 <br />
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#!" class="btn btn-primary">Edit</a>
               </div>
             </div>
           </div>
@@ -955,7 +1163,7 @@
                 <h5 class="card-title">Happe meal</h5>
                 Price : $25 <br />
                 <br />
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#!" class="btn btn-primary">Edit</a>
               </div>
             </div>
           </div>
@@ -968,8 +1176,8 @@
                 <h5 class="card-title">Mcdonald</h5>
                 Number of reports : 5123 <br />
                 Tel : 2338 2338 <br /><br />
-                <a href="#" class="btn btn-primary" id="viewMenu">Menu</a>
-                <a href="#" class="btn btn-primary" id="viewBranch">Branch</a>
+                <a href="#!" class="btn btn-primary" id="viewMenu">Menu</a>
+                <a href="#!" class="btn btn-primary" id="viewBranch">Branch</a>
               </div>
             </div>
           </div>
@@ -980,8 +1188,8 @@
                 <h5 class="card-title">Pizza Hut</h5>
                 Number of reports : 1234 <br />
                 Tel : 3456 7890 <br /><br />
-                <a href="#" class="btn btn-primary">Menu</a>
-                <a href="#" class="btn btn-primary">Branch</a>
+                <a href="#!" class="btn btn-primary">Menu</a>
+                <a href="#!" class="btn btn-primary">Branch</a>
               </div>
             </div>
           </div>
@@ -992,8 +1200,8 @@
                 <h5 class="card-title">KFC</h5>
                 Number of reports : 5577 <br />
                 Tel : 2180 0000 <br /><br />
-                <a href="#" class="btn btn-primary">Menu</a>
-                <a href="#" class="btn btn-primary">Branch</a>
+                <a href="#!" class="btn btn-primary">Menu</a>
+                <a href="#!" class="btn btn-primary">Branch</a>
               </div>
             </div>
           </div>
@@ -1004,8 +1212,8 @@
                 <h5 class="card-title">Subway</h5>
                 Number of reports : 4471 <br />
                 Tel : 3188 5286 <br /><br />
-                <a href="#" class="btn btn-primary">Menu</a>
-                <a href="#" class="btn btn-primary">Branch</a>
+                <a href="#!" class="btn btn-primary">Menu</a>
+                <a href="#!" class="btn btn-primary">Branch</a>
               </div>
             </div>
           </div>
@@ -1016,8 +1224,8 @@
                 <h5 class="card-title">Starbucks</h5>
                 Number of reports : 1234 <br />
                 Tel : 2758 2922 <br /><br />
-                <a href="#" class="btn btn-primary">Menu</a>
-                <a href="#" class="btn btn-primary">Branch</a>
+                <a href="#!" class="btn btn-primary">Menu</a>
+                <a href="#!" class="btn btn-primary">Branch</a>
               </div>
             </div>
           </div>
@@ -1028,8 +1236,8 @@
                 <h5 class="card-title">Burger King</h5>
                 Number of reports : 7645 <br />
                 Tel : 2849 2275 <br /><br />
-                <a href="#" class="btn btn-primary">Menu</a>
-                <a href="#" class="btn btn-primary">Branch</a>
+                <a href="#!" class="btn btn-primary">Menu</a>
+                <a href="#!" class="btn btn-primary">Branch</a>
               </div>
             </div>
           </div>
@@ -1040,8 +1248,8 @@
                 <h5 class="card-title">Hardee's</h5>
                 Number of reports : 4481 <br />
                 Tel : 3443 1189 <br /><br />
-                <a href="#" class="btn btn-primary">Menu</a>
-                <a href="#" class="btn btn-primary">Branch</a>
+                <a href="#!" class="btn btn-primary">Menu</a>
+                <a href="#!" class="btn btn-primary">Branch</a>
               </div>
             </div>
           </div>
@@ -1052,8 +1260,8 @@
                 <h5 class="card-title">Jollibee</h5>
                 Number of reports : 438 <br />
                 Tel : 2577 1328 <br /><br />
-                <a href="#" class="btn btn-primary">Menu</a>
-                <a href="#" class="btn btn-primary">Branch</a>
+                <a href="#!" class="btn btn-primary">Menu</a>
+                <a href="#!" class="btn btn-primary">Branch</a>
               </div>
             </div>
           </div>
@@ -1066,8 +1274,8 @@
                 <h5 class="card-title">Popeyes</h5>
                 Number of reports : 864 <br />
                 Tel : 2388 7887 <br /><br />
-                <a href="#" class="btn btn-primary">Menu</a>
-                <a href="#" class="btn btn-primary">Branch</a>
+                <a href="#!" class="btn btn-primary">Menu</a>
+                <a href="#!" class="btn btn-primary">Branch</a>
               </div>
             </div>
           </div>

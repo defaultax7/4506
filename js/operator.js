@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   $("#restaurantInfo").hide();
   $("#sidebarCollapse").on("click", function() {
     $("#sidebar").toggleClass("active");
@@ -94,8 +93,8 @@ $(document).ready(function() {
           "something is wrong";
       });
 
-      $('#pagination-demo').twbsPagination('destroy');
-      $('#pagination-demo').twbsPagination({totalPages:2});
+    $("#pagination-demo").twbsPagination("destroy");
+    $("#pagination-demo").twbsPagination({ totalPages: 2 });
   });
 
   $("#pagination-demo").twbsPagination({
@@ -174,13 +173,11 @@ $(document).ready(function() {
     }
   });
 
-  $("#btnComfirmEditReported").click(function(){
+  $("#btnComfirmEditReported").click(function() {
     alert("aaa");
-  })
+  });
 
   $("#branchPage").hide();
-
-
 
   function qtyAlert(element) {
     no = parseInt(element[0].textContent);
@@ -202,7 +199,7 @@ $(document).ready(function() {
     $("#noResult").hide();
     $("#pagination-demo").show();
     $("body").data("mode", 2);
-    $('#pagination-demo li:first-child').click();
+    $("#pagination-demo li:first-child").click();
   });
 
   $("#btnReportedRes").click(function() {
@@ -211,7 +208,7 @@ $(document).ready(function() {
     $("#noResult").hide();
     $("#pagination-demo").show();
     $("body").data("mode", 1);
-    $('#pagination-demo li:first-child').click();
+    $("#pagination-demo li:first-child").click();
   });
 
   $("#btnSaveSetting").click(function() {
@@ -227,42 +224,41 @@ $(document).ready(function() {
 
   $("#viewMenu").click(function() {
     $("#breadcurmb li").removeClass("active");
-    $("#breadcurmb").append("<li class='breadcrumb-item active' aria-current='page'> Menu </li>");
-    $("#menuPage").show();  
+    $("#breadcurmb").append(
+      "<li class='breadcrumb-item active' aria-current='page'> Menu </li>"
+    );
+    $("#menuPage").show();
     $("#resPage1").hide();
     $("#resPage2").hide();
     $("#btnAddRes").hide();
     $("#btnAddMenu").show();
   });
 
-
-  $("#rootBread").click(function(){
+  $("#rootBread").click(function() {
     $("#breadcurmb li").addClass("active");
     $("#breadcurmb li")[1].remove();
-    $("#menuPage").hide();  
+    $("#menuPage").hide();
     $("#resPage1").show();
     $("#resPage2").hide();
     $("#btnAddRes").show();
     $("#btnAddMenu").hide();
     $("#btnAddBranch").hide();
-    $("#branchPage").hide(); 
+    $("#branchPage").hide();
   });
 
   $("#btnAddMenu").hide();
 
   $("#viewBranch").click(function() {
     $("#breadcurmb li").removeClass("active");
-    $("#breadcurmb").append("<li class='breadcrumb-item active' aria-current='page'> Branch </li>");
+    $("#breadcurmb").append(
+      "<li class='breadcrumb-item active' aria-current='page'> Branch </li>"
+    );
     $("#resPage1").hide();
     $("#resPage2").hide();
     $("#btnAddRes").hide();
     $("#btnAddMenu").hide();
-    $("#branchPage").show();  
+    $("#branchPage").show();
     $("#btnAddBranch").show();
-    setTimeout(function() {
-      window.scrollTo(0,document.body.scrollHeight).delay(100);
-    }, 5);
-    
   });
 
   $("#btnAddBranch").hide();

@@ -11,6 +11,9 @@
 #addForm {
     overflow: scroll;
 }
+#editForm{
+    overflow: scroll;
+}
 
 .media img {
     width: 150px;
