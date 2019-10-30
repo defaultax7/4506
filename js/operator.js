@@ -279,6 +279,16 @@ $(document).ready(function() {
       .replaceChild(newlink, oldlink);
   }
 
+  $("#cb247").click(function() {
+    if ($(this).is(":checked")) {
+      $("#startTimeEdit").attr("disabled", "disabled");
+      $("#endTimeEdit").attr("disabled", "disabled");
+    } else {
+      $("#startTimeEdit").removeAttr('disabled');
+      $("#endTimeEdit").removeAttr('disabled');
+    }
+  });
+
   $("#searchBar").keyup(function() {
     text = $(this).val();
     if ($("body").data("mode") == 1) {
