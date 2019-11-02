@@ -5,6 +5,7 @@ from requests_html import HTMLSession
 import jsons
 
 from restaurant import Restaurant
+from json_class import JsonClass
 
 session = HTMLSession()
 r = session.get("https://www.foodpanda.hk/restaurants/lat/22.342422/lng/114.1062419/city/Hong%20Kong/address/Hong%2520Kong%2520Institute%2520Of%2520Vocational%2520Education%2520(Tsing%2520Yi%2520Campus)%252C%252020%2520Tsing%2520Yi%2520Rd%252C%2520Sai%2520Shan%252C%2520Hong%2520Kong/Tsing%2520Yi%2520Road/20%2520Hong%2520Kong%2520Institute%2520of%2520Vocational%2520Education%2520(Tsing%2520Yi%2520Campus)?")
@@ -12,7 +13,10 @@ r = session.get("https://www.foodpanda.hk/restaurants/lat/22.342422/lng/114.1062
 
 def getFood(url):
     r = session.get(url)
-    foods = []
+
+    address = r.html.find(".vendor-location", first=True).text
+    desc = r.html.find("meta")
+    shop = {"address": address, "foods": []}
     fobj = r.html.find(".dish-card.h-product.menu__item")
     print(len(fobj))
     if len(fobj) > 5:
@@ -34,10 +38,9 @@ def getFood(url):
             imagePath = None
         else:
             imagePath = imagePath.attrs["data-src"].split("|")[0]
-        food = {"name": name, "price": price, "desc": desc, "imagePath": imagePath}
-        foods.append(food)
-    return foods
-
+            food = {"name": name, "price": price, "desc": desc, "imagePath": imagePath}
+            shop["foods"].append(food)
+    return shop
 
 
 rests = []
@@ -74,8 +77,8 @@ for i in range(max):
     minPrice = float(extraInfo.find("li:first-child", first=True).text.split("$")[1].split(" ")[0])
     fee = float(extraInfo.find("li:last-child > span", first=True).text.split("$")[1].split(" ")[0])
     # print(url.pop())
-    foods = getFood(url.pop())
-    rrr = Restaurant(id, name, imagePath, desc, foodType, foods, priceLv, feature, minPrice, fee, rating)
+    shop = getFood(url.pop())
+    rrr = JsonClass(id=id, name=name, imagePath=imagePath, desc=desc, foodType=foodType, foods=shop["foods"], priceLv=priceLv, feature=feature, minPrice=minPrice, fee=fee, address=shop["address"], rating=rating)
     # def __init__(self, id, name, imagePath, desc, foodType, foods, priceLv, feature, minPrice, fee, rating):
     aaa = jsons.dump(rrr)
     rests.append(aaa)

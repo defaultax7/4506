@@ -137,7 +137,19 @@
           </div>
           
 
-                </div>
+        </div>
+        <div class="container" id="shopPage">
+  <ul id="pagination-demo" class="pagination-sm pagination justify-content-center">
+    <li class="page-item first disabled"><a href="#!" class="page-link">|&lt;</a></li>
+    <li class="page-item prev disabled"><a href="#!" class="page-link">&lt;</a></li>
+    <li class="page-item active"><a href="#!" class="page-link">1</a></li>
+    <li class="page-item"><a href="#!" class="page-link">2</a></li>
+    <li class="page-item"><a href="#!" class="page-link">3</a></li>
+    <li class="page-item"><a href="#!" class="page-link">4</a></li>
+    <li class="page-item next"><a href="#!" class="page-link">&gt;</a></li>
+    <li class="page-item last"><a href="#!" class="page-link">&gt;|</a></li>
+  </ul>
+        </div>
                 <div id="restMenu" class="fluid-container p-4" style="display:none;">
                     <h1 id="restName"></h1>
                     <div class="jy-tabs">
@@ -374,7 +386,8 @@
                   context += putRestaurant(restaurants[i])
                 }
                 $.when($(".lds-default").fadeOut(1000)).done(function() {
-                    $("#restList").append(context).hide().fadeIn(1000);
+                  $("#restList").append(context);
+                  $(".foodItem:gt(11)").hide(1000);
                 });
 
 
@@ -439,7 +452,7 @@
       else {
         image = '<div class="material-icons p-2" style="font-size: 8rem;">restaurant_menu</div>'
       }
-      console.log(image);
+      // console.log(image);
       let foodDiv = '<div class="mediaContainer shadow-lg" style="visibility: visible;">'+
       '<div class="media p-2" style="background-color: white;"> '+ image +
       ' <div class="media-body"> <h5 class="mt-0 py-3" style="font-family: Arial;">'+ food.name+
@@ -455,9 +468,11 @@
     function showFood(fid) {
       if ($("#restMenu").css("display") == "block") {
         $("#restMenu").hide();
+        $("#shopPage").hide();
       }
       if ($("#restList").css("display") == "flex") {
         $("#restList").hide();
+        $("#shopPage").hide();
       }
       $(".breadcrumb").html('<li class="breadcrumb-item"><a href="#!" onclick="closeMenu();"><i class="material-icons">store</i><span >Restaurants</span></a></li><li class="breadcrumb-item"><i class="material-icons">restaurant_menu</i><span >Menu</span></li>');
                            
@@ -513,6 +528,8 @@
             
       $("#restMenu").hide();
       $("#restList").fadeIn();
+
+      $("#shopPage").fadeIn();
     }
     function resetRest() {
       $(".tag").each(function() {
@@ -555,6 +572,15 @@
     function showToast(msg) {
       $("#myToast > .toast-body").text(msg);
       $("#myToast").toast("show");
+    }
+    var pNum = 1;
+    function goShopPage(page) {
+      if (pNum !== page) {
+        pNum = page;
+        let minp = (page) * 12 - 1;
+        let maxp = (page) * 12 + 11;
+        $(".foodItem:gt("+minp+"):lt("+maxp+")").hide(1000);
+      }
     }
 </script>
 </body>
