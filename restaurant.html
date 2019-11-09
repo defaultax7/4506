@@ -15,7 +15,7 @@
         background-size: cover;
         position: relative;
         background-color: grey;
-        z-index: -5;
+        
       }
 
       #restList {
@@ -66,7 +66,7 @@
         height: 100%;
         top: 0px;
         left: 0px;
-        z-index: -1;
+        z-index: 1;
       }
 
       .ht_slideshow:after {
@@ -107,21 +107,30 @@
           opacity: 0;
           /* animation-timing-function: ease-in; */
         }
-        15%{
+        15% {
           opacity: 0.7;
         }
-        50%{
+        50% {
           opacity: 1;
         }
-        60%{
+        60% {
           opacity: 0.7;
         }
         70% {
           opacity: 0;
         }
-        100%{
+        100% {
           opacity: 0;
         }
+      }
+
+      #realMain {
+        position: relative;
+        z-index: 5;
+      }
+      #footer{
+        position: relative;
+        z-index: 5;
       }
     </style>
   </head>
@@ -180,7 +189,7 @@
       </ul>
 
       <!-- top -->
-      <div class="container">
+      <div id="realMain" class="container">
         <div class="bg-dark row mt-3 p-2">
           <form
             class="form-inline"
@@ -439,7 +448,7 @@
     </div>
 
     <!-- footer -->
-    <footer class="py-5 text-white">
+    <footer class="py-5 text-white" id="footer">
       <div class="container py-xl-4">
         <div class="row footer-top">
           <div class="col-lg-4 footer-grid_section_1its footer-text">
