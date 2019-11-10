@@ -123,6 +123,56 @@
         }
       }
 
+      /* welcome animation */
+      .animeBackground {
+        z-index: 9999;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+      }
+      .animeContainer {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        z-index: 9999;
+      }
+      .animeContainer span {
+        text-transform: uppercase;
+        display: block;
+      }
+      .text1 {
+        color: white;
+        font-size: 60px;
+        font-weight: 700;
+        letter-spacing: 8px;
+        margin-bottom: 20px;
+        background: black;
+        position: relative;
+        animation: ani 3s;
+      }
+      .text2 {
+        font-size: 30px;
+        color: #6ab04c;
+      }
+      @keyframes ani {
+        0% {
+          color: black;
+          margin-bottom: -40px;
+        }
+        30% {
+          letter-spacing: 25px;
+          margin-bottom: -40px;
+        }
+        85% {
+          letter-spacing: 8px;
+          margin-bottom: -40px;
+        }
+      }
+
       #realMain {
         position: relative;
         z-index: 5;
@@ -137,7 +187,18 @@
     </style>
   </head>
 
-  <body>
+  <body class="h-100">
+    <div class="animeBackground">
+      <div class="animeContainer">
+        <span class="text1">Welcome In</span>
+        <span class="text2"
+          >Yummy Everywhere<i class="material-icons" style="font-size: 30px;">
+            restaurant_menu
+          </i></span
+        >
+      </div>
+    </div>
+
     <div
       class="navbar navbar-light bg-light navbar-expand-lg bar-sg shadow flex-wrap sticky-top p-0"
     >
@@ -1005,6 +1066,9 @@
           $(".foodItem:gt(" + minp + "):lt(" + maxp + ")").hide(1000);
         }
       }
+
+
+      $(".animeBackground").show(3000).delay(3000).fadeOut(1000);
     </script>
   </body>
 </html>
