@@ -123,6 +123,7 @@ a.card {
   color: inherit;
   text-decoration: none;
   height: 100%;
+  box-shadow: 0 0 3px 3px;
 }
 
 img.card-img-top {
