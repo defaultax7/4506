@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/loader.css" />
     <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/checkbox.css" />
     <link rel="stylesheet" href="css/customerLoginModal.css" />
     <title>Food Lambda</title>
     <style>
@@ -184,6 +185,10 @@
       }
       #carouselExampleIndicators {
         box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.7);
+      }
+      .footerBar{
+        position: relative;
+        z-index: 2;
       }
     </style>
   </head>
@@ -402,7 +407,10 @@
         </div>
         <div class="row">
           <div class="p-3 col-12 bg-warning">
-              <div class="h-100 p-3" style="box-shadow: 0 0 3rem rgba(0, 0, 0, .3) !important;">
+            <div
+              class="h-100 p-3"
+              style="box-shadow: 0 0 3rem rgba(0, 0, 0, .3) !important;"
+            >
               <button class="btn btn-primary" id="allTag">All</button>
               <button
                 class="tag btn btn-outline-secondary"
@@ -749,7 +757,7 @@
       </div>
     </footer>
 
-    <div class="copy-right text-center py-3">
+    <div class="copy-right text-center py-3 footerBar">
       <p>© 2019 Yummy Everywhere. All rights reserved.</p>
     </div>
     <div class="modal fade" id="filterModal">
@@ -765,38 +773,55 @@
           <!-- Modal body -->
           <div class="modal-body">
             <form action="">
-              <span>Budget</span>
+              <span class="filterSubHeading">Budget</span>
+
               <br />
-              <div class="form-check form-check-inline">
-                <input
-                  name="budget"
-                  type="checkbox"
-                  class="form-check-input"
-                  id="pL1"
-                  value="1"
-                />
-                <label class="form-check-label" for="pL1">$</label>
+
+              <div class="row">
+                <div class="col-4 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> ? </span
+                    ><input
+                      name="budget"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL1"
+                      value="1"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+
+                <div class="col-4 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> ?? </span
+                    ><input
+                      name="budget"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL2"
+                      value="2"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+
+                <div class="col-4 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> ??? </span
+                    ><input
+                      name="budget"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL3"
+                      value="3"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
               </div>
-              <div class="form-check form-check-inline">
-                <input
-                  name="budget"
-                  type="checkbox"
-                  class="form-check-input"
-                  id="pL2"
-                  value="2"
-                />
-                <label class="form-check-label" for="pL2">$$</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  name="budget"
-                  type="checkbox"
-                  class="form-check-input"
-                  id="pL3"
-                  value="3"
-                />
-                <label class="form-check-label" for="pL3">$$$</label>
-              </div>
+
+             
               <br />
               <span>Attributes</span>
               <br />

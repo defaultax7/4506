@@ -380,3 +380,12 @@ span.nostar:before, span.stared:before {
     width: auto;
     min-width: 300px;   
 }
+
+.clickable:hover{
+  cursor : pointer;
+}
+
+.filterSubHeading{
+  font-size: 18px;
+  font-weight: bold;
+}
