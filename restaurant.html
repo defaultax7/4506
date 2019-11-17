@@ -186,7 +186,7 @@
       #carouselExampleIndicators {
         box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.7);
       }
-      .footerBar{
+      .footerBar {
         position: relative;
         z-index: 2;
       }
@@ -261,6 +261,7 @@
       </div>
     </div>
 
+    <!-- navbar -->
     <div
       class="navbar navbar-light bg-light navbar-expand-lg bar-sg shadow flex-wrap sticky-top p-0"
     >
@@ -326,7 +327,56 @@
         </div>
       </div>
     </div>
+
     <div id="main" class="fluid-container">
+      <div
+        class="ccc"
+        style="position: absolute; width: 100%; height: 100%; z-index: 99;"
+      >
+        <div style="height: 575px;"></div>
+        <div class="floatingFliter" id="floatingFliter">
+          <form>
+            <fieldset>
+              <legend>Fliter</legend>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                />
+                <small id="emailHelp" class="form-text text-muted"
+                  >We'll never share your email with anyone else.</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="form-group form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label class="form-check-label" for="exampleCheck1"
+                  >Check me out</label
+                >
+              </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- background slideshow -->
       <ul class="ht_slideshow">
         <li><span></span></li>
         <li><span></span></li>
@@ -761,11 +811,11 @@
       <p>© 2019 Yummy Everywhere. All rights reserved.</p>
     </div>
     <div class="modal fade" id="filterModal">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-xl" style="width: 2000px;">
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title">Food Filter</h4>
+            <h4 class="modal-title">Filter</h4>
             <button type="button" class="close" data-dismiss="modal">
               &times;
             </button>
@@ -778,7 +828,7 @@
               <br />
 
               <div class="row">
-                <div class="col-4 cbclicker clickable">
+                <div class="col-2 cbclicker clickable">
                   <label class="cbContainer"
                     ><span class="align-top"> ? </span
                     ><input
@@ -792,7 +842,7 @@
                   </label>
                 </div>
 
-                <div class="col-4 cbclicker clickable">
+                <div class="col-2 cbclicker clickable">
                   <label class="cbContainer"
                     ><span class="align-top"> ?? </span
                     ><input
@@ -806,7 +856,7 @@
                   </label>
                 </div>
 
-                <div class="col-4 cbclicker clickable">
+                <div class="col-2 cbclicker clickable">
                   <label class="cbContainer"
                     ><span class="align-top"> ??? </span
                     ><input
@@ -821,51 +871,69 @@
                 </div>
               </div>
 
-             
               <br />
-              <span>Attributes</span>
+              <span class="filterSubHeading">Food type</span>
               <br />
-              <div class="form-check form-check-inline">
-                <input
-                  name="feature"
-                  type="checkbox"
-                  class="form-check-input"
-                  value="Western"
-                />
-                <label class="form-check-label">Western</label>
+              <div class="row">
+                <div class="col-2 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Western </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL3"
+                      value="Western"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-2 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> American </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL3"
+                      value="American"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-2 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Rice </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL3"
+                      value="Rice"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-2 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Chinese </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL3"
+                      value="Chinese"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
               </div>
-              <div class="form-check form-check-inline">
-                <input
-                  name="feature"
-                  type="checkbox"
-                  class="form-check-input"
-                  value="American"
-                />
-                <label class="form-check-label">American</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  name="feature"
-                  type="checkbox"
-                  class="form-check-input"
-                  value="Rice"
-                />
-                <label class="form-check-label">Rice</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  name="feature"
-                  type="checkbox"
-                  class="form-check-input"
-                  value="Chinese"
-                />
-                <label class="form-check-label">Chinese</label>
-              </div>
+
               <!-- <input type="text" name="restType" id="restType" class="form-control"> -->
             </form>
           </div>
           <!-- Modal footer -->
-          <div class="modal-footer">
+          <div class="modal-footer justify-content-center">
             <button
               type="button"
               class="btn btn-success"
@@ -873,9 +941,6 @@
               onclick="searchByFilter()"
             >
               Submit
-            </button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">
-              Close
             </button>
           </div>
         </div>
@@ -1153,6 +1218,10 @@
           $(".foodItem:gt(" + minp + "):lt(" + maxp + ")").hide(1000);
         }
       }
+
+      $("#floatingFliter")
+        .delay(1000)
+        .fadeIn(1000);
 
       $(".animeBackground").hide();
 

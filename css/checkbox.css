@@ -29,12 +29,13 @@
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #ddd;
+  /* background-color: #ddd; */
+  border : solid 1px #bdb7b7;
 }
 
 /* On mouse-over, add a grey background color */
 .cbContainer:hover input ~ .checkmark {
-  background-color: #ccc;
+  /* background-color: #ccc; */
 }
 
 /* When the checkbox is checked, add a blue background */
