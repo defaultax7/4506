@@ -10,9 +10,16 @@
     <link rel="stylesheet" href="css/form.css" />
     <link rel="stylesheet" href="css/checkbox.css" />
     <link rel="stylesheet" href="css/customerLoginModal.css" />
+    <style>
+      .login-container {
+        width: 375px;
+        margin: 0 auto;
+      }
+    </style>
     <title>Registration</title>
   </head>
   <body class="h-100">
+    <!--topnav-->
     <div
       class="navbar navbar-light bg-light navbar-expand-lg bar-sg shadow flex-wrap sticky-top p-0"
     >
@@ -70,6 +77,24 @@
           </ul>
         </div>
       </div>
+    </div>
+    <!--end of topnav-->
+    <div class="login-container">
+      <form>
+        <h1 class="text-center">Login form</h1>
+        <table class="table">
+          <tr>
+            <td><label for="username">username</label></td>
+            <td><input type="text" class="form-control" name="username" id="username"></td>
+          </tr>
+          <tr>
+            <td><label for="password">password</label></td>
+            <td><input type="password" class="form-control" name="passowrd" id="passowrd"></td>
+          </tr>
+        </table>
+        <input type="submit" class="form-control btn btn-outline-primary" value="login">
+        <input type="reset" class="form-control btn btn-outline-secondary" value="reset">
+      </form>
     </div>
   </body>
 </html>
