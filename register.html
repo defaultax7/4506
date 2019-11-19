@@ -80,21 +80,30 @@
     </div>
     <!--end of topnav-->
     <div class="login-container">
-      <form>
-        <h1 class="text-center">Login form</h1>
+      <form onsubmit="return checkValid();">
+        <h1 class="text-center">Register form</h1>
         <table class="table">
           <tr>
-            <td><label for="username">username</label></td>
-            <td><input type="text" class="form-control" name="username" id="username"></td>
+            <td><label for="email">Email</label></td>
+            <td><input type="email" class="form-control" name="email" id="email" required></td>
           </tr>
           <tr>
-            <td><label for="password">password</label></td>
-            <td><input type="password" class="form-control" name="passowrd" id="passowrd"></td>
+            <td><label for="password">Password</label></td>
+                     <td><input type="password" class="form-control" name="email" id="email" required></td>
+          </tr>
+          <tr>
+            <td><label for="password2">Password Again</label></td>
+                       <td><input type="password" class="form-control" name="email" id="email" required></td>
           </tr>
         </table>
-        <input type="submit" class="form-control btn btn-outline-primary" value="login">
-        <input type="reset" class="form-control btn btn-outline-secondary" value="reset">
+        <input type="submit" class="form-control btn btn-outline-primary col-5" value="Register">
+        <input type="reset" class="form-control btn btn-outline-secondary float-right col-5" value="Reset">
       </form>
     </div>
+    <script>
+      function checkValid() {
+        return false;
+      }
+    </script>
   </body>
 </html>

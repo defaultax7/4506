@@ -1,5 +1,5 @@
   $(function() {
-    $( "#slider-range" ).slider({
+    $( "#slider-price" ).slider({
       range: true,
       min: 0,
       max: 500,

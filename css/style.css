@@ -360,10 +360,11 @@ span.nostar:before,
 span.stared:before {
   content: "★ ";
 }
-#restName {
+#restName, .restAttr > tbody > tr > td:first-child {
   font-family: Courier;
   color: rgb(49, 158, 113);
 }
+
 .cmt {
   margin: 3px;
   padding: 5px;
