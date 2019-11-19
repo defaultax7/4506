@@ -152,10 +152,7 @@
     </div>
 
     <div id="main" class="fluid-container">
-      <div
-        class="ccc"
-        style="position: absolute; width: 100%; height: 100%; z-index: 99;"
-      >
+      <div class="fliterContainer">
         <div style="height: 575px;"></div>
         <div class="floatingFliter" id="floatingFliter">
           <a style="float: right;" href="#!" onclick="$('.ccc').remove();">X</a>
@@ -1047,7 +1044,7 @@
       }
 
       $("#floatingFliter")
-        .delay(1000)
+        .delay(5000)
         .fadeIn(1000);
 
       $(".animeBackground").hide();
