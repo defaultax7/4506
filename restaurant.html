@@ -17,7 +17,7 @@
   </head>
 
   <body class="h-100">
-    <!-- Login modal -->
+    <!-- loginModal -->
     <div id="loginModal" class="modal fade">
       <div class="modal-dialog modal-login">
         <div class="modal-content">
@@ -71,6 +71,40 @@
         </div>
       </div>
     </div>
+    <!-- End ogin modal -->
+
+    <!-- shoppingCartModal -->
+    <div id="shoppingCartModal" class="modal fade">
+      <div class="modal-dialog modal-login">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Shopping Cart</h4>
+          </div>
+          <div class="modal-body">
+            <h5>Food</h5>
+
+<table>
+    <tbody><tr>
+      <td>Hamburger</td><td>$30</td><td>Qty:</td><td>1</td><td><button>+</button></td><td><button>-</button></td>
+    </tr>
+    <tr>
+      <td>Ice cream</td><td>$5</td><td>Qty:</td><td>2</td><td><button>+</button></td><td><button>-</button></td>
+    </tr>
+    <tr>
+      <td>Coffee</td><td>$20</td><td>Qty:</td><td>3</td><td><button>+</button></td><td><button>-</button></td>
+    </tr>
+    <tr>
+      <td>Fruit punch</td><td>$10</td><td>Qty:</td><td>1</td><td><button>+</button></td><td><button>-</button></td>
+    </tr>
+  </tbody></table>
+          </div>
+          <div class="modal-footer">
+            <a href="">Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End shoppingCartModal -->
 
     <!-- anime -->
     <div class="animeBackground">
@@ -155,7 +189,7 @@
       <div class="fliterContainer">
         <div style="height: 575px;"></div>
         <div class="floatingFliter" id="floatingFliter">
-          <a style="float: right;" href="#!" onclick="$('.ccc').remove();">X</a>
+          <a style="float: right;" href="#!" onclick="$('.fliterContainer').hide();">X</a>
           <form>
             <fieldset>
               <legend>Fliter</legend>
@@ -270,7 +304,7 @@
               class="btn btn-primary mx-2"
               type="submit"
               value="filter-food"
-              onclick="$('#filterModal').modal()"
+              data-toggle="modal" data-target="#filterModal"
             >
               Filter
             </button>
@@ -363,12 +397,10 @@
                 <li class="page-item prev disabled">
                   <a href="#!" class="page-link">&lt;</a>
                 </li>
-                <li class="page-item active">
-                  <a href="#!" class="page-link">1</a>
-                </li>
-                <li class="page-item"><a href="#!" class="page-link" onclick="goShopPage(2);">2</a></li>
-                <li class="page-item"><a href="#!" class="page-link">3</a></li>
-                <li class="page-item"><a href="#!" class="page-link">4</a></li>
+                <li class="page-item active"> <a href="#!" class="page-link pageNum">1</a> </li>
+                <li class="page-item"><a href="#!" class="page-link pageNum">2</a></li>
+                <li class="page-item"><a href="#!" class="page-link pageNum">3</a></li>
+                <li class="page-item"><a href="#!" class="page-link pageNum">4</a></li>
                 <li class="page-item next">
                   <a href="#!" class="page-link">&gt;</a>
                 </li>
@@ -748,6 +780,8 @@
               <span class="filterSubHeading">Price Range</span>
               <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" value="75-300">
               <div id="slider-price" class=""></div>
+              <input type="hidden" name="amount1" value="0">
+              <input type="hidden" name="amount2" value="50">
               <a href="https://www.runoob.com/jqueryui/example-slider.html">slider</a>
 
               <!-- <input type="text" name="restType" id="restType" class="form-control"> -->
@@ -803,6 +837,7 @@
           $.when($(".lds-default").fadeOut(1000)).done(function() {
             $("#restList").append(context);
             $(".foodItem:gt(11)").hide(1000);
+            // goShopPage(pNum);
           });
         });
         // filterTag
@@ -831,6 +866,16 @@
         // give rating
         $('input:radio[name="rate"]').change(function() {
           showToast("We have received your comment");
+        });
+
+        // pagination
+        $(".pageNum").click(function() {
+          console.log($(".pageNum").index(this));
+          let index = $(".pageNum").index(this);
+          pNum = index + 1;
+          $(".pageNum").parent().removeClass("active");
+          $(this).parent().addClass("active");
+          goShopPage(pNum);
         });
       });
 
@@ -888,7 +933,7 @@
           '</h5> <span class="reportNo" style="color: rgb(38, 4, 82);font-size: 1em;">' +
           description +
           '</span> </div> </div> <div class="mediaBtn p-3">' +
-          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="showToast(\'Item has add to cart.\');"> ' +
+          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="addCart(\''+food.name+'\')"> ' +
           '<i class="material-icons align-top">add</i> </button> <span class="float-right p-2">' +
           '<span>Price : </span><span class="foodPrice">' +
           food.price +
@@ -1033,14 +1078,31 @@
         $("#myToast").toast("show");
       }
 
-      var pNum = 1;
+      var pNum = 0;
       function goShopPage(page) {
-        if (pNum !== page) {
-          pNum = page;
-          let minp = page * 12 - 1;
-          let maxp = page * 12 + 11;
-          $(".foodItem:gt(" + minp + "):lt(" + maxp + ")").hide(1000);
+        if (pNum == page - 1) {
+          return;
         }
+          pNum = page-1;
+          let minp = pNum * 12;
+          let maxp = pNum * 12 + 11;
+          console.log(minp + " : " + maxp)
+          $(".foodItem:gt(" + minp + "):lt(" + maxp + ")").show();
+          $(".foodItem:lt(" + (minp) + ")").hide();
+          $(".foodItem:gt(" + (maxp+1) + ")").hide();
+      }
+
+      var cart = {};
+      function addCart(food) {
+        if (food in cart) {
+          cart[food]++;
+        }
+        else {
+          cart[food] = 1;
+        }
+
+        $("#shoppingCartModal").modal();
+        showToast('Item has add to cart.');
       }
 
       $("#floatingFliter")
