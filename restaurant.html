@@ -828,6 +828,8 @@
       var filtering = false;
       var featureList = { priceLv: [], feature: [], type: [] };
       var pNum = 1;
+
+      // Onload
       $(document).ready(function() {
         $.getJSON("data/data.json", function(data) {
           restaurants = data.restaurant;
@@ -844,6 +846,7 @@
         $("#allTag").click(function() {
           resetRest();
           closeMenu();
+          pNum = 2;
           goShopPage(1);
         });
         $(".tag").click(function() {
@@ -881,7 +884,9 @@
           $(".pageNum").eq(pNum).parent().addClass("active");
           goShopPage(pNum+1);
         });
+
       });
+      // End Onload
 
       function putRestaurant(rest) {
         let label = "";
@@ -971,13 +976,19 @@
             "<table  class='restAttr'><tbody><tr><td>Address : &nbsp;&nbsp;</td><td>"+ 
             menu.address+"</td></tr><tr><td>Rating : </td><td>" + ratingContext + "</td></tr>"+
             "<tr><td>Telephone</td><td><a href='#!'>36884587</a></td></tr>"+
+            "<tr><td>Opening Hour :  &nbsp;&nbsp;</td><td>" + menu.openHour + "</td></tr>" +
             "</tbody><table>"
         );
         $("#restMenu").fadeIn();
         $("#rating").html(ratingContext);
         foodContext = "";
-        for (let i = 0; i < menu.foods.length; i++) {
-          foodContext += putFood(menu.foods[i]);
+        if (menu.foods.length != 0) {
+          for (let i = 0; i < menu.foods.length; i++) {
+            foodContext += putFood(menu.foods[i]);
+          }
+        }
+        else {
+            foodContext += "<div class='p-5'><h3>Cannot find list</h3><h5>No food is provide, You may call <a href='#!'>36884587</a> to order food</h5></div>";
         }
         $("#foodList").html(foodContext);
         // foodList = "";
@@ -1123,7 +1134,7 @@
                 '<tr><td>'+
                 fd + '</td><td>$'+
                 elem[1] + '</td><td>Qty:</td><td>'+
-                elem[0] + '</td><td><button>+</button></td><td><button>-</button></td><tr>';
+                elem[0] + '</td><td><button class="addor">+</button></td><td><button class="decor">-</button></td><tr>';
           }
         }
         // let context =
@@ -1132,6 +1143,31 @@
         //       price + '</td><td>Qty:</td><td>'+
         //       cart[food][0] + '</td><td><button>+</button></td><td><button>-</button></td><tr>';
         $("#cartBody").html(context);
+
+        $(".addor").off("click");
+        $(".decor").off("click");
+        $('.addor').on('click', function() {
+          let qtyDiv = $(this).parent().parent().children().eq(3);
+          let qty = parseInt(qtyDiv.text());
+          let foodName = $(this).parent().parent().children().eq(0).text();
+          qty += 1;
+          qtyDiv.text(qty);
+          cart[foodName] = qty;
+        });
+        $('.decor').on('click', function() {
+          let qtyDiv = $(this).parent().parent().children().eq(3);
+          let qty = parseInt(qtyDiv.text());
+          qty -= 1;
+          let foodName = $(this).parent().parent().children().eq(0).text();
+          if (qty <= 0) {
+            $(this).parent().parent().remove();
+            delete cart[foodName];
+          }
+          else {
+            cart[foodName] = qty;
+            qtyDiv.text(qty);
+          }
+        });
 
         $("#shoppingCartModal").modal();
         showToast('Item has add to cart.');

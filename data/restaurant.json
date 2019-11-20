@@ -42,5 +42,11 @@
       "report": "1000",
       "reason": "BOOM!"
     }
+    {
+      "name": "\u9910\u5ef3",
+      "img": "img/logo7.jpg",
+      "report": "300",
+      "reason": "die ich schweich!"
+    }
   ]
 }

@@ -14,9 +14,10 @@ r = session.get("https://www.foodpanda.hk/restaurants/lat/22.342422/lng/114.1062
 def getFood(url):
     r = session.get(url)
 
+    openHour = r.html.find(".vendor-delivery-times", first=True).text
     address = r.html.find(".vendor-location", first=True).text
     desc = r.html.find("meta")
-    shop = {"address": address, "foods": []}
+    shop = {"address": address, "openHour": openHour, "foods": []}
     fobj = r.html.find(".dish-card.h-product.menu__item")
     print(len(fobj))
     if len(fobj) > 5:
@@ -32,14 +33,14 @@ def getFood(url):
         if desc is None:
             desc = None
         else:
-            desc = desc.text.split("$")[1]
+            desc = desc.text
         imagePath = obj.find(".photo.u-photo", first=True)
         if imagePath is None:
             imagePath = None
         else:
             imagePath = imagePath.attrs["data-src"].split("|")[0]
-            food = {"name": name, "price": price, "desc": desc, "imagePath": imagePath}
-            shop["foods"].append(food)
+        food = {"name": name, "price": price, "desc": desc, "imagePath": imagePath}
+        shop["foods"].append(food)
     return shop
 
 
@@ -78,7 +79,7 @@ for i in range(max):
     fee = float(extraInfo.find("li:last-child > span", first=True).text.split("$")[1].split(" ")[0])
     # print(url.pop())
     shop = getFood(url.pop())
-    rrr = JsonClass(id=id, name=name, imagePath=imagePath, desc=desc, foodType=foodType, foods=shop["foods"], priceLv=priceLv, feature=feature, minPrice=minPrice, fee=fee, address=shop["address"], rating=rating)
+    rrr = JsonClass(id=id, name=name, imagePath=imagePath, desc=desc, foodType=foodType, foods=shop["foods"], priceLv=priceLv, feature=feature, minPrice=minPrice, fee=fee, address=shop["address"], openHour=shop["openHour"], rating=rating)
     # def __init__(self, id, name, imagePath, desc, foodType, foods, priceLv, feature, minPrice, fee, rating):
     aaa = jsons.dump(rrr)
     rests.append(aaa)
@@ -97,7 +98,7 @@ for i in range(max):
     # print(rating)
 
 
-filename = "pytest.json"
+filename = "what.json"
 with open(filename, "w") as fp:
     json.dump(rests, fp)
 
