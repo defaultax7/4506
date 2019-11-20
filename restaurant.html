@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="css/customerLoginModal.css" />
     <link rel="stylesheet" href="css/restStyle.css" />
 
+<link rel="stylesheet" href="/css/magnify.css">
+
     <title>Food Lambda</title>
   </head>
 
@@ -819,6 +821,9 @@
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
     <script src="js/util.js"></script>
     <script src="js/sliderrange.js" charset="utf-8"></script>
+    <script src="/js/jquery.magnify.js"></script>
+    <!-- Optional mobile plugin (uncomment the line below to enable): -->
+    <script src="/js/jquery.magnify-mobile.js"></script>
     <!-- util functions included in the CodyHouse framework -->
 
     <script>
@@ -927,7 +932,9 @@
           image =
             '<img src="' +
             food.imagePath +
-            '" class="align-self-start mr-3"type="button" alt="food picture" />';
+            '" class="align-self-start mr-3 zoom"  data-magnify-src="'+
+            food.imagePath +
+            '"" alt="food picture" />';
         } else {
           image =
             '<div class="material-icons p-2" style="font-size: 8rem;">restaurant_menu</div>';
@@ -991,6 +998,7 @@
             foodContext += "<div class='p-5'><h3>Cannot find list</h3><h5>No food is provide, You may call <a href='#!'>36884587</a> to order food</h5></div>";
         }
         $("#foodList").html(foodContext);
+        $(".zoom").magnify();
         // foodList = "";
         // for (let food in menu.foods) {
         //   foodList += ""
