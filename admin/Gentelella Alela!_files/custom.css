@@ -2090,8 +2090,9 @@ table.countries_list td {
   border-top: 1px solid #eeeeee;
 }
 .dataTables_paginate a {
+  font-size: 16px;
   padding: 6px 9px !important;
-  background: #ddd !important;
+  background: white !important;
   border-color: #ddd !important;
 }
 .paging_full_numbers a.paginate_active {
@@ -2152,7 +2153,7 @@ table.jambo_table tbody tr.selected td {
   float: left;
 }
 .dataTables_paginate {
-  float: right;
+  /* float: right; */
   text-align: right;
 }
 table.dataTable th.focus,

@@ -84,8 +84,8 @@
             <h5>Food</h5>
 
 <table>
-    <tbody><tr>
-      <td>Hamburger</td><td>$30</td><td>Qty:</td><td>1</td><td><button>+</button></td><td><button>-</button></td>
+    <tbody id="cartBody"><tr>
+      <!-- <td>Hamburger</td><td>$30</td><td>Qty:</td><td>1</td><td><button>+</button></td><td><button>-</button></td>
     </tr>
     <tr>
       <td>Ice cream</td><td>$5</td><td>Qty:</td><td>2</td><td><button>+</button></td><td><button>-</button></td>
@@ -95,7 +95,7 @@
     </tr>
     <tr>
       <td>Fruit punch</td><td>$10</td><td>Qty:</td><td>1</td><td><button>+</button></td><td><button>-</button></td>
-    </tr>
+    </tr> -->
   </tbody></table>
           </div>
           <div class="modal-footer">
@@ -392,20 +392,20 @@
                 class="pagination-sm pagination justify-content-center"
               >
                 <li class="page-item first disabled">
-                  <a href="#!" class="page-link">|&lt;</a>
+                  <a href="#" class="page-link">|&lt;</a>
                 </li>
                 <li class="page-item prev disabled">
-                  <a href="#!" class="page-link">&lt;</a>
+                  <a href="#allTag" class="page-link">&lt;</a>
                 </li>
-                <li class="page-item active"> <a href="#!" class="page-link pageNum">1</a> </li>
-                <li class="page-item"><a href="#!" class="page-link pageNum">2</a></li>
-                <li class="page-item"><a href="#!" class="page-link pageNum">3</a></li>
-                <li class="page-item"><a href="#!" class="page-link pageNum">4</a></li>
+                <li class="page-item active"> <a href="#allTag" class="page-link pageNum">1</a> </li>
+                <li class="page-item"><a href="#allTag" class="page-link pageNum">2</a></li>
+                <li class="page-item"><a href="#allTag" class="page-link pageNum">3</a></li>
+                <li class="page-item"><a href="#allTag" class="page-link pageNum">4</a></li>
                 <li class="page-item next">
-                  <a href="#!" class="page-link">&gt;</a>
+                  <a href="#allTag" class="page-link">&gt;</a>
                 </li>
                 <li class="page-item last">
-                  <a href="#!" class="page-link">&gt;|</a>
+                  <a href="#allTag" class="page-link">&gt;|</a>
                 </li>
               </ul>
             </div>
@@ -827,6 +827,7 @@
       var restaurants = [];
       var filtering = false;
       var featureList = { priceLv: [], feature: [], type: [] };
+      var pNum = 1;
       $(document).ready(function() {
         $.getJSON("data/data.json", function(data) {
           restaurants = data.restaurant;
@@ -836,14 +837,14 @@
           }
           $.when($(".lds-default").fadeOut(1000)).done(function() {
             $("#restList").append(context);
-            $(".foodItem:gt(11)").hide(1000);
-            // goShopPage(pNum);
+            $(".foodItem:gt(11)").hide();
           });
         });
         // filterTag
         $("#allTag").click(function() {
           resetRest();
           closeMenu();
+          goShopPage(1);
         });
         $(".tag").click(function() {
           if (filtering) {
@@ -870,12 +871,15 @@
 
         // pagination
         $(".pageNum").click(function() {
-          console.log($(".pageNum").index(this));
-          let index = $(".pageNum").index(this);
-          pNum = index + 1;
+          let index = $(".pageNum").index(this) + 1;
           $(".pageNum").parent().removeClass("active");
           $(this).parent().addClass("active");
-          goShopPage(pNum);
+          goShopPage(index);
+        });
+        $(".page-item.next").not('.disable').click(function() {
+          $(".pageNum").parent().removeClass("active");
+          $(".pageNum").eq(pNum).parent().addClass("active");
+          goShopPage(pNum+1);
         });
       });
 
@@ -933,7 +937,7 @@
           '</h5> <span class="reportNo" style="color: rgb(38, 4, 82);font-size: 1em;">' +
           description +
           '</span> </div> </div> <div class="mediaBtn p-3">' +
-          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="addCart(\''+food.name+'\')"> ' +
+          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="addCart(\''+food.name+'\', '+food.price+')"> ' +
           '<i class="material-icons align-top">add</i> </button> <span class="float-right p-2">' +
           '<span>Price : </span><span class="foodPrice">' +
           food.price +
@@ -966,6 +970,7 @@
             "</p><div style='clear: both;'></div>" +
             "<table  class='restAttr'><tbody><tr><td>Address : &nbsp;&nbsp;</td><td>"+ 
             menu.address+"</td></tr><tr><td>Rating : </td><td>" + ratingContext + "</td></tr>"+
+            "<tr><td>Telephone</td><td><a href='#!'>36884587</a></td></tr>"+
             "</tbody><table>"
         );
         $("#restMenu").fadeIn();
@@ -1078,28 +1083,70 @@
         $("#myToast").toast("show");
       }
 
-      var pNum = 0;
       function goShopPage(page) {
-        if (pNum == page - 1) {
+        if (pNum == page) {
           return;
         }
-          pNum = page-1;
-          let minp = pNum * 12;
-          let maxp = pNum * 12 + 11;
-          console.log(minp + " : " + maxp)
-          $(".foodItem:gt(" + minp + "):lt(" + maxp + ")").show();
-          $(".foodItem:lt(" + (minp) + ")").hide();
-          $(".foodItem:gt(" + (maxp+1) + ")").hide();
+        pNum = page;
+        let minp = (pNum-1) * 12-1;
+        let maxp = (pNum-1) * 12 + 12;
+        console.log(minp + " : " + maxp)
+        let foodLength = document.getElementsByClassName("foodItem").length;
+        // if (maxp-1 > foodLength) {
+        //   maxp = foodLength;
+        // }
+
+        $(".foodItem").hide();
+        if (minp < 0) {
+          $(".foodItem:lt(" + (maxp) + ")").show();
+        }
+        else
+          $(".foodItem:lt(" + (maxp) + "):gt(" + (minp) + ")").show();
+        // $(".foodItem:lt(" + minp + ")").hide();
+        // $(".foodItem:gt(" + (maxp-1) + ")").hide();
       }
 
       var cart = {};
-      function addCart(food) {
+      function addCart(food, price) {
         if (food in cart) {
-          cart[food]++;
+          cart[food][0]++;
         }
         else {
-          cart[food] = 1;
+          // qty, price
+          cart[food] = [1, price];
         }
+        let context = "";
+        for (const fd in cart) {
+          if (cart.hasOwnProperty(fd)) {
+            const elem = cart[fd];
+            context += 
+                '<tr><td>'+
+                fd + '</td><td>$'+
+                elem[1] + '</td><td>Qty:</td><td>'+
+                elem[0] + '</td><td><button>+</button></td><td><button>-</button></td><tr>';
+          }
+        }
+        // let context =
+        //       '<tr><td>'+
+        //       food+ '</td><td>$'+
+        //       price + '</td><td>Qty:</td><td>'+
+        //       cart[food][0] + '</td><td><button>+</button></td><td><button>-</button></td><tr>';
+        $("#cartBody").html(context);
 
         $("#shoppingCartModal").modal();
         showToast('Item has add to cart.');
+      }
+
+      $("#floatingFliter")
+        .delay(5000)
+        .fadeIn(1000);
+
+      $(".animeBackground").hide();
+
+      // $(".animeBackground")
+      //   .show(3000)
+      //   .delay(4000)
+      //   .fadeOut(1000);
+    </script>
+  </body>
+</html>
