@@ -33,9 +33,11 @@
     <!-- profile modal -->
     <div id="modal-container">
       <div class="modal-background">
-
-              <div class="modal">
-                <h2>User Profile</h2> 
+        <div class="modal">
+          <div class="flip-card " id="flipCard">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <h2>User Profile</h2>
                 <i class="fa fa-close" id="profileClose"></i>
                 <hr />
                 <div id="profileSpace">
@@ -64,12 +66,25 @@
                   type="button"
                   class="btn btn-primary"
                   style="font-size: 20px; padding-right: 30px; padding-left : 30px;"
+                  onclick="filpProfile()"
                 >
                   Edit
                 </button>
               </div>
-
-      
+              <div class="flip-card-back">
+                  <div id="editProfileSpace">
+                        <span
+                        class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"
+                        id="profileBtnBack"
+                        onclick="flipBack()"
+                      ></span>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -334,6 +349,13 @@
         $("#modal-container").addClass("out");
         $("body").removeClass("modal-active");
       });
+
+      function filpProfile() {
+        $(".flip-card-inner").addClass("rot");
+      }
+      function flipBack(){
+        $(".flip-card-inner").removeClass("rot");
+      }
     </script>
   </body>
 </html>

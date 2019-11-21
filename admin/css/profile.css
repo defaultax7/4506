@@ -6,8 +6,13 @@
   left: 20px;
 }
 
-#profileSpace {
+#editProfileSpace , #profileSpace {
   height: 500px;
+  width: 500px;
+}
+
+#flipCard {
+  height: 620px;
   width: 500px;
 }
 
@@ -45,12 +50,20 @@
   font-size: 20px;
 }
 
-#profileClose{
+#profileClose {
+  position: absolute;
+  left: 460px;
+  top: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#profileBtnBack{
     position: absolute;
-    left : 480px;
-    top: 15px;
-    font-size: 30px;
+    top: 0px;
+    left:0px;
     cursor: pointer;
+    font-size: 20px;
 }
 
 /* filp */
@@ -73,8 +86,22 @@
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+@keyframes rot {
+  0% {
+    /* transform: rotateY(180deg); */
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+.rotAnime {
+  animation: rot 1s;
+  animation-fill-mode: forwards;
+}
+
+.rot{
+    transform: rotateY(180deg);
 }
 
 /* Position the front and back side */
@@ -88,13 +115,11 @@
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #bbb;
-  color: black;
+  background-color: white;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
-  color: white;
+  background-color: white;
   transform: rotateY(180deg);
 }
