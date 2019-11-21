@@ -22,12 +22,6 @@
     <!-- Datatables -->
     <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
-    <!-- Calendar -->
-    <link rel="stylesheet" href="css/fullcalendar.css" />
-
-    <!-- Date picker -->
-<link rel="stylesheet" href="css/daterangepicker.css">
-
   </head>
 
   <body class="nav-md">
@@ -47,10 +41,7 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div
-              class="profile clearfix clickable"
-              style="background-color:#3b5c7d ; height: 100px;"
-            >
+            <div class="profile clearfix clickable" style="background-color:#3b5c7d ; height: 100px;">
               <div class="profile_pic">
                 <img
                   src="img/userIcon.png"
@@ -76,7 +67,7 @@
               <div class="menu_section">
                 <ul class="nav side-menu">
                   <li>
-                    <a href="home.html"><i class="fa fa-home"></i> Home </a>
+                    <a href="#"><i class="fa fa-home"></i> Home </a>
                   </li>
                   <li>
                     <a href="manageUser.html"
@@ -84,7 +75,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#"><i class="fa fa-suitcase"></i> Schedule </a>
+                    <a href="schedule.html"><i class="fa fa-suitcase"></i> Schedule </a>
                   </li>
                   <li>
                     <a href="第4"><i class="fa fa-comments"></i> Inbox </a>
@@ -94,6 +85,8 @@
               <div class="menu_section active"></div>
             </div>
             <!-- /sidebar menu -->
+
+           
           </div>
         </div>
 
@@ -217,73 +210,29 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Schedule</h3>
+                <h3>???</h3>
               </div>
 
               <div class="title_right"></div>
 
-              
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Your Schedule</h2>
+                    <h2>Table ???</h2>
 
                     <div class="clearfix"></div>
                   </div>
 
+
                   <div class="x_content">
                     <div class="row">
-                      <div class="col-sm-9">
-                        <div id="calendar"></div>
-                      </div>
-                      <div class="col-3">
-                          <div style="height: 400px; box-shadow: 0px 0px 5px 1px grey; padding: 20px;">
-                            <div class="row justify-content-center h2">
-New event
-                            </div>
-
-                            <div class="row">
-Event title:
-                            </div>
-                            <div class="row form-group">
-                                <input class="form-control" type="text" style="margin-right: 20px;">
-                            </div>
-
-                            <div class="row">
-                                Date:
-                            </div>
-                            <div class="row">
-                            <div class="col-md-12 xdisplay_inputx form-group row has-feedback">
-                                    <input type="text" class="form-control has-feedback-left" id="single_cal1" placeholder="Date" aria-describedby="inputSuccess2Status">
-                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                                  </div>
-
-                            </div>
-
-                            <div class="row">
-                                Time:
-                            </div>
-                            <div class="row form-group">
-                                <input type="text" class="form-control" style="margin-right : 20px">
-                            </div>
-
-                            <div style="height: 30px;width: 1px;">
-
-                            </div>
-
-                            <div class="row justify-content-center" >
-                            <button type="button" class="btn btn-round btn-primary" style="font-size: 25px;" click="addEvent()">Add event</button>
-                        </div>
-                        </div>
-
-                        </div>
+                      <div class="col-sm-12">
+                
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
             </div>
 
             <div class="clearfix"></div>
@@ -320,23 +269,7 @@ Event title:
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Calendar -->
-    <script src="js/moment.js"></script>
-    <script src="js/fullcalendar.js"></script>
-
     <!-- Custom Theme Scripts -->
     <script src="js/custom.js"></script>
-
-    <!-- Date picker -->
-    <script src="js/daterangepicker.js"></script>
-
-
-    <!-- <script>
-      function addEvent() {
-        var event = { id: 1, title: "New event", start: new Date() };
-
-        $("#calendar").fullCalendar("renderEvent", event, true);
-      }
-    </script> -->
   </body>
 </html>
