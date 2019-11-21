@@ -21,13 +21,16 @@
 
     <!-- Datatables -->
     <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+    <!-- modal anime -->
+    <link rel="stylesheet" href="css/modalAnime.css" />
   </head>
 
   <body class="nav-md">
-
     <!-- profile modal -->
     <div
       class="modal fade profileModal"
+      id="profileModal"
       tabindex="-1"
       role="dialog"
       aria-hidden="true"
@@ -86,7 +89,8 @@
             <div
               class="profile clearfix clickable"
               style="background-color:#3b5c7d ; height: 100px;"
-              data-toggle="modal" data-target=".profileModal"
+              data-toggle="modal"
+              data-target=".profileModal"
             >
               <div class="profile_pic">
                 <img
@@ -312,5 +316,22 @@
 
     <!-- Custom Theme Scripts -->
     <script src="js/custom.js"></script>
+
+    <script>
+      function testAnim(x) {
+        $(".modal .modal-dialog").attr(
+          "class",
+          "modal-dialog  " + x + "  animated"
+        );
+      }
+      $("#profileModal").on("show.bs.modal", function(e) {
+        var anim = "zoomInLeft";
+        testAnim(anim);
+      });
+      $("#profileModal").on("hide.bs.modal", function(e) {
+        var anim = $("#exit").val();
+        testAnim(anim);
+      });
+    </script>
   </body>
 </html>
