@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/customerLoginModal.css" />
     <link rel="stylesheet" href="css/restStyle.css" />
     <link rel="stylesheet" href="css/cloud-zoom.css" />
+    <link rel="stylesheet" href="css/bootstrap-clockpicker.css">
     <style>
       .food_title {
         border-bottom: 1px solid #DFDFDF;
@@ -164,17 +165,17 @@
             <div class="row">
               <div class="col-md-7 col sm-7">
                 <div class="product-image mx-auto">
-                  <a href="img/ice-cream2.jpg" class="cloud-zoom" id="cloudZoom">
-                    <img src="img/ice-cream2.jpg" id="zoomImg">
+                  <a href="img/ice-cream.jpg" class="cloud-zoom" id="zoom1">
+                    <img src="img/ice-cream.jpg" class="img-responsive">
                   </a>
                 </div>
                 <div class="product_gallery photo_container">
-                  <a class="active"><img src="img/ice-cream2.jpg" alt="..."
-                       rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream2.jpg', useZoom: 'cloudZoom', smallImage: 'img/ice-cream2.jpg'" class="cloud-zoom-gallery"
-                      ></a>
-                  <a><img itemprop="image" src="img/ice-cream.jpg" alt="..."
-                       rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream.jpg', useZoom: 'cloudZoom', smallImage: 'img/ice-cream.jpg'" class="cloud-zoom-gallery"
-                      ></a>
+                  <a href="img/ice-cream.jpg"
+                     rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream.jpg', useZoom: 'zoom1', smallImage: 'img/ice-cream.jpg'" class="cloud-zoom-gallery"
+                    ><img itemprop="image" src="img/ice-cream.jpg" alt="..." class="img-responsive"></a>
+                  <a href="img/ice-cream2.jpg"
+                     rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream2.jpg', useZoom: 'zoom1', smallImage: 'img/ice-cream2.jpg'" class="cloud-zoom-gallery"
+                    ><img itemprop="image" src="img/ice-cream2.jpg" alt="..." class="img-responsive"></a>
                 </div>
               </div>
               <div class="col-md-5 col-sm-5" style="border:0px solid #e5e5e5;">
@@ -215,11 +216,14 @@
                       </li>
                     </ul>
                 </div>
+                <div>
+                  <h4>Price: </h4><span id="food_price">0</span>
+                </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" onclick="addCart('ice cream', 5)">Add to Cart</a>
+            <button class="btn btn-secondary" data-dismiss="modal" onclick="addCart('ice cream', 5)">Add to Cart</a>
           </div>
         </div>
       </div>
@@ -279,7 +283,7 @@
               >
             </li>
             <li class="nav-item">
-              <a id="orderTag" class="nav-link" href="./order.html" target="_blank" onClick="$('#shoppingCartModal').modal();">Order</a>
+              <a id="orderTag" class="nav-link" href="#!" onClick="$('#shoppingCartModal').modal();">Order</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./register.html"
@@ -785,6 +789,8 @@
     <div class="copy-right text-center py-3 footerBar">
       <p>© 2019 Yummy Everywhere. All rights reserved.</p>
     </div>
+
+    <!--filterModal-->
     <div class="modal fade" id="filterModal">
       <div class="modal-dialog modal-xl" style="width: 2000px;">
         <div class="modal-content">
@@ -906,7 +912,14 @@
               <input type="hidden" name="amount2" value="50">
               <a href="https://www.runoob.com/jqueryui/example-slider.html">slider</a>
               <br>
-
+              <span class="filterSubHeading">Open Hour</span>
+              <div class="input-group">
+                <input type="text" class="form-control clockpicker" id="startTime">
+                <!--<i class="material-icons cbIconSize">-->
+                  <!--arrow_forward-->
+                <!--</i>-->
+                <!--<input type="text" id="endTime" class="form-control clockpickerEnd">-->
+              </div>
               <!-- <input type="text" name="restType" id="restType" class="form-control"> -->
             </form>
           </div>
@@ -943,6 +956,7 @@
     <script src="js/util.js"></script>
     <script src="js/sliderrange.js" charset="utf-8"></script>
     <script src="js/cloud-zoom.js" charset="utf-8"></script>
+    <script src="js/bootstrap-clockpicker.js"></script>
 
     <script>
       const S_TAG = 0;
@@ -1013,17 +1027,7 @@
           goShopPage(4);
         });
 
-
-        $(".product_gallery>a").click(function() {
-          $(".product_gallery>a").removeClass("active");
-          $(this).addClass("active");
-          let image = $(this).children(0).attr("src")
-          console.log($(this).children(0).attr("src"));
-          $("#zoomImg").attr("src", image);
-          $("#cloudZoom").attr("href", image);
-          $("#cloud-zoom-big").css('background-image', 'url(' + image + ') !important');
-        })
-
+        $('.clockpicker').clockpicker();
       });
       // End Onload
 
@@ -1258,9 +1262,18 @@
 
       var cart = {};
       function editFood(food, price) {
+        conole.log(this.parent().parent());
         $(".food_title").text(food);
         $("#editFoodModal").modal();
+        $("#food_price").text(price);
+
+        let image = $(this).children(0).attr("src")
+        console.log($(this).children(0).attr("src"));
+        $("#zoomImg").attr("src", image);
+        $("#cloudZoom").attr("href", image);
+
       }
+
       function addCart(food, price) {
         if (food in cart) {
           cart[food][0]++;
@@ -1269,7 +1282,7 @@
           // qty, price
           cart[food] = [1, price];
         }
-        $("#cartBody").clear();
+        $("#cartBody").empty();
         let context = "";
         for (const fd in cart) {
           if (cart.hasOwnProperty(fd)) {
