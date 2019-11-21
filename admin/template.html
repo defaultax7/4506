@@ -21,48 +21,19 @@
 
     <!-- Datatables -->
     <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+    <!-- modal anime -->
+    <link rel="stylesheet" href="css/modalAnime.css" />
   </head>
 
   <body class="nav-md">
-
     <!-- profile modal -->
-    <div
-      class="modal fade profileModal"
-      tabindex="-1"
-      role="dialog"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Profile</h4>
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <h4>Text in a modal</h4>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur
-              et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-              auctor.
-            </p>
-            <p>
-              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-              cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-              dui. Donec ullamcorper nulla non metus auctor fringilla.
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+    <div id="modal-container">
+      <div class="modal-background">
+        <div class="modal">
+          <h2>User Profile</h2>
+          <img src="img/userIcon.png" alt="">
+          
         </div>
       </div>
     </div>
@@ -85,8 +56,10 @@
             <!-- menu profile quick info -->
             <div
               class="profile clearfix clickable"
+              id="btnProfile"
               style="background-color:#3b5c7d ; height: 100px;"
-              data-toggle="modal" data-target=".profileModal"
+              data-toggle="modal"
+              data-target=".profileModal"
             >
               <div class="profile_pic">
                 <img
@@ -167,7 +140,7 @@
                     aria-expanded="false"
                   >
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
+                    <span class="badge bg-dark-blue">6</span>
                   </a>
                   <ul
                     class="dropdown-menu list-unstyled msg_list"
@@ -312,5 +285,20 @@
 
     <!-- Custom Theme Scripts -->
     <script src="js/custom.js"></script>
+
+    <script>
+      $("#btnProfile").click(function() {
+        var buttonId = "one";
+        $("#modal-container")
+          .removeAttr("class")
+          .addClass(buttonId);
+        $("body").addClass("modal-active");
+      });
+
+      $("#modal-container").click(function() {
+        $(this).addClass("out");
+        $("body").removeClass("modal-active");
+      });
+    </script>
   </body>
 </html>

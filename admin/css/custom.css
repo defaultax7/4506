@@ -1288,6 +1288,11 @@ body .container.body .right_col {
   border: 1px solid #50c1cf !important;
   color: #fff;
 }
+.bg-dark-blue {
+  background: #3b65b5 !important;
+  border: 1px solid #3b65b5 !important;
+  color: #fff;
+}
 .container {
   width: 100%;
   padding: 0;
@@ -5051,6 +5056,6 @@ ul.notifications {
   border: 1px solid #e5e5e5;
 }
 
-.clickable:hover{
-    cursor: pointer;
+.clickable:hover {
+  cursor: pointer;
 }
