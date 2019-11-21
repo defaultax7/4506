@@ -129,18 +129,63 @@
 
     <!-- shoppingCartModal -->
     <div id="shoppingCartModal" class="modal fade">
-      <div class="modal-dialog modal-login">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Shopping Cart</h4>
           </div>
           <div class="modal-body">
-            <h5>Food</h5>
+            <div class="row">
+              <div class="col-md-7 col-sm-7">
+                <div style="width: 500px;"></div>
+                <h1>Food table</h1>
 
-            <table>
-              <tbody id="cartBody">
-              </tbody>
-            </table>
+                <table>
+                  <tbody id="cartBody">
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-5 col-sm-5" style="border:0px solid #e5e5e5;">
+                <h3>Payment</h3>
+                <p class="announcement">
+                  We'll never share your detail with anyone else.
+                </p>
+                <br>
+                <div>
+                  <h5>Pay method</h5>
+                  <ul class="food-list-inline">
+                    <li>
+                      <label class="cbContainer"><span class="align-top"><img src="img/visa.svg" alt="" width="100" height="100"></span><input name="payMethod" type="radio" class="form-check-input" value="visa" checked="">
+                          <span class="checkmark bdrs"></span>
+                        </label>
+                      </li>
+                      <li>
+                        <label class="cbContainer"><span class="align-top"><img src="img/octopus.png" class="mr-3" alt="" width="120" height="80"></span><input name="payMethod" type="radio" class="form-check-input" value="octopus">
+                            <span class="checkmark bdrs"></span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5>Delivery method</h5>
+                      <ul class="food-list-inline">
+                        <li>
+                          <label class="cbContainer"><span class="align-top">Delivery</span><input name="deliveryMethod" type="radio" class="form-check-input" value="delivery" checked="">
+                            <span class="checkmark bdrs"></span>
+                          </label>
+                        </li>
+                        <li>
+                          <label class="cbContainer"><span class="align-top">Pick</span><input name="deliveryMethod" type="radio" class="form-check-input" value="pick">
+                            <span class="checkmark bdrs"></span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4>Total Price: </h4><span id="total_price">40</span>
+                    </div>
+                  </div>
+                </div>
           </div>
           <div class="modal-footer">
             <a href="">Order</a>
@@ -163,16 +208,16 @@
           <div class="clearfix"></div>
           <div class="modal-body">
             <div class="row">
-              <div class="col-md-7 col sm-7">
+              <div class="col-md-7 col-sm-7">
                 <div class="product-image mx-auto">
                   <a href="img/ice-cream.jpg" class="cloud-zoom" id="zoom1">
-                    <img src="img/ice-cream.jpg" class="img-responsive">
+                    <img src="img/ice-cream.jpg" class="img-responsive" id="zoomImg" rel="innerWidth: '200' innerHeight: '200'">
                   </a>
                 </div>
                 <div class="product_gallery photo_container">
-                  <a href="img/ice-cream.jpg"
+                  <a href="img/ice-cream.jpg" id="mainFood"
                      rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream.jpg', useZoom: 'zoom1', smallImage: 'img/ice-cream.jpg'" class="cloud-zoom-gallery"
-                    ><img itemprop="image" src="img/ice-cream.jpg" alt="..." class="img-responsive"></a>
+                    ><img itemprop="image" src="img/ice-cream.jpg" alt="..." class="img-responsive" id="mainFood-img"></a>
                   <a href="img/ice-cream2.jpg"
                      rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream2.jpg', useZoom: 'zoom1', smallImage: 'img/ice-cream2.jpg'" class="cloud-zoom-gallery"
                     ><img itemprop="image" src="img/ice-cream2.jpg" alt="..." class="img-responsive"></a>
@@ -856,7 +901,7 @@
               <span class="filterSubHeading">Food type</span>
               <br />
               <div class="row">
-                <div class="col-6 col-lg-2 cbclicker clickable">
+                <div class="col-6 col-lg-3 cbclicker clickable">
                   <label class="cbContainer"
                     ><span class="align-top"> Western </span
                     ><input
@@ -868,7 +913,7 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <div class="col-6 col-lg-2 cbclicker clickable">
+                <div class="col-6 col-lg-3 cbclicker clickable">
                   <label class="cbContainer"
                     ><span class="align-top"> American </span
                     ><input
@@ -880,7 +925,7 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <div class="col-6 col-lg-2 cbclicker clickable">
+                <div class="col-6 col-lg-3 cbclicker clickable">
                   <label class="cbContainer"
                     ><span class="align-top"> Rice </span
                     ><input
@@ -892,7 +937,7 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <div class="col-6 col-lg-2 cbclicker clickable">
+                <div class="col-6 col-lg-3 cbclicker clickable">
                   <label class="cbContainer"
                     ><span class="align-top"> Chinese </span
                     ><input
@@ -904,21 +949,55 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Hong Kong </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="Hong Kong"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Pizza </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="Pizza"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                      ><span class="align-top"> Pasta </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="Pasta"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
               </div>
-              <span class="filterSubHeading">Price Range</span>
+              <span class="filterSubHeading">Fee Range</span>
               <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" value="75-300">
               <div id="slider-price" class=""></div>
-              <input type="hidden" name="amount1" value="0">
-              <input type="hidden" name="amount2" value="50">
+              <input type="hidden" name="amount1" id="amount1" value="0">
+              <input type="hidden" name="amount2" id="amount2" value="30">
               <a href="https://www.runoob.com/jqueryui/example-slider.html">slider</a>
               <br>
-              <span class="filterSubHeading">Open Hour</span>
-              <div class="input-group">
-                <input type="text" class="form-control clockpicker" id="startTime">
-                <!--<i class="material-icons cbIconSize">-->
-                  <!--arrow_forward-->
-                <!--</i>-->
-                <!--<input type="text" id="endTime" class="form-control clockpickerEnd">-->
+              <div class="col-3">
+                <span class="filterSubHeading">Order time</span>
+                <div class="input-group">
+                  <input type="time" class="form-control clockpicker" name="orderTime" id="orderTime" placeholder="Now">
+                </div>
               </div>
               <!-- <input type="text" name="restType" id="restType" class="form-control"> -->
             </form>
@@ -1027,7 +1106,13 @@
           goShopPage(4);
         });
 
-        $('.clockpicker').clockpicker();
+        $('#orderTime').clockpicker({
+            placement: 'top',
+            align: 'left',
+            donetext: 'Done',
+            autoclose: true,
+            'default': 'now'
+        });
       });
       // End Onload
 
@@ -1085,7 +1170,7 @@
           '</h5> <span class="reportNo" style="color: rgb(38, 4, 82);font-size: 1em;">' +
           description +
           '</span> </div> </div> <div class="mediaBtn p-3">' +
-          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="editFood(\''+food.name+'\', '+food.price+')"> ' +
+          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="editFood(this, \''+food.name+'\', '+food.price+')"> ' +
           '<i class="material-icons align-top">add</i> </button> <span class="float-right p-2">' +
           '<span>Price : </span><span class="foodPrice">' +
           food.price +
@@ -1261,16 +1346,26 @@
       }
 
       var cart = {};
-      function editFood(food, price) {
-        conole.log(this.parent().parent());
+      function editFood(e, food, price) {
+        // console.log(e.parentElement.parentElement);
+        let grandpa = e.parentElement.parentElement;
+
+        if (grandpa.getElementsByTagName('img').length == 1) {
+          let image = grandpa.getElementsByTagName('img')[0].src
+          // console.log(image)
+          $("#zoom1").attr("href", image);
+          $("#zoomImg").attr("src", image);
+          $("#mainFood").attr("href", image);
+          $("#mainFood").attr("rel", "gallerySwitchOnMouseOver: true, popupWin:\'"+image+"\', useZoom: 'zoom1', smallImage: \'"+image+"\'");
+          $("#mainFood-img").attr("src", image);
+        }
+
         $(".food_title").text(food);
         $("#editFoodModal").modal();
         $("#food_price").text(price);
 
         let image = $(this).children(0).attr("src")
-        console.log($(this).children(0).attr("src"));
-        $("#zoomImg").attr("src", image);
-        $("#cloudZoom").attr("href", image);
+        // console.log($(this).children(0).attr("src"));
 
       }
 

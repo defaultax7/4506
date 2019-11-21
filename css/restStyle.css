@@ -31,7 +31,7 @@
   box-shadow: none;
 }
 
-.toast {
+#myToast {
   position: fixed;
   top: 5%;
   right: 5%;

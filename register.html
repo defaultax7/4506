@@ -12,8 +12,14 @@
     <link rel="stylesheet" href="css/customerLoginModal.css" />
     <style>
       .login-container {
-        width: 375px;
+        width: 500px;
         margin: 0 auto;
+      }
+      #myToast {
+        position: fixed;
+        top: 5%;
+        right: 5%;
+        z-index: 999999;
       }
     </style>
     <title>Registration</title>
@@ -63,6 +69,11 @@
               <a id="orderTag" class="nav-link" href="./order.html">Order</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#!">Sign-Up<i class="material-icons align-bottom">
+                  create
+                </i></a>
+            </li>
+            <li class="nav-item">
               <a
                 class="nav-link modal-trigger"
                 href="#myModal"
@@ -79,7 +90,19 @@
       </div>
     </div>
     <!--end of topnav-->
-    <div class="login-container">
+    <div class="toast fade hide" id="myToast" role="alert" aria-live="polite" aria-atomic="true" data-delay="1500">
+      <div class="toast-header">
+        <strong class="mr-auto">Message</strong>
+        <small>current</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
+          &times;
+        </button>
+      </div>
+      <div class="toast-body">
+        Register successful!!!
+      </div>
+    </div>
+    <div class="login-container pt-5">
       <form onsubmit="return checkValid();">
         <h1 class="text-center">Register form</h1>
         <table class="table">
@@ -88,20 +111,36 @@
             <td><input type="email" class="form-control" name="email" id="email" required></td>
           </tr>
           <tr>
+            <td><label for="address">Address</label></td>
+            <td><input type="text" class="form-control" name="address" id="address" required></td>
+          </tr>
+          <tr>
             <td><label for="password">Password</label></td>
-                     <td><input type="password" class="form-control" name="email" id="email" required></td>
+                     <td><input type="password" class="form-control" name="password" id="password" required></td>
           </tr>
           <tr>
             <td><label for="password2">Password Again</label></td>
-                       <td><input type="password" class="form-control" name="email" id="email" required></td>
+                       <td><input type="password" class="form-control" name="password2" id="password2" required></td>
           </tr>
         </table>
         <input type="submit" class="form-control btn btn-outline-primary col-5" value="Register">
         <input type="reset" class="form-control btn btn-outline-secondary float-right col-5" value="Reset">
+        <div class="clearfix"></div>
       </form>
     </div>
+    <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" charset="utf-8"></script>
     <script>
       function checkValid() {
+        console.log()
+        if ($("#password2").val() == $("#password").val()) {
+          $(".toast-body").text("Register successful!!!");
+          $("#myToast").toast("show");
+        }
+        else {
+          $(".toast-body").text("Register not successful, password unmatch!!!");
+          $("#myToast").toast("show");
+        }
         return false;
       }
     </script>
