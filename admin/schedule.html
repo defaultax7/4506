@@ -24,6 +24,10 @@
 
     <!-- Calendar -->
     <link rel="stylesheet" href="css/fullcalendar.css" />
+
+    <!-- Date picker -->
+<link rel="stylesheet" href="css/daterangepicker.css">
+
   </head>
 
   <body class="nav-md">
@@ -233,12 +237,46 @@
                         <div id="calendar"></div>
                       </div>
                       <div class="col-4">
-                          <div style="height: 500px; border: 1px solid grey;">
-                            <div class="row justify-content-center">
+                          <div style="height: 400px; box-shadow: 0px 0px 5px 1px grey; padding: 20px;">
+                            <div class="row justify-content-center h2">
 Add event
                             </div>
-                                
+
+                            <div class="row">
+Event title:
                             </div>
+                            <div class="row form-group">
+                                <input class="form-control" type="text" style="margin-right: 20px;">
+                            </div>
+
+                            <div class="row">
+                                Date:
+                            </div>
+                            <div class="row">
+                            <div class="col-md-12 xdisplay_inputx form-group row has-feedback">
+                                    <input type="text" class="form-control has-feedback-left" id="single_cal1" placeholder="Date" aria-describedby="inputSuccess2Status">
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                  </div>
+
+                            </div>
+
+                            <div class="row">
+                                Time:
+                            </div>
+                            <div class="row form-group">
+                                <input type="text" class="form-control">
+                            </div>
+
+                            <div style="height: 30px;width: 1px;">
+
+                            </div>
+
+                            <div class="row justify-content-center" >
+                            <button type="button" class="btn btn-round btn-primary" style="font-size: 30px;">Add event</button>
+                        </div>
+                        </div>
+
                         </div>
                       </div>
                     </div>
@@ -289,12 +327,16 @@ Add event
     <!-- Custom Theme Scripts -->
     <script src="js/custom.js"></script>
 
-    <script>
+    <!-- Date picker -->
+    <script src="js/daterangepicker.js"></script>
+
+
+    <!-- <script>
       function addEvent() {
         var event = { id: 1, title: "New event", start: new Date() };
 
         $("#calendar").fullCalendar("renderEvent", event, true);
       }
-    </script>
+    </script> -->
   </body>
 </html>
