@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class=" " lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Admin - user management</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="css/nprogress.css" rel="stylesheet" />
+
+    <!-- Custom Theme Style -->
+    <link href="css/custom.css" rel="stylesheet" />
+
+    <!-- Datatables -->
+    <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0px;">
+              <a
+                href="file:///C:/Users/defaultax7/Downloads/%E6%8A%84/gentelella-master/gentelella-master/production/index.html"
+                class="site_title"
+                style="font-size: 19px;"
+                ><i class="fa fa-cutlery"></i> <span>Yummy EveryWhere</span></a
+              >
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix clickable" style="background-color:#3b5c7d ; height: 100px;">
+              <div class="profile_pic">
+                <img
+                  src="img/userIcon.png"
+                  alt="..."
+                  class="img-circle profile_img"
+                />
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>Johnson</h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div
+              id="sidebar-menu"
+              class="main_menu_side hidden-print main_menu"
+            >
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                  <li>
+                    <a href="第1"><i class="fa fa-home"></i> Home </a>
+                  </li>
+                  <li>
+                    <a href="第2"
+                      ><i class="fa fa-users"></i> User management
+                    </a>
+                  </li>
+                  <li>
+                    <a href="第3"><i class="fa fa-suitcase"></i> Schedule </a>
+                  </li>
+                  <li>
+                    <a href="第4"><i class="fa fa-comments"></i> Inbox </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section active"></div>
+            </div>
+            <!-- /sidebar menu -->
+
+           
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <nav class="nav navbar-nav">
+              <ul class=" navbar-right">
+                <li class="nav-item">
+                  <a
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title=""
+                    href="login.html"
+                    data-original-title="Logout"
+                  >
+                    <span
+                      class="glyphicon glyphicon-off clickable"
+                      aria-hidden="true"
+                      style="margin-left : 20px"
+                    ></span>
+                  </a>
+                </li>
+
+                <li role="presentation" class="nav-item dropdown open">
+                  <a
+                    href="javascript:;"
+                    class="dropdown-toggle info-number"
+                    id="navbarDropdown1"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul
+                    class="dropdown-menu list-unstyled msg_list"
+                    role="menu"
+                    aria-labelledby="navbarDropdown1"
+                    x-placement="bottom-start"
+                    style="position: absolute; transform: translate3d(-264px, 17px, 0px); top: 0px; left: 0px; will-change: transform;"
+                  >
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"
+                          ><img src="img/chatbox1.png" alt="Profile Image"
+                        /></span>
+                        <span>
+                          <span>Bruce Wayne</span>
+                          <span class="time">2 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Johnson, the report you just sent to me have some
+                          mistakes, please correct them and send to ...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"
+                          ><img src="img/chatbox2.jpg" alt="Profile Image"
+                        /></span>
+                        <span>
+                          <span>Steve Rogers</span>
+                          <span class="time">5 mins ago</span>
+                        </span>
+                        <span class="message">
+                          About the documents you requested last week...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"
+                          ><img src="img/chatbox3.png" alt="Profile Image"
+                        /></span>
+                        <span>
+                          <span>Arthur Fleck</span>
+                          <span class="time">10 mins ago</span>
+                        </span>
+                        <span class="message">
+                          You don't listen, do you?
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"
+                          ><img src="img/chatbox4.png" alt="Profile Image"
+                        /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">30 mins ago</span>
+                        </span>
+                        <span class="message">
+                          John, please send me a copy of ...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <div class="text-center">
+                        <a class="dropdown-item">
+                          <strong>See All Messages</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" style="height : 0px !important">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>???</h3>
+              </div>
+
+              <div class="title_right"></div>
+
+              <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Table ???</h2>
+
+                    <div class="clearfix"></div>
+                  </div>
+
+
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12  "></div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            © 2019 <a href="../restaurant.html">Yummy EveryWhere</a>. All rights
+            reserved.
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.js"></script>
+    <!-- FastClick -->
+    <script src="js/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="js/nprogress.js"></script>
+
+    <!-- Datatables -->
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="js/custom.js"></script>
+  </body>
+</html>
