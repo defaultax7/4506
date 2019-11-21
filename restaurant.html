@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/checkbox.css" />
     <link rel="stylesheet" href="css/customerLoginModal.css" />
     <link rel="stylesheet" href="css/restStyle.css" />
-    <link rel="stylesheet" href="css/magnifier.css" />
+    <link rel="stylesheet" href="css/cloud-zoom.css" />
     <style>
       .food_title {
         border-bottom: 1px solid #DFDFDF;
@@ -20,6 +20,10 @@
         margin: 30px 0;
         font-size: 20px;
         font-weight: 400;
+      }
+      .cloud-zoom > img {
+        max-height: 300px;
+        object-fit: cover;
       }
       ul.food-list-inline {
         display: -ms-flexbox;
@@ -30,6 +34,15 @@
         margin-bottom: 1rem;
         flex-wrap: wrap;
       }
+      div.product-image {
+        width: 400px !important;
+        height: 300px !important;
+      }
+      .mousetrap {
+        width: 400px !important;
+        height: 300px !important;
+      }
+
 
       .product_gallery a {
         width: 100px;
@@ -40,12 +53,12 @@
         overflow: hidden;
         cursor: pointer;
       }
-      .product_gallery a.active, .product_gallery a:hover {
+      .product_gallery a:hover {
         border: 2px solid #f5a019;
       }
       .product_gallery a img {
           width: 100%;
-          margin-top: 15px;
+          /* margin-top: 15px; */
           max-height: 100px;
       }
 
@@ -150,14 +163,18 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-md-7 col sm-7">
-                <div class="product-image">
-                  <img src="img/ice-cream.jpg" alt="">
+                <div class="product-image mx-auto">
+                  <a href="img/ice-cream2.jpg" class="cloud-zoom" id="cloudZoom">
+                    <img src="img/ice-cream2.jpg" id="zoomImg">
+                  </a>
                 </div>
-                <div class="product_gallery">
-                  <a class="active"><img src="img/ice-cream.jpg" alt="..."></a>
-                  <a><img src="img/ice-cream.jpg" alt="..."></a>
-                  <a><img src="img/ice-cream.jpg" alt="..."></a>
-                  <a><img src="img/ice-cream.jpg" alt="..."></a>
+                <div class="product_gallery photo_container">
+                  <a class="active"><img src="img/ice-cream2.jpg" alt="..."
+                       rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream2.jpg', useZoom: 'cloudZoom', smallImage: 'img/ice-cream2.jpg'" class="cloud-zoom-gallery"
+                      ></a>
+                  <a><img itemprop="image" src="img/ice-cream.jpg" alt="..."
+                       rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream.jpg', useZoom: 'cloudZoom', smallImage: 'img/ice-cream.jpg'" class="cloud-zoom-gallery"
+                      ></a>
                 </div>
               </div>
               <div class="col-md-5 col-sm-5" style="border:0px solid #e5e5e5;">
@@ -925,8 +942,7 @@
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
     <script src="js/util.js"></script>
     <script src="js/sliderrange.js" charset="utf-8"></script>
-    <script type="text/javascript" src="js/Event.js"></script>
-    <script type="text/javascript" src="js/Magnifier.js"></script>
+    <script src="js/cloud-zoom.js" charset="utf-8"></script>
 
     <script>
       const S_TAG = 0;
@@ -935,9 +951,6 @@
       var filtering = false;
       var featureList = { priceLv: [], feature: [], type: [] };
       var pNum = 1;
-
-      var evt = new Event(),
-          m = new Magnifier(evt);
 
       // Onload
       $(document).ready(function() {
@@ -994,6 +1007,22 @@
           $(".pageNum").eq(pNum).parent().addClass("active");
           goShopPage(pNum+1);
         });
+        $(".page-item.last").not('.disable').click(function() {
+          $(".pageNum").parent().removeClass("active");
+          $(".pageNum").eq(3).parent().addClass("active");
+          goShopPage(4);
+        });
+
+
+        $(".product_gallery>a").click(function() {
+          $(".product_gallery>a").removeClass("active");
+          $(this).addClass("active");
+          let image = $(this).children(0).attr("src")
+          console.log($(this).children(0).attr("src"));
+          $("#zoomImg").attr("src", image);
+          $("#cloudZoom").attr("href", image);
+          $("#cloud-zoom-big").css('background-image', 'url(' + image + ') !important');
+        })
 
       });
       // End Onload
@@ -1052,7 +1081,7 @@
           '</h5> <span class="reportNo" style="color: rgb(38, 4, 82);font-size: 1em;">' +
           description +
           '</span> </div> </div> <div class="mediaBtn p-3">' +
-          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="addCart(\''+food.name+'\', '+food.price+')"> ' +
+          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="editFood(\''+food.name+'\', '+food.price+')"> ' +
           '<i class="material-icons align-top">add</i> </button> <span class="float-right p-2">' +
           '<span>Price : </span><span class="foodPrice">' +
           food.price +
@@ -1101,7 +1130,6 @@
             foodContext += "<div class='p-5'><h3>Cannot find list</h3><h5>No food is provide, You may call <a href='#!'>36884587</a> to order food</h5></div>";
         }
         $("#foodList").html(foodContext);
-        $(".zoom").magnify();
         // foodList = "";
         // for (let food in menu.foods) {
         //   foodList += ""
@@ -1230,6 +1258,7 @@
 
       var cart = {};
       function editFood(food, price) {
+        $(".food_title").text(food);
         $("#editFoodModal").modal();
       }
       function addCart(food, price) {
