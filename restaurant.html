@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/customerLoginModal.css" />
     <link rel="stylesheet" href="css/restStyle.css" />
 
-<link rel="stylesheet" href="/css/magnify.css">
+<!--<link rel="stylesheet" href="/css/magnify.css">-->
 
     <title>Food Lambda</title>
   </head>
@@ -85,20 +85,10 @@
           <div class="modal-body">
             <h5>Food</h5>
 
-<table>
-    <tbody id="cartBody"><tr>
-      <!-- <td>Hamburger</td><td>$30</td><td>Qty:</td><td>1</td><td><button>+</button></td><td><button>-</button></td>
-    </tr>
-    <tr>
-      <td>Ice cream</td><td>$5</td><td>Qty:</td><td>2</td><td><button>+</button></td><td><button>-</button></td>
-    </tr>
-    <tr>
-      <td>Coffee</td><td>$20</td><td>Qty:</td><td>3</td><td><button>+</button></td><td><button>-</button></td>
-    </tr>
-    <tr>
-      <td>Fruit punch</td><td>$10</td><td>Qty:</td><td>1</td><td><button>+</button></td><td><button>-</button></td>
-    </tr> -->
-  </tbody></table>
+            <table>
+              <tbody id="cartBody">
+              </tbody>
+            </table>
           </div>
           <div class="modal-footer">
             <a href="">Order</a>
@@ -107,6 +97,23 @@
       </div>
     </div>
     <!-- End shoppingCartModal -->
+
+    <!--editFoodModal-->
+    <div id="editFoodModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">Food Page</h2>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <a href="">Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End editFoodModal-->
 
     <!-- anime -->
     <div class="animeBackground">
@@ -192,6 +199,7 @@
         <div style="height: 575px;"></div>
         <div class="floatingFliter" id="floatingFliter">
           <a style="float: right;" href="#!" onclick="$('.fliterContainer').hide();">X</a>
+          <div class="clearfix"></div>
           <form>
             <fieldset>
               <legend>Fliter</legend>
@@ -462,7 +470,7 @@
                         ><span>Price : </span
                         ><span class="foodPrice">10</span></span
                       >
-                      <div style="clear: both;"></div>
+                      <div class="clearfix"></div>
                     </div>
                   </div>
                 </div>
@@ -479,7 +487,7 @@
                       >Comments</span
                     >
                     <span class="float-right" id="rating"> </span>
-                    <div style="clear: both;"></div>
+                    <div class="clearfix"></div>
                   </div>
                   <div id="cmt-block">
                     <div class="cmt shadow p-2">
@@ -821,10 +829,8 @@
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
     <script src="js/util.js"></script>
     <script src="js/sliderrange.js" charset="utf-8"></script>
-    <script src="/js/jquery.magnify.js"></script>
-    <!-- Optional mobile plugin (uncomment the line below to enable): -->
-    <script src="/js/jquery.magnify-mobile.js"></script>
-    <!-- util functions included in the CodyHouse framework -->
+    <!--<script src="/js/jquery.magnify.js"></script>-->
+    <!--<script src="/js/jquery.magnify-mobile.js"></script>-->
 
     <script>
       const S_TAG = 0;
@@ -932,9 +938,7 @@
           image =
             '<img src="' +
             food.imagePath +
-            '" class="align-self-start mr-3 zoom"  data-magnify-src="'+
-            food.imagePath +
-            '"" alt="food picture" />';
+            '" class="align-self-start mr-3" alt="food picture" />';
         } else {
           image =
             '<div class="material-icons p-2" style="font-size: 8rem;">restaurant_menu</div>';
@@ -954,7 +958,7 @@
           '<span>Price : </span><span class="foodPrice">' +
           food.price +
           "</span></span>" +
-          ' <div style="clear: both;"></div> </div> </div> ';
+          ' <div class="clearfix"></div> </div> </div> ';
         return foodDiv;
       }
 
@@ -979,7 +983,7 @@
             menu.imagePath +
             "'></img><p>" +
             menu.desc +
-            "</p><div style='clear: both;'></div>" +
+            "</p><div class='clearfix'></div>" +
             "<table  class='restAttr'><tbody><tr><td>Address : &nbsp;&nbsp;</td><td>"+ 
             menu.address+"</td></tr><tr><td>Rating : </td><td>" + ratingContext + "</td></tr>"+
             "<tr><td>Telephone</td><td><a href='#!'>36884587</a></td></tr>"+
