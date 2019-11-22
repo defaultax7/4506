@@ -24,6 +24,9 @@
 
     <!-- modal anime -->
     <link rel="stylesheet" href="css/modalAnime.css" />
+
+    <!-- profile -->
+    <link rel="stylesheet" href="css/profile.css" />
   </head>
 
   <body class="nav-md">
@@ -31,9 +34,56 @@
     <div id="modal-container">
       <div class="modal-background">
         <div class="modal">
-          <h2>User Profile</h2>
-          <img src="img/userIcon.png" alt="">
-          
+          <div class="flip-card " id="flipCard">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <h2>User Profile</h2>
+                <i class="fa fa-close" id="profileClose"></i>
+                <hr />
+                <div id="profileSpace">
+                  <img src="img/userIcon.png" alt="" id="profileImg" />
+                </div>
+                <div id="profileUserID" class="profileText">
+                  User Id : 1
+                </div>
+                <div id="profileUserName" class="profileText">
+                  User name : Johnson
+                </div>
+
+                <div id="profileEntryDate" class="profileText">
+                  Entry date : 2018/08/17
+                </div>
+
+                <div id="profileTel" class="profileText">
+                  Tel : 66851783
+                </div>
+
+                <div id="profileEmail" class="profileText">
+                  Email : 180320198@stu.vtc.edu.hk
+                </div>
+
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="font-size: 20px; padding-right: 30px; padding-left : 30px;"
+                  onclick="filpProfile()"
+                >
+                  Edit
+                </button>
+              </div>
+              <div class="flip-card-back">
+                  <div id="editProfileSpace">
+                        <span
+                        class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"
+                        id="profileBtnBack"
+                        onclick="flipBack()"
+                      ></span>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -295,10 +345,17 @@
         $("body").addClass("modal-active");
       });
 
-      $("#modal-container").click(function() {
-        $(this).addClass("out");
+      $("#profileClose").click(function() {
+        $("#modal-container").addClass("out");
         $("body").removeClass("modal-active");
       });
+
+      function filpProfile() {
+        $(".flip-card-inner").addClass("rot");
+      }
+      function flipBack(){
+        $(".flip-card-inner").removeClass("rot");
+      }
     </script>
   </body>
 </html>
