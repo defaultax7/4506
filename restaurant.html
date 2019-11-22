@@ -13,13 +13,30 @@
     <link rel="stylesheet" href="css/customerLoginModal.css" />
     <link rel="stylesheet" href="css/restStyle.css" />
     <link rel="stylesheet" href="css/cloud-zoom.css" />
+    <link rel="stylesheet" href="admin/css/font-awesome.css" />
     <link rel="stylesheet" href="css/bootstrap-clockpicker.css">
     <link rel="stylesheet" href="admin/css/custom.css">
     <style>
-  footer {
-      margin-left: 0px !important;
-background-color: #17181b;
-  }
+      .product_social {
+          margin: 20px 0;
+      }
+      .display-layout {
+          display: -ms-flexbox;
+          display: flex;
+      }
+      .list-inline {
+          padding-left: 0;
+          list-style: none;
+      }
+
+      .list-inline {
+          padding-left: 0;
+          list-style: none;
+      }
+      footer {
+        margin-left: 0px !important;
+        background-color: #17181b;
+      }
       .navbar-light .navbar-brand {
           color: rgba(0, 0, 0, .9) !important;
       }
@@ -44,6 +61,7 @@ background-color: #17181b;
         font-size: 20px;
       }
       #food_price {
+        font-size: 20px;
         color: #e13c4c;
       }
       .cloud-zoom > img {
@@ -288,7 +306,42 @@ background-color: #17181b;
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 </p>
                 <br>
+                <div class="">
+                    <h2>Portion size</h2>
+                    <ul class="list-inline prod_color display-layout">
+                      <li>
+                        <p>Very less</p>
+                        <div class="color bg-green"></div>
+                      </li>
+                      <li>
+                        <p>Less</p>
+                        <div class="color bg-blue"></div>
+                      </li>
+                      <li>
+                        <p>Medium</p>
+                        <div class="color bg-red"></div>
+                      </li>
+                      <li>
+                        <p>Many</p>
+                        <div class="color bg-orange"></div>
+                      </li>
+
+                    </ul>
+                  </div>
                 <h5>Price</h5> $ <span id="food_price" ></span>
+                <br>
+                <div class="product_social">
+                  <ul class="list-inline display-layout">
+                    <li><a href="#"><i class="fa fa-facebook-square"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-twitter-square"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-envelope-square"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-rss-square"></i></a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -1061,6 +1114,7 @@ background-color: #17181b;
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
     <script src="js/util.js"></script>
     <script src="js/sliderrange.js" charset="utf-8"></script>
+    <script src="js/jquery.twbsPagination.js"></script>
     <script src="js/cloud-zoom.js" charset="utf-8"></script>
     <script src="js/bootstrap-clockpicker.js"></script>
     <script src="js/restScript.js"></script>
@@ -1089,12 +1143,11 @@ background-color: #17181b;
         });
         // filterTag
         $("#allTag").click(function() {
-          resetRest();
           closeMenu();
-          pNum = 1;
-          $(".pageNum").parent().removeClass("active");
-          $(".pageNum:first").parent().addClass("active");
-          goShopPage(1);
+          resetRest();
+          pNum = 2;
+          $(".page-link").eq(4).click();
+          $(".page-link:first").click();
         });
         $(".tag").click(function() {
           if (filtering) {
@@ -1119,24 +1172,6 @@ background-color: #17181b;
           showToast("We have received your comment");
         });
 
-        // pagination
-        $(".pageNum").click(function() {
-          let index = $(".pageNum").index(this) + 1;
-          $(".pageNum").parent().removeClass("active");
-          $(this).parent().addClass("active");
-          goShopPage(index);
-        });
-        $(".page-item.next").not('.disable').click(function() {
-          $(".pageNum").parent().removeClass("active");
-          $(".pageNum").eq(pNum).parent().addClass("active");
-          goShopPage(pNum+1);
-        });
-        $(".page-item.last").not('.disable').click(function() {
-          $(".pageNum").parent().removeClass("active");
-          $(".pageNum").eq(3).parent().addClass("active");
-          goShopPage(4);
-        });
-
         $('#orderTime').clockpicker({
             placement: 'top',
             align: 'left',
@@ -1150,7 +1185,6 @@ background-color: #17181b;
           $(".cloud-zoom-gallery").removeClass("active");
           $(this).addClass("active");
           let fd = restaurants[currRestId].foods[$(".cloud-zoom-gallery").index($(this))];
-          console.log(fd);
           $("#addCartBtn").attr("onclick", "addCart(\'"+fd.name+"\', \'"+fd.price+"\')")
 
           let desc = fd.desc == null ? "No Description" : fd.desc;
@@ -1158,6 +1192,15 @@ background-color: #17181b;
           $(".food_desc").text(desc);
           $("#food_price").text(fd.price);
         })
+        $('#pagination-demo').twbsPagination({
+        totalPages: 4,
+        visiblePages: 4,
+        onPageClick: function (event, page) {
+          goShopPage(page)
+            $('#page-content').text('Page ' + page);
+        }
+    });
+
       });
       // End Onload
 
@@ -1252,7 +1295,7 @@ background-color: #17181b;
             menu.address+"</td></tr><tr><td>Rating : </td><td>" + ratingContext + "</td></tr>"+
             "<tr><td>Telephone</td><td><a href='#!'>36884587</a></td></tr>"+
             "<tr><td>Opening Hour :  &nbsp;&nbsp;</td><td>" + menu.openHour + "</td></tr>" +
-            "</tbody><table>"
+            "</tbody><table><h1>Menu</h1><img src='img/shopMenu.jpg' alt=''/>"
         );
         $("#restMenu").fadeIn();
         $("#rating").html(ratingContext);
@@ -1409,7 +1452,6 @@ background-color: #17181b;
         let price = food.price;
         let name = food.name
 
-          // console.log(image)
           $("#zoom1").attr("href", image);
           $("#zoomImg").attr("src", image);
           let img = "img/noImg.jpg";
@@ -1417,9 +1459,15 @@ background-color: #17181b;
             if (foodList[i].imagePath != null) {
               img = foodList[i].imagePath
             }
+            else {
+              img = "img/noImg.jpg";
+            }
+            
+            // console.log(foodList[i].name)
             $(".cloud-zoom-gallery").eq(i).attr("href", img);
             $(".cloud-zoom-gallery").eq(i).attr("rel", "gallerySwitchOnMouseOver: true, popupWin:\'"+img+"\', useZoom: 'zoom1', smallImage: \'"+img+"\'");
             $(".restFood-img").eq(i).attr("src", img);
+            // $(".restFood-img").eq(i).attr("title", foodList[i].name);
           }
           if (foodList.length < 5) {
             let i = foodList.length;
@@ -1513,11 +1561,16 @@ background-color: #17181b;
       }
       function getFav() {
         let context = "";
-        shopSet.forEach(e => {
-          // console.log(restaurants[e].name);
-          context += restaurants[e].name + "<br>";
-        })
-        $("#tRest").html(context)
+        if (shopSet.size != 0) {
+          shopSet.forEach(e => {
+            // console.log(restaurants[e].name);
+            context += restaurants[e].name + "<br>";
+          })
+          $("#tRest").html(context)
+        }
+        else {
+          $("#tRest").html("Still no favourite restaurant added.")
+        }
       }
       $("#orderTag").click(function() {
         calTotal();
