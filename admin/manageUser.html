@@ -24,6 +24,39 @@
   </head>
 
   <body class="nav-md">
+
+    <!-- add user modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="addUserModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-radius: 0;">
+          <div class="modal-header">
+            <h5 class="modal-title">Add user</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -127,6 +160,15 @@
                   <div class="x_title">
                     <h2>User</h2>
 
+                    <div style="float: right;">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        onclick="addUser()"
+                      >
+                        Add user
+                      </button>
+                    </div>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -200,6 +242,10 @@
     <script src="js/custom.js"></script>
 
     <script>
+      function addUser() {
+        $('#addUserModal').modal('show');
+      }
+
       $.getJSON("data/user.json", function(data) {
         var table = $("#datatable-responsive").DataTable();
         $.each(data, function(key, val) {
@@ -223,9 +269,9 @@
 
       $("#datatable-responsive").on("click", "button", function() {
         table
-        .row( $(this).parents('tr') )
-        .remove()
-        .draw();
+          .row($(this).parents("tr"))
+          .remove()
+          .draw();
       });
 
       //   table.row.add([1, 1, 1, 1, 1, 1, 1, 1, 1]).draw(false);
