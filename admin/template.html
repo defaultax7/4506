@@ -36,6 +36,7 @@
         <div class="modal">
           <div class="flip-card " id="flipCard">
             <div class="flip-card-inner">
+              <!-- view page -->
               <div class="flip-card-front">
                 <h2>User Profile</h2>
                 <i class="fa fa-close" id="profileClose"></i>
@@ -71,16 +72,80 @@
                   Edit
                 </button>
               </div>
+              <!-- edit page -->
               <div class="flip-card-back">
-                  <div id="editProfileSpace">
-                        <span
-                        class="glyphicon glyphicon-chevron-left"
-                        aria-hidden="true"
-                        id="profileBtnBack"
-                        onclick="flipBack()"
-                      ></span>
-                  </div>
-                
+                <div id="editProfileSpace">
+                  <span
+                    class="glyphicon glyphicon-chevron-left"
+                    aria-hidden="true"
+                    id="profileBtnBack"
+                    onclick="flipBack()"
+                  ></span>
+
+                  <div style="height: 40px;"></div>
+
+                  <div class="x_panel">
+                        <div class="x_title">
+                          <h2>Edit profile</h2>
+                      
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                          <br>
+                          <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+      
+                            <div class="item form-group">
+                              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="first-name" required="required" class="form-control ">
+                              </div>
+                            </div>
+                            <div class="item form-group">
+                              <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Last Name <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="last-name" name="last-name" required="required" class="form-control">
+                              </div>
+                            </div>
+                            <div class="item form-group">
+                              <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
+                              <div class="col-md-6 col-sm-6 ">
+                                <input id="middle-name" class="form-control" type="text" name="middle-name">
+                              </div>
+                            </div>
+                            <div class="item form-group">
+                              <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+                              <div class="col-md-6 col-sm-6 ">
+                                <div id="gender" class="btn-group" data-toggle="buttons">
+                                  <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" name="gender" value="male" class="join-btn" data-parsley-multiple="gender"> &nbsp; Male &nbsp;
+                                  </label>
+                                  <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" name="gender" value="female" class="join-btn" data-parsley-multiple="gender"> Female
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="item form-group">
+                              <label class="col-form-label col-md-3 col-sm-3 label-align">Date Of Birth <span class="required">*</span>
+                              </label>
+                              <div class="col-md-6 col-sm-6 ">
+                                <input id="birthday" class="date-picker form-control" required="required" type="text">
+                              </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="item form-group">
+                              <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary" type="button">Confirm</button>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                              </div>
+                            </div>
+      
+                          </form>
+                        </div>
+                      </div>
+                </div>
               </div>
             </div>
           </div>
@@ -136,18 +201,22 @@
               <div class="menu_section">
                 <ul class="nav side-menu">
                   <li>
-                    <a href="第1"><i class="fa fa-home"></i> Home </a>
+                    <a href="#"><i class="fa fa-home"></i> Home </a>
                   </li>
                   <li>
-                    <a href="第2"
+                    <a href="manageUser.html"
                       ><i class="fa fa-users"></i> User management
                     </a>
                   </li>
                   <li>
-                    <a href="第3"><i class="fa fa-suitcase"></i> Schedule </a>
+                    <a href="schedule.html"
+                      ><i class="fa fa-suitcase"></i> Schedule
+                    </a>
                   </li>
                   <li>
-                    <a href="第4"><i class="fa fa-comments"></i> Inbox </a>
+                    <a href="inbox.html"
+                      ><i class="fa fa-comments"></i> Inbox
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -170,7 +239,7 @@
                     data-toggle="tooltip"
                     data-placement="top"
                     title=""
-                    href="login.html"
+                    href="index.html"
                     data-original-title="Logout"
                   >
                     <span
@@ -353,7 +422,7 @@
       function filpProfile() {
         $(".flip-card-inner").addClass("rot");
       }
-      function flipBack(){
+      function flipBack() {
         $(".flip-card-inner").removeClass("rot");
       }
     </script>
