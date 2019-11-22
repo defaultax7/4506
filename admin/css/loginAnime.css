@@ -1,0 +1,47 @@
+.loginAnimeContainer {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -999;
+}
+.leftCurtain {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0px;
+  height: 100%;
+  background-color: black;
+}
+
+.rightCurtain {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0px;
+  height: 100%;
+  background-color: black;
+}
+
+.welcomeText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  color: white;
+  font-size: 50px;
+  display: none;
+}
+
+.loginAnime {
+  animation: closeCurtain 1.5s linear forwards;
+}
+
+@keyframes closeCurtain {
+  0% {
+  }
+  100% {
+    width: 100%;
+  }
+}

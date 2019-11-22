@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Login </title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -20,9 +20,72 @@
 
     <!-- Custom Theme Style -->
     <link href="css/custom.css" rel="stylesheet">
+
+    <!-- alert -->
+    <link rel="stylesheet" href="css/alert.css">
+
+    <!-- login anime -->
+    <link rel="stylesheet" href="css/loginAnime.css">
   </head>
 
   <body class="login">
+
+    <!-- login anime -->
+    <div class="loginAnimeContainer">
+<div class="leftCurtain"></div>
+<div class="rightCurtain"></div>
+<div class="welcomeText">Welcome , Johnson</div>
+    </div>
+
+
+    <!-- alert modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="justify-content: center;">
+                  <div class="trigger"></div>
+                  <svg
+                    version="1.1"
+                    id="cross"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 37 37"
+                    width="5em"
+                    height="5em"
+                    xml:space="preserve"
+                  >
+                    <path
+                      class="circ path"
+                      style="fill:none;stroke:#28a745;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:10;"
+                      d="
+                                        M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"
+                    ></path>
+                    <polyline
+                      class="tick path"
+                      style="fill:none;stroke:#28a745;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;"
+                      points="
+                                        11.6,20 15.9,24.2 26.4,13.8 "
+                    />
+                  </svg>
+                </div>
+                <p id="errorModalLabel" class="light text-center"></p>
+                <div class="modal-footer" style="justify-content: center;">
+                  <button
+                    type="button"
+                    class="btn btn-outline-success modal-dismiss"
+                    id="btnAlertOk"
+                    onclick="forgetPasswordFinish()"
+                  >
+                    OK
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
@@ -39,7 +102,7 @@
                 <input type="password" class="form-control" placeholder="Password" required />
               </div>
               <div>
-                <a class="btn btn-primary submit" href="home.html" style="width : 100px; font-size: 16px;">Log in</a>
+                <a class="btn btn-primary submit" onclick="login()" style="width : 100px; font-size: 16px ; color: white;">Log in</a>
               </div>
 
               <div class="clearfix"></div>
@@ -63,7 +126,7 @@
         <div id="register" class="animate form registration_form">
           <section class="login_content">
             <form>
-              <h1>Create Account</h1>
+              <h1>Forget Password</h1>
               <div>
                 <input type="text" class="form-control" placeholder="Username" required="" />
               </div>
@@ -71,25 +134,21 @@
                 <input type="email" class="form-control" placeholder="Email" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
+                    <a class="btn btn-secondary submit" style="width : 100px; font-size: 16px; color:white" onclick="forgetPassword()">Submit</a>
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
+                  <a href="#signin" class="to_register"> Back to login</a>
                 </p>
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                        <h1><i class="fa fa-cutlery"></i> Yummy everywhere</h1>
+                        <p>©2019 All Rights Reserved.</p>
                 </div>
               </div>
             </form>
@@ -97,5 +156,56 @@
         </div>
       </div>
     </div>
+
+    <script src="js/jquery.js"></script>
+
+    <script>
+        function forgetPassword(){
+            showAlert("A email has been sent to you");
+        }
+
+        function forgetPasswordFinish(){
+
+                window.location.href = "index.html";
+
+            
+        }
+
+        function login(){
+            $(".loginAnimeContainer").css("zIndex" , 999);
+            $(".leftCurtain").addClass("loginAnime");
+            $(".rightCurtain").addClass("loginAnime");
+            setTimeout(function() {
+                $(".welcomeText").fadeIn(1500);
+}, 1500);
+            setTimeout(function() {
+  window.location.href = "home.html";
+}, 4500);
+
+        }
+
+        
+      async function showAlert(msg) {
+        $("#errorModal #errorModalLabel").html(msg);
+        await $("#errorModal")
+          .css({
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: 0,
+            background: "rgba(0,0,0,.7)"
+          })
+          .promise();
+        setTimeout(() => {
+          $("#errorModal .trigger").addClass("drawn");
+          $("#errorModal").addClass("show");
+          $("body")
+            .append('<div class="modal-backdrop fade"></div>')
+            .css("overflow-y", "hidden")
+            .promise();
+        }, 150);
+      }
+    </script>
   </body>
 </html>
+
