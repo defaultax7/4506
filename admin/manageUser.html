@@ -107,7 +107,6 @@
                     ></span>
                   </a>
                 </li>
-
               </ul>
             </nav>
           </div>
@@ -147,10 +146,10 @@
                                 <th>Create date</th>
                                 <th>Gender</th>
                                 <th>Age</th>
-                                <th>last online</th>
-                                <th>total online hour</th>
+                                <th>Last online</th>
+                                <th>Total online hour</th>
                                 <th>User type</th>
-                                <th>Tel</th>
+                                <th>Action</th>
                               </tr>
                             </thead>
                             <tbody id="userTbody"></tbody>
@@ -204,13 +203,32 @@
       $.getJSON("data/user.json", function(data) {
         var table = $("#datatable-responsive").DataTable();
         $.each(data, function(key, val) {
-            table.row.add([key, val["User name"], 1, 1, 1, 1, 1, 1, 1]).draw(false);
+          table.row
+            .add([
+              key,
+              val["User name"],
+              val["Create date"],
+              val["Gender"],
+              val["Age"],
+              val["Last online"],
+              val["Total online hours"],
+              val["User type"],
+              "<button type='button' class='btn btn-round btn-danger''>Delete</button>"
+            ])
+            .draw(false);
         });
-
       });
 
       var table = $("#datatable-responsive").DataTable();
-      table.row.add([1, 1, 1, 1, 1, 1, 1, 1, 1]).draw(false);
+
+      $("#datatable-responsive").on("click", "button", function() {
+        table
+        .row( $(this).parents('tr') )
+        .remove()
+        .draw();
+      });
+
+      //   table.row.add([1, 1, 1, 1, 1, 1, 1, 1, 1]).draw(false);
     </script>
   </body>
 </html>
