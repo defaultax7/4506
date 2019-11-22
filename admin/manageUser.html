@@ -292,14 +292,9 @@
       $.getJSON("data/user.json", function(data) {
         var table = $("#datatable-responsive").DataTable();
         $.each(data, function(key, val) {
-            console.log(val);
             table.row.add([key, val["User name"], 1, 1, 1, 1, 1, 1, 1]).draw(false);
         });
 
-        // $("<ul/>", {
-        //   class: "my-new-list",
-        //   html: items.join("")
-        // }).appendTo("body");
       });
 
       var table = $("#datatable-responsive").DataTable();
