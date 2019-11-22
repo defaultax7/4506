@@ -29,7 +29,11 @@
     <link rel="stylesheet" href="css/profile.css" />
 
     <!-- drop and drag-->
-    <link rel="stylesheet" href="css/dropzone.css">
+    <link rel="stylesheet" href="css/dropzone.css" />
+
+    <!-- notify -->
+    <link rel="stylesheet" href="css/pnotify.css" />
+    <link rel="stylesheet" href="css/pnotify.buttons.css" />
   </head>
 
   <body class="nav-md">
@@ -99,7 +103,15 @@
                     </div>
                     <div class="x_content">
                       <br />
-                      <form action="form_upload.html" class="dropzone dz-clickable"><div class="dz-default dz-message"><span>Update you profile image</span></div></form>
+                      <form
+                        action="form_upload.html"
+                        class="dropzone dz-clickable"
+                        style="width: 210px; margin-left: 125px; margin-bottom: 50px;"
+                      >
+                        <div class="dz-default dz-message">
+                          <span>Update you profile image</span>
+                        </div>
+                      </form>
                       <form
                         id="demo-form2"
                         data-parsley-validate=""
@@ -107,42 +119,59 @@
                         novalidate=""
                       >
                         <div class="item form-group">
-                          <label
-                            class="col-form-label col-md-3 col-sm-3 label-align"
-                            for="first-name"
-                            >Tel 
+                          <label class="col-form-label col-2" for="first-name"
+                            >Tel
                           </label>
-                          <div class="col-md-6 col-sm-6 ">
+                          <div class="col-md-7 ">
                             <input
                               type="text"
-                              id="first-name"
+                              value="66851783"
+                              id="editTel"
                               required="required"
                               class="form-control "
                             />
                           </div>
                         </div>
                         <div class="item form-group">
-                          <label
-                            class="col-form-label col-md-3 col-sm-3 label-align"
-                            for="last-name"
+                          <label class="col-form-label col-2" for="last-name"
                             >Email
                           </label>
-                          <div class="col-md-6 col-sm-6 ">
+                          <div class="col-md-7 ">
                             <input
                               type="text"
-                              id="last-name"
+                              value="180320198@stu.vtc.edu.hk"
+                              id="editEmail"
                               name="last-name"
                               required="required"
                               class="form-control"
                             />
                           </div>
                         </div>
-                      
+
                         <div class="ln_solid"></div>
+                        <div class="row justify-content-center" style="margin-bottom: 20px;">
+                          <button
+                            class="btn btn-primary"
+                            type="button"
+                            onclick="editProfile()"
+                            style="margin-right: 30px"
+                          >
+                            Confirm
+                          </button>
+
+                          <button
+                            class="btn btn-warning"
+                            type="button"
+                            onclick="resetProfile()"
+                          >
+                            Reset
+                          </button>
+                        </div>
+
                         <div class="item form-group">
                           <div class="col-md-6 col-sm-6 offset-md-3">
-                            <button class="btn btn-primary" type="button">
-                              Confirm
+                            <button class="btn btn-secondary" type="button" style="width: 200px;">
+                              Change password
                             </button>
                           </div>
                         </div>
@@ -412,6 +441,10 @@
     <!-- drop and drag -->
     <script src="js/dropzone.js"></script>
 
+    <!-- notify -->
+    <script src="js/pnotify.js"></script>
+    <script src="js/pnotify.buttons.js"></script>
+
     <script>
       $("#btnProfile").click(function() {
         var buttonId = "one";
@@ -431,6 +464,13 @@
       }
       function flipBack() {
         $(".flip-card-inner").removeClass("rot");
+      }
+      function editProfile() {
+        alert("code 001");
+      }
+      function resetProfile() {
+        $("#editTel").val("66851783");
+        $("#editEmail").val("180320198@stu.vtc.edu.hk");
       }
     </script>
   </body>

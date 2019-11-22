@@ -1550,28 +1550,28 @@ function init_validator() {
     }));
 }
 function init_PNotify() {
-  "undefined" != typeof PNotify &&
-    (console.log("init_PNotify"),
-    new PNotify({
-      title: "PNotify",
-      type: "info",
-      text:
-        "Welcome. Try hovering over me. You can click things behind me, because I'm non-blocking.",
-      nonblock: { nonblock: !0 },
-      addclass: "dark",
-      styling: "bootstrap3",
-      hide: !1,
-      before_close: function(a) {
-        return (
-          a.update({
-            title: a.options.title + " - Enjoy your Stay",
-            before_close: null
-          }),
-          a.queueRemove(),
-          !1
-        );
-      }
-    }));
+//   "undefined" != typeof PNotify &&
+//     (console.log("init_PNotify"),
+//     new PNotify({
+//       title: "PNotify",
+//       type: "info",
+//       text:
+//         "Welcome. Try hovering over me. You can click things behind me, because I'm non-blocking.",
+//       nonblock: { nonblock: !0 },
+//       addclass: "dark",
+//       styling: "bootstrap3",
+//       hide: !1,
+//       before_close: function(a) {
+//         return (
+//           a.update({
+//             title: a.options.title + " - Enjoy your Stay",
+//             before_close: null
+//           }),
+//           a.queueRemove(),
+//           !1
+//         );
+//       }
+//     }));
 }
 function init_CustomNotification() {
   if ((console.log("run_customtabs"), "undefined" != typeof CustomTabs)) {
