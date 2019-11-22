@@ -31,7 +31,7 @@
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0px;">
               <a
-                href="file:///C:/Users/defaultax7/Downloads/%E6%8A%84/gentelella-master/gentelella-master/production/index.html"
+                href="home.html"
                 class="site_title"
                 style="font-size: 19px;"
                 ><i class="fa fa-cutlery"></i> <span>Yummy EveryWhere</span></a
@@ -913,10 +913,15 @@
     <script src="js/nprogress.js"></script>
 
     <!-- Datatables -->
-    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/jquery.dataTables.js"></script>
     <script src="js/dataTables.bootstrap4.min.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="js/custom.js"></script>
+
+    <script>
+        var table = $('#datatable-responsive').DataTable();
+        table.row.add([1,1,1,1,1,1,1,1,1]).draw(false);
+    </script>
   </body>
 </html>
