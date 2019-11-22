@@ -10,8 +10,9 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 0px;
+  width: 100px;
   height: 100%;
+  box-shadow: 10px 0px 10px 5px grey;
   background-color: black;
 }
 
@@ -19,8 +20,9 @@
   position: absolute;
   right: 0;
   top: 0;
-  width: 0px;
+  width: 100px;
   height: 100%;
+  box-shadow: -10px 0px 10px 5px grey;
   background-color: black;
 }
 
