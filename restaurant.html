@@ -16,112 +16,8 @@
     <link rel="stylesheet" href="admin/css/font-awesome.css" />
     <link rel="stylesheet" href="css/bootstrap-clockpicker.css">
     <!-- <link rel="stylesheet" href="admin/css/custom.css"> -->
-    <style>
-      .heart {
-        font-size: 25px;
-        color:red;
-        cursor: pointer;
-      }
 
-      .product_social {
-          margin: 20px 0;
-      }
-      .display-layout {
-          display: -ms-flexbox;
-          display: flex;
-          flex-wrap: wrap;
-      }
-      .list-inline {
-          padding-left: 0;
-          list-style: none;
-      }
-
-      .list-inline {
-          padding-left: 0;
-          list-style: none;
-      }
-      footer {
-        margin-left: 0px !important;
-        background-color: #17181b;
-      }
-      .navbar-light .navbar-brand {
-          color: rgba(0, 0, 0, .9) !important;
-      }
-      .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-        color: rgba(0, 0, 0, .7) !important;
-      }
-      .navbar-light .navbar-nav .nav-link {
-          color: rgba(0, 0, 0, .5) !important;
-      }
-      #restName {
-        float: left;
-      }
-      #food_title {
-        /* border-bottom: 1px solid #DFDFDF; */
-        padding-bottom: 5px;
-        margin: 30px 0 0 0;
-        font-size: 20px;
-        font-weight: 400;
-        min-height: 80px;
-      }
-      .food_desc {
-        font-size: 20px;
-      }
-      #food_price {
-        font-size: 20px;
-        color: #e13c4c;
-      }
-      .cloud-zoom > img {
-        max-height: 300px;
-        max-width: 300px;
-        object-fit: cover;
-      }
-      ul.food-list-inline {
-        display: -ms-flexbox;
-        display: flex;
-        padding-left: 0;
-        list-style: none;
-        margin-top: 0;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
-      }
-      div.product-image {
-        width: 400px !important;
-        height: 300px !important;
-      }
-      .mousetrap {
-        width: 400px !important;
-        height: 300px !important;
-      }
-      .product_gallery a img {
-          width: 100%;
-          /* margin-top: 15px; */
-          max-height: 100px;
-      }
-
-
-      .product_gallery a {
-        width: 100px;
-        height: 100px;
-        float: left;
-        margin: 10px;
-        border: 1px solid #e5e5e5;
-        overflow: hidden;
-        cursor: pointer;
-      }
-      .product_gallery a:hover, .product_gallery a.active {
-        border: 2px solid #f5a019;
-      }
-
-      .display-layout > li > a i.fa {
-        font-size: 36px;
-      }
-
-    </style>
-
-<!--<link rel="stylesheet" href="/css/magnify.css">-->
-
-    <title>Food Lambda</title>
+    <title>Yummy EveryWhere</title>
   </head>
 
   <body class="h-100">
@@ -161,6 +57,10 @@
                   placeholder="Password"
                 />
               </div>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+              </div>
               <div class="form-group">
                 <button
                   type="submit"
@@ -169,7 +69,7 @@
                   Login
                 </button>
               </div>
-              <span class="text-danger">You should login whether you can't retrieve the food menu and order</span>
+              <span class="text-danger">You should login whether you can't retrieve the food menu and create order</span>
             </form>
           </div>
           <div class="modal-footer">
@@ -178,7 +78,7 @@
         </div>
       </div>
     </div>
-    <!-- End ogin modal -->
+    <!-- End loginModal -->
 
     <!-- shoppingCartModal -->
     <div id="shoppingCartModal" class="modal fade">
@@ -271,6 +171,189 @@
       </div>
     </div>
     <!-- End shoppingCartModal -->
+
+    <!--filterModal-->
+    <div class="modal fade" id="filterModal">
+      <div class="modal-dialog modal-xl" style="width: 2000px;">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Restaurant Filter</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form action="">
+              <span class="filterSubHeading">Budget</span>
+
+              <br />
+
+              <div class="row">
+                <div class="col-2 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top">$</span
+                    ><input
+                      name="budget"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL1"
+                      value="1"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+
+                <div class="col-2 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> $$ </span
+                    ><input
+                      name="budget"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL2"
+                      value="2"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+
+                <div class="col-2 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> $$$ </span
+                    ><input
+                      name="budget"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="pL3"
+                      value="3"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+
+              <br />
+              <span class="filterSubHeading">Food type</span>
+              <br />
+              <div class="row">
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Western </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="Western"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> American </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="American"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Rice </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="Rice"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Chinese </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="Chinese"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Hong Kong </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="Hong Kong"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                    ><span class="align-top"> Pizza </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="Pizza"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-6 col-lg-3 cbclicker clickable">
+                  <label class="cbContainer"
+                      ><span class="align-top"> Pasta </span
+                    ><input
+                      name="feature"
+                      type="checkbox"
+                      class="form-check-input"
+                      value="Pasta"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+              <span class="filterSubHeading">Fee Range</span>
+              <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" value="75-300">
+              <div id="slider-price" class=""></div>
+              <input type="hidden" name="amount1" id="amount1" value="0">
+              <input type="hidden" name="amount2" id="amount2" value="30">
+              <a href="https://www.runoob.com/jqueryui/example-slider.html">slider</a>
+              <br>
+              <div class="col-3">
+                <span class="filterSubHeading">Order time</span>
+                <div class="input-group">
+                  <input type="time" class="form-control clockpicker" name="orderTime" id="orderTime" placeholder="Now">
+                </div>
+              </div>
+              <!-- <input type="text" name="restType" id="restType" class="form-control"> -->
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer justify-content-center">
+            <button
+              type="button"
+              class="btn btn-success"
+              data-dismiss="modal"
+              onclick="searchByFilter()"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end filterModal-->
 
     <!--editFoodModal-->
     <div id="editFoodModal" class="modal fade">
@@ -448,54 +531,9 @@
         </div>
       </div>
     </div>
+    <!-- end navbar -->
 
     <div id="main" class="fluid-container">
-      <div class="fliterContainer">
-        <div style="height: 575px;"></div>
-        <div class="floatingFliter" id="floatingFliter">
-        <button type="button" class="close"  onclick="$('.fliterContainer').hide();">
-          <span aria-hidden="true">&times;</span>
-        </button>
-          <form>
-            <fieldset>
-              <legend>Fliter</legend>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                />
-                <small id="emailHelp" class="form-text text-muted"
-                  >We'll never share your email with anyone else.</small
-                >
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
-                />
-              </div>
-              <div class="form-group form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="exampleCheck1"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Check me out</label
-                >
-              </div>
-            </fieldset>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
 
       <!-- background slideshow -->
       <ul class="ht_slideshow">
@@ -932,187 +970,8 @@
       <p>© 2019 Yummy Everywhere. All rights reserved.</p>
     </div>
 
-    <!--filterModal-->
-    <div class="modal fade" id="filterModal">
-      <div class="modal-dialog modal-xl" style="width: 2000px;">
-        <div class="modal-content">
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Filter</h4>
-            <button type="button" class="close" data-dismiss="modal">
-              &times;
-            </button>
-          </div>
-          <!-- Modal body -->
-          <div class="modal-body">
-            <form action="">
-              <span class="filterSubHeading">Budget</span>
 
-              <br />
-
-              <div class="row">
-                <div class="col-2 cbclicker clickable">
-                  <label class="cbContainer"
-                    ><span class="align-top">$</span
-                    ><input
-                      name="budget"
-                      type="checkbox"
-                      class="form-check-input"
-                      id="pL1"
-                      value="1"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-
-                <div class="col-2 cbclicker clickable">
-                  <label class="cbContainer"
-                    ><span class="align-top"> $$ </span
-                    ><input
-                      name="budget"
-                      type="checkbox"
-                      class="form-check-input"
-                      id="pL2"
-                      value="2"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-
-                <div class="col-2 cbclicker clickable">
-                  <label class="cbContainer"
-                    ><span class="align-top"> $$$ </span
-                    ><input
-                      name="budget"
-                      type="checkbox"
-                      class="form-check-input"
-                      id="pL3"
-                      value="3"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-              </div>
-
-              <br />
-              <span class="filterSubHeading">Food type</span>
-              <br />
-              <div class="row">
-                <div class="col-6 col-lg-3 cbclicker clickable">
-                  <label class="cbContainer"
-                    ><span class="align-top"> Western </span
-                    ><input
-                      name="feature"
-                      type="checkbox"
-                      class="form-check-input"
-                      value="Western"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="col-6 col-lg-3 cbclicker clickable">
-                  <label class="cbContainer"
-                    ><span class="align-top"> American </span
-                    ><input
-                      name="feature"
-                      type="checkbox"
-                      class="form-check-input"
-                      value="American"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="col-6 col-lg-3 cbclicker clickable">
-                  <label class="cbContainer"
-                    ><span class="align-top"> Rice </span
-                    ><input
-                      name="feature"
-                      type="checkbox"
-                      class="form-check-input"
-                      value="Rice"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="col-6 col-lg-3 cbclicker clickable">
-                  <label class="cbContainer"
-                    ><span class="align-top"> Chinese </span
-                    ><input
-                      name="feature"
-                      type="checkbox"
-                      class="form-check-input"
-                      value="Chinese"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="col-6 col-lg-3 cbclicker clickable">
-                  <label class="cbContainer"
-                    ><span class="align-top"> Hong Kong </span
-                    ><input
-                      name="feature"
-                      type="checkbox"
-                      class="form-check-input"
-                      value="Hong Kong"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="col-6 col-lg-3 cbclicker clickable">
-                  <label class="cbContainer"
-                    ><span class="align-top"> Pizza </span
-                    ><input
-                      name="feature"
-                      type="checkbox"
-                      class="form-check-input"
-                      value="Pizza"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="col-6 col-lg-3 cbclicker clickable">
-                  <label class="cbContainer"
-                      ><span class="align-top"> Pasta </span
-                    ><input
-                      name="feature"
-                      type="checkbox"
-                      class="form-check-input"
-                      value="Pasta"
-                    />
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-              </div>
-              <span class="filterSubHeading">Fee Range</span>
-              <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" value="75-300">
-              <div id="slider-price" class=""></div>
-              <input type="hidden" name="amount1" id="amount1" value="0">
-              <input type="hidden" name="amount2" id="amount2" value="30">
-              <a href="https://www.runoob.com/jqueryui/example-slider.html">slider</a>
-              <br>
-              <div class="col-3">
-                <span class="filterSubHeading">Order time</span>
-                <div class="input-group">
-                  <input type="time" class="form-control clockpicker" name="orderTime" id="orderTime" placeholder="Now">
-                </div>
-              </div>
-              <!-- <input type="text" name="restType" id="restType" class="form-control"> -->
-            </form>
-          </div>
-          <!-- Modal footer -->
-          <div class="modal-footer justify-content-center">
-            <button
-              type="button"
-              class="btn btn-success"
-              data-dismiss="modal"
-              onclick="searchByFilter()"
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--myToast-->
     <div class="toast fade hide" id="myToast" role="alert" aria-live="polite" aria-atomic="true" data-delay="1500">
       <div class="toast-header">
         <strong class="mr-auto">Message</strong>
@@ -1125,6 +984,7 @@
         We have received your comment
       </div>
     </div>
+    <!--end myToast-->
 
     <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="js/jquery-ui.js" charset="utf-8"></script>
@@ -1137,523 +997,6 @@
     <script src="js/restScript.js"></script>
 
     <script>
-      const S_TAG = 0;
-      const S_FILTER = 1;
-      var restaurants = [];
-      var currRestId = -1;
-      var filtering = false;
-      var featureList = { priceLv: [], feature: [], type: [], feeRange: []};
-      var pNum = 1;
-
-      // Onload
-      $(document).ready(function() {
-        $.getJSON("data/data.json", function(data) {
-          restaurants = data.restaurant;
-          let context = "";
-          for (let i = 0; i < restaurants.length; i++) {
-            context += putRestaurant(restaurants[i]);
-          }
-          $.when($(".lds-default").fadeOut(1000)).done(function() {
-            $("#restList").append(context);
-            $(".foodItem:gt(11)").hide();
-          });
-        });
-        // filterTag
-        $("#allTag").click(function() {
-          closeMenu();
-          resetRest();
-          pNum = 2;
-          $(".page-link").eq(4).click();
-          $(".page-link:first").click();
-        });
-        $(".tag").click(function() {
-          if (filtering) {
-            featureList = { priceLv: [], feature: [], type: [], feeRange: []};
-            filtering = false;
-          }
-          $(this).toggleClass("active");
-          let searchText = $(this).val();
-          // restaurants.find(x => x.feature.contain(searchText));
-          let thisType = $(this).data("type");
-          if ($(this).hasClass("active")) {
-            featureList[thisType].push(searchText);
-          } else {
-            featureList[thisType] = featureList[thisType].filter(
-              e => e !== searchText
-            );
-          }
-          filterRest(S_TAG);
-        });
-        // give rating
-        $('input:radio[name="rate"]').change(function() {
-          showToast("We have received your comment");
-        });
-
-        $('#orderTime').clockpicker({
-            placement: 'top',
-            align: 'left',
-            donetext: 'Done',
-            autoclose: true,
-            'default': 'now'
-        });
-
-        // change food detail
-        $(".cloud-zoom-gallery").click(function() {
-          $(".cloud-zoom-gallery").removeClass("active");
-          $(this).addClass("active");
-          let fd = restaurants[currRestId].foods[$(".cloud-zoom-gallery").index($(this))];
-          $("#addCartBtn").attr("onclick", "addCart(\'"+fd.name+"\', \'"+fd.price+"\')")
-
-          let desc = fd.desc == null ? "No Description" : fd.desc;
-          $("#food_title").text(fd.name);
-          $(".food_desc").text(desc);
-          $("#food_price").text(fd.price);
-        })
-        $('#pagination-demo').twbsPagination({
-        totalPages: 4,
-        visiblePages: 4,
-        onPageClick: function (event, page) {
-          goShopPage(page)
-            $('#page-content').text('Page ' + page);
-        }
-    });
-
-      });
-      // End Onload
-
-      function putRestaurant(rest) {
-        let label = "";
-        if (rest.label !== undefined) {
-          label = '<div class="card-label">' + rest.label + "</div>";
-        }
-        let restDiv =
-          '<div class="col-12 col-sm-6 col-md-4 col-xl-3 p-3 foodItem"> <a class="card" href="#!" data-id="' +
-          rest.id +
-          '" onclick="showFood( ' +
-          rest.id +
-          ' );"> ' +
-          label +
-          '<div class="card-img"> <img class="card-img-top"  src="' +
-          rest.imagePath +
-          '" alt="food image"> </div> <div class="card-body"> <span>' +
-          rest.name +
-          '</span> <ul class="food"> <li>' +
-          "$".repeat(rest.priceLv) +
-          "</li> <li>" +
-          rest.feature.join("</li><li>") +
-          '</li> </ul> <ul class="food-price"> <li><strong>$' +
-          rest.minPrice +
-          "</strong></li> <li>minimum</li><br /> <li><strong>$" +
-          rest.fee +
-          "</strong></li> <li>delivery fee</li> </ul> </div> </a> </div> ";
-        return restDiv;
-      }
-      function putFood(food, index) {
-        let description;
-        if (food.desc !== null) {
-          description = food.desc;
-        } else {
-          description = "No Description";
-        }
-        let image;
-        if (food.imagePath !== null) {
-          image =
-            '<img src="' +
-            food.imagePath +
-            '" class="align-self-start mr-3" alt="food picture" />';
-        } else {
-          image =
-            '<div class="material-icons p-2" style="font-size: 8rem;">restaurant_menu</div>';
-        }
-        // console.log(image);
-        let foodDiv =
-          '<div class="mediaContainer shadow-lg" style="visibility: visible;">' +
-          '<div class="media p-2" style="background-color: white;"> ' +
-          image +
-          ' <div class="media-body"> <h5 class="mt-0 py-3" style="font-family: Arial;">' +
-          food.name +
-          '</h5> <span class="reportNo" style="color: rgb(38, 4, 82);font-size: 1em;">' +
-          description +
-          '</span> </div> </div> <div class="mediaBtn p-3">' +
-          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="editFood('+index+')"> ' +
-          '<i class="material-icons align-top">add</i> </button> <span class="float-right p-2">' +
-          '<span>Price : </span><span class="foodPrice">' +
-          food.price +
-          "</span></span>" +
-          ' <div class="clearfix"></div> </div> </div> ';
-        return foodDiv;
-      }
-
-      function showFood(fid) {
-        currRestId = fid-1;
-        restHeart.attr("class", "heart fa fa-heart-o");
-        if (restSet.has(currRestId)) {
-          restHeart.toggleClass("fa-heart fa-heart-o")
-        }
-        if ($("#restMenu").css("display") == "block") {
-          $("#restMenu").hide();
-          $("#shopPage").hide();
-        }
-        if ($("#restList").css("display") == "flex") {
-          $("#restList").hide();
-          $("#shopPage").hide();
-        }
-        $(".breadcrumb").html(
-          '<li class="breadcrumb-item"><a href="#!" onclick="closeMenu();"><i class="material-icons">store</i><span >Restaurants</span></a></li><li class="breadcrumb-item"><i class="material-icons">restaurant_menu</i><span >Menu</span></li>'
-        );
-
-        let menu = restaurants.find(x => x.id === fid);
-        let ratingContext = '<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating);
-        $("#restName").text(menu.name);
-        $("#desc").html(
-          "<img class=\'float-left p-2\' style='width: 15rem; height: 15rem; object-fit: cover;' src='" +
-            menu.imagePath +
-            "'></img><p>" +
-            menu.desc +
-            "</p><div class='clearfix'></div>" +
-            "<table  class='restAttr'><tbody><tr><td>Address : &nbsp;&nbsp;</td><td>"+ 
-            menu.address+"</td></tr><tr><td>Rating : </td><td>" + ratingContext + "</td></tr>"+
-            "<tr><td>Telephone</td><td><a href='#!'>36884587</a></td></tr>"+
-            "<tr><td>Opening Hour :  &nbsp;&nbsp;</td><td>" + menu.openHour + "</td></tr>" +
-            "</tbody><table><h1>Menu</h1><img src='img/shopMenu.jpg' alt=''/>"
-        );
-        $("#restMenu").fadeIn();
-        $("#rating").html(ratingContext);
-        foodContext = "";
-        if (menu.foods.length != 0) {
-          for (let i = 0; i < menu.foods.length; i++) {
-            foodContext += putFood(menu.foods[i], i);
-          }
-        }
-        else {
-            foodContext += "<div class='p-5'><h3>Cannot find list</h3><h5>No food is provide, You may call <a href='#!'>36884587</a> to order food</h5></div>";
-        }
-        $("#foodList").html(foodContext);
-        // foodList = "";
-        // for (let food in menu.foods) {
-        //   foodList += ""
-        // }
-        // $("#foodList").html("")
-      }
-      function giveComment() {
-        $("#cmt-block").append(
-          ' <div class="cmt shadow p-2"> <div class="cmt-header"><span class="text-warning">#1</span><span> p**** ' +
-            '</span><span>2019-10-17</span></div> <div class="cmt-body">' +
-            $("#your-cmt").val() +
-            "</div> </div> "
-        );
-        $("#your-cmt").val("");
-        return false;
-      }
-
-      function modelFilter() {
-        restaurants.find(x => x.priceLv === fid);
-      }
-
-      function searchByFilter() {
-        resetRest();
-        filtering = true;
-        featureList = { priceLv: [], feature: [], type: [], feeRange: []};
-        $("input[name= 'budget']:checked").each(function() {
-          featureList.priceLv.push(parseInt($(this).val()));
-        });
-        $("input[name= 'feature']:checked").each(function() {
-          featureList.feature.push($(this).val());
-        });
-        $("input[name= 'type']:checked").each(function() {
-          featureList.type.push($(this).val());
-        });
-        featureList.feeRange.push($("#amount1").val());
-        featureList.feeRange.push($("#amount2").val());
-        // console.log($("input[name= 'restType']").val());
-        filterRest(S_FILTER);
-      }
-
-      function closeMenu() {
-        // return
-        // $(".breadcrumb").empty();
-        $(".breadcrumb").html(
-          '<li class="breadcrumb-item"><i class="material-icons">store</i><span >Restaurants</span></li>'
-        );
-
-        $("#restMenu").hide();
-        $("#restList").fadeIn();
-
-        $("#shopPage").fadeIn();
-      }
-      function resetRest() {
-        $(".tag").each(function() {
-          if ($(this).hasClass("active")) {
-            $(this).removeClass("active");
-          }
-        });
-        $(".foodItem").each(function() {
-          $(this).fadeIn();
-        });
-      }
-
-      function filterRest(mode) {
-        for (let i = 0; i < restaurants.length; i++) {
-          let isMatch;
-          if (mode == S_TAG) {
-            isMatch =
-              featureList.feature.every(val =>
-                restaurants[i].feature.includes(val)
-              ) &&
-              (!featureList.priceLv.length ||
-                featureList.priceLv.includes(restaurants[i].priceLv));
-          } else {
-            // if no featureList.feature.length = 0
-            isMatch =
-              (featureList.feature.some(val =>
-                restaurants[i].feature.includes(val)
-              ) ||
-                featureList.feature.length == 0) &&
-              (!featureList.priceLv.length ||
-                featureList.priceLv.includes(restaurants[i].priceLv)) &&
-                (restaurants[i].fee >= featureList.feeRange[0] &&
-                restaurants[i].fee <= featureList.feeRange[1]);
-          }
-          if (isMatch) {
-            $(".foodItem")
-              .eq(i)
-              .fadeIn();
-          } else {
-            $(".foodItem")
-              .eq(i)
-              .fadeOut();
-          }
-        }
-        //  console.log(featureList);
-      }
-      function backToRestaurentView() {
-        $("#restList").fadeIn();
-        $("#restMenu").fadeIn();
-        $("#restMenu").hide();
-      }
-      function showToast(msg) {
-        $("#myToast > .toast-body").text(msg);
-        $("#myToast").toast("show");
-      }
-
-      function goShopPage(page) {
-        if (pNum == page) {
-          return;
-        }
-        pNum = page;
-        let minp = (pNum-1) * 12-1;
-        let maxp = (pNum-1) * 12 + 12;
-        let foodLength = document.getElementsByClassName("foodItem").length;
-        // if (maxp-1 > foodLength) {
-        //   maxp = foodLength;
-        // }
-
-        $(".foodItem").hide();
-        if (minp < 0) {
-          $(".foodItem:lt(" + (maxp) + ")").show();
-        }
-        else
-          $(".foodItem:lt(" + (maxp) + "):gt(" + (minp) + ")").show();
-      }
-
-      var cart = {};
-      function editFood(index) {
-        let foodList = restaurants[currRestId].foods;
-        let food = restaurants[currRestId].foods[index];
-        // console.log(e.parentElement.parentElement);
-        let desc = "No Description";
-        if (food.desc != null) {
-          desc = food.desc;
-        }
-        let image = "img/noImg.jpg";
-        if (food.imagePath != null) {
-          image = food.imagePath;
-        }
-        let price = food.price;
-        let name = food.name
-
-          $("#zoom1").attr("href", image);
-          $("#zoomImg").attr("src", image);
-          let img = "img/noImg.jpg";
-          for (let i = 0; i < foodList.length; i++) {
-            if (foodList[i].imagePath != null) {
-              img = foodList[i].imagePath
-            }
-            else {
-              img = "img/noImg.jpg";
-            }
-            
-            // console.log(foodList[i].name)
-            $(".cloud-zoom-gallery").eq(i).attr("href", img);
-            $(".cloud-zoom-gallery").eq(i).attr("rel", "gallerySwitchOnMouseOver: true, popupWin:\'"+img+"\', useZoom: 'zoom1', smallImage: \'"+img+"\'");
-            $(".restFood-img").eq(i).attr("src", img);
-            // $(".restFood-img").eq(i).attr("title", foodList[i].name);
-          }
-          if (foodList.length < 5) {
-            let i = foodList.length;
-            img = "img/noImg.jpg";
-            while (i < 5) {
-              $(".cloud-zoom-gallery").eq(i).attr("href", img);
-              $(".cloud-zoom-gallery").eq(i).attr("rel", "gallerySwitchOnMouseOver: true, popupWin:\'"+img+"\', useZoom: 'zoom1', smallImage: \'"+img+"\'");
-              $(".restFood-img").eq(i).attr("src", img);
-              i++;
-            }
-          }
-          $(".cloud-zoom-gallery").removeClass("active");
-          $(".cloud-zoom-gallery").eq(index).addClass("active");
-          $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
-
-        $("#addCartBtn").attr("onclick", "addCart(\'"+name+"\', \'"+price+"\')")
-
-        // init favourite food button
-        foodHeart.attr("class", "heart fa fa-heart-o");
-        if (foodSet.has(name)) {
-          foodHeart.toggleClass("fa-heart fa-heart-o")
-        }
-
-        $("#food_title").text(name);
-        $(".food_desc").text(desc);
-        $("#food_price").text(price);
-        $("#editFoodModal").modal();
-
-      }
-
-      function addCart(food, price) {
-        if (food in cart) {
-          cart[food][0]++;
-        }
-        else {
-          // qty, price
-          cart[food] = [1, parseInt(price)];
-        }
-        $("#cartBody").empty();
-        let totalPrice = 0;
-        let context = "";
-        for (const fd in cart) {
-          if (cart.hasOwnProperty(fd)) {
-            const elem = cart[fd];
-            totalPrice += elem[0] * elem[1];
-            context += 
-                '<tr><td>'+
-                fd + '</td><td>$'+
-                elem[1] + '</td><td><button class="addor">+</button></td>' +
-                '<td>Qty:</td><td>'+ elem[0] + '</td><td><button class="decor">-</button></td><tr>';
-          }
-        }
-        $("#cartBody").html(context);
-
-        // $(".addor").off("click");
-        // $(".decor").off("click");
-        $('.addor').on('click', function() {
-          let qtyDiv = $(this).parent().parent().children().eq(4);
-          let qty = parseInt(qtyDiv.text());
-          let foodName = $(this).parent().parent().children().eq(0).text();
-          qty += 1;
-          qtyDiv.text(qty);
-          cart[foodName][0] = qty;
-          calTotal();
-        });
-        $('.decor').on('click', function() {
-          let qtyDiv = $(this).parent().parent().children().eq(4);
-          let qty = parseInt(qtyDiv.text());
-          qty -= 1;
-          let foodName = $(this).parent().parent().children().eq(0).text();
-          if (qty <= 0) {
-            $(this).parent().parent().remove();
-            delete cart[foodName];
-          }
-          else {
-            cart[foodName][0] = qty;
-            qtyDiv.text(qty);
-          }
-          calTotal();
-        });
-        $("#total_price").text(totalPrice);
-
-        $("#shoppingCartModal").modal();
-        showToast('Item has add to cart.');
-      }
-      
-      function calTotal() {
-        // cal total price
-        let totalPrice = 0;
-        for (const fd in cart) {
-          if (cart.hasOwnProperty(fd)) {
-            const elem = cart[fd];
-            totalPrice += elem[0] * elem[1];
-          }
-        }
-        $("#total_price").text(totalPrice);
-      }
-      function getFav() {
-        let context = "";
-        if (restSet.size != 0) {
-          restSet.forEach(e => {
-            context += restaurants[e].name + "<br>";
-          })
-          $("#tRest").html(context)
-        }
-        else {
-          $("#tRest").html("Still no favourite restaurant added.")
-        }
-        constext = "";
-        if (foodSet.size != 0) {
-          foodSet.forEach(e => {
-            context += e + "<br>";
-          })
-          $("#tFood").html(context)
-        }
-      }
-      $("#orderTag").click(function() {
-        calTotal();
-        getFav();
-        $('#shoppingCartModal').modal();
-      })
-
-      var restSet = new Set();
-      var foodSet = new Set();
-      const foodHeart = $("#foodHeart");
-      const restHeart = $('#restHeart');
-      $(document).ready(function() {
-      restHeart.on('click', function() {
-        if($(this).hasClass("fa-heart-o")) {
-          restSet.add(currRestId);
-        } else if ($(this).hasClass("fa-heart")) {
-          restSet.delete(currRestId);
-        }
-        $(this).toggleClass("fa-heart fa-heart-o");
-      });
-      foodHeart.on('click', function() {
-        if($(this).hasClass("fa-heart-o")) {
-          foodSet.add($("#food_title").text());
-        } else if ($(this).hasClass("fa-heart")) {
-          foodSet.delete($("#food_title").text());
-        }
-        $(this).toggleClass("fa-heart fa-heart-o");
-      });
-      });
-      function loggingIn() {
-        $('#tabone').prop( 'disabled', false );
-        $("#loginModal").modal("hide");
-        $("#hc-cart").show();
-        $("#hc-sign-up").hide();
-        $("#hc-sign-in").hide();
-        $("#hc-profile").show();
-        $("#hc-logout").show();
-        showToast("You have logined");
-        return false;
-     }
-
-      $("#floatingFliter")
-        .delay(5000)
-        .fadeIn(1000);
-
-      $(".animeBackground").hide();
-
-      // $(".animeBackground")
-      //   .show(3000)
-      //   .delay(4000)
-      //   .fadeOut(1000);
     </script>
   </body>
 </html>
