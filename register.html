@@ -23,6 +23,10 @@
         right: 5%;
         z-index: 999999;
       }
+      .borderless td, .borderless th {
+        border: none;
+      }
+
     </style>
     <title>Registration</title>
   </head>
@@ -108,10 +112,11 @@
       <div class="text-center text-white py-3">
         <h1><i class="fa fa-cutlery"></i> Yummy everywhere</h1>
       </div>
-      <div class="login-container p-3 mt-3 bg-white" style="border-radius: 10px;">
+      <div class="login-container p-3 mt-3 text-white" style="border-radius: 10px; background-color: rgb(205, 0, 255, 0.5);">
+
         <form onsubmit="return checkValid();">
           <h1 class="text-center">Register form</h1>
-          <table class="table">
+          <table class="table borderless text-white">
             <tr>
               <td><label for="email">Email</label></td>
               <td><input type="email" class="form-control" name="email" id="email" required></td>
