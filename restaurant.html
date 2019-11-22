@@ -14,16 +14,41 @@
     <link rel="stylesheet" href="css/restStyle.css" />
     <link rel="stylesheet" href="css/cloud-zoom.css" />
     <link rel="stylesheet" href="css/bootstrap-clockpicker.css">
+    <link rel="stylesheet" href="admin/css/custom.css">
     <style>
+  footer {
+      margin-left: 0px !important;
+background-color: #17181b;
+  }
+      .navbar-light .navbar-brand {
+          color: rgba(0, 0, 0, .9) !important;
+      }
+      .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+        color: rgba(0, 0, 0, .7) !important;
+      }
+      .navbar-light .navbar-nav .nav-link {
+          color: rgba(0, 0, 0, .5) !important;
+      }
+      #restName {
+        float: left;
+      }
       .food_title {
         border-bottom: 1px solid #DFDFDF;
         padding-bottom: 5px;
         margin: 30px 0;
         font-size: 20px;
         font-weight: 400;
+        min-height: 100px;
+      }
+      .food_desc {
+        font-size: 20px;
+      }
+      #food_price {
+        color: #e13c4c;
       }
       .cloud-zoom > img {
         max-height: 300px;
+        max-width: 300px;
         object-fit: cover;
       }
       ul.food-list-inline {
@@ -43,6 +68,11 @@
         width: 400px !important;
         height: 300px !important;
       }
+      .product_gallery a img {
+          width: 100%;
+          /* margin-top: 15px; */
+          max-height: 100px;
+      }
 
 
       .product_gallery a {
@@ -54,13 +84,8 @@
         overflow: hidden;
         cursor: pointer;
       }
-      .product_gallery a:hover {
+      .product_gallery a:hover, .product_gallery a.active {
         border: 2px solid #f5a019;
-      }
-      .product_gallery a img {
-          width: 100%;
-          /* margin-top: 15px; */
-          max-height: 100px;
       }
 
     </style>
@@ -136,14 +161,35 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <div class="col-md-7 col-sm-7">
-                <div style="width: 500px;"></div>
-                <h1>Food table</h1>
-
-                <table>
-                  <tbody id="cartBody">
-                  </tbody>
-                </table>
+              <div class="col-md-7 col-sm-7 overflow-auto">
+                  <div class="x_content">
+                    <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="cart-tab" data-toggle="tab" href="#tCart" role="tab" aria-controls="tCart" aria-selected="false">Cart</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="food-tab" data-toggle="tab" href="#tFood" role="tab" aria-controls="tFood" aria-selected="false">Fav food</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="rest-tab" data-toggle="tab" href="#tRest" role="tab" aria-controls="tRest" aria-selected="true">Fav restaurant</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade active show" id="tCart" role="tabpanel" aria-labelledby="cart-tab">
+                        <table>
+                          <tbody id="cartBody">
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="tab-pane fade" id="tFood" role="tabpanel" aria-labelledby="food-tab">
+                        Still no favourite food added.
+                      </div>
+                      <div class="tab-pane fade" id="tRest" role="tabpanel" aria-labelledby="rest-tab">
+                        Still no favourite restaurant added.
+                      </div>
+                    </div>
+                  </div>
+                <div style="width: 700px;"></div>
               </div>
               <div class="col-md-5 col-sm-5" style="border:0px solid #e5e5e5;">
                 <h3>Payment</h3>
@@ -211,64 +257,43 @@
               <div class="col-md-7 col-sm-7">
                 <div class="product-image mx-auto">
                   <a href="img/ice-cream.jpg" class="cloud-zoom" id="zoom1">
-                    <img src="img/ice-cream.jpg" class="img-responsive" id="zoomImg" rel="innerWidth: '200' innerHeight: '200'">
+                    <img src="img/ice-cream.jpg" title="" class="img-responsive" id="zoomImg" rel="innerWidth: '200' innerHeight: '200'">
                   </a>
                 </div>
                 <div class="product_gallery photo_container">
-                  <a href="img/ice-cream.jpg" id="mainFood"
+                  <a href="img/ice-cream.jpg"
                      rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream.jpg', useZoom: 'zoom1', smallImage: 'img/ice-cream.jpg'" class="cloud-zoom-gallery"
-                    ><img itemprop="image" src="img/ice-cream.jpg" alt="..." class="img-responsive" id="mainFood-img"></a>
+                    ><img itemprop="image" src="img/ice-cream.jpg" title="" alt="..." class="restFood-img"></a>
                   <a href="img/ice-cream2.jpg"
                      rel="gallerySwitchOnMouseOver: true, popupWin:'img/ice-cream2.jpg', useZoom: 'zoom1', smallImage: 'img/ice-cream2.jpg'" class="cloud-zoom-gallery"
-                    ><img itemprop="image" src="img/ice-cream2.jpg" alt="..." class="img-responsive"></a>
+                    ><img itemprop="image" src="img/ice-cream2.jpg" title="" alt="..." class="restFood-img"></a>
+                  <a href="img/noImg.jpg"
+                     rel="gallerySwitchOnMouseOver: true, popupWin:'img/noImg.jpg', useZoom: 'zoom1', smallImage: 'img/noImg.jpg'" class="cloud-zoom-gallery"
+                    ><img itemprop="image" src="img/noImg.jpg" title="" alt="..." class="restFood-img"></a>
+                  <a href="img/noImg.jpg"
+                     rel="gallerySwitchOnMouseOver: true, popupWin:'img/noImg.jpg', useZoom: 'zoom1', smallImage: 'img/noImg.jpg'" class="cloud-zoom-gallery"
+                    ><img itemprop="image" src="img/noImg.jpg" title="" alt="..." class="restFood-img"></a>
+                  <a href="img/noImg.jpg"
+                     rel="gallerySwitchOnMouseOver: true, popupWin:'img/noImg.jpg', useZoom: 'zoom1', smallImage: 'img/noImg.jpg'" class="cloud-zoom-gallery"
+                    ><img itemprop="image" src="img/noImg.jpg" title="" alt="..." class="restFood-img"></a>
                 </div>
               </div>
               <div class="col-md-5 col-sm-5" style="border:0px solid #e5e5e5;">
+                <div style="width: 700px;"></div>
                 <h3 class="food_title">
                   McDonald's : ice-cream
                 </h3>
                 <p class="food_desc">
                   Amazing Ice cream
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 </p>
                 <br>
-                <div>
-                  <h5>Pay method</h5>
-                  <ul class="food-list-inline">
-                    <li>
-                      <label class="cbContainer"><span class="align-top"><img src="img/visa.svg" alt="" width="100" height="100"></span><input name="payMethod" type="radio" class="form-check-input" value="visa" checked>
-                        <span class="checkmark bdrs"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cbContainer"><span class="align-top"><img src="img/octopus.png" class="mr-3" alt="" width="120" height="80"></span><input name="payMethod" type="radio" class="form-check-input" value="octopus">
-                        <span class="checkmark bdrs"></span>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h5>Delivery method</h5>
-                    <ul class="food-list-inline">
-                      <li>
-                        <label class="cbContainer"><span class="align-top">Delivery</span><input name="deliveryMethod" type="radio" class="form-check-input" value="delivery" checked>
-                        <span class="checkmark bdrs"></span>
-                        </label>
-                      </li>
-                      <li>
-                        <label class="cbContainer"><span class="align-top">Pick</span><input name="deliveryMethod" type="radio" class="form-check-input" value="pick">
-                        <span class="checkmark bdrs"></span>
-                        </label>
-                      </li>
-                    </ul>
-                </div>
-                <div>
-                  <h4>Price: </h4><span id="food_price">0</span>
-                </div>
+                <h5>Price</h5> $ <span id="food_price" ></span>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal" onclick="addCart('ice cream', 5)">Add to Cart</a>
+            <button class="btn btn-secondary" id="addCartBtn" data-dismiss="modal" onclick="addCart('ice cream', 5)">Add to Cart</a>
           </div>
         </div>
       </div>
@@ -328,7 +353,7 @@
               >
             </li>
             <li class="nav-item">
-              <a id="orderTag" class="nav-link" href="#!" onClick="$('#shoppingCartModal').modal();">Order</a>
+              <a id="orderTag" class="nav-link" href="#!">Order</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./register.html"
@@ -586,6 +611,8 @@
               style="display:none;"
             >
               <h1 id="restName"></h1>
+              <span class="float-right"><button class="heart">♡</button></span>
+              <div class="clearfix"></div>
               <div class="jy-tabs">
                 <input
                   type="radio"
@@ -1036,13 +1063,15 @@
     <script src="js/sliderrange.js" charset="utf-8"></script>
     <script src="js/cloud-zoom.js" charset="utf-8"></script>
     <script src="js/bootstrap-clockpicker.js"></script>
+    <script src="js/restScript.js"></script>
 
     <script>
       const S_TAG = 0;
       const S_FILTER = 1;
       var restaurants = [];
+      var currRestId = 0;
       var filtering = false;
-      var featureList = { priceLv: [], feature: [], type: [] };
+      var featureList = { priceLv: [], feature: [], type: [], feeRange: []};
       var pNum = 1;
 
       // Onload
@@ -1062,12 +1091,14 @@
         $("#allTag").click(function() {
           resetRest();
           closeMenu();
-          pNum = 2;
+          pNum = 1;
+          $(".pageNum").parent().removeClass("active");
+          $(".pageNum:first").parent().addClass("active");
           goShopPage(1);
         });
         $(".tag").click(function() {
           if (filtering) {
-            featureList = { priceLv: [], feature: [], type: [] };
+            featureList = { priceLv: [], feature: [], type: [], feeRange: []};
             filtering = false;
           }
           $(this).toggleClass("active");
@@ -1113,6 +1144,20 @@
             autoclose: true,
             'default': 'now'
         });
+
+        // change food detail
+        $(".cloud-zoom-gallery").click(function() {
+          $(".cloud-zoom-gallery").removeClass("active");
+          $(this).addClass("active");
+          let fd = restaurants[currRestId].foods[$(".cloud-zoom-gallery").index($(this))];
+          console.log(fd);
+          $("#addCartBtn").attr("onclick", "addCart(\'"+fd.name+"\', \'"+fd.price+"\')")
+
+          let desc = fd.desc == null ? "No Description" : fd.desc;
+          $(".food_title").text(fd.name);
+          $(".food_desc").text(desc);
+          $("#food_price").text(fd.price);
+        })
       });
       // End Onload
 
@@ -1143,7 +1188,7 @@
           "</strong></li> <li>delivery fee</li> </ul> </div> </a> </div> ";
         return restDiv;
       }
-      function putFood(food) {
+      function putFood(food, index) {
         let description;
         if (food.desc !== null) {
           description = food.desc;
@@ -1170,7 +1215,7 @@
           '</h5> <span class="reportNo" style="color: rgb(38, 4, 82);font-size: 1em;">' +
           description +
           '</span> </div> </div> <div class="mediaBtn p-3">' +
-          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="editFood(this, \''+food.name+'\', '+food.price+')"> ' +
+          ' <button type="button" class="btn btn-primary float-right mx-2 add-cart-btn" onclick="editFood('+index+')"> ' +
           '<i class="material-icons align-top">add</i> </button> <span class="float-right p-2">' +
           '<span>Price : </span><span class="foodPrice">' +
           food.price +
@@ -1180,6 +1225,7 @@
       }
 
       function showFood(fid) {
+        currRestId = fid-1;
         if ($("#restMenu").css("display") == "block") {
           $("#restMenu").hide();
           $("#shopPage").hide();
@@ -1196,7 +1242,8 @@
         let ratingContext = '<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating);
         $("#restName").text(menu.name);
         $("#desc").html(
-          "<img class='float-left p-2' style='width: 15rem; height: 15rem; object-fit: cover;' src='" +
+          '<div class="fav-btn"><span href="#!" class="favme dashicons dashicons-heart"></span></div>'+
+          "<img class=\'float-left p-2\' style='width: 15rem; height: 15rem; object-fit: cover;' src='" +
             menu.imagePath +
             "'></img><p>" +
             menu.desc +
@@ -1212,7 +1259,7 @@
         foodContext = "";
         if (menu.foods.length != 0) {
           for (let i = 0; i < menu.foods.length; i++) {
-            foodContext += putFood(menu.foods[i]);
+            foodContext += putFood(menu.foods[i], i);
           }
         }
         else {
@@ -1243,7 +1290,7 @@
       function searchByFilter() {
         resetRest();
         filtering = true;
-        featureList = { priceLv: [], feature: [], type: [] };
+        featureList = { priceLv: [], feature: [], type: [], feeRange: []};
         $("input[name= 'budget']:checked").each(function() {
           featureList.priceLv.push(parseInt($(this).val()));
         });
@@ -1253,6 +1300,8 @@
         $("input[name= 'type']:checked").each(function() {
           featureList.type.push($(this).val());
         });
+        featureList.feeRange.push($("#amount1").val());
+        featureList.feeRange.push($("#amount2").val());
         // console.log($("input[name= 'restType']").val());
         filterRest(S_FILTER);
       }
@@ -1298,7 +1347,9 @@
               ) ||
                 featureList.feature.length == 0) &&
               (!featureList.priceLv.length ||
-                featureList.priceLv.includes(restaurants[i].priceLv));
+                featureList.priceLv.includes(restaurants[i].priceLv)) &&
+                (restaurants[i].fee >= featureList.feeRange[0] &&
+                restaurants[i].fee <= featureList.feeRange[1]);
           }
           if (isMatch) {
             $(".foodItem")
@@ -1329,7 +1380,6 @@
         pNum = page;
         let minp = (pNum-1) * 12-1;
         let maxp = (pNum-1) * 12 + 12;
-        console.log(minp + " : " + maxp)
         let foodLength = document.getElementsByClassName("foodItem").length;
         // if (maxp-1 > foodLength) {
         //   maxp = foodLength;
@@ -1341,31 +1391,56 @@
         }
         else
           $(".foodItem:lt(" + (maxp) + "):gt(" + (minp) + ")").show();
-        // $(".foodItem:lt(" + minp + ")").hide();
-        // $(".foodItem:gt(" + (maxp-1) + ")").hide();
       }
 
       var cart = {};
-      function editFood(e, food, price) {
+      function editFood(index) {
+        let foodList = restaurants[currRestId].foods;
+        let food = restaurants[currRestId].foods[index];
         // console.log(e.parentElement.parentElement);
-        let grandpa = e.parentElement.parentElement;
+        let desc = "No Description";
+        if (food.desc != null) {
+          desc = food.desc;
+        }
+        let image = "img/noImg.jpg";
+        if (food.imagePath != null) {
+          image = food.imagePath;
+        }
+        let price = food.price;
+        let name = food.name
 
-        if (grandpa.getElementsByTagName('img').length == 1) {
-          let image = grandpa.getElementsByTagName('img')[0].src
           // console.log(image)
           $("#zoom1").attr("href", image);
           $("#zoomImg").attr("src", image);
-          $("#mainFood").attr("href", image);
-          $("#mainFood").attr("rel", "gallerySwitchOnMouseOver: true, popupWin:\'"+image+"\', useZoom: 'zoom1', smallImage: \'"+image+"\'");
-          $("#mainFood-img").attr("src", image);
-        }
+          let img = "img/noImg.jpg";
+          for (let i = 0; i < foodList.length; i++) {
+            if (foodList[i].imagePath != null) {
+              img = foodList[i].imagePath
+            }
+            $(".cloud-zoom-gallery").eq(i).attr("href", img);
+            $(".cloud-zoom-gallery").eq(i).attr("rel", "gallerySwitchOnMouseOver: true, popupWin:\'"+img+"\', useZoom: 'zoom1', smallImage: \'"+img+"\'");
+            $(".restFood-img").eq(i).attr("src", img);
+          }
+          if (foodList.length < 5) {
+            let i = foodList.length;
+            img = "img/noImg.jpg";
+            while (i < 5) {
+              $(".cloud-zoom-gallery").eq(i).attr("href", img);
+              $(".cloud-zoom-gallery").eq(i).attr("rel", "gallerySwitchOnMouseOver: true, popupWin:\'"+img+"\', useZoom: 'zoom1', smallImage: \'"+img+"\'");
+              $(".restFood-img").eq(i).attr("src", img);
+              i++;
+            }
+          }
+          $(".cloud-zoom-gallery").removeClass("active");
+          $(".cloud-zoom-gallery").eq(index).addClass("active");
+          $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
 
-        $(".food_title").text(food);
-        $("#editFoodModal").modal();
+        $("#addCartBtn").attr("onclick", "addCart(\'"+name+"\', \'"+price+"\')")
+
+        $(".food_title").text(name);
+        $(".food_desc").text(desc);
         $("#food_price").text(price);
-
-        let image = $(this).children(0).attr("src")
-        // console.log($(this).children(0).attr("src"));
+        $("#editFoodModal").modal();
 
       }
 
@@ -1375,39 +1450,37 @@
         }
         else {
           // qty, price
-          cart[food] = [1, price];
+          cart[food] = [1, parseInt(price)];
         }
         $("#cartBody").empty();
+        let totalPrice = 0;
         let context = "";
         for (const fd in cart) {
           if (cart.hasOwnProperty(fd)) {
             const elem = cart[fd];
+            totalPrice += elem[0] * elem[1];
             context += 
                 '<tr><td>'+
                 fd + '</td><td>$'+
-                elem[1] + '</td><td>Qty:</td><td>'+
-                elem[0] + '</td><td><button class="addor">+</button></td><td><button class="decor">-</button></td><tr>';
+                elem[1] + '</td><td><button class="addor">+</button></td>' +
+                '<td>Qty:</td><td>'+ elem[0] + '</td><td><button class="decor">-</button></td><tr>';
           }
         }
-        // let context =
-        //       '<tr><td>'+
-        //       food+ '</td><td>$'+
-        //       price + '</td><td>Qty:</td><td>'+
-        //       cart[food][0] + '</td><td><button>+</button></td><td><button>-</button></td><tr>';
         $("#cartBody").html(context);
 
         // $(".addor").off("click");
         // $(".decor").off("click");
         $('.addor').on('click', function() {
-          let qtyDiv = $(this).parent().parent().children().eq(3);
+          let qtyDiv = $(this).parent().parent().children().eq(4);
           let qty = parseInt(qtyDiv.text());
           let foodName = $(this).parent().parent().children().eq(0).text();
           qty += 1;
           qtyDiv.text(qty);
-          cart[foodName] = qty;
+          cart[foodName][0] = qty;
+          calTotal();
         });
         $('.decor').on('click', function() {
-          let qtyDiv = $(this).parent().parent().children().eq(3);
+          let qtyDiv = $(this).parent().parent().children().eq(4);
           let qty = parseInt(qtyDiv.text());
           qty -= 1;
           let foodName = $(this).parent().parent().children().eq(0).text();
@@ -1416,14 +1489,59 @@
             delete cart[foodName];
           }
           else {
-            cart[foodName] = qty;
+            cart[foodName][0] = qty;
             qtyDiv.text(qty);
           }
+          calTotal();
         });
+        $("#total_price").text(totalPrice);
 
         $("#shoppingCartModal").modal();
         showToast('Item has add to cart.');
       }
+      
+      function calTotal() {
+        // cal total price
+        let totalPrice = 0;
+        for (const fd in cart) {
+          if (cart.hasOwnProperty(fd)) {
+            const elem = cart[fd];
+            totalPrice += elem[0] * elem[1];
+          }
+        }
+        $("#total_price").text(totalPrice);
+      }
+      function getFav() {
+        let context = "";
+        shopSet.forEach(e => {
+          // console.log(restaurants[e].name);
+          context += restaurants[e].name + "<br>";
+        })
+        $("#tRest").html(context)
+      }
+      $("#orderTag").click(function() {
+        calTotal();
+        getFav();
+        $('#shoppingCartModal').modal();
+      })
+
+      var shopSet = new Set();
+      const whiteHeart = '\u2661';
+      const blackHeart = '\u2665';
+      const button = document.querySelector('button.heart');
+      button.addEventListener('click', toggleHeart);
+
+      function toggleHeart() {
+        const like = button.textContent;
+        if(like==whiteHeart) {
+          button.textContent = blackHeart;
+          shopSet.add(currRestId);
+        } else {
+          button.textContent = whiteHeart;
+          shopSet.delete(currRestId);
+        }
+      }
+
 
       $("#floatingFliter")
         .delay(5000)

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/form.css" />
     <link rel="stylesheet" href="css/checkbox.css" />
     <link rel="stylesheet" href="css/customerLoginModal.css" />
+    <link rel="stylesheet" href="css/rainBg.css" />
     <style>
       .login-container {
         width: 500px;
@@ -24,7 +25,8 @@
     </style>
     <title>Registration</title>
   </head>
-  <body class="h-100">
+  <body class="h-100 back-row-toggle splat-toggle">
+
     <!--topnav-->
     <div
       class="navbar navbar-light bg-light navbar-expand-lg bar-sg shadow flex-wrap sticky-top p-0"
@@ -102,31 +104,38 @@
         Register successful!!!
       </div>
     </div>
-    <div class="login-container pt-5">
-      <form onsubmit="return checkValid();">
-        <h1 class="text-center">Register form</h1>
-        <table class="table">
-          <tr>
-            <td><label for="email">Email</label></td>
-            <td><input type="email" class="form-control" name="email" id="email" required></td>
-          </tr>
-          <tr>
-            <td><label for="address">Address</label></td>
-            <td><input type="text" class="form-control" name="address" id="address" required></td>
-          </tr>
-          <tr>
-            <td><label for="password">Password</label></td>
-                     <td><input type="password" class="form-control" name="password" id="password" required></td>
-          </tr>
-          <tr>
-            <td><label for="password2">Password Again</label></td>
-                       <td><input type="password" class="form-control" name="password2" id="password2" required></td>
-          </tr>
-        </table>
-        <input type="submit" class="form-control btn btn-outline-primary col-5" value="Register">
-        <input type="reset" class="form-control btn btn-outline-secondary float-right col-5" value="Reset">
-        <div class="clearfix"></div>
-      </form>
+      <div class="login-container p-3 mt-3 bg-white" style="border-radius: 10px;">
+        <form onsubmit="return checkValid();">
+          <h1 class="text-center">Register form</h1>
+          <table class="table">
+            <tr>
+              <td><label for="email">Email</label></td>
+              <td><input type="email" class="form-control" name="email" id="email" required></td>
+            </tr>
+            <tr>
+              <td><label for="address">Address</label></td>
+              <td><input type="text" class="form-control" name="address" id="address" required></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password</label></td>
+                      <td><input type="password" class="form-control" name="password" id="password" required></td>
+            </tr>
+            <tr>
+              <td><label for="password2">Password Again</label></td>
+                        <td><input type="password" class="form-control" name="password2" id="password2" required></td>
+            </tr>
+          </table>
+          <input type="submit" class="form-control btn btn-outline-primary col-5" value="Register">
+          <input type="reset" class="form-control btn btn-outline-secondary float-right col-5" value="Reset">
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    <div class="rain front-row"></div>
+    <div class="rain back-row"></div>
+    <div class="toggles">
+      <!-- <div class="splat-toggle toggle active">SPLAT</div>
+      <div class="back-row-toggle toggle active">BACK<br>ROW</div>
+      <div class="single-toggle toggle">SINGLE</div> -->
     </div>
     <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="js/bootstrap.min.js" charset="utf-8"></script>
@@ -143,6 +152,50 @@
         }
         return false;
       }
+      var makeItRain = function() {
+  //clear out everything
+  $('.rain').empty();
+
+  var increment = 0;
+  var drops = "";
+  var backDrops = "";
+
+  while (increment < 100) {
+    //couple random numbers to use for various randomizations
+    //random number between 98 and 1
+    var randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
+    //random number between 5 and 2
+    var randoFiver = (Math.floor(Math.random() * (5 - 2 + 1) + 2));
+    //increment
+    increment += randoFiver;
+    //add in a new raindrop with various randomizations to certain CSS properties
+    drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+    backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+  }
+
+  $('.rain.front-row').append(drops);
+  $('.rain.back-row').append(backDrops);
+}
+
+$('.splat-toggle.toggle').on('click', function() {
+  $('body').toggleClass('splat-toggle');
+  $('.splat-toggle.toggle').toggleClass('active');
+  makeItRain();
+});
+
+$('.back-row-toggle.toggle').on('click', function() {
+  $('body').toggleClass('back-row-toggle');
+  $('.back-row-toggle.toggle').toggleClass('active');
+  makeItRain();
+});
+
+$('.single-toggle.toggle').on('click', function() {
+  $('body').toggleClass('single-toggle');
+  $('.single-toggle.toggle').toggleClass('active');
+  makeItRain();
+});
+
+makeItRain();
     </script>
   </body>
 </html>
