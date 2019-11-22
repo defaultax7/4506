@@ -8,7 +8,8 @@ from restaurant import Restaurant
 from json_class import JsonClass
 
 session = HTMLSession()
-r = session.get("https://www.foodpanda.hk/restaurants/lat/22.342422/lng/114.1062419/city/Hong%20Kong/address/Hong%2520Kong%2520Institute%2520Of%2520Vocational%2520Education%2520(Tsing%2520Yi%2520Campus)%252C%252020%2520Tsing%2520Yi%2520Rd%252C%2520Sai%2520Shan%252C%2520Hong%2520Kong/Tsing%2520Yi%2520Road/20%2520Hong%2520Kong%2520Institute%2520of%2520Vocational%2520Education%2520(Tsing%2520Yi%2520Campus)?")
+site = "https://www.foodpanda.hk/restaurants/lat/22.342422/lng/114.1062419/city/Hong%20Kong/address/Hong%2520Kong%2520Institute%2520Of%2520Vocational%2520Education%2520(Tsing%2520Yi%2520Campus)%252C%252020%2520Tsing%2520Yi%2520Rd%252C%2520Sai%2520Shan%252C%2520Hong%2520Kong/Tsing%2520Yi%2520Road/20%2520Hong%2520Kong%2520Institute%2520of%2520Vocational%2520Education%2520(Tsing%2520Yi%2520Campus)?"
+r = session.get(site)
 
 
 def getFood(url):
@@ -29,11 +30,12 @@ def getFood(url):
         print(name)
         price = float(obj.find("span.price.p-price", first=True).text.split("$")[1])
         print(price)
-        desc = obj.find(".dish-description.e-description.ingredients", first=True)
+        desc = obj.find(".dish-description", first=True)
         if desc is None:
             desc = None
         else:
             desc = desc.text
+            print(desc)
         imagePath = obj.find(".photo.u-photo", first=True)
         if imagePath is None:
             imagePath = None
