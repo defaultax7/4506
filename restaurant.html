@@ -15,14 +15,21 @@
     <link rel="stylesheet" href="css/cloud-zoom.css" />
     <link rel="stylesheet" href="admin/css/font-awesome.css" />
     <link rel="stylesheet" href="css/bootstrap-clockpicker.css">
-    <link rel="stylesheet" href="admin/css/custom.css">
+    <!-- <link rel="stylesheet" href="admin/css/custom.css"> -->
     <style>
+      .heart {
+        font-size: 25px;
+        color:red;
+        cursor: pointer;
+      }
+
       .product_social {
           margin: 20px 0;
       }
       .display-layout {
           display: -ms-flexbox;
           display: flex;
+          flex-wrap: wrap;
       }
       .list-inline {
           padding-left: 0;
@@ -49,13 +56,13 @@
       #restName {
         float: left;
       }
-      .food_title {
-        border-bottom: 1px solid #DFDFDF;
+      #food_title {
+        /* border-bottom: 1px solid #DFDFDF; */
         padding-bottom: 5px;
-        margin: 30px 0;
+        margin: 30px 0 0 0;
         font-size: 20px;
         font-weight: 400;
-        min-height: 100px;
+        min-height: 80px;
       }
       .food_desc {
         font-size: 20px;
@@ -104,6 +111,10 @@
       }
       .product_gallery a:hover, .product_gallery a.active {
         border: 2px solid #f5a019;
+      }
+
+      .display-layout > li > a i.fa {
+        font-size: 36px;
       }
 
     </style>
@@ -176,6 +187,9 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Shopping Cart</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -298,32 +312,31 @@
               </div>
               <div class="col-md-5 col-sm-5" style="border:0px solid #e5e5e5;">
                 <div style="width: 700px;"></div>
-                <h3 class="food_title">
+                <h3 id="food_title">
                   McDonald's : ice-cream
                 </h3>
+                <span class="float-right"><i id="foodHeart" class="heart fa fa-heart-o"></i></span>
+                <div class="clearfix"></div>
+                <hr>
                 <p class="food_desc">
                   Amazing Ice cream
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 </p>
                 <br>
                 <div class="">
-                    <h2>Portion size</h2>
+                    <h5>Portion size</h5>
                     <ul class="list-inline prod_color display-layout">
                       <li>
-                        <p>Very less</p>
-                        <div class="color bg-green"></div>
+                        <button class="btn btn-outline-danger m-1">Very less</button>
                       </li>
                       <li>
-                        <p>Less</p>
-                        <div class="color bg-blue"></div>
+                        <button class="btn btn-outline-warning m-1">Less</button>
                       </li>
                       <li>
-                        <p>Medium</p>
-                        <div class="color bg-red"></div>
+                        <button class="btn btn-outline-primary active m-1">Medium</button>
                       </li>
                       <li>
-                        <p>Many</p>
-                        <div class="color bg-orange"></div>
+                        <button class="btn btn-outline-success m-1">Many</button>
                       </li>
 
                     </ul>
@@ -664,7 +677,7 @@
               style="display:none;"
             >
               <h1 id="restName"></h1>
-              <span class="float-right"><button class="heart">♡</button></span>
+              <span class="float-right"><i id="restHeart" class="heart fa fa-heart-o"></i></span>
               <div class="clearfix"></div>
               <div class="jy-tabs">
                 <input
@@ -1123,7 +1136,7 @@
       const S_TAG = 0;
       const S_FILTER = 1;
       var restaurants = [];
-      var currRestId = 0;
+      var currRestId = -1;
       var filtering = false;
       var featureList = { priceLv: [], feature: [], type: [], feeRange: []};
       var pNum = 1;
@@ -1188,7 +1201,7 @@
           $("#addCartBtn").attr("onclick", "addCart(\'"+fd.name+"\', \'"+fd.price+"\')")
 
           let desc = fd.desc == null ? "No Description" : fd.desc;
-          $(".food_title").text(fd.name);
+          $("#food_title").text(fd.name);
           $(".food_desc").text(desc);
           $("#food_price").text(fd.price);
         })
@@ -1269,6 +1282,10 @@
 
       function showFood(fid) {
         currRestId = fid-1;
+        restHeart.attr("class", "heart fa fa-heart-o");
+        if (restSet.has(currRestId)) {
+          restHeart.toggleClass("fa-heart fa-heart-o")
+        }
         if ($("#restMenu").css("display") == "block") {
           $("#restMenu").hide();
           $("#shopPage").hide();
@@ -1285,7 +1302,6 @@
         let ratingContext = '<span class="stared"></span>'.repeat(menu.rating) + '<span class="nostar"></span>'.repeat(5 - menu.rating);
         $("#restName").text(menu.name);
         $("#desc").html(
-          '<div class="fav-btn"><span href="#!" class="favme dashicons dashicons-heart"></span></div>'+
           "<img class=\'float-left p-2\' style='width: 15rem; height: 15rem; object-fit: cover;' src='" +
             menu.imagePath +
             "'></img><p>" +
@@ -1485,7 +1501,13 @@
 
         $("#addCartBtn").attr("onclick", "addCart(\'"+name+"\', \'"+price+"\')")
 
-        $(".food_title").text(name);
+        // init favourite food button
+        foodHeart.attr("class", "heart fa fa-heart-o");
+        if (foodSet.has(name)) {
+          foodHeart.toggleClass("fa-heart fa-heart-o")
+        }
+
+        $("#food_title").text(name);
         $(".food_desc").text(desc);
         $("#food_price").text(price);
         $("#editFoodModal").modal();
@@ -1561,15 +1583,21 @@
       }
       function getFav() {
         let context = "";
-        if (shopSet.size != 0) {
-          shopSet.forEach(e => {
-            // console.log(restaurants[e].name);
+        if (restSet.size != 0) {
+          restSet.forEach(e => {
             context += restaurants[e].name + "<br>";
           })
           $("#tRest").html(context)
         }
         else {
           $("#tRest").html("Still no favourite restaurant added.")
+        }
+        constext = "";
+        if (foodSet.size != 0) {
+          foodSet.forEach(e => {
+            context += e + "<br>";
+          })
+          $("#tFood").html(context)
         }
       }
       $("#orderTag").click(function() {
@@ -1578,23 +1606,28 @@
         $('#shoppingCartModal').modal();
       })
 
-      var shopSet = new Set();
-      const whiteHeart = '\u2661';
-      const blackHeart = '\u2665';
-      const button = document.querySelector('button.heart');
-      button.addEventListener('click', toggleHeart);
-
-      function toggleHeart() {
-        const like = button.textContent;
-        if(like==whiteHeart) {
-          button.textContent = blackHeart;
-          shopSet.add(currRestId);
-        } else {
-          button.textContent = whiteHeart;
-          shopSet.delete(currRestId);
+      var restSet = new Set();
+      var foodSet = new Set();
+      const foodHeart = $("#foodHeart");
+      const restHeart = $('#restHeart');
+      $(document).ready(function() {
+      restHeart.on('click', function() {
+        if($(this).hasClass("fa-heart-o")) {
+          restSet.add(currRestId);
+        } else if ($(this).hasClass("fa-heart")) {
+          restSet.delete(currRestId);
         }
-      }
-
+        $(this).toggleClass("fa-heart fa-heart-o");
+      });
+      foodHeart.on('click', function() {
+        if($(this).hasClass("fa-heart-o")) {
+          foodSet.add($("#food_title").text());
+        } else if ($(this).hasClass("fa-heart")) {
+          foodSet.delete($("#food_title").text());
+        }
+        $(this).toggleClass("fa-heart fa-heart-o");
+      });
+      });
 
       $("#floatingFliter")
         .delay(5000)

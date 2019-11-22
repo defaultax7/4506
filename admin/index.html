@@ -96,7 +96,7 @@
             <form>
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required />
+                <input type="text" class="form-control" placeholder="Username" id="Username" required />
               </div>
               <div>
                 <input type="password" class="form-control" placeholder="Password" required />
@@ -175,6 +175,11 @@
             $(".loginAnimeContainer").css("zIndex" , 999);
             $(".leftCurtain").addClass("loginAnime");
             $(".rightCurtain").addClass("loginAnime");
+            let name = "Johnson"
+            if ($("#Username").val() != "") {
+              name = $("#Username").val();
+            }
+            $(".welcomeText").text("Welcome, " + name);
             setTimeout(function() {
                 $(".welcomeText").fadeIn(1500);
 }, 1500);
