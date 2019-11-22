@@ -6,7 +6,8 @@
   left: 20px;
 }
 
-#editProfileSpace , #profileSpace {
+#editProfileSpace,
+#profileSpace {
   height: 500px;
   width: 500px;
 }
@@ -34,15 +35,21 @@
   left: 200px;
 }
 
-#profileTel {
+#profileGender {
   position: absolute;
   top: 300px;
   left: 20px;
 }
 
-#profileEmail {
+#profileTel {
   position: absolute;
   top: 350px;
+  left: 20px;
+}
+
+#profileEmail {
+  position: absolute;
+  top: 400px;
   left: 20px;
 }
 
@@ -58,12 +65,12 @@
   cursor: pointer;
 }
 
-#profileBtnBack{
-    position: absolute;
-    top: 0px;
-    left:0px;
-    cursor: pointer;
-    font-size: 20px;
+#profileBtnBack {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 /* filp */
@@ -85,9 +92,8 @@
   transform-style: preserve-3d;
 }
 
-
-.rot{
-    transform: rotateY(180deg);
+.rot {
+  transform: rotateY(180deg);
 }
 
 /* Position the front and back side */
