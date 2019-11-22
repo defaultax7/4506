@@ -180,6 +180,8 @@
               name = $("#Username").val();
             }
             $(".welcomeText").text("Welcome, " + name);
+            $(".leftCurtain").css("box-shadow" , "none");
+            $(".rightCurtain").css("box-shadow" , "none");
             setTimeout(function() {
                 $(".welcomeText").fadeIn(1500);
 }, 1500);
