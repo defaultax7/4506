@@ -1,0 +1,29 @@
+
+#errorModal .modal-content {
+    background: transparent;
+    color: #fff;
+    border: none;
+  }
+  
+  #errorModal .modal-header {
+    /* flex-direction: column; */
+    border: none;
+  }
+  
+  #errorModal .modal-footer {
+    border: none;
+  }
+  
+  #errorModal .modal-header>p {
+    margin: 1rem;
+  }
+  
+  #errorModal .modal-footer>button>i.material-icons {
+    font-size: 1rem;
+    margin-right: 1em;
+  }
+
+  .drawn+svg .path {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }

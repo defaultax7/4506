@@ -34,9 +34,59 @@
     <!-- notify -->
     <link rel="stylesheet" href="css/pnotify.css" />
     <link rel="stylesheet" href="css/pnotify.buttons.css" />
+
+    <!-- alert -->
+    <link rel="stylesheet" href="css/alert.css">
   </head>
 
   <body class="nav-md">
+    <!-- alert modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="justify-content: center;">
+            <div class="trigger"></div>
+            <svg
+              version="1.1"
+              id="cross"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 37 37"
+              width="5em"
+              height="5em"
+              xml:space="preserve"
+            >
+              <path
+                class="circ path"
+                style="fill:none;stroke:#28a745;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:10;"
+                d="
+                                  M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"
+              ></path>
+              <polyline
+                class="tick path"
+                style="fill:none;stroke:#28a745;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;"
+                points="
+                                  11.6,20 15.9,24.2 26.4,13.8 "
+              />
+            </svg>
+          </div>
+          <p id="errorModalLabel" class="light text-center"></p>
+          <div class="modal-footer" style="justify-content: center;">
+            <button
+              type="button"
+              class="btn btn-outline-success modal-dismiss"
+              id="btnAlertOk"
+              onclick="editFinish()"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- profile modal -->
     <div id="modal-container">
       <div class="modal-background">
@@ -104,7 +154,7 @@
                     <div class="x_content">
                       <br />
                       <form
-                      id="editImage"
+                        id="editImage"
                         action="form_upload.html"
                         class="dropzone dz-clickable"
                         style="width: 210px; margin-left: 125px; margin-bottom: 50px; height: 200px;"
@@ -150,7 +200,10 @@
                         </div>
 
                         <div class="ln_solid"></div>
-                        <div class="row justify-content-center" style="margin-bottom: 20px;">
+                        <div
+                          class="row justify-content-center"
+                          style="margin-bottom: 20px;"
+                        >
                           <button
                             class="btn btn-primary"
                             type="button"
@@ -171,7 +224,11 @@
 
                         <div class="item form-group">
                           <div class="col-md-6 col-sm-6 offset-md-3">
-                            <button class="btn btn-secondary" type="button" style="width: 200px;">
+                            <button
+                              class="btn btn-secondary"
+                              type="button"
+                              style="width: 200px;"
+                            >
                               Change password
                             </button>
                           </div>
@@ -247,7 +304,6 @@
                       ><i class="fa fa-suitcase"></i> Schedule
                     </a>
                   </li>
-      
                 </ul>
               </div>
               <div class="menu_section active"></div>
@@ -279,8 +335,6 @@
                     ></span>
                   </a>
                 </li>
-
-           
               </ul>
             </nav>
           </div>
@@ -379,12 +433,48 @@
         $(".flip-card-inner").removeClass("rot");
       }
       function editProfile() {
-        alert("code 001");
+        if ($("#editTel").val() == "") {
+          new PNotify({
+            title: "Empty tel",
+            text: "Please enter a tel no.",
+            type: "error",
+            styling: "bootstrap3",
+            delay: 1000
+          });
+        } else {
+        }
       }
       function resetProfile() {
         $("#editTel").val("66851783");
         $("#editEmail").val("180320198@stu.vtc.edu.hk");
-        $("#editImage").html("<div class='dz-default dz-message'><span>Update you profile image</span></div>");
+        $("#editImage").html(
+          "<div class='dz-default dz-message'><span>Update you profile image</span></div>"
+        );
+      }
+
+      function editFinish(){
+        alert("code 002");
+      }
+
+      async function showAlert(msg) {
+        $("#errorModal #errorModalLabel").html(msg);
+        await $("#errorModal")
+          .css({
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: 0,
+            background: "rgba(0,0,0,.7)"
+          })
+          .promise();
+        setTimeout(() => {
+          $("#errorModal .trigger").addClass("drawn");
+          $("#errorModal").addClass("show");
+          $("body")
+            .append('<div class="modal-backdrop fade"></div>')
+            .css("overflow-y", "hidden")
+            .promise();
+        }, 150);
       }
     </script>
   </body>
