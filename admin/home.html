@@ -22,16 +22,235 @@
     <!-- Datatables -->
     <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
+    <!-- modal anime -->
+    <link rel="stylesheet" href="css/modalAnime.css" />
+
+    <!-- profile -->
+    <link rel="stylesheet" href="css/profile.css" />
+
+    <!-- drop and drag-->
+    <link rel="stylesheet" href="css/dropzone.css" />
+
+    <!-- notify -->
+    <link rel="stylesheet" href="css/pnotify.css" />
+    <link rel="stylesheet" href="css/pnotify.buttons.css" />
+
+    <!-- alert -->
+    <link rel="stylesheet" href="css/alert.css">
   </head>
 
   <body class="nav-md">
+    <!-- alert modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="justify-content: center;">
+            <div class="trigger"></div>
+            <svg
+              version="1.1"
+              id="cross"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 37 37"
+              width="5em"
+              height="5em"
+              xml:space="preserve"
+            >
+              <path
+                class="circ path"
+                style="fill:none;stroke:#28a745;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:10;"
+                d="
+                                  M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"
+              ></path>
+              <polyline
+                class="tick path"
+                style="fill:none;stroke:#28a745;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;"
+                points="
+                                  11.6,20 15.9,24.2 26.4,13.8 "
+              />
+            </svg>
+          </div>
+          <p id="errorModalLabel" class="light text-center"></p>
+          <div class="modal-footer" style="justify-content: center;">
+            <button
+              type="button"
+              class="btn btn-outline-success modal-dismiss"
+              id="btnAlertOk"
+              onclick="editFinish()"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- profile modal -->
+    <div id="modal-container">
+      <div class="modal-background">
+        <div class="modal">
+          <div class="flip-card " id="flipCard">
+            <div class="flip-card-inner">
+              <!-- view page -->
+              <div class="flip-card-front">
+                <h2>User Profile</h2>
+                <i class="fa fa-close" id="profileClose"></i>
+                <hr />
+                <div id="profileSpace">
+                  <img src="img/userIcon.png" alt="" id="profileImg" />
+                </div>
+                <div id="profileUserID" class="profileText">
+                  User Id : 1
+                </div>
+                <div id="profileUserName" class="profileText">
+                  User name : Johnson
+                </div>
+
+                <div id="profileEntryDate" class="profileText">
+                  Entry date : 2018/08/17
+                </div>
+
+                <div id="profileGender" class="profileText">
+                  Gender : M
+                </div>
+
+                <div id="profileTel" class="profileText">
+                  Tel : 66851783
+                </div>
+
+                <div id="profileEmail" class="profileText">
+                  Email : 180320198@stu.vtc.edu.hk
+                </div>
+
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="font-size: 20px; padding-right: 30px; padding-left : 30px;"
+                  onclick="filpProfile()"
+                >
+                  Edit
+                </button>
+              </div>
+              <!-- edit page -->
+              <div class="flip-card-back">
+                <div id="editProfileSpace">
+                  <span
+                    class="glyphicon glyphicon-chevron-left"
+                    aria-hidden="true"
+                    id="profileBtnBack"
+                    onclick="flipBack()"
+                  ></span>
+
+                  <div style="height: 40px;"></div>
+
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Edit profile</h2>
+
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <br />
+                      <form
+                        id="editImage"
+                        action="form_upload.html"
+                        class="dropzone dz-clickable"
+                        style="width: 210px; margin-left: 125px; margin-bottom: 50px; height: 200px;"
+                      >
+                        <div class="dz-default dz-message">
+                          <span>Update you profile image</span>
+                        </div>
+                      </form>
+                      <form
+                        id="demo-form2"
+                        data-parsley-validate=""
+                        class="form-horizontal form-label-left"
+                        novalidate=""
+                      >
+                        <div class="item form-group">
+                          <label class="col-form-label col-2" for="first-name"
+                            >Tel
+                          </label>
+                          <div class="col-md-7 ">
+                            <input
+                              type="text"
+                              value="66851783"
+                              id="editTel"
+                              required="required"
+                              class="form-control "
+                            />
+                          </div>
+                        </div>
+                        <div class="item form-group">
+                          <label class="col-form-label col-2" for="last-name"
+                            >Email
+                          </label>
+                          <div class="col-md-7 ">
+                            <input
+                              type="text"
+                              value="180320198@stu.vtc.edu.hk"
+                              id="editEmail"
+                              name="last-name"
+                              required="required"
+                              class="form-control"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="ln_solid"></div>
+                        <div
+                          class="row justify-content-center"
+                          style="margin-bottom: 20px;"
+                        >
+                          <button
+                            class="btn btn-primary"
+                            type="button"
+                            onclick="editProfile()"
+                            style="margin-right: 30px"
+                          >
+                            Confirm
+                          </button>
+
+                          <button
+                            class="btn btn-warning"
+                            type="button"
+                            onclick="resetProfile()"
+                          >
+                            Reset
+                          </button>
+                        </div>
+
+                        <div class="item form-group">
+                          <div class="col-md-6 col-sm-6 offset-md-3">
+                            <button
+                              class="btn btn-secondary"
+                              type="button"
+                              style="width: 200px;"
+                            >
+                              Change password
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0px;">
               <a
-                href="file:///C:/Users/defaultax7/Downloads/%E6%8A%84/gentelella-master/gentelella-master/production/index.html"
+                href="#"
                 class="site_title"
                 style="font-size: 19px;"
                 ><i class="fa fa-cutlery"></i> <span>Yummy EveryWhere</span></a
@@ -41,7 +260,13 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile clearfix clickable" style="background-color:#3b5c7d ; height: 100px;">
+            <div
+              class="profile clearfix clickable"
+              id="btnProfile"
+              style="background-color:#3b5c7d ; height: 100px;"
+              data-toggle="modal"
+              data-target=".profileModal"
+            >
               <div class="profile_pic">
                 <img
                   src="img/userIcon.png"
@@ -75,18 +300,15 @@
                     </a>
                   </li>
                   <li>
-                    <a href="schedule.html"><i class="fa fa-suitcase"></i> Schedule </a>
-                  </li>
-                  <li>
-                    <a href="第4"><i class="fa fa-comments"></i> Inbox </a>
+                    <a href="schedule.html"
+                      ><i class="fa fa-suitcase"></i> Schedule
+                    </a>
                   </li>
                 </ul>
               </div>
               <div class="menu_section active"></div>
             </div>
             <!-- /sidebar menu -->
-
-           
           </div>
         </div>
 
@@ -103,7 +325,7 @@
                     data-toggle="tooltip"
                     data-placement="top"
                     title=""
-                    href="login.html"
+                    href="index.html"
                     data-original-title="Logout"
                   >
                     <span
@@ -112,92 +334,6 @@
                       style="margin-left : 20px"
                     ></span>
                   </a>
-                </li>
-
-                <li role="presentation" class="nav-item dropdown open">
-                  <a
-                    href="javascript:;"
-                    class="dropdown-toggle info-number"
-                    id="navbarDropdown1"
-                    data-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul
-                    class="dropdown-menu list-unstyled msg_list"
-                    role="menu"
-                    aria-labelledby="navbarDropdown1"
-                    x-placement="bottom-start"
-                    style="position: absolute; transform: translate3d(-264px, 17px, 0px); top: 0px; left: 0px; will-change: transform;"
-                  >
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"
-                          ><img src="img/chatbox1.png" alt="Profile Image"
-                        /></span>
-                        <span>
-                          <span>Bruce Wayne</span>
-                          <span class="time">2 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Johnson, the report you just sent to me have some
-                          mistakes, please correct them and send to ...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"
-                          ><img src="img/chatbox2.jpg" alt="Profile Image"
-                        /></span>
-                        <span>
-                          <span>Steve Rogers</span>
-                          <span class="time">5 mins ago</span>
-                        </span>
-                        <span class="message">
-                          About the documents you requested last week...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"
-                          ><img src="img/chatbox3.png" alt="Profile Image"
-                        /></span>
-                        <span>
-                          <span>Arthur Fleck</span>
-                          <span class="time">10 mins ago</span>
-                        </span>
-                        <span class="message">
-                          You don't listen, do you?
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"
-                          ><img src="img/chatbox4.png" alt="Profile Image"
-                        /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">30 mins ago</span>
-                        </span>
-                        <span class="message">
-                          John, please send me a copy of ...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <div class="text-center">
-                        <a class="dropdown-item">
-                          <strong>See All Messages</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </nav>
@@ -223,12 +359,9 @@
                     <div class="clearfix"></div>
                   </div>
 
-
                   <div class="x_content">
                     <div class="row">
-                      <div class="col-sm-12">
-                
-                      </div>
+                      <div class="col-sm-12"></div>
                     </div>
                   </div>
                 </div>
@@ -271,5 +404,78 @@
 
     <!-- Custom Theme Scripts -->
     <script src="js/custom.js"></script>
+
+    <!-- drop and drag -->
+    <script src="js/dropzone.js"></script>
+
+    <!-- notify -->
+    <script src="js/pnotify.js"></script>
+    <script src="js/pnotify.buttons.js"></script>
+
+    <script>
+      $("#btnProfile").click(function() {
+        var buttonId = "one";
+        $("#modal-container")
+          .removeAttr("class")
+          .addClass(buttonId);
+        $("body").addClass("modal-active");
+      });
+
+      $("#profileClose").click(function() {
+        $("#modal-container").addClass("out");
+        $("body").removeClass("modal-active");
+      });
+
+      function filpProfile() {
+        $(".flip-card-inner").addClass("rot");
+      }
+      function flipBack() {
+        $(".flip-card-inner").removeClass("rot");
+      }
+      function editProfile() {
+        if ($("#editTel").val() == "") {
+          new PNotify({
+            title: "Empty tel",
+            text: "Please enter a tel no.",
+            type: "error",
+            styling: "bootstrap3",
+            delay: 1000
+          });
+        } else {
+        }
+      }
+      function resetProfile() {
+        $("#editTel").val("66851783");
+        $("#editEmail").val("180320198@stu.vtc.edu.hk");
+        $("#editImage").html(
+          "<div class='dz-default dz-message'><span>Update you profile image</span></div>"
+        );
+      }
+
+      function editFinish(){
+        alert("code 002");
+      }
+
+      async function showAlert(msg) {
+        $("#errorModal #errorModalLabel").html(msg);
+        await $("#errorModal")
+          .css({
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: 0,
+            background: "rgba(0,0,0,.7)"
+          })
+          .promise();
+        setTimeout(() => {
+          $("#errorModal .trigger").addClass("drawn");
+          $("#errorModal").addClass("show");
+          $("body")
+            .append('<div class="modal-backdrop fade"></div>')
+            .css("overflow-y", "hidden")
+            .promise();
+        }, 150);
+      }
+    </script>
   </body>
 </html>
