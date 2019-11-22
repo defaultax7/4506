@@ -104,9 +104,10 @@
                     <div class="x_content">
                       <br />
                       <form
+                      id="editImage"
                         action="form_upload.html"
                         class="dropzone dz-clickable"
-                        style="width: 210px; margin-left: 125px; margin-bottom: 50px;"
+                        style="width: 210px; margin-left: 125px; margin-bottom: 50px; height: 200px;"
                       >
                         <div class="dz-default dz-message">
                           <span>Update you profile image</span>
@@ -471,6 +472,7 @@
       function resetProfile() {
         $("#editTel").val("66851783");
         $("#editEmail").val("180320198@stu.vtc.edu.hk");
+        $("#editImage").html("<div class='dz-default dz-message'><span>Update you profile image</span></div>");
       }
     </script>
   </body>
