@@ -144,14 +144,13 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="restaurantLoged.html" method="get">
+            <form action="restaurantLoged.html" method="get" onsubmit="return loggingIn()" >
               <div class="form-group">
                 <input
                   type="text"
                   class="form-control"
                   name="username"
                   placeholder="Username"
-                  required="required"
                 />
               </div>
               <div class="form-group">
@@ -160,7 +159,6 @@
                   class="form-control"
                   name="password"
                   placeholder="Password"
-                  required="required"
                 />
               </div>
               <div class="form-group">
@@ -171,6 +169,7 @@
                   Login
                 </button>
               </div>
+              <span class="text-danger">You should login whether you can't retrieve the food menu and order</span>
             </form>
           </div>
           <div class="modal-footer">
@@ -401,34 +400,22 @@
           id="navbarContent"
         >
           <ul class="navbar-nav">
-            <!-- <li class="nav-item" id="shoppingCart">
-              <a
-                class="nav-link modal-trigger"
-                href="./login.html"
-                data-toggle="modal"
-                data-target="#loginModal"
-                id="btnShoppingCart"
-                >Shopping Cart<i class="material-icons align-bottom">
-                  shopping_cart
-                </i></a
-              >
-            </li> -->
             <li class="nav-item">
-              <a id="restTag" class="nav-link" href="./restaurant.html"
+              <a id="restTag" class="nav-link" href="#!"
                 >Restaurant</a
               >
+            <li class="nav-item" id="hc-cart" style="display:none;">
+              <a id="orderTag" class="nav-link" href="#!">Shopping Cart<i class="material-icons align-bottom"> shopping_cart </i></a>
             </li>
-            <li class="nav-item">
-              <a id="orderTag" class="nav-link" href="#!">Order</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="hc-sign-up">
               <a class="nav-link" href="./register.html"
                 >Sign-Up<i class="material-icons align-bottom">
                   create
                 </i></a
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="hc-sign-in">
               <a
                 class="nav-link modal-trigger"
                 href="#myModal"
@@ -437,6 +424,23 @@
                 data-target="#loginModal"
                 >Login<i class="material-icons align-bottom">
                   person
+                </i></a
+              >
+            </li>
+            <li class="nav-item" id="hc-profile" style="display:none;">
+              <a id="restTag" class="nav-link" href="#!"
+                >Profile<i class="material-icons align-bottom">
+                  edit
+                </i></a
+              >
+            </li>
+            <li class="nav-item" id="hc-logout" style="display:none;">
+              <a
+                class="nav-link modal-trigger"
+                href="customer_index.html"
+                class="trigger-btn"
+                >Logout<i class="material-icons align-bottom">
+                  meeting_room
                 </i></a
               >
             </li>
@@ -684,7 +688,7 @@
                   type="radio"
                   name="jy-tabs"
                   id="tabone"
-                  checked="checked"
+                  disabled
                 />
                 <label for="tabone">Menu</label>
                 <div class="jy-tab" id="foodList">
@@ -729,7 +733,7 @@
                   </div>
                 </div>
 
-                <input type="radio" name="jy-tabs" id="tabtwo" />
+                <input type="radio" name="jy-tabs" id="tabtwo" checked="checked"/>
                 <label for="tabtwo">Description</label>
                 <div class="jy-tab" id="desc"></div>
 
@@ -1628,6 +1632,17 @@
         $(this).toggleClass("fa-heart fa-heart-o");
       });
       });
+      function loggingIn() {
+        $('#tabone').prop( 'disabled', false );
+        $("#loginModal").modal("hide");
+        $("#hc-cart").show();
+        $("#hc-sign-up").hide();
+        $("#hc-sign-in").hide();
+        $("#hc-profile").show();
+        $("#hc-logout").show();
+        showToast("You have logined");
+        return false;
+     }
 
       $("#floatingFliter")
         .delay(5000)
