@@ -326,7 +326,7 @@
                     data-original-title="Logout"
                   >
                     <span
-                      class="glyphicon glyphicon-off clickable"
+                      class="glyphicon glyphicon-log-out clickable"
                       aria-hidden="true"
                       style="margin-left : 20px"
                     ></span>
@@ -366,6 +366,18 @@
                         <div id="map"></div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Last week sale</h2>
+                   
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content"><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px none; height: 0px; margin: 0px; position: absolute; inset: 0px;"></iframe>
+                    <canvas id="lineChart" style="width: 553px; height: 276px;" width="553" height="276"></canvas>
                   </div>
                 </div>
               </div>
@@ -413,11 +425,14 @@
     <script src="js/mapdata.js"></script>
     <script src="js/countrymap.js"></script>
 
+    <!-- chart -->
+    <script src="js/Chart.js"></script>
+
     <script>
       setTimeout(function() {
         $("tspan").remove();
         $("#map_zoom").remove();
-      }, 40);
+      }, 50);
 
       $("#btnProfile").click(function() {
         var buttonId = "one";
