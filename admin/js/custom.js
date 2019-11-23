@@ -1911,17 +1911,17 @@ function init_charts() {
         type: "line",
         data: {
           labels: [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July"
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
           ],
           datasets: [
             {
-              label: "My First dataset",
+              label: "Total sale",
               backgroundColor: "rgba(38, 185, 154, 0.31)",
               borderColor: "rgba(38, 185, 154, 0.7)",
               pointBorderColor: "rgba(38, 185, 154, 0.7)",
@@ -1929,20 +1929,18 @@ function init_charts() {
               pointHoverBackgroundColor: "#fff",
               pointHoverBorderColor: "rgba(220,220,220,1)",
               pointBorderWidth: 1,
-              data: [31, 74, 6, 39, 20, 85, 7]
+              data: [94516, 89956, 92168, 90456, 98427, 118948, 109475]
             },
-            {
-              label: "My Second dataset",
-              backgroundColor: "rgba(3, 88, 106, 0.3)",
-              borderColor: "rgba(3, 88, 106, 0.70)",
-              pointBorderColor: "rgba(3, 88, 106, 0.70)",
-              pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgba(151,187,205,1)",
-              pointBorderWidth: 1,
-              data: [82, 23, 66, 9, 99, 4, 2]
-            }
           ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
       });
     }
