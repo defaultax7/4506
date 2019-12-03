@@ -80,10 +80,18 @@ $(document).ready(function() {
   totalPages: 4,
   visiblePages: 4,
   onPageClick: function (event, page) {
-    goShopPage(page)
+      goShopPage(page);
       $('#page-content').text('Page ' + page);
-  }
-});
+    }
+  });
+
+  //temp make
+  $(".adder").click(function() {
+    $(this).parent().chlidren
+  });
+  $(".decer").click(function() {
+
+  });
 
 });
 // End Onload
@@ -178,7 +186,7 @@ function showFood(fid) {
       "'></img><p>" +
       menu.desc +
       "</p><div class='clearfix'></div>" +
-      "<table  class='restAttr'><tbody><tr><td>Address : &nbsp;&nbsp;</td><td>"+ 
+      "<table  class='restAttr'><tbody><tr><td>Address : &nbsp;&nbsp;</td><td>"+
       menu.address+"</td></tr><tr><td>Rating : </td><td>" + ratingContext + "</td></tr>"+
       "<tr><td>Telephone</td><td><a href='#!'>36884587</a></td></tr>"+
       "<tr><td>Opening Hour :  &nbsp;&nbsp;</td><td>" + menu.openHour + "</td></tr>" +
@@ -349,7 +357,7 @@ function editFood(index) {
       else {
         img = "img/noImg.jpg";
       }
-      
+
       // console.log(foodList[i].name)
       $(".cloud-zoom-gallery").eq(i).attr("href", img);
       $(".cloud-zoom-gallery").eq(i).attr("rel", "gallerySwitchOnMouseOver: true, popupWin:\'"+img+"\', useZoom: 'zoom1', smallImage: \'"+img+"\'");
@@ -400,7 +408,7 @@ function addCart(food, price) {
     if (cart.hasOwnProperty(fd)) {
       const elem = cart[fd];
       totalPrice += elem[0] * elem[1];
-      context += 
+      context +=
           '<tr><td>'+
           fd + '</td><td>$'+
           elem[1] + '</td><td><button class="addor">+</button></td>' +
