@@ -211,9 +211,13 @@ function showFood(fid) {
   // $("#foodList").html("")
 }
 function giveComment() {
+  let rating = $("input[name= 'rate']:checked").val();
+  if (rating == undefined) {
+    rating = 0;
+  }
   $("#cmt-block").append(
     ' <div class="cmt shadow p-2"> <div class="cmt-header"><span class="text-warning">#1</span><span> p**** ' +
-      '</span><span>2019-10-17</span></div> <div class="cmt-body">' +
+      '</span><span>2019-10-17</span><span>'+'<span class="stared"></span>'.repeat(rating)+'</span></div> <div class="cmt-body">' +
       $("#your-cmt").val() +
       "</div> </div> "
   );
@@ -468,9 +472,9 @@ function getFav() {
     })
     $("#tRest").html(context)
   }
-  else {
-    $("#tRest").html("Still no favourite restaurant added.")
-  }
+  //else {
+    //$("#tRest").html("Still no favourite restaurant added.")
+  //}
   constext = "";
   if (foodSet.size != 0) {
     foodSet.forEach(e => {
@@ -478,6 +482,9 @@ function getFav() {
     })
     $("#tFood").html(context)
   }
+  //else {
+    //$("#tRest").html("Still no favourite restaurant added.")
+  //}
 }
 $("#orderTag").click(function() {
   calTotal();
