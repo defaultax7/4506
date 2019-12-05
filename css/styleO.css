@@ -1,0 +1,89 @@
+.hspace5per{
+    height : 5%;
+}
+.hspace10per{
+    height : 10%;
+}
+
+#loadingAnimation{
+    display : none;
+}
+
+#loader-wrapper{
+    background-color: rgba(0,0,0,0.3);
+}
+.navBarImg{
+    height: 38px;
+    margin-right: 30px;
+}
+
+
+.myCardImg{
+    height: 200px;
+}
+
+.clickable{
+    cursor : pointer;
+}
+.clickable:hover{
+    box-shadow: 0px 0px 10px red;
+}
+
+.menuContainer{
+    /*min-height: 100vh;*/
+}
+
+.myFormControl{
+    margin-bottom: 16px;
+}
+.myLabel{
+    margin-bottom: 30px;
+}
+.formImg{
+    height: 200px ; 
+    border : 1px black solid;
+}
+.bg-lightGrey{
+    background-color: #d2d4d7 ;
+}
+.fc-content{
+    color : white;
+}
+
+.myTable td{
+    padding : 5px;
+}
+
+.courseDetailImg{
+    height: 300px;
+    width: 400px;
+}
+
+#attendanceTable{
+    display : none;
+}
+
+#studentAttendanceModal img{
+    width : 150px;
+    heigth :150px;
+}
+
+
+.fade-scale {
+    transform: scale(0);
+    opacity: 0;
+    transition: all 0.5s linear;
+}
+
+.fade-scale.show {
+    opacity: 1;
+    transform: scale(1);
+}
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:600px;
+  overflow:auto;  
+  margin-top:20px;
+}

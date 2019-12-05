@@ -293,6 +293,7 @@ $(document).ready(function() {
     text = $(this).val();
     if ($("body").data("mode") == 1) {
       $.getJSON("data/restaurant.json", function(data) {
+        
         count = 0;
         index1 = -1;
         index2 = -1;
