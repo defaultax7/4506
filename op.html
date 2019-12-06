@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/sideBar.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/alert.css" />
+    <style>
+      .profileContainer {
+        box-shadow: 0px 0px 100px grey;
+        margin: 5px;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        background-color: #222;
+      }
+      b {
+        color: white;
+      }
+      button {
+        margin: 10px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="justify-content: center;">
+            <div class="trigger"></div>
+            <svg
+              version="1.1"
+              id="cross"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 37 37"
+              width="5em"
+              height="5em"
+              xml:space="preserve"
+            >
+              <path
+                class="circ path"
+                style="fill:none;stroke:#28a745;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:10;"
+                d="
+                                  M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"
+              ></path>
+              <polyline
+                class="tick path"
+                style="fill:none;stroke:#28a745;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;"
+                points="
+                                  11.6,20 15.9,24.2 26.4,13.8 "
+              />
+            </svg>
+          </div>
+          <p id="errorModalLabel" class="light text-center"></p>
+          <div class="modal-footer" style="justify-content: center;">
+            <button
+              type="button"
+              class="btn btn-outline-success modal-dismiss"
+              id="btnAlert"
+              onclick="window.location.href = 'op.html'""
+            >
+              <i class="material-icons">done</i>OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="operator.html"
+          ><i class="material-icons" id="logo"> fastfood </i>Yummy everywhere</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#settingForm"
+                >
+                  Profile
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#settingForm"
+                >
+                  Setting
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html"> Logout </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="profileContainer">
+        <div class="row justify-content-center">
+          <h1 style="margin: 20px; font-size: 60px;">Profile</h1>
+        </div>
+        <div
+          class="row"
+          style="box-shadow: 0 0 15px white; background-color: grey; margin: 20px;color: black;"
+        >
+          <div class="col-6 offset-1">
+            <form>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <b><label for="exampleInputEmail1">User ID</label></b>
+                    <br />
+                    180129424
+                  </div>
+                  <div class="form-group">
+                    <b><label for="exampleInputPassword1">User Name</label></b>
+                    <br />
+                    Ginnie Kulic
+                  </div>
+                  <div class="form-group">
+                    <b><label for="exampleInputPassword1">Gender</label></b>
+                    <br />
+                    Male
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <b><label for="exampleInputEmail1">Create Date</label></b>
+                    <br />
+                    2004-06-01
+                  </div>
+                  <div class="form-group">
+                    <b><label for="exampleInputEmail1">Last Login</label></b>
+                    <br />
+                    2019-08-13
+                  </div>
+                  <div class="form-group">
+                    <b><label for="exampleInputEmail1">Date of birth</label></b>
+                    <br />
+                    1986-02-13
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-5">
+            <img
+              src="img/userImg.png"
+              alt=""
+              style="border: 1px solid black;opacity: 1;"
+            />
+          </div>
+        </div>
+        <div style="height: 70px;"></div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Tel </label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter tel"
+                value="28847503"
+                style="color: black;"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email </label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+                value="180129424@stu.vtc.edu.hk"
+                style="color: black;"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <button type="button" class="btn btn-primary" onclick="showAlert('Edit success')">Edit</button>
+        </div>
+        <div class="row justify-content-center">
+          <button type="button" class="btn btn-success">Change password</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/util.js"></script>
+  </body>
+</html>

@@ -54,7 +54,7 @@ $(document).ready(function() {
   });
 
   $(".clockpicker").clockpicker({ autoclose: true });
-  $(".clockpickerEn1d").clockpicker({ autoclose: true });
+  $(".clockpickerEnd").clockpicker({ autoclose: true });
 
   $("img").click(function() {
     src = $(this).prop("src");
@@ -177,6 +177,10 @@ $(document).ready(function() {
     alert("aaa");
   });
 
+  $(".topLoadingBar").animate({ width: "100%" }, 800, function() {
+    $(this).hide();
+  });
+
   $("#branchPage").hide();
 
   function qtyAlert(element) {
@@ -190,6 +194,28 @@ $(document).ready(function() {
       element[0].style.color = "green";
     }
   }
+
+  hided = true;
+  $("#btnHideMenu").click(function() {
+    if (hided) {
+      $(this)
+        .parent()
+        .parent()
+        .css({ opacity: 0.5 });
+        $(this).text("Show");
+        $(this).removeClass("btn-danger");
+        $(this).addClass("btn-success");
+    } else {
+        $(this)
+        .parent()
+        .parent()
+        .css({ opacity: 1 });
+        $(this).text("Hide");
+        $(this).removeClass("btn-success");
+        $(this).addClass("btn-danger");
+    }
+    hided = !hided;
+  });
 
   $("#noResult").hide();
 
@@ -265,6 +291,11 @@ $(document).ready(function() {
 
   $("#menuPage").hide();
 
+  $("#whiteScreen")
+    .show(3000)
+    .delay(1000)
+    .fadeOut(500);
+
   function changeCSS(cssFile, cssLinkIndex) {
     var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
 
@@ -284,8 +315,8 @@ $(document).ready(function() {
       $("#startTimeEdit").attr("disabled", "disabled");
       $("#endTimeEdit").attr("disabled", "disabled");
     } else {
-      $("#startTimeEdit").removeAttr('disabled');
-      $("#endTimeEdit").removeAttr('disabled');
+      $("#startTimeEdit").removeAttr("disabled");
+      $("#endTimeEdit").removeAttr("disabled");
     }
   });
 
@@ -293,7 +324,6 @@ $(document).ready(function() {
     text = $(this).val();
     if ($("body").data("mode") == 1) {
       $.getJSON("data/restaurant.json", function(data) {
-        
         count = 0;
         index1 = -1;
         index2 = -1;

@@ -55,3 +55,13 @@
 .active{
     cursor : context-menu;
 }
+
+.topLoadingBar{
+    width: 0;
+    height: 10px;
+    position: fixed;
+    background-color: green;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+}
