@@ -46,7 +46,7 @@ $(document).ready(function() {
     field: document.getElementById("btnFoundDate"),
     maxDate: moment()
       .endOf("month")
-      .subtract(dayLeft, "day"),
+      .subtract(dayLeft + 1, "day"),
     onSelect: function(date) {
       $("#foundDate").val(date.format("L"));
       validateForm1();
