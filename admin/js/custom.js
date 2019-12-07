@@ -2141,8 +2141,7 @@ function init_calendar() {
             });
         },
         eventClick: function(a, b, c) {
-          alert("自定義");
-          console.log(a);
+          $("#exampleModal").modal();
 
           $("#fc_edit").click(),
             $("#title2").val(a.title),

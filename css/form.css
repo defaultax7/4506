@@ -196,7 +196,9 @@
 }
 
 #img-upload,
-#img-upload2 {
+#img-upload2,
+#img-upload3,
+#img-upload9 {
     width: 250px;
     height: 150px;
 }

@@ -69,7 +69,7 @@
                 <div class="col-md-6 col-sm-6 ">
                   <div id="gender" class="btn-group" data-toggle="buttons">
                     <label
-                      class="btn btn-primary"
+                      class="btn btn-secondary"
                       data-toggle-class="btn-primary"
                       data-toggle-passive-class="btn-default"
                     >
@@ -112,10 +112,53 @@
                   />
                 </div>
               </div>
+              <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align"
+                  >User type</label
+                >
+                <div class="col-md-6 col-sm-6 ">
+                  <div id="usertype" class="btn-group" data-toggle="buttons">
+                    <label
+                      class="btn btn-secondary"
+                      data-toggle-class="btn-primary"
+                      data-toggle-passive-class="btn-default"
+                    >
+                      <input
+                        type="radio"
+                        name="usertype"
+                        value="Operator"
+                        class="join-btn"
+                        data-parsley-multiple="gender"
+                      />
+                      &nbsp; Operator &nbsp;
+                    </label>
+                    <label
+                      class="btn btn-secondary"
+                      data-toggle-class="btn-primary"
+                      data-toggle-passive-class="btn-default"
+                    >
+                      <input
+                        type="radio"
+                        name="usertype"
+                        value="Customer"
+                        class="join-btn"
+                        data-parsley-multiple="gender"
+                      />
+                      customer
+                    </label>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
           <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-primary">Add user</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="addNewUser()"
+            >
+              Add user
+            </button>
           </div>
         </div>
       </div>
@@ -306,9 +349,10 @@
     <script src="js/custom.js"></script>
 
     <script>
-
       function addUser() {
         $("#addUserModal").modal({ backdrop: "static" });
+        $("#gender").children().eq(0).click();
+        $("#usertype").children().eq(0).click();
       }
 
       $.getJSON("data/user.json", function(data) {
@@ -338,6 +382,32 @@
           .remove()
           .draw();
       });
+
+      function addNewUser() {
+        name = $("#first-name").val();
+        gender = $("input[name=gender]:checked").val();
+        birthday = $("#birthday").val();
+        usertype = $("input[name=usertype]:checked").val();
+        today = new Date();
+        todayformated =
+          today.getFullYear() + "-" + (today.getMonth()*1 + 1) + "-" + today.getDate();
+        table.row
+          .add([
+            table.data().count() / 9,
+            name,
+            todayformated,
+            gender,
+            30,
+            todayformated,
+            0,
+            usertype,
+            "<button type='button' class='btn btn-round btn-danger''><i class='fa fa-trash-o'></i>Delete</button>"
+          ])
+          .draw(false);
+        $("#addUserModal").modal("toggle");
+
+        $("#demo-form2").trigger("reset");
+      }
 
       //   table.row.add([1, 1, 1, 1, 1, 1, 1, 1, 1]).draw(false);
     </script>

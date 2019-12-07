@@ -38,7 +38,7 @@
     >
       <div class="jy-indicator"></div>
       <div class="container pb-2 pt-2 mx-auto">
-        <a href="./customer_index.html" class="navbar-brand">
+        <a href="restaurant.html" class="navbar-brand">
           <i class="material-icons" id="logo"> fastfood </i> Yummy Everywhere
         </a>
         <button
@@ -72,11 +72,7 @@
                 >Restaurant</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#!">Sign-Up<i class="material-icons align-bottom">
-                  create
-                </i></a>
-            </li>
+  
             <li class="nav-item">
               <a
                 class="nav-link modal-trigger"
@@ -154,7 +150,7 @@
         if ($("#password2").val() == $("#password").val()) {
           $(".toast-body").text("Register successful!!!");
           $("#myToast").toast("show");
-          window.location.href = 'restaurant.html';
+          setTimeout(function(){window.location.href = 'restaurant.html'; }, 2000);
         }
         else {
           $(".toast-body").text("Register not successful, password unmatch!!!");

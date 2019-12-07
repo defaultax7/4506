@@ -18,7 +18,7 @@ $(document).ready(function() {
       input.val(log);
       if ($(this).data("form") == "restaurant") {
         validateForm1();
-      }else{
+      } else {
         validateForm2();
       }
     } else {
@@ -49,10 +49,25 @@ $(document).ready(function() {
     }
   }
 
+  function readURL3(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $("#img-upload3").attr("src", e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
   $("#imgInp").change(function() {
     readURL(this);
   });
 
+  $("#imgNewMenu").change(function() {
+    readURL3(this);
+  });
   $("#branchImg").change(function() {
     readURL2(this);
   });

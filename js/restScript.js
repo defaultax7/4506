@@ -259,7 +259,7 @@ function showFood(fid) {
       "<tr><td>Opening Hour :  &nbsp;&nbsp;</td><td>" +
       menu.openHour +
       "</td></tr>" +
-      "</tbody><table><h1>Menu</h1><img src='img/shopMenu.jpg' alt=''/>"
+      "</tbody>"
   );
   $("#restMenu").fadeIn();
   $("#rating").html(ratingContext);
@@ -493,24 +493,24 @@ function editFood(index) {
 }
 
 function addCart(food, price) {
-//   if (food in cart) {
-//     cart[food][0]++;
-//   } else {
-//     // qty, price
-//     cart[food] = [1, parseInt(price)];
-//   }
-//   $("#cartBody").empty();
-//   let totalPrice = 0;
-//   let context = "";
-//   for (const fd in cart) {
-//     if (cart.hasOwnProperty(fd)) {
-//       const elem = cart[fd];
-//       totalPrice += elem[0] * elem[1];
-      
-//     }
-//   }
+  //   if (food in cart) {
+  //     cart[food][0]++;
+  //   } else {
+  //     // qty, price
+  //     cart[food] = [1, parseInt(price)];
+  //   }
+  //   $("#cartBody").empty();
+  //   let totalPrice = 0;
+  //   let context = "";
+  //   for (const fd in cart) {
+  //     if (cart.hasOwnProperty(fd)) {
+  //       const elem = cart[fd];
+  //       totalPrice += elem[0] * elem[1];
+
+  //     }
+  //   }
   context =
-        "<div class='row cart-block'>   <div class='col-8'>     <dl>       <dt><u>ice cream</u></dt>       <dd class='small' class='bold mb-2'><img src='img/ice-cream.jpg' alt='' style='width:100px; height:100px'></dd>       <dd class='small'><b>Restaurant</b> <span>McDonald</span></dd>       <dd class='small'><b>Description:</b> <span>ice cream</span></dd>     </dl>   </div>   <div class='col-4'>     <div class='float-right m-3'>$HKD <span class='text-danger'>5</span></div>     <div><button class='adder btn btn-light' >-</button><span class='cartQty col-1'>1</span><button class='decer btn btn-light' >+</button></div>     <div class='clearfix m-3'></div>     <div class='float-right'><button class='btn btn-danger'>Delete</button></div>     <div class='clearfix m-3'></div>   </div> </div>";
+    "<div class='row cart-block'>   <div class='col-8'>     <dl>       <dt><u>" + $("#food_title").text() +"</u></dt>       <dd class='small' class='bold mb-2'><img src='" + $("#zoom1").attr("href") +"' alt='' style='width:100px; height:100px'></dd>       <dd class='small'><b>Restaurant</b> <span>"+ $("#restName").text() +"</span></dd>       <dd class='small'><b>Description:</b> <span>" + $(".food_desc").text() +"</span></dd>     </dl>   </div>   <div class='col-4'>     <div class='float-right m-3'>$HKD <span class='text-danger'>"+ $("#food_price").text() +"</span></div>     <div><button class='adder btn btn-light' >-</button><span class='cartQty col-1'>1</span><button class='decer btn btn-light' >+</button></div>     <div class='clearfix m-3'></div>     <div class='float-right'><button class='btn btn-danger'>Delete</button></div>     <div class='clearfix m-3'></div>   </div> </div>";
   $("#tCart").append(context);
   $("#tCart")
     .last()
@@ -557,6 +557,7 @@ function addCart(food, price) {
         .children()
         .eq(1)
         .text(qty);
+
     });
 
   $("#tCart")
@@ -572,55 +573,64 @@ function addCart(food, price) {
         .parent()
         .parent()
         .hide();
+
+    
     });
+
+
+    tprice = $("#total_price").text() * 1;
+
+    tprice +=  ($("#food_price").text() * 1);
+
+    $("#total_price").text(tprice);
 
   // $(".addor").off("click");
   // $(".decor").off("click");
-//   $(".addor").on("click", function() {
-//     let qtyDiv = $(this)
-//       .parent()
-//       .parent()
-//       .children()
-//       .eq(4);
-//     let qty = parseInt(qtyDiv.text());
-//     let foodName = $(this)
-//       .parent()
-//       .parent()
-//       .children()
-//       .eq(0)
-//       .text();
-//     qty += 1;
-//     qtyDiv.text(qty);
-//     cart[foodName][0] = qty;
-//     calTotal();
-//   });
-//   $(".decor").on("click", function() {
-//     let qtyDiv = $(this)
-//       .parent()
-//       .parent()
-//       .children()
-//       .eq(4);
-//     let qty = parseInt(qtyDiv.text());
-//     qty -= 1;
-//     let foodName = $(this)
-//       .parent()
-//       .parent()
-//       .children()
-//       .eq(0)
-//       .text();
-//     if (qty <= 0) {
-//       $(this)
-//         .parent()
-//         .parent()
-//         .remove();
-//       delete cart[foodName];
-//     } else {
-//       cart[foodName][0] = qty;
-//       qtyDiv.text(qty);
-//     }
-//     calTotal();
-//   });
-  $("#total_price").text(calTotal());
+  //   $(".addor").on("click", function() {
+  //     let qtyDiv = $(this)
+  //       .parent()
+  //       .parent()
+  //       .children()
+  //       .eq(4);
+  //     let qty = parseInt(qtyDiv.text());
+  //     let foodName = $(this)
+  //       .parent()
+  //       .parent()
+  //       .children()
+  //       .eq(0)
+  //       .text();
+  //     qty += 1;
+  //     qtyDiv.text(qty);
+  //     cart[foodName][0] = qty;
+  //     calTotal();
+  //   });
+  //   $(".decor").on("click", function() {
+  //     let qtyDiv = $(this)
+  //       .parent()
+  //       .parent()
+  //       .children()
+  //       .eq(4);
+  //     let qty = parseInt(qtyDiv.text());
+  //     qty -= 1;
+  //     let foodName = $(this)
+  //       .parent()
+  //       .parent()
+  //       .children()
+  //       .eq(0)
+  //       .text();
+  //     if (qty <= 0) {
+  //       $(this)
+  //         .parent()
+  //         .parent()
+  //         .remove();
+  //       delete cart[foodName];
+  //     } else {
+  //       cart[foodName][0] = qty;
+  //       qtyDiv.text(qty);
+  //     }
+  //     calTotal();
+  //   });
+//   $("#total_price").text(calTotal());
 
   $("#shoppingCartModal").modal();
   showToast("Item has add to cart.");
@@ -672,30 +682,58 @@ const restHeart = $("#restHeart");
 $(document).ready(function() {
   restHeart.on("click", function() {
     if ($(this).hasClass("fa-heart-o")) {
-      restSet.add(currRestId);
+      //   restSet.add(currRestId);
+      newFaRes =
+        " <tr>    <td>      <a href='#!'><i class='material-icons' onclick=\"delFaRes(this)\">close</i></a>    </td>    <td>      <span><i class='heart fa fa-heart' style='font-size: 24px'></i></span>    </td>    <td>      " +
+        $("#restName").text() +
+        "    </td>  </tr>";
+
+      $("#tRest tbody").append(newFaRes);
     } else if ($(this).hasClass("fa-heart")) {
-      restSet.delete(currRestId);
+      //   restSet.delete(currRestId);
     }
     $(this).toggleClass("fa-heart fa-heart-o");
   });
   foodHeart.on("click", function() {
     if ($(this).hasClass("fa-heart-o")) {
-      foodSet.add($("#food_title").text());
+      //   foodSet.add($("#food_title").text());
+      newFaFood =
+        "<tr>    <td>      <a href='#!'><i class='material-icons' onclick=\"delFaFood(this)\">close</i></a>    </td>    <td>      <span><i class='heart fa fa-heart' style='font-size: 24px'></i></span>    </td>    <td>      <img src='" +
+        $("#zoom1").attr("href") +
+        "' alt='' style='width:100px; height:100px'>    </td>    <td>      " +
+        $("#food_title").text() +
+        "<br>      <small>" +
+        $("#restName").text() +
+        "</small>    </td>    <td>      $" +
+        $("#food_price").text() +
+        "    </td>  </tr>";
+
+      $("#tFood tbody").append(newFaFood);
     } else if ($(this).hasClass("fa-heart")) {
-      foodSet.delete($("#food_title").text());
+      //   foodSet.delete($("#food_title").text());
     }
     $(this).toggleClass("fa-heart fa-heart-o");
   });
 });
+
+function delFaRes(element){
+    element.parentElement.parentElement.parentElement.remove();  
+}
+
+function delFaFood(element) {
+  element.parentElement.parentElement.parentElement.remove();
+}
+
 function loggingIn() {
-  $("#tabone").prop("disabled", false);
-  $("#loginModal").modal("hide");
-  $("#hc-cart").show();
-  $("#hc-sign-up").hide();
-  $("#hc-sign-in").hide();
-  $("#hc-profile").show();
-  $("#hc-logout").show();
-  showToast("You have logged in");
+  //   $("#tabone").prop("disabled", false);
+  //   $("#loginModal").modal("hide");
+  //   $("#hc-cart").show();
+  //   $("#hc-sign-up").hide();
+  //   $("#hc-sign-in").hide();
+  //   $("#hc-profile").show();
+  //   $("#hc-logout").show();
+  //   showToast("You have logged in");
+  window.location.href = "restaurantLoged.html";
   return false;
 }
 

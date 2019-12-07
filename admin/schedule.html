@@ -28,9 +28,31 @@
     <!-- Date picker -->
 <link rel="stylesheet" href="css/daterangepicker.css">
 
+<link rel="stylesheet" href="css/bootstrap-clockpicker.css" />
+
   </head>
 
   <body class="nav-md">
+
+<!-- modal for show event -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="border-radius: 0;">
+          
+            <div class="modal-body" style="font-size: 30px;">
+              Event title : Appointment <br>
+              Date : 2019/12/11 <br>
+              From : 08:00 <br>
+              To : 12:00 <br>
+              Location : IVE
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -151,7 +173,7 @@
                         <div id="calendar"></div>
                       </div>
                       <div class="col-3">
-                          <div style="height: 400px; box-shadow: 0px 0px 5px 1px grey; padding: 20px;">
+                          <div style="height: 480px; box-shadow: 0px 0px 5px 1px grey; padding: 20px;">
                             <div class="row justify-content-center h2">
                                     <i class="fa fa-thumb-tack" style="margin-right: 10px;"></i>New event
                             </div>
@@ -160,7 +182,7 @@
 Event title:
                             </div>
                             <div class="row form-group">
-                                <input class="form-control" type="text" style="margin-right: 20px;">
+                                <input class="form-control" type="text" style="margin-right: 20px;" id="title">
                             </div>
 
                             <div class="row">
@@ -179,15 +201,37 @@ Event title:
                                 Time:
                             </div>
                             <div class="row form-group">
-                                <input type="text" class="form-control" style="margin-right : 20px">
+                                <div class="col-6">
+                                        <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                                                <input type="text" class="form-control" id="startTime">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-time"></span>
+                                                </span>
+                                            </div>
+                                    </div>
+                                <div class="col-6">
+                                        <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                                                <input type="text" class="form-control" id="endTime">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-time"></span>
+                                                </span>
+                                            </div>
+                                    </div>
                             </div>
+
+                            <div class="row">
+                                    Location:
+                                </div>
+                                <div class="row form-group">
+                                    <input type="text" class="form-control" style="margin-right : 20px" id="location">
+                                </div>
 
                             <div style="height: 30px;width: 1px;">
 
                             </div>
 
                             <div class="row justify-content-center" >
-                            <button type="button" class="btn btn-round btn-primary" style="font-size: 25px;" click="addEvent()">Add event</button>
+                            <button type="button" class="btn btn-round btn-primary" style="font-size: 25px;" onclick="addEvent()">Add event</button>
                         </div>
                         </div>
 
@@ -244,13 +288,25 @@ Event title:
     <!-- Date picker -->
     <script src="js/daterangepicker.js"></script>
 
+    <script src="js/bootstrap-clockpicker.js"></script>
 
-    <!-- <script>
+
+    <script>
       function addEvent() {
-        var event = { id: 1, title: "New event", start: new Date() };
+          title = $("#title").val();
+          start = $("#single_cal1").val();
+        var event = { id: 1, title: title, start: start };
 
         $("#calendar").fullCalendar("renderEvent", event, true);
+        $("#title").val("");
+        $("#single_cal1").val("");
+        $("#startTime").val("");
+        $("#endTime").val("");
+        $("#location").val("");
       }
-    </script> -->
+
+      $('.clockpicker').clockpicker();
+    </script>
+
   </body>
 </html>

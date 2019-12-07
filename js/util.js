@@ -43,6 +43,11 @@ $("#btnAlertOk").click(function() {
     window.location.href = "index2.html";
 })
 
+$("#btnAlertOkOperatorAddRes").click(function() {
+    dismissModal();
+    window.location.href = "operator2.html";
+})
+
 
 function searchText(cls, tbox) {
   let searchText = $("#"+tbox).val().toLowerCase();

@@ -53,8 +53,11 @@ $(document).ready(function() {
     }
   });
 
-  $("#editMeanBtn").click(function(){
-    
+  $("#btnEditMenuSubmit").click(function() {
+    $("#happymeal").text($("#editMenuFormMenuName").val());
+    $("#season").text("Summer special");
+    $("#meal1 .btnHideMenu").click();
+    $("#editMenuForm").modal("toggle");
   });
 
   $(".clockpicker").clockpicker({ autoclose: true });
@@ -87,18 +90,23 @@ $(document).ready(function() {
         container.innerHTML = cc;
         container.classList.add("fullwidth");
 
-            pagi =  $(this)
-            .parent().children()
-            .eq(8);
+        pagi = $(this)
+          .parent()
+          .children()
+          .eq(8);
 
-            $(this).parent().children().eq(8).remove();
+        $(this)
+          .parent()
+          .children()
+          .eq(8)
+          .remove();
         $(this)
           .parent()
           .append(container);
 
-          pagi =  $(this)
-            .parent()
-            .append(pagi);
+        pagi = $(this)
+          .parent()
+          .append(pagi);
 
         container.childNodes[0].childNodes[1].childNodes[1].src = "img/mc.png";
         container.childNodes[0].childNodes[1].childNodes[3].childNodes[3].innerHTML =
@@ -201,7 +209,6 @@ $(document).ready(function() {
 
   $("#branchPage").hide();
 
-
   function qtyAlert(element) {
     no = parseInt(element[0].textContent);
 
@@ -212,31 +219,44 @@ $(document).ready(function() {
     } else {
       element[0].style.color = "green";
     }
-  };
+  }
 
-  $("#btnCloseFullRes").click(function(){
-      $("#fullRes").animate({width : "275px"},500,function(){
-          $("#fullRes").hide();
-          $(".smoke").hide();
-          $("html").css("overflow","scroll");
-      });
+  $("#btnAddNewMenuSubmit").click(function(){
+      newRes = "  <div class='row-3 p-3' id='editRes' style='opacity : 0.7'>      <div class='card shadow'>        <img src='img/meal5.png' class='card-img-top' alt='...' />        <div class='card-body'>          <h5 class='card-title' id='happymeal'>Chicken meal</h5>          Price : $38 <br />          Season : Summer speicla           <br />          <a class='btn btn-primary' id='editMeanBtn' data-target='#editMenuForm' data-toggle='modal' type='button'>Edit</a>          <a href='#!' class='btn btn-success btnHideMenu'>Show</a>        </div>      </div>    </div>";
+      $("#menuPage").append(newRes);
+      $("#addMenuForm").modal("toggle");
   })
-  
 
-  $("#fullResBtn").click(function(){
-      t = $(this).parent().position().top;
-      l = $(this).parent().position().left;
-      h = $(this).parent().height();
-      w = $(this).parent().width();
-      $("#fullRes").css('top' , t);
-      $("#fullRes").css('left' , l);
-      $("#fullRes").css('height' , h + 50);
-      $("#fullRes").css('width' , w);
-      $("#fullRes").show();
-      $("#fullRes").animate({width : '900px'} , 500);
+  $("#btnCloseFullRes").click(function() {
+    $("#fullRes").animate({ width: "275px" }, 500, function() {
+      $("#fullRes").hide();
+      $(".smoke").hide();
+      $("html").css("overflow", "scroll");
+    });
+  });
+
+  $("#fullResBtn").click(function() {
+    t = $(this)
+      .parent()
+      .position().top;
+    l = $(this)
+      .parent()
+      .position().left;
+    h = $(this)
+      .parent()
+      .height();
+    w = $(this)
+      .parent()
+      .width();
+    $("#fullRes").css("top", t);
+    $("#fullRes").css("left", l);
+    $("#fullRes").css("height", h + 50);
+    $("#fullRes").css("width", w);
+    $("#fullRes").show();
+    $("#fullRes").animate({ width: "900px" }, 500);
     //   $("#fullResImg").animate({ left : "20px"}, 500);
-      $("html").css("overflow","hidden");
-      $(".smoke").show();
+    $("html").css("overflow", "hidden");
+    $(".smoke").show();
   });
 
   hided = true;
