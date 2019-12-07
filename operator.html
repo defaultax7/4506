@@ -38,11 +38,12 @@
 <div style="top: 170px ; left: 400px;">Integram : n/a</div>
 <div style="top: 200px ; left: 400px;">Remark : <ul><li>Take away</li><li>Octopus</li></ul></div>
 <div style="top: 350px ; left : 500px; "><button type="button" class="btn btn-primary" style="width : 200px" id="btnCloseFullRes">Close</button></div>
-<div style="width: 275px;height: 100%;border: 1px solid black;"></div>
+<div style="width: 275px;height: 100%;border: 3px solid #007bff;"></div>
 
     </div>
 
 
+    <!-- for loading page -->
     <div id="whiteScreen" style="position: fixed; width: 100%; height: 100%; background-color: white; z-index: 99999;"></div>
 
     <!-- Modal -->
@@ -91,6 +92,7 @@
       </div>
     </div>
 
+    <!-- setting modal -->
     <div
       class="modal fade"
       id="settingForm"
@@ -165,8 +167,104 @@
       </div>
     </div>
 
+    <!-- modal for edit menu -->
+    <div
+    class="modal fade"
+    id="editMenuForm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+  >
+    <div class="modal-dialog" id="formContainer">
+      <div class="modal-content" style="width : 500px">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Add new menu
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form style="margin: 20px;">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Menu name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="Happy meal">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Price</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" value="25" >
+              </div>
+
+              <div class="form-group">
+                      <label for="exampleFormControlSelect1">Period</label>
+                      <select class="form-control" id="exampleFormControlSelect1">
+                        <option>angus 2019</option>
+                        <option selected>$25 menu</option>
+                        <option>Spring speical</option>
+                        <option>Summber speical</option>
+                        <option>fall special</option>
+                        <option>Winter speical</option>
+                        <option>All time</option>
+                      </select>
+                    </div>
+
+                    
+              <div class="form-group">
+                      <label for="exampleFormControlSelect1">Type</label>
+                      <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Drink</option>
+                        <option>Food</option>
+                        <option>Dessert</option>
+                      </select>
+                    </div>
+              
+                    <div class="form-group">
+                          <label class="font-weight-bold"
+                            >Restaurant image</label
+                          >
+                          <div class="input-group">
+                            <span class="input-group-btn">
+                              <span class="btn btn-default btn-file">
+                                Browse…
+                                <input
+                                  type="file"
+                                  id="imgInp"
+                                  accept="image/*"
+                                  data-form="restaurant"
+                                />
+                              </span>
+                            </span>
+                            <input
+                              id="imageName"
+                              type="text"
+                              class="form-control"
+                              readonly
+                            />
+                          </div>
+                          <small class="form-text text-muted">*required</small>
+                          <img
+                            id="img-upload"
+                            data-toggle="modal"
+                            data-target="#exampleModalScrollable"
+                            type="button"
+                            src="img/meal1.jpg"
+                          />
+                        </div>
+              
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+      </div>
+    </div>
+  </div>
+    
     <!-- add menu form -->
-      <!-- form -->
       <div
       class="modal fade"
       id="addMenuForm"
@@ -177,7 +275,7 @@
       data-backdrop="static"
     >
       <div class="modal-dialog" id="formContainer">
-        <div class="modal-content" style="width : 1000px">
+        <div class="modal-content" style="width : 500px">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">
               Add new menu
@@ -194,17 +292,68 @@
           <form style="margin: 20px;">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Menu name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Price</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  <input type="text" class="form-control" id="exampleInputPassword1" >
                 </div>
+
+                <div class="form-group">
+                        <label for="exampleFormControlSelect1">Period</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>angus 2019</option>
+                          <option>$25 menu</option>
+                          <option>Spring speical</option>
+                          <option>Summber speical</option>
+                          <option>fall special</option>
+                          <option>Winter speical</option>
+                          <option>All time</option>
+                        </select>
+                      </div>
+
+                      
+                <div class="form-group">
+                        <label for="exampleFormControlSelect1">Type</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>Drink</option>
+                          <option>Food</option>
+                          <option>Dessert</option>
+                        </select>
+                      </div>
                 
-                <div class="form-group form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
+                      <div class="form-group">
+                            <label class="font-weight-bold"
+                              >Restaurant image</label
+                            >
+                            <div class="input-group">
+                              <span class="input-group-btn">
+                                <span class="btn btn-default btn-file">
+                                  Browse…
+                                  <input
+                                    type="file"
+                                    id="imgInp"
+                                    accept="image/*"
+                                    data-form="restaurant"
+                                  />
+                                </span>
+                              </span>
+                              <input
+                                id="imageName"
+                                type="text"
+                                class="form-control"
+                                readonly
+                              />
+                            </div>
+                            <small class="form-text text-muted">*required</small>
+                            <img
+                              id="img-upload"
+                              data-toggle="modal"
+                              data-target="#exampleModalScrollable"
+                              type="button"
+                            />
+                          </div>
+                
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
         </div>
@@ -831,7 +980,7 @@
                         >
                         <label class="cbContainer"
                         ><span class="align-top"> 24/7 </span
-                        ><input type="checkbox" id="cb247"/>
+                        ><input type="checkbox" id="cb247" checked/>
                         <span class="checkmark"></span>
                         <i class="material-icons cbIconSize">
                           brightness_medium
@@ -1248,10 +1397,10 @@
             <div class="card shadow">
               <img src="img/meal1.jpg" class="card-img-top" alt="..." />
               <div class="card-body">
-                <h5 class="card-title">Happe meal</h5>
+                <h5 class="card-title">Happy meal</h5>
                 Price : $25 <br />
                 <br />
-                <a href="#!" class="btn btn-primary">Edit</a>
+                <a class="btn btn-primary" id="editMeanBtn" data-target="#editMenuForm" data-toggle="modal" type="button">Edit</a>
                 <a href="#!" class="btn btn-danger btnHideMenu">Hide</a>
               </div>
             </div>
@@ -1286,7 +1435,7 @@
                       <div class="card-body">
                         <h5 class="card-title">Angus original meal</h5>
                         Price : $52 <br />
-                        Season : angus 2919
+                        Season : angus 2019
                         <br />
                         <a href="#!" class="btn btn-primary">Edit</a>
                         <a href="#!" class="btn btn-danger btnHideMenu">Hide</a>

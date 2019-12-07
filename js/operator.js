@@ -53,6 +53,10 @@ $(document).ready(function() {
     }
   });
 
+  $("#editMeanBtn").click(function(){
+    
+  });
+
   $(".clockpicker").clockpicker({ autoclose: true });
   $(".clockpickerEnd").clockpicker({ autoclose: true });
 
@@ -82,9 +86,19 @@ $(document).ready(function() {
 
         container.innerHTML = cc;
         container.classList.add("fullwidth");
+
+            pagi =  $(this)
+            .parent().children()
+            .eq(8);
+
+            $(this).parent().children().eq(8).remove();
         $(this)
           .parent()
           .append(container);
+
+          pagi =  $(this)
+            .parent()
+            .append(pagi);
 
         container.childNodes[0].childNodes[1].childNodes[1].src = "img/mc.png";
         container.childNodes[0].childNodes[1].childNodes[3].childNodes[3].innerHTML =
