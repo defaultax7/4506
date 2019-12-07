@@ -65,3 +65,32 @@
     top: 0;
     left: 0;
 }
+
+#menuPage img{
+    object-fit: contain;
+}
+
+.fullRes{
+    position: fixed;
+    background-color: white;
+    z-index: 9999999999999;
+    display: none;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.smoke{
+    height: 99999px;
+    width: 99999px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+    z-index: 9999999999;
+    background-color: grey;
+    opacity: 0.7;
+}
+
+.fullRes div{
+    position: absolute;
+}

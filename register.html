@@ -154,6 +154,7 @@
         if ($("#password2").val() == $("#password").val()) {
           $(".toast-body").text("Register successful!!!");
           $("#myToast").toast("show");
+          window.location.href = 'restaurant.html';
         }
         else {
           $(".toast-body").text("Register not successful, password unmatch!!!");

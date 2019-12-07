@@ -19,6 +19,30 @@
   </head>
 
   <body data-mode="1">
+
+    <!-- smoke screen for bg -->
+        <div class="smoke">
+        
+            </div>
+        
+    <!-- show full information of restaurant -->
+    <div class="fullRes" id="fullRes">
+        <img src="img/mc.png" id="fullResImg" style="position : absolute ;height: 220px; width : 275px;" alt=""> 
+        <div style="top: 240px; left : 40px" class="h5"> Mcdonald </div>
+        <div style="top : 280px ; left : 40px"> Number of reports : 5123  </div>
+        <div style="top : 310px ; left : 40px"> Tel : 2338 2338 </div>
+<div style="top: 50px ; left: 400px;">Found in : 2002-12-02</div>
+<div style="top: 80px ; left: 400px;">Email address : Mcdonald@gmail.com</div>
+<div style="top: 110px ; left: 400px;">Website : https://www.mcdonalds.com.hk/ch.html</div>
+<div style="top: 140px ; left: 400px;">Facebook : n/a</div>
+<div style="top: 170px ; left: 400px;">Integram : n/a</div>
+<div style="top: 200px ; left: 400px;">Remark : <ul><li>Take away</li><li>Octopus</li></ul></div>
+<div style="top: 350px ; left : 500px; "><button type="button" class="btn btn-primary" style="width : 200px" id="btnCloseFullRes">Close</button></div>
+<div style="width: 275px;height: 100%;border: 1px solid black;"></div>
+
+    </div>
+
+
     <div id="whiteScreen" style="position: fixed; width: 100%; height: 100%; background-color: white; z-index: 99999;"></div>
 
     <!-- Modal -->
@@ -169,14 +193,14 @@
           </div>
           <form style="margin: 20px;">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
+                  <label for="exampleInputEmail1">Menu name</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
+                  <label for="exampleInputPassword1">Price</label>
                   <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
+                
                 <div class="form-group form-check">
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                   <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -1155,6 +1179,8 @@
             </i>
             <span class="align-middle"> Add branch </span>
           </button>
+
+
         </div>
 
         <div id="branchPage" class="row">
@@ -1217,9 +1243,7 @@
           </div>
         </div>
         <div id="menuPage" class="row">
-            <div class="col-12">
-                <input type="checkbox">
-            </div>
+              
           <div class="row-3 p-3" id="editRes">
             <div class="card shadow">
               <img src="img/meal1.jpg" class="card-img-top" alt="..." />
@@ -1228,15 +1252,53 @@
                 Price : $25 <br />
                 <br />
                 <a href="#!" class="btn btn-primary">Edit</a>
-                <a href="#!" class="btn btn-danger" id="btnHideMenu">Hide</a>
+                <a href="#!" class="btn btn-danger btnHideMenu">Hide</a>
               </div>
             </div>
           </div>
+          <div class="row-3 p-3" id="editRes">
+                <div class="card shadow">
+                  <img src="img/meal2.jpg" class="card-img-top" alt="..." />
+                  <div class="card-body">
+                    <h5 class="card-title">Cheese burger meal</h5>
+                    Price : $37 <br />
+                    <br />
+                    <a href="#!" class="btn btn-primary">Edit</a>
+                    <a href="#!" class="btn btn-danger btnHideMenu">Hide</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row-3 p-3" id="editRes">
+                    <div class="card shadow">
+                      <img src="img/meal3.jpg" class="card-img-top" alt="..." />
+                      <div class="card-body">
+                        <h5 class="card-title">Mac nugget meal</h5>
+                        Price : $40 <br />
+                        <br />
+                        <a href="#!" class="btn btn-primary">Edit</a>
+                        <a href="#!" class="btn btn-danger btnHideMenu">Hide</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row-3 p-3" id="editRes">
+                    <div class="card shadow">
+                      <img src="img/meal4.png" class="card-img-top" alt="..." />
+                      <div class="card-body">
+                        <h5 class="card-title">Angus original meal</h5>
+                        Price : $52 <br />
+                        Season : angus 2919
+                        <br />
+                        <a href="#!" class="btn btn-primary">Edit</a>
+                        <a href="#!" class="btn btn-danger btnHideMenu">Hide</a>
+                      </div>
+                    </div>
+                  </div>
         </div>
+        <div id="resPage">
         <div id="resPage1" class="row">
           <div class="row-3 p-3" id="editRes">
-            <div class="card shadow">
-              <img src="img/mc.png" class="card-img-top" alt="..." />
+            <div class="card shadow" >
+              <img src="img/mc.png" class="card-img-top" alt="..." id="fullResBtn" />
               <div class="card-body">
                 <h5 class="card-title">Mcdonald</h5>
                 Number of reports : 5123 <br />
@@ -1345,6 +1407,13 @@
             </div>
           </div>
         </div>
+
+        <div class="row justify-content-center" style="width : 1100px; margin-top : 30px">
+                <ul id="pagination-res" class="pagination-sm"></ul>
+              </div>
+    </div>
+
+
       </div>
 
       <div class="row" id="reportedResContainer">
@@ -1440,10 +1509,13 @@
         </div>
 
         <div class="hspace-20"></div>
+
+        <div class="row justify-content-center" style="width : 1100px; margin-top : 30px">
+                <ul id="pagination-demo" class="pagination-sm"></ul>
+              </div>
+
       </div>
-      <div class="row justify-content-center">
-        <ul id="pagination-demo" class="pagination-sm"></ul>
-      </div>
+      
     </div>
 
     <div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
@@ -1494,6 +1566,7 @@
     <div class="topLoadingBar">
 
     </div>
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery-3.4.1.min.js"></script>

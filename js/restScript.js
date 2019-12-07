@@ -509,7 +509,7 @@ function addCart(food, price) {
       
 //     }
 //   }
-  context +=
+  context =
         "<div class='row cart-block'>   <div class='col-8'>     <dl>       <dt><u>ice cream</u></dt>       <dd class='small' class='bold mb-2'><img src='img/ice-cream.jpg' alt='' style='width:100px; height:100px'></dd>       <dd class='small'><b>Restaurant</b> <span>McDonald</span></dd>       <dd class='small'><b>Description:</b> <span>ice cream</span></dd>     </dl>   </div>   <div class='col-4'>     <div class='float-right m-3'>$HKD <span class='text-danger'>5</span></div>     <div><button class='adder btn btn-light' >-</button><span class='cartQty col-1'>1</span><button class='decer btn btn-light' >+</button></div>     <div class='clearfix m-3'></div>     <div class='float-right'><button class='btn btn-danger'>Delete</button></div>     <div class='clearfix m-3'></div>   </div> </div>";
   $("#tCart").append(context);
   $("#tCart")
@@ -576,51 +576,51 @@ function addCart(food, price) {
 
   // $(".addor").off("click");
   // $(".decor").off("click");
-  $(".addor").on("click", function() {
-    let qtyDiv = $(this)
-      .parent()
-      .parent()
-      .children()
-      .eq(4);
-    let qty = parseInt(qtyDiv.text());
-    let foodName = $(this)
-      .parent()
-      .parent()
-      .children()
-      .eq(0)
-      .text();
-    qty += 1;
-    qtyDiv.text(qty);
-    cart[foodName][0] = qty;
-    calTotal();
-  });
-  $(".decor").on("click", function() {
-    let qtyDiv = $(this)
-      .parent()
-      .parent()
-      .children()
-      .eq(4);
-    let qty = parseInt(qtyDiv.text());
-    qty -= 1;
-    let foodName = $(this)
-      .parent()
-      .parent()
-      .children()
-      .eq(0)
-      .text();
-    if (qty <= 0) {
-      $(this)
-        .parent()
-        .parent()
-        .remove();
-      delete cart[foodName];
-    } else {
-      cart[foodName][0] = qty;
-      qtyDiv.text(qty);
-    }
-    calTotal();
-  });
-  $("#total_price").text(totalPrice);
+//   $(".addor").on("click", function() {
+//     let qtyDiv = $(this)
+//       .parent()
+//       .parent()
+//       .children()
+//       .eq(4);
+//     let qty = parseInt(qtyDiv.text());
+//     let foodName = $(this)
+//       .parent()
+//       .parent()
+//       .children()
+//       .eq(0)
+//       .text();
+//     qty += 1;
+//     qtyDiv.text(qty);
+//     cart[foodName][0] = qty;
+//     calTotal();
+//   });
+//   $(".decor").on("click", function() {
+//     let qtyDiv = $(this)
+//       .parent()
+//       .parent()
+//       .children()
+//       .eq(4);
+//     let qty = parseInt(qtyDiv.text());
+//     qty -= 1;
+//     let foodName = $(this)
+//       .parent()
+//       .parent()
+//       .children()
+//       .eq(0)
+//       .text();
+//     if (qty <= 0) {
+//       $(this)
+//         .parent()
+//         .parent()
+//         .remove();
+//       delete cart[foodName];
+//     } else {
+//       cart[foodName][0] = qty;
+//       qtyDiv.text(qty);
+//     }
+//     calTotal();
+//   });
+  $("#total_price").text(calTotal());
 
   $("#shoppingCartModal").modal();
   showToast("Item has add to cart.");
