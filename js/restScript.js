@@ -263,7 +263,7 @@ function showFood(fid) {
   );
   $("#restMenu").fadeIn();
   $("#rating").html(ratingContext);
-  foodContext = "";
+  let foodContext = "";
   if (menu.foods.length != 0) {
     for (let i = 0; i < menu.foods.length; i++) {
       foodContext += putFood(menu.foods[i], i);

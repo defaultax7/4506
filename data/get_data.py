@@ -4,7 +4,6 @@ import json
 from requests_html import HTMLSession
 import jsons
 
-from restaurant import Restaurant
 from json_class import JsonClass
 
 session = HTMLSession()
@@ -110,10 +109,6 @@ with open(filename, "w") as fp:
 import jsons
 from collections import OrderedDict
 
-
-a = Restaurant(1, "Mcdonald", "img/mcdonald.jpg|abc",
-               "McDonald's Corporation is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald, in San Bernardino, California, United States. They rechristened their business as a hamburger stand, and later turned the company into a franchise, with the Golden Arches logo being introduced in 1953 at a location in Phoenix, Arizona. In 1955, Ray Kroc, a businessman, joined the company as a franchise agent and proceeded to purchase the chain from the McDonald brothers. McDonald's had its original headquarters in Oak Brook, Illinois, but moved its global headquarters to Chicago in early 2018.",
-               "fastfood")
 
 # print(json.dumps(a))
 max = int(input("Please enter the max : "))
